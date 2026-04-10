@@ -1,4 +1,9 @@
-# Skill Session Handoff
+---
+name: session-handoff
+description: Leave the repository in a resumable state after meaningful work. Use at the end of a session or before a likely gap in work.
+---
+
+# Session Handoff
 
 ## When To Use
 

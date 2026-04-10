@@ -23,7 +23,7 @@ Before making product or implementation changes, read:
 
 Canonical docs override summaries in this file.
 
-Use `agents/` and `skills/` as supporting guides, not as competing sources of truth.
+Use `agents/` and `.agents/skills/` as supporting guides, not as competing sources of truth.
 
 ## Minimal Baseline
 

@@ -1,4 +1,9 @@
-# Skill Update Open Questions
+---
+name: update-open-questions
+description: Maintain the active unresolved-question list for the project. Use when a question is added, reworded, reprioritized, or resolved.
+---
+
+# Update Open Questions
 
 ## When To Use
 

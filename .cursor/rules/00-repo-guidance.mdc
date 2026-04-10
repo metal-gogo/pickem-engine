@@ -20,7 +20,6 @@ Read these files when working in this project:
 Useful project-specific supporting guides live in:
 
 - `agents/`
-- `skills/`
+- `.agents/skills/`
 
 Do not create duplicate instruction systems when the existing canonical docs already cover the topic.
-

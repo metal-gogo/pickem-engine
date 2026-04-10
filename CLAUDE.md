@@ -10,7 +10,7 @@ Use [AGENTS.md](AGENTS.md) as the primary project guidance file.
 ## Role And Skill References
 
 - `agents/`
-- `skills/`
+- `.agents/skills/`
 
 ## Canonical Project Docs
 

@@ -1,4 +1,9 @@
-# Skill Commit Changes
+---
+name: commit-changes
+description: Split ready changes into one or more coherent commits and write Conventional Commit messages. Use when work is ready to be committed and the agent should decide commit boundaries from the conversation context and working tree.
+---
+
+# Commit Changes
 
 ## When To Use
 

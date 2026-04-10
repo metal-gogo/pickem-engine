@@ -1,4 +1,9 @@
-# Skill Update Scope
+---
+name: update-scope
+description: Update the current product scope after a scope decision changes. Use when MVP boundaries, priorities, or explicit non-goals need to be revised.
+---
+
+# Update Scope
 
 ## When To Use
 

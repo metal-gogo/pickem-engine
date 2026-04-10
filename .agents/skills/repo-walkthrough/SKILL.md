@@ -1,4 +1,9 @@
-# Skill Repo Walkthrough
+---
+name: repo-walkthrough
+description: Walk through the repository in small, readable chunks with pauses between sections. Use when someone wants a guided tour of the repo instead of a one-shot summary.
+---
+
+# Repo Walkthrough
 
 ## When To Use
 

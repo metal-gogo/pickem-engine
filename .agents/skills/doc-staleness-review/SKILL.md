@@ -1,4 +1,9 @@
-# Skill Doc Staleness Review
+---
+name: doc-staleness-review
+description: Review documentation for duplication, inconsistency, or drift. Use when the docs feel hard to trust or when newer decisions may have left stale content behind.
+---
+
+# Doc Staleness Review
 
 ## When To Use
 

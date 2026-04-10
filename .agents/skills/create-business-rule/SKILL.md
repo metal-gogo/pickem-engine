@@ -1,4 +1,9 @@
-# Skill Create Business Rule
+---
+name: create-business-rule
+description: Turn a product decision into a clear, implementation-relevant business rule. Use when a decision or proposal should be written into the repository's canonical business rules.
+---
+
+# Create Business Rule
 
 ## When To Use
 

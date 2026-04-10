@@ -22,4 +22,4 @@ The current product direction is a private pool experience for friends and famil
 ## Supporting Guides
 
 - Agent roles: [agents/README.md](agents/README.md)
-- Reusable skills: [skills/README.md](skills/README.md)
+- Reusable skills: [.agents/skills/README.md](.agents/skills/README.md)

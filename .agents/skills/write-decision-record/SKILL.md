@@ -1,4 +1,9 @@
-# Skill Write Decision Record
+---
+name: write-decision-record
+description: Record a durable project decision and its reasoning. Use when the reasoning should remain easy to recover in future sessions.
+---
+
+# Write Decision Record
 
 ## When To Use
 
