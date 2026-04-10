@@ -9,6 +9,16 @@ description: Leave the repository in a resumable state after meaningful work. Us
 
 Use at the end of a meaningful session or before a likely gap in work.
 
+## How To Use
+
+Ask for this skill when you want the agent to leave the repository in a state that is easy to resume later.
+
+Example prompts:
+
+- `Prepare a session handoff.`
+- `Use the session-handoff skill before we stop.`
+- `Capture what changed, what is open, and what should happen next.`
+
 ## Required Inputs
 
 - what changed
@@ -30,4 +40,3 @@ Use at the end of a meaningful session or before a likely gap in work.
 
 - usually `docs/implementation-plan/current.md`
 - sometimes `docs/open-questions/index.md` or another affected canonical doc
-

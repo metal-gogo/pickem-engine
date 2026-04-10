@@ -9,6 +9,16 @@ description: Review documentation for duplication, inconsistency, or drift. Use 
 
 Use when the documentation feels inconsistent, outdated, or hard to trust.
 
+## How To Use
+
+Ask for this skill when you want the agent to inspect a doc area for duplication, stale wording, or conflicting guidance.
+
+Example prompts:
+
+- `Review these docs for staleness.`
+- `Use the doc-staleness-review skill on the planning docs.`
+- `Check whether our docs are drifting or duplicating each other.`
+
 ## Required Inputs
 
 - the suspected stale area
@@ -30,4 +40,3 @@ Use when the documentation feels inconsistent, outdated, or hard to trust.
 
 - affected canonical docs
 - optional archive snapshot if needed
-

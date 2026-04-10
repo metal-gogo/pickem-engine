@@ -15,6 +15,16 @@ This skill is especially useful for:
 - recovering context after a gap in work
 - understanding how the repo is organized before making changes
 
+## How To Use
+
+Ask for this skill when you want a paced explanation of the repository with pauses between sections.
+
+Example prompts:
+
+- `/repo-walkthrough`
+- `Walk me through the repository in small chunks.`
+- `Use the repo-walkthrough skill and stop between sections.`
+
 ## Required Inputs
 
 - the repository or sub-area to walk through
@@ -68,4 +78,3 @@ This skill is especially useful for:
 - Do not assume the user needs the deepest technical detail immediately.
 - Do not skip the "why" behind the structure.
 - If the repo is sparse or early-stage, say so clearly and explain the intended shape.
-

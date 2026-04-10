@@ -16,6 +16,16 @@ This skill is especially useful when:
 - the agent should decide whether the result should be one commit or several
 - the repo convention should be applied without making the user handcraft commit messages
 
+## How To Use
+
+Ask for this skill when you want the agent to decide the commit split from the current session context and working tree.
+
+Example prompts:
+
+- `Commit the current changes.`
+- `Use the commit-changes skill for this work.`
+- `Split these changes into the right commits and write the messages.`
+
 ## Required Inputs
 
 - the current conversation context
@@ -75,4 +85,3 @@ This skill is especially useful when:
 - Do not rely only on filenames; use the conversation and diff together.
 - Do not write vague subjects like `update stuff`.
 - If the correct split is unclear, prefer the smallest safe split and explain the uncertainty.
-

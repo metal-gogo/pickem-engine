@@ -9,6 +9,16 @@ description: Record a durable project decision and its reasoning. Use when the r
 
 Use when a durable project decision has been made and the reasoning should remain easy to recover later.
 
+## How To Use
+
+Ask for this skill when a decision should be preserved as a numbered decision record instead of living only in chat.
+
+Example prompts:
+
+- `Write a decision record for this choice.`
+- `Use the write-decision-record skill for the new docs policy.`
+- `Capture this as a durable project decision.`
+
 ## Required Inputs
 
 - decision summary
@@ -30,4 +40,3 @@ Use when a durable project decision has been made and the reasoning should remai
 ## Output Location
 
 - `docs/decisions/`
-

@@ -9,6 +9,16 @@ description: Maintain the active unresolved-question list for the project. Use w
 
 Use when a question is added, reworded, reprioritized, or resolved.
 
+## How To Use
+
+Ask for this skill when the active unresolved-question list should be updated after new discussion or a new decision.
+
+Example prompts:
+
+- `Update the open questions based on this discussion.`
+- `Use the update-open-questions skill for the MVP decisions we just made.`
+- `Remove the resolved questions and add the new ones.`
+
 ## Required Inputs
 
 - the question
@@ -31,4 +41,3 @@ Use when a question is added, reworded, reprioritized, or resolved.
 
 - `docs/open-questions/index.md`
 - optional `docs/open-questions/archive/`
-

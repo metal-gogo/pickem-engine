@@ -9,6 +9,16 @@ description: Turn a product decision into a clear, implementation-relevant busin
 
 Use when a product decision needs to be turned into a clear, implementation-relevant rule.
 
+## How To Use
+
+Ask for this skill when a decision from the conversation should be converted into a rule that can guide implementation or testing.
+
+Example prompts:
+
+- `Turn this decision into a business rule.`
+- `Use the create-business-rule skill for this scoring decision.`
+- `Add this rule to the canonical business rules doc.`
+
 ## Required Inputs
 
 - the decision or proposal
@@ -29,4 +39,3 @@ Use when a product decision needs to be turned into a clear, implementation-rele
 ## Output Location
 
 - `docs/business-rules/index.md`
-

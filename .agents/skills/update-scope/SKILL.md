@@ -9,6 +9,16 @@ description: Update the current product scope after a scope decision changes. Us
 
 Use when product direction, MVP boundaries, or non-goals change.
 
+## How To Use
+
+Ask for this skill when scope needs to be revised and reflected in the canonical product-scope doc.
+
+Example prompts:
+
+- `Update the scope based on this new MVP decision.`
+- `Use the update-scope skill for this change in priorities.`
+- `Revise the current product scope and note what moved in and out.`
+
 ## Required Inputs
 
 - the new or changed scope decision
@@ -31,4 +41,3 @@ Use when product direction, MVP boundaries, or non-goals change.
 
 - `docs/product-scope/current.md`
 - optional `docs/product-scope/archive/`
-
