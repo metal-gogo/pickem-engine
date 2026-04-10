@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-09
+- Last updated: 2026-04-10
 
 ## Planning Objective
 
@@ -40,3 +40,34 @@ Product definition and documentation setup.
 - keep the MVP coherent and small
 - preserve flexibility for later public growth without optimizing for it prematurely
 
+## Session Handoff
+
+### What Changed
+
+- Confirmed that the repository does not need a broad new skill for "continue implementation plan" yet.
+- Reaffirmed that existing skills already cover the useful recurring patterns:
+  - `session-handoff`
+  - `update-open-questions`
+  - `update-scope`
+- Clarified that a new skill should only be added if a narrower planning workflow starts repeating across sessions.
+
+### What Is Still Open
+
+- exact scoring model
+- knockout match handling
+- identity and join flow
+- result ingestion strategy
+- multilingual launch scope
+- pool creation scope
+
+### Recommended Next Step
+
+Use the next session to resolve one planning blocker end-to-end instead of broadening process tooling.
+
+The best candidate is `OQ-003 Identity And Join Flow` or `OQ-006 Pool Creation Scope` because either decision should make the MVP shape more concrete without forcing scoring details yet.
+
+### Resume Prompt
+
+If helpful next session, start with:
+
+`Review the canonical docs, pick the highest-leverage open question, and update the relevant canonical docs plus the implementation plan with the smallest reversible MVP decision.`
