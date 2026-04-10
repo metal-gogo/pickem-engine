@@ -49,7 +49,7 @@ Example prompts:
 
 - chat response only
 
-## Walkthrough Pattern
+## Default Pattern
 
 1. Start with a short orientation:
    - what kind of repository this is
@@ -71,6 +71,15 @@ Example prompts:
 - agent and skill guides
 - implementation-relevant areas, if they exist
 - any selected deep dive the user asks for
+
+## Validation Checklist
+
+- Confirm the walkthrough starts with orientation before diving into details.
+- Confirm each chunk explains why the area exists, not just what it contains.
+- Confirm the pacing leaves a real stopping point between sections.
+- Confirm the depth matches the user's apparent familiarity and request.
+- Confirm the response avoids dumping the whole repo in one pass.
+- Confirm the next-step invitation is explicit so the walkthrough can continue naturally.
 
 ## Guardrails
 

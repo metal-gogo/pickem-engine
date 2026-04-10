@@ -53,6 +53,15 @@ Example prompts:
 7. Keep model defaults explicit when the platform supports stable names.
 8. Keep file ownership separate so parallel workers do not collide.
 
+## Validation Checklist
+
+- Confirm the role system stays conceptually aligned across Claude Code, Codex, and Cursor.
+- Confirm repo-tracked files only include configurations the target client actually supports.
+- Confirm manual setup steps are documented where automation is not supported.
+- Confirm the recommended team shape is the smallest coherent one for the repo.
+- Confirm model defaults are explicit where possible and not brittle where the platform is dynamic.
+- Confirm ownership and handoff guidance are clear enough to support parallel work safely.
+
 ## Guardrails
 
 - Do not invent unsupported config formats.

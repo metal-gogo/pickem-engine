@@ -86,6 +86,15 @@ Example prompts:
 - `style`
 - `revert`
 
+## Validation Checklist
+
+- Confirm each commit groups one coherent unit of work.
+- Confirm unrelated changes were split out or explicitly excluded.
+- Confirm the proposed messages follow Conventional Commits format.
+- Confirm the user was shown a pre-commit summary before any commit was created.
+- Confirm signing is available before attempting to create commits.
+- Confirm the final summary explains what was committed and what, if anything, was left out.
+
 ## Guardrails
 
 - Do not force unrelated changes into one commit.

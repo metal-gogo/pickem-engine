@@ -40,3 +40,32 @@ Example prompts:
 ## Output Location
 
 - `docs/decisions/`
+
+## Default Pattern
+
+1. Read the relevant canonical docs to confirm the decision is real, current, and cross-cutting enough to deserve a record.
+2. Identify the minimum durable reasoning to preserve:
+   - context
+   - decision
+   - tradeoffs considered
+   - consequences
+3. Assign the next decision number and create a concise title.
+4. Write the record so a future session can recover both the answer and why it was chosen.
+5. Update `docs/decisions/index.md`.
+6. Update any canonical doc that now reflects the accepted decision.
+7. Remove or revise related open questions if the decision resolved them.
+
+## Validation Checklist
+
+- Confirm the record captures a durable decision, not a passing idea.
+- Confirm the title says what was decided.
+- Confirm the reasoning is short but sufficient to recover later.
+- Confirm related canonical docs were updated to match the new decision.
+- Confirm the decisions index includes the new record.
+
+## Guardrails
+
+- Do not write a decision record for a reversible one-off wording tweak.
+- Do not let the record become an essay or meeting transcript.
+- Do not leave the decision record as the only place where the current state is reflected.
+- If the decision is not actually settled, keep it as an open question instead.

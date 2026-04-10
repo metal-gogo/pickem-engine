@@ -39,3 +39,38 @@ Example prompts:
 ## Output Location
 
 - `docs/business-rules/index.md`
+
+## Default Pattern
+
+1. Read the canonical docs that define the current state:
+   - `docs/business-rules/index.md`
+   - `docs/product-scope/current.md`
+   - `docs/open-questions/index.md`
+   - `docs/domain/glossary.md`
+2. Identify the exact decision that should become a rule.
+3. Separate the decision into:
+   - confirmed rule text
+   - working assumptions that should not be promoted to a rule
+   - open questions that still need a decision
+4. Write or revise the rule in implementation-relevant language:
+   - what behavior the product expects
+   - what is in or out of scope
+   - what condition or event drives the behavior
+5. Update linked canonical docs if the new rule changes current scope, glossary terms, or the active open-question list.
+6. If the reasoning should remain recoverable later, add or update a decision record.
+7. Report the new rule and any remaining unresolved edges clearly.
+
+## Validation Checklist
+
+- Confirm the rule is stated as a product truth, not as a tentative idea.
+- Confirm any still-open edge cases remain labeled as open.
+- Confirm wording is specific enough to guide implementation or tests.
+- Confirm terminology matches `docs/domain/glossary.md`.
+- Confirm related open questions were removed, revised, or left intact intentionally.
+
+## Guardrails
+
+- Do not silently turn an assumption into a confirmed rule.
+- Do not resolve unrelated open questions while updating one rule.
+- Do not duplicate rule text across multiple canonical docs unless one is a short summary.
+- If the decision materially changes project reasoning, prefer adding a decision record instead of leaving the why only in chat.
