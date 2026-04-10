@@ -1,0 +1,26 @@
+---
+description: Shared project guidance entry point
+alwaysApply: true
+---
+
+Use `AGENTS.md` as the primary repository guidance.
+
+Read these files when working in this project:
+
+- `AGENTS.md`
+- `docs/README.md`
+- `docs/decisions/index.md`
+- `docs/product-scope/current.md`
+- `docs/business-rules/index.md`
+- `docs/open-questions/index.md`
+- `docs/implementation-plan/current.md`
+- `docs/domain/glossary.md`
+- `docs/architecture/current.md`
+
+Useful project-specific supporting guides live in:
+
+- `agents/`
+- `skills/`
+
+Do not create duplicate instruction systems when the existing canonical docs already cover the topic.
+
