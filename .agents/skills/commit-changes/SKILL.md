@@ -36,7 +36,8 @@ Example prompts:
 
 - a decision about the correct commit split
 - one or more Conventional Commit messages
-- if committing is in scope, the actual commits
+- a short pre-commit confirmation prompt summarizing what will be committed
+- if committing is in scope, the actual signed commits
 - a short explanation of what each commit contains
 
 ## Quality Bar
@@ -44,6 +45,7 @@ Example prompts:
 - uses conversation context, not just the diff
 - prefers atomic commits with one coherent unit of work each
 - keeps the history easy to scan and easy to recover later
+- creates signed commits
 - uses Conventional Commits format
 - uses an imperative, concise subject line without a trailing period
 - adds a body only when it improves understanding of the why
@@ -51,7 +53,7 @@ Example prompts:
 ## Output Location
 
 - git history when commits are created
-- chat response summarizing the commit plan or completed commits
+- chat response summarizing the proposed commit plan or completed commits
 
 ## Default Pattern
 
@@ -61,8 +63,14 @@ Example prompts:
 4. Separate unrelated changes when practical.
 5. Write one Conventional Commit message per commit:
    - `type(scope): subject`
-6. If the task includes committing, create the commits in the chosen order.
-7. Report back with a concise summary of what was committed.
+6. Before creating any commit, show the user a concise confirmation prompt that includes:
+   - which files or logical change groups will be committed
+   - the proposed Conventional Commit message or messages
+   - any excluded or ambiguous changes that still need direction
+7. Wait for explicit user confirmation before creating any commit.
+8. If the task includes committing and the user confirms, create signed commits in the chosen order.
+9. If signing is unavailable or fails, stop and tell the user instead of falling back to an unsigned commit.
+10. Report back with a concise summary of what was committed.
 
 ## Suggested Types
 
@@ -81,6 +89,9 @@ Example prompts:
 ## Guardrails
 
 - Do not force unrelated changes into one commit.
+- Do not create a commit until the user has confirmed the proposed commit plan.
+- Do not create unsigned commits.
+- Do not disable signing to get a commit through.
 - Do not commit changes that are outside the requested scope without checking first.
 - Do not rely only on filenames; use the conversation and diff together.
 - Do not write vague subjects like `update stuff`.
