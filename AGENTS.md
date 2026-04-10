@@ -43,6 +43,7 @@ Unless newer canonical docs say otherwise:
 - Favor stable internal domain language and defer to `docs/domain/glossary.md`.
 - Update existing canonical docs instead of creating ad hoc notes.
 - Use archive snapshots only when the current state is being materially re-baselined.
+- When creating commits, use Conventional Commits and prefer atomic, coherent changes.
 
 ## Unresolved Areas To Protect
 
