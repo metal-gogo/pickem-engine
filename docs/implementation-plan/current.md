@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-10
+- Last updated: 2026-04-11
 
 ## Planning Objective
 
@@ -44,12 +44,12 @@ Product definition and documentation setup.
 
 ### What Changed
 
-- Confirmed that the repository does not need a broad new skill for "continue implementation plan" yet.
-- Reaffirmed that existing skills already cover the useful recurring patterns:
+- Added a focused `resume-work` skill for future sessions that need to rebuild context after a gap and identify the next concrete move.
+- Kept the skill narrow so it complements existing patterns instead of replacing them:
   - `session-handoff`
   - `update-open-questions`
   - `update-scope`
-- Clarified that a new skill should only be added if a narrower planning workflow starts repeating across sessions.
+- Clarified that the repeated need was not "continue planning" in general, but "resume quickly and safely after time away."
 
 ### What Is Still Open
 
@@ -62,7 +62,7 @@ Product definition and documentation setup.
 
 ### Recommended Next Step
 
-Use the next session to resolve one planning blocker end-to-end instead of broadening process tooling.
+Use the next session to resolve one planning blocker end-to-end instead of adding more process tooling.
 
 The best candidate is `OQ-003 Identity And Join Flow` or `OQ-006 Pool Creation Scope` because either decision should make the MVP shape more concrete without forcing scoring details yet.
 
@@ -70,4 +70,4 @@ The best candidate is `OQ-003 Identity And Join Flow` or `OQ-006 Pool Creation S
 
 If helpful next session, start with:
 
-`Review the canonical docs, pick the highest-leverage open question, and update the relevant canonical docs plus the implementation plan with the smallest reversible MVP decision.`
+`Use the resume-work skill, rebuild context from the canonical docs and repo state, then resolve the highest-leverage open question with the smallest reversible MVP decision.`
