@@ -8,6 +8,7 @@ This is the register of accepted cross-cutting project decisions.
 - `002` [Product direction: friends-and-family first](/home/mgogo/src/pickem-engine/docs/decisions/002-product-direction-friends-family-first.md)
 - `003` [Conventional commits](/home/mgogo/src/pickem-engine/docs/decisions/003-conventional-commits.md)
 - `004` [Agent usage baseline](/home/mgogo/src/pickem-engine/docs/decisions/004-agent-usage-baseline.md)
+- `005` [Shape work around one core vertical slice](/home/mgogo/src/pickem-engine/docs/decisions/005-shape-work-around-one-core-vertical-slice.md)
 
 ## Notes
 
