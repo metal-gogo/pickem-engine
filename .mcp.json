@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "pickem-engine-storybook": {
+      "url": "http://localhost:6100/mcp",
+      "type": "http"
+    }
+  }
+}
