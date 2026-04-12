@@ -21,7 +21,8 @@ The current implementation is a frontend-first web shell intended to validate th
 It currently uses:
 
 - a client-rendered React + TypeScript + Vite web app
-- custom CSS and reusable UI primitives for the prototype interaction model
+- Tailwind v4 utilities, a small token-driven theme layer, and reusable UI primitives for the prototype interaction model
+- a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other UI details that are less readable as utility strings
 - fixed fixture data and mocked leaderboard data stored separately from presentation
 - localStorage behind a small persistence adapter rather than direct component access
 - domain modules for pick state and lock state logic rather than embedding those rules inside React components

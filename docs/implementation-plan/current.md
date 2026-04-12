@@ -59,7 +59,9 @@ This is a sequencing rule, not a redefinition of the MVP.
 ### Current Frontend Slice
 
 - React + TypeScript + Vite frontend shell
-- custom CSS with reusable UI primitives rather than a heavyweight UI kit
+- Tailwind v4 for spacing, layout, responsive behavior, and most structural styling
+- a small token-driven theme layer plus reusable UI primitives rather than a heavyweight UI kit
+- a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other high-touch details that read poorly as utility strings
 - explicit separation between:
   - domain logic
   - fixture and leaderboard data
@@ -134,6 +136,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 - Added Storybook viewport presets, phone-sized story variants, and a first round of interaction plus accessibility coverage on key stories.
 - Added a `test-storybook` CLI workflow using Storybook's Vitest addon so UI changes can be verified beyond manual review.
 - Added a `coverage-storybook` CLI workflow using Vitest's V8 provider so the Storybook test lane can generate local coverage reports.
+- Swapped the styling foundation from a monolithic global stylesheet to Tailwind v4 with a token-driven theme layer and smaller authored CSS seams.
 - Kept domain logic, fixed data, and persistence separated so the shell can evolve toward a real application without carrying prototype-only wiring through the UI layer.
 - Treated free pre-deadline edits as a prototype assumption only, not a resolved business rule.
 - Added a prototype-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
