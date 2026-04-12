@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-11
+- Last updated: 2026-04-12
 
 ## Planning Objective
 
@@ -8,7 +8,7 @@ Create a clean product and documentation foundation that makes later implementat
 
 ## Current Phase
 
-Product definition and discovery prototype shaping.
+Frontend-first discovery build implementation and product validation.
 
 ## Working Rule
 
@@ -30,8 +30,9 @@ This is a sequencing rule, not a redefinition of the MVP.
    - exact-score entry
    - local persistence
    - review and edit flow
-3. Use prototype findings to refine business rules, glossary terms, and the eventual MVP flow.
-4. Resolve the highest-leverage deferred MVP questions once the core interaction model is more concrete:
+3. Use the implemented frontend shell to validate information architecture, interaction states, and prototype assumptions.
+4. Use prototype findings to refine business rules, glossary terms, and the eventual MVP flow.
+5. Resolve the highest-leverage deferred MVP questions once the core interaction model is more concrete:
    - scoring model
    - knockout match handling
    - identity and join flow
@@ -53,6 +54,31 @@ This is a sequencing rule, not a redefinition of the MVP.
 - exact score entry for included matches
 - local persistence instead of database-backed persistence
 - review and edit flow before any real multi-user or pool workflow
+- for discovery only, the local user can edit picks freely until the global deadline so the interaction model can be tested; this does not resolve BR-O3
+
+### Current Frontend Slice
+
+- React + TypeScript + Vite frontend shell
+- custom CSS with reusable UI primitives rather than a heavyweight UI kit
+- explicit separation between:
+  - domain logic
+  - fixture and leaderboard data
+  - local persistence adapter
+  - React views and components
+- localStorage-backed pick persistence behind a replaceable storage interface
+- Storybook workbench for isolated component and view evaluation during UI iteration
+- Storybook MCP wiring so agents can use the running Storybook as structured UI context during iteration
+- Storybook viewport presets and phone-sized story variants for reviewing responsive behavior without leaving the workbench
+- Storybook Vitest integration for story-driven interaction and accessibility checks via `npm run test-storybook`
+- Storybook coverage reporting via `npm run coverage-storybook` so the test lane exposes what parts of the app code are exercised
+- repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
+- top-level screens for:
+  - overview
+  - pick entry
+  - review and edit
+  - leaderboard preview
+- mocked leaderboard scores because the real scoring model is still unresolved
+- prototype-only locked-state preview control so post-deadline UI can be inspected without changing the real rule set
 
 ### Deferred MVP Concerns
 
@@ -97,14 +123,20 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 ### What Changed
 
-- Kept the `resume-work` skill as the standard re-entry path for irregular sessions so future work can restart from current docs and repo state instead of memory alone.
-- Accepted a lightweight Shape Up-inspired sequencing rule: get one small, core, novel vertical slice working before broadening infrastructure or edge workflows.
-- Chose the first slice as a local-first discovery prototype of the pick workflow:
-  - fixture viewing
-  - exact-score entry
-  - local save
+- Implemented the first real frontend slice as a local-first web app shell using React, TypeScript, Vite, and localStorage.
+- Added reusable UI primitives and screens for:
+  - overview
+  - pick entry
   - review and edit
-- Clarified that this prototype does not replace the MVP direction; identity, pool mechanics, and ingestion remain deferred MVP concerns.
+  - leaderboard preview
+- Added Storybook stories for the main primitives, modules, and views so look-and-feel changes can be reviewed in isolation.
+- Added Storybook MCP wiring and repo guidance so UI-focused agent work can inspect stories and documentation before changing component behavior or styling.
+- Added Storybook viewport presets, phone-sized story variants, and a first round of interaction plus accessibility coverage on key stories.
+- Added a `test-storybook` CLI workflow using Storybook's Vitest addon so UI changes can be verified beyond manual review.
+- Added a `coverage-storybook` CLI workflow using Vitest's V8 provider so the Storybook test lane can generate local coverage reports.
+- Kept domain logic, fixed data, and persistence separated so the shell can evolve toward a real application without carrying prototype-only wiring through the UI layer.
+- Treated free pre-deadline edits as a prototype assumption only, not a resolved business rule.
+- Added a prototype-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 
 ### What Is Still Open
 
@@ -117,14 +149,22 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 ### Recommended Next Step
 
-Shape the smallest useful prototype slice in enough detail to implement without dragging in surrounding systems.
+Use the implemented shell to capture product and UX learnings before broadening platform scope.
 
-The first version should stay bounded to one local user, fixed fixture data, exact-score entry, local persistence, and review/edit flow.
+The next useful moves are likely:
+
+- test the pick entry and review rhythm with real users
+- document any friction around score entry, save behavior, and locked-state expectations
+- refine the open business rules that most affect the current UI:
+  - scoring model
+  - knockout handling
+  - pick editing semantics
+  - identity and join flow
 
 ### Resume Prompt
 
 If helpful next session, start with:
 
-`Use the resume-work skill, confirm the prototype boundaries and exit criteria, then implement the smallest local-first pick workflow slice without pulling in auth, invites, or database-first architecture.`
+`Use the resume-work skill, inspect the implemented frontend discovery shell, then tighten the highest-leverage UX or rule gaps without pulling in auth, invites, or database-first architecture.`
 
 The `resume-work` skill should remain part of the normal workflow because this project may sit idle between sessions and should be easy to restart without relying on memory.

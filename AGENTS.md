@@ -46,6 +46,32 @@ Unless newer canonical docs say otherwise:
 - When creating commits, use Conventional Commits and prefer atomic, coherent changes.
 - When a workflow repeats across sessions, suggest creating or updating a skill under `.agents/skills/`.
 
+## UI Workflow With Storybook MCP
+
+When working on UI components, stories, styling, or page composition:
+
+- start Storybook with `npm run storybook` if it is not already running
+- use the `pickem-engine-storybook` MCP tools before making assumptions about component usage or story coverage
+- prefer Storybook stories as the main review surface for visual and interaction changes before editing broader app flows
+- use documentation and story previews to understand existing component states before inventing new ones
+- use Storybook guidance and tests when adding or updating stories
+- use the built-in viewport presets and the `Phone` story variants when reviewing responsive behavior
+- run `npm run test-storybook` after meaningful UI changes to execute story-driven interaction and accessibility tests
+- run `npm run coverage-storybook` when you need a coverage report for the story-driven test lane
+
+Repo-local MCP registration for this workflow lives in:
+
+- `.codex/config.toml` for Codex
+- `.cursor/mcp.json` for Cursor
+- `.mcp.json` for Claude Code
+
+For agent behavior:
+
+- do not guess component props or supported states when Storybook documentation is available
+- query component and story documentation first, then inspect previews, then edit code
+- use the latest story-writing instructions before creating or changing stories
+- run relevant Storybook tests after meaningful UI changes when the tool is available
+
 ## Unresolved Areas To Protect
 
 Use `docs/open-questions/index.md` as the canonical list.
