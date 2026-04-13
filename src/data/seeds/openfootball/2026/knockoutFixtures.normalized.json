@@ -1,0 +1,658 @@
+[
+  {
+    "id": "knockout-001",
+    "matchNumber": 73,
+    "stage": "Round of 32",
+    "date": "2026-06-28",
+    "time": "12:00 UTC-7",
+    "ground": "Los Angeles (Inglewood)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "A",
+      "raw": "2A"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "B",
+      "raw": "2B"
+    }
+  },
+  {
+    "id": "knockout-002",
+    "matchNumber": 74,
+    "stage": "Round of 32",
+    "date": "2026-06-29",
+    "time": "16:30 UTC-4",
+    "ground": "Boston (Foxborough)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "E",
+      "raw": "1E"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "F"
+      ],
+      "raw": "3A/B/C/D/F"
+    }
+  },
+  {
+    "id": "knockout-003",
+    "matchNumber": 75,
+    "stage": "Round of 32",
+    "date": "2026-06-29",
+    "time": "19:00 UTC-6",
+    "ground": "Monterrey (Guadalupe)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "F",
+      "raw": "1F"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "C",
+      "raw": "2C"
+    }
+  },
+  {
+    "id": "knockout-004",
+    "matchNumber": 76,
+    "stage": "Round of 32",
+    "date": "2026-06-29",
+    "time": "12:00 UTC-5",
+    "ground": "Houston",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "C",
+      "raw": "1C"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "F",
+      "raw": "2F"
+    }
+  },
+  {
+    "id": "knockout-005",
+    "matchNumber": 77,
+    "stage": "Round of 32",
+    "date": "2026-06-30",
+    "time": "17:00 UTC-4",
+    "ground": "New York/New Jersey (East Rutherford)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "I",
+      "raw": "1I"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "C",
+        "D",
+        "F",
+        "G",
+        "H"
+      ],
+      "raw": "3C/D/F/G/H"
+    }
+  },
+  {
+    "id": "knockout-006",
+    "matchNumber": 78,
+    "stage": "Round of 32",
+    "date": "2026-06-30",
+    "time": "12:00 UTC-5",
+    "ground": "Dallas (Arlington)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "E",
+      "raw": "2E"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "I",
+      "raw": "2I"
+    }
+  },
+  {
+    "id": "knockout-007",
+    "matchNumber": 79,
+    "stage": "Round of 32",
+    "date": "2026-06-30",
+    "time": "19:00 UTC-6",
+    "ground": "Mexico City",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "A",
+      "raw": "1A"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "C",
+        "E",
+        "F",
+        "H",
+        "I"
+      ],
+      "raw": "3C/E/F/H/I"
+    }
+  },
+  {
+    "id": "knockout-008",
+    "matchNumber": 80,
+    "stage": "Round of 32",
+    "date": "2026-07-01",
+    "time": "12:00 UTC-4",
+    "ground": "Atlanta",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "L",
+      "raw": "1L"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "E",
+        "H",
+        "I",
+        "J",
+        "K"
+      ],
+      "raw": "3E/H/I/J/K"
+    }
+  },
+  {
+    "id": "knockout-009",
+    "matchNumber": 81,
+    "stage": "Round of 32",
+    "date": "2026-07-01",
+    "time": "17:00 UTC-7",
+    "ground": "San Francisco Bay Area (Santa Clara)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "D",
+      "raw": "1D"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "B",
+        "E",
+        "F",
+        "I",
+        "J"
+      ],
+      "raw": "3B/E/F/I/J"
+    }
+  },
+  {
+    "id": "knockout-010",
+    "matchNumber": 82,
+    "stage": "Round of 32",
+    "date": "2026-07-01",
+    "time": "13:00 UTC-7",
+    "ground": "Seattle",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "G",
+      "raw": "1G"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "A",
+        "E",
+        "H",
+        "I",
+        "J"
+      ],
+      "raw": "3A/E/H/I/J"
+    }
+  },
+  {
+    "id": "knockout-011",
+    "matchNumber": 83,
+    "stage": "Round of 32",
+    "date": "2026-07-02",
+    "time": "19:00 UTC-4",
+    "ground": "Toronto",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "K",
+      "raw": "2K"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "L",
+      "raw": "2L"
+    }
+  },
+  {
+    "id": "knockout-012",
+    "matchNumber": 84,
+    "stage": "Round of 32",
+    "date": "2026-07-02",
+    "time": "12:00 UTC-7",
+    "ground": "Los Angeles (Inglewood)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "H",
+      "raw": "1H"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "J",
+      "raw": "2J"
+    }
+  },
+  {
+    "id": "knockout-013",
+    "matchNumber": 85,
+    "stage": "Round of 32",
+    "date": "2026-07-02",
+    "time": "20:00 UTC-7",
+    "ground": "Vancouver",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "B",
+      "raw": "1B"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "E",
+        "F",
+        "G",
+        "I",
+        "J"
+      ],
+      "raw": "3E/F/G/I/J"
+    }
+  },
+  {
+    "id": "knockout-014",
+    "matchNumber": 86,
+    "stage": "Round of 32",
+    "date": "2026-07-03",
+    "time": "18:00 UTC-4",
+    "ground": "Miami (Miami Gardens)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "J",
+      "raw": "1J"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "H",
+      "raw": "2H"
+    }
+  },
+  {
+    "id": "knockout-015",
+    "matchNumber": 87,
+    "stage": "Round of 32",
+    "date": "2026-07-03",
+    "time": "20:30 UTC-5",
+    "ground": "Kansas City",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 1,
+      "group": "K",
+      "raw": "1K"
+    },
+    "awayParticipant": {
+      "kind": "best-third-place",
+      "position": 3,
+      "groups": [
+        "D",
+        "E",
+        "I",
+        "J",
+        "L"
+      ],
+      "raw": "3D/E/I/J/L"
+    }
+  },
+  {
+    "id": "knockout-016",
+    "matchNumber": 88,
+    "stage": "Round of 32",
+    "date": "2026-07-03",
+    "time": "13:00 UTC-5",
+    "ground": "Dallas (Arlington)",
+    "homeParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "D",
+      "raw": "2D"
+    },
+    "awayParticipant": {
+      "kind": "group-position",
+      "position": 2,
+      "group": "G",
+      "raw": "2G"
+    }
+  },
+  {
+    "id": "knockout-017",
+    "matchNumber": 89,
+    "stage": "Round of 16",
+    "date": "2026-07-04",
+    "time": "17:00 UTC-4",
+    "ground": "Philadelphia",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 74,
+      "raw": "W74"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 77,
+      "raw": "W77"
+    }
+  },
+  {
+    "id": "knockout-018",
+    "matchNumber": 90,
+    "stage": "Round of 16",
+    "date": "2026-07-04",
+    "time": "12:00 UTC-5",
+    "ground": "Houston",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 73,
+      "raw": "W73"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 75,
+      "raw": "W75"
+    }
+  },
+  {
+    "id": "knockout-019",
+    "matchNumber": 91,
+    "stage": "Round of 16",
+    "date": "2026-07-05",
+    "time": "16:00 UTC-4",
+    "ground": "New York/New Jersey (East Rutherford)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 76,
+      "raw": "W76"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 78,
+      "raw": "W78"
+    }
+  },
+  {
+    "id": "knockout-020",
+    "matchNumber": 92,
+    "stage": "Round of 16",
+    "date": "2026-07-05",
+    "time": "18:00 UTC-6",
+    "ground": "Mexico City",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 79,
+      "raw": "W79"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 80,
+      "raw": "W80"
+    }
+  },
+  {
+    "id": "knockout-021",
+    "matchNumber": 93,
+    "stage": "Round of 16",
+    "date": "2026-07-06",
+    "time": "14:00 UTC-5",
+    "ground": "Dallas (Arlington)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 83,
+      "raw": "W83"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 84,
+      "raw": "W84"
+    }
+  },
+  {
+    "id": "knockout-022",
+    "matchNumber": 94,
+    "stage": "Round of 16",
+    "date": "2026-07-06",
+    "time": "17:00 UTC-7",
+    "ground": "Seattle",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 81,
+      "raw": "W81"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 82,
+      "raw": "W82"
+    }
+  },
+  {
+    "id": "knockout-023",
+    "matchNumber": 95,
+    "stage": "Round of 16",
+    "date": "2026-07-07",
+    "time": "12:00 UTC-4",
+    "ground": "Atlanta",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 86,
+      "raw": "W86"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 88,
+      "raw": "W88"
+    }
+  },
+  {
+    "id": "knockout-024",
+    "matchNumber": 96,
+    "stage": "Round of 16",
+    "date": "2026-07-07",
+    "time": "13:00 UTC-7",
+    "ground": "Vancouver",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 85,
+      "raw": "W85"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 87,
+      "raw": "W87"
+    }
+  },
+  {
+    "id": "knockout-025",
+    "matchNumber": 97,
+    "stage": "Quarter-final",
+    "date": "2026-07-09",
+    "time": "16:00 UTC-4",
+    "ground": "Boston (Foxborough)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 89,
+      "raw": "W89"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 90,
+      "raw": "W90"
+    }
+  },
+  {
+    "id": "knockout-026",
+    "matchNumber": 98,
+    "stage": "Quarter-final",
+    "date": "2026-07-10",
+    "time": "12:00 UTC-7",
+    "ground": "Los Angeles (Inglewood)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 93,
+      "raw": "W93"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 94,
+      "raw": "W94"
+    }
+  },
+  {
+    "id": "knockout-027",
+    "matchNumber": 99,
+    "stage": "Quarter-final",
+    "date": "2026-07-11",
+    "time": "17:00 UTC-4",
+    "ground": "Miami (Miami Gardens)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 91,
+      "raw": "W91"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 92,
+      "raw": "W92"
+    }
+  },
+  {
+    "id": "knockout-028",
+    "matchNumber": 100,
+    "stage": "Quarter-final",
+    "date": "2026-07-11",
+    "time": "20:00 UTC-5",
+    "ground": "Kansas City",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 95,
+      "raw": "W95"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 96,
+      "raw": "W96"
+    }
+  },
+  {
+    "id": "knockout-029",
+    "matchNumber": 101,
+    "stage": "Semi-final",
+    "date": "2026-07-14",
+    "time": "14:00 UTC-5",
+    "ground": "Dallas (Arlington)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 97,
+      "raw": "W97"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 98,
+      "raw": "W98"
+    }
+  },
+  {
+    "id": "knockout-030",
+    "matchNumber": 102,
+    "stage": "Semi-final",
+    "date": "2026-07-15",
+    "time": "15:00 UTC-4",
+    "ground": "Atlanta",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 99,
+      "raw": "W99"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 100,
+      "raw": "W100"
+    }
+  },
+  {
+    "id": "knockout-031",
+    "matchNumber": null,
+    "stage": "Match for third place",
+    "date": "2026-07-18",
+    "time": "17:00 UTC-4",
+    "ground": "Miami (Miami Gardens)",
+    "homeParticipant": {
+      "kind": "loser-of-match",
+      "matchNumber": 101,
+      "raw": "L101"
+    },
+    "awayParticipant": {
+      "kind": "loser-of-match",
+      "matchNumber": 102,
+      "raw": "L102"
+    }
+  },
+  {
+    "id": "knockout-032",
+    "matchNumber": null,
+    "stage": "Final",
+    "date": "2026-07-19",
+    "time": "15:00 UTC-4",
+    "ground": "New York/New Jersey (East Rutherford)",
+    "homeParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 101,
+      "raw": "W101"
+    },
+    "awayParticipant": {
+      "kind": "winner-of-match",
+      "matchNumber": 102,
+      "raw": "W102"
+    }
+  }
+]

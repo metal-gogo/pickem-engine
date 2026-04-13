@@ -1,0 +1,185 @@
+[
+  {
+    "id": "A",
+    "teamIds": [
+      "cze",
+      "kor",
+      "mex",
+      "rsa"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Guadalajara (Zapopan)",
+      "Mexico City",
+      "Monterrey (Guadalupe)"
+    ]
+  },
+  {
+    "id": "B",
+    "teamIds": [
+      "bih",
+      "can",
+      "qat",
+      "sui"
+    ],
+    "grounds": [
+      "Los Angeles (Inglewood)",
+      "San Francisco Bay Area (Santa Clara)",
+      "Seattle",
+      "Toronto",
+      "Vancouver"
+    ]
+  },
+  {
+    "id": "C",
+    "teamIds": [
+      "bra",
+      "hai",
+      "mar",
+      "sco"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Boston (Foxborough)",
+      "Miami (Miami Gardens)",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia"
+    ]
+  },
+  {
+    "id": "D",
+    "teamIds": [
+      "aus",
+      "par",
+      "tur",
+      "usa"
+    ],
+    "grounds": [
+      "Los Angeles (Inglewood)",
+      "San Francisco Bay Area (Santa Clara)",
+      "Seattle",
+      "Vancouver"
+    ]
+  },
+  {
+    "id": "E",
+    "teamIds": [
+      "civ",
+      "cuw",
+      "ecu",
+      "ger"
+    ],
+    "grounds": [
+      "Houston",
+      "Kansas City",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia",
+      "Toronto"
+    ]
+  },
+  {
+    "id": "F",
+    "teamIds": [
+      "jpn",
+      "ned",
+      "swe",
+      "tun"
+    ],
+    "grounds": [
+      "Dallas (Arlington)",
+      "Houston",
+      "Kansas City",
+      "Monterrey (Guadalupe)"
+    ]
+  },
+  {
+    "id": "G",
+    "teamIds": [
+      "bel",
+      "egy",
+      "irn",
+      "nzl"
+    ],
+    "grounds": [
+      "Los Angeles (Inglewood)",
+      "Seattle",
+      "Vancouver"
+    ]
+  },
+  {
+    "id": "H",
+    "teamIds": [
+      "cpv",
+      "esp",
+      "ksa",
+      "uru"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Guadalajara (Zapopan)",
+      "Houston",
+      "Miami (Miami Gardens)"
+    ]
+  },
+  {
+    "id": "I",
+    "teamIds": [
+      "fra",
+      "irq",
+      "nor",
+      "sen"
+    ],
+    "grounds": [
+      "Boston (Foxborough)",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia",
+      "Toronto"
+    ]
+  },
+  {
+    "id": "J",
+    "teamIds": [
+      "alg",
+      "arg",
+      "aut",
+      "jor"
+    ],
+    "grounds": [
+      "Dallas (Arlington)",
+      "Kansas City",
+      "San Francisco Bay Area (Santa Clara)"
+    ]
+  },
+  {
+    "id": "K",
+    "teamIds": [
+      "cod",
+      "col",
+      "por",
+      "uzb"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Guadalajara (Zapopan)",
+      "Houston",
+      "Mexico City",
+      "Miami (Miami Gardens)"
+    ]
+  },
+  {
+    "id": "L",
+    "teamIds": [
+      "cro",
+      "eng",
+      "gha",
+      "pan"
+    ],
+    "grounds": [
+      "Boston (Foxborough)",
+      "Dallas (Arlington)",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia",
+      "Toronto"
+    ]
+  }
+]

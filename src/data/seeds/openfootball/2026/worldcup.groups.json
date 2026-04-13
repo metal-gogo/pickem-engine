@@ -1,0 +1,197 @@
+[
+  {
+    "group": "A",
+    "teams": [
+      "Czech Republic",
+      "Mexico",
+      "South Africa",
+      "South Korea"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Guadalajara (Zapopan)",
+      "Mexico City",
+      "Monterrey (Guadalupe)"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "B",
+    "teams": [
+      "Bosnia & Herzegovina",
+      "Canada",
+      "Qatar",
+      "Switzerland"
+    ],
+    "grounds": [
+      "Los Angeles (Inglewood)",
+      "San Francisco Bay Area (Santa Clara)",
+      "Seattle",
+      "Toronto",
+      "Vancouver"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "C",
+    "teams": [
+      "Brazil",
+      "Haiti",
+      "Morocco",
+      "Scotland"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Boston (Foxborough)",
+      "Miami (Miami Gardens)",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "D",
+    "teams": [
+      "Australia",
+      "Paraguay",
+      "Turkey",
+      "USA"
+    ],
+    "grounds": [
+      "Los Angeles (Inglewood)",
+      "San Francisco Bay Area (Santa Clara)",
+      "Seattle",
+      "Vancouver"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "E",
+    "teams": [
+      "Curaçao",
+      "Ecuador",
+      "Germany",
+      "Ivory Coast"
+    ],
+    "grounds": [
+      "Houston",
+      "Kansas City",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia",
+      "Toronto"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "F",
+    "teams": [
+      "Japan",
+      "Netherlands",
+      "Sweden",
+      "Tunisia"
+    ],
+    "grounds": [
+      "Dallas (Arlington)",
+      "Houston",
+      "Kansas City",
+      "Monterrey (Guadalupe)"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "G",
+    "teams": [
+      "Belgium",
+      "Egypt",
+      "Iran",
+      "New Zealand"
+    ],
+    "grounds": [
+      "Los Angeles (Inglewood)",
+      "Seattle",
+      "Vancouver"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "H",
+    "teams": [
+      "Cape Verde",
+      "Saudi Arabia",
+      "Spain",
+      "Uruguay"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Guadalajara (Zapopan)",
+      "Houston",
+      "Miami (Miami Gardens)"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "I",
+    "teams": [
+      "France",
+      "Iraq",
+      "Norway",
+      "Senegal"
+    ],
+    "grounds": [
+      "Boston (Foxborough)",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia",
+      "Toronto"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "J",
+    "teams": [
+      "Algeria",
+      "Argentina",
+      "Austria",
+      "Jordan"
+    ],
+    "grounds": [
+      "Dallas (Arlington)",
+      "Kansas City",
+      "San Francisco Bay Area (Santa Clara)"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "K",
+    "teams": [
+      "Colombia",
+      "DR Congo",
+      "Portugal",
+      "Uzbekistan"
+    ],
+    "grounds": [
+      "Atlanta",
+      "Guadalajara (Zapopan)",
+      "Houston",
+      "Mexico City",
+      "Miami (Miami Gardens)"
+    ],
+    "matchCount": 6
+  },
+  {
+    "group": "L",
+    "teams": [
+      "Croatia",
+      "England",
+      "Ghana",
+      "Panama"
+    ],
+    "grounds": [
+      "Boston (Foxborough)",
+      "Dallas (Arlington)",
+      "New York/New Jersey (East Rutherford)",
+      "Philadelphia",
+      "Toronto"
+    ],
+    "matchCount": 6
+  }
+]
