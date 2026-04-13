@@ -10,7 +10,7 @@ These files are kept as raw, derived, and normalized seed inputs for the 2026 Wo
   - `worldcup.groups.json`: group summary extracted from `openfootball/worldcup.json`, including teams and grounds per group
 
 - Normalized seeds:
-  - `teams.normalized.json`: normalized team entities with stable internal ids, host markers for host nations, flags, and UI accent palettes
+  - `teams.normalized.json`: normalized team entities with stable internal ids, host markers for host nations, flags, UI accent palettes, and qualification-history metadata including best-finish years
   - `groups.normalized.json`: group records keyed by group id and team ids
   - `groupMatches.normalized.json`: concrete group-stage fixtures keyed by team ids
   - `knockoutFixtures.normalized.json`: scheduled knockout fixtures with typed participant references
@@ -20,7 +20,10 @@ The two files under `openfootball/` are intentionally stored unmodified.
 Derived and normalized files in this folder are our internal seed helpers built from those raw inputs.
 We can enrich, normalize, and merge additional data into a separate derived layer later.
 
+Qualification-history fields in `teams.normalized.json` currently come from the `Qualified teams` table on the Wikipedia page for `2026 FIFA World Cup qualification`.
+
 Sources:
 
 - `https://github.com/openfootball/worldcup.json/blob/master/2026/worldcup.json`
 - `https://github.com/openfootball/worldcup.json/blob/master/2026/worldcup.teams_meta.json`
+- `https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_qualification#Qualified_teams`

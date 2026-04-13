@@ -13,7 +13,17 @@
       "#0b8f47",
       "#ffffff",
       "#d0453b"
-    ]
+    ],
+    "qualificationDate": "2023-02-14",
+    "totalQualifications": 18,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 9,
+    "bestFinish": "Quarter-finals",
+    "bestFinishYears": [
+      1970,
+      1986
+    ],
+    "fifaRanking": 15
   },
   {
     "id": "rsa",
@@ -28,7 +38,18 @@
       "#f4c430",
       "#138a4a",
       "#d94b3d"
-    ]
+    ],
+    "qualificationDate": "2025-10-14",
+    "totalQualifications": 4,
+    "lastQualifiedYear": 2010,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1998,
+      2002,
+      2010
+    ],
+    "fifaRanking": 60
   },
   {
     "id": "kor",
@@ -44,7 +65,16 @@
       "#d32f2f",
       "#d32f2f",
       "#ffffff"
-    ]
+    ],
+    "qualificationDate": "2025-06-05",
+    "totalQualifications": 12,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 11,
+    "bestFinish": "Fourth place",
+    "bestFinishYears": [
+      2002
+    ],
+    "fifaRanking": 25
   },
   {
     "id": "cze",
@@ -59,7 +89,17 @@
       "#d62839",
       "#d62839",
       "#2563eb"
-    ]
+    ],
+    "qualificationDate": "2026-03-31",
+    "totalQualifications": 10,
+    "lastQualifiedYear": 2006,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Runners-up",
+    "bestFinishYears": [
+      1934,
+      1962
+    ],
+    "fifaRanking": 41
   },
   {
     "id": "can",
@@ -75,7 +115,17 @@
       "#d62839",
       "#ffffff",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2023-02-14",
+    "totalQualifications": 3,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 2,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1986,
+      2022
+    ],
+    "fifaRanking": 30
   },
   {
     "id": "bih",
@@ -89,7 +139,16 @@
     "accentColors": [
       "#1f3f95",
       "#f2c94c"
-    ]
+    ],
+    "qualificationDate": "2026-03-31",
+    "totalQualifications": 2,
+    "lastQualifiedYear": 2014,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      2014
+    ],
+    "fifaRanking": 65
   },
   {
     "id": "qat",
@@ -102,7 +161,16 @@
     "flag": "🇶🇦",
     "accentColors": [
       "#7a1f46"
-    ]
+    ],
+    "qualificationDate": "2025-10-14",
+    "totalQualifications": 2,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 2,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      2022
+    ],
+    "fifaRanking": 55
   },
   {
     "id": "sui",
@@ -119,7 +187,18 @@
       "#d62839",
       "#d62839",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 13,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 6,
+    "bestFinish": "Quarter-finals",
+    "bestFinishYears": [
+      1934,
+      1938,
+      1954
+    ],
+    "fifaRanking": 19
   },
   {
     "id": "bra",
@@ -133,7 +212,20 @@
     "accentColors": [
       "#f4c20d",
       "#169c52"
-    ]
+    ],
+    "qualificationDate": "2025-06-10",
+    "totalQualifications": 23,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 23,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      1958,
+      1962,
+      1970,
+      1994,
+      2002
+    ],
+    "fifaRanking": 6
   },
   {
     "id": "mar",
@@ -147,7 +239,16 @@
     "accentColors": [
       "#c0392b",
       "#1c8b4f"
-    ]
+    ],
+    "qualificationDate": "2025-09-05",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 3,
+    "bestFinish": "Fourth place",
+    "bestFinishYears": [
+      2022
+    ],
+    "fifaRanking": 8
   },
   {
     "id": "hai",
@@ -160,7 +261,16 @@
     "flag": "🇭🇹",
     "accentColors": [
       "#1d4ed8"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 2,
+    "lastQualifiedYear": 1974,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1974
+    ],
+    "fifaRanking": 83
   },
   {
     "id": "sco",
@@ -173,7 +283,23 @@
     "flag": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
     "accentColors": [
       "#173a7a"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 10,
+    "lastQualifiedYear": 1998,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1954,
+      1958,
+      1974,
+      1978,
+      1982,
+      1986,
+      1990,
+      1998
+    ],
+    "fifaRanking": 43
   },
   {
     "id": "usa",
@@ -194,7 +320,16 @@
       "#f3f6fb",
       "#f3f6fb",
       "#f3f6fb"
-    ]
+    ],
+    "qualificationDate": "2023-02-14",
+    "totalQualifications": 12,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 2,
+    "bestFinish": "Third place",
+    "bestFinishYears": [
+      1930
+    ],
+    "fifaRanking": 16
   },
   {
     "id": "par",
@@ -211,7 +346,16 @@
       "#d62839",
       "#ffffff",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-09-04",
+    "totalQualifications": 9,
+    "lastQualifiedYear": 2010,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Quarter-finals",
+    "bestFinishYears": [
+      2010
+    ],
+    "fifaRanking": 40
   },
   {
     "id": "aus",
@@ -225,7 +369,17 @@
     "accentColors": [
       "#f2c94c",
       "#1e7f3d"
-    ]
+    ],
+    "qualificationDate": "2025-06-10",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 6,
+    "bestFinish": "Round of 16",
+    "bestFinishYears": [
+      2006,
+      2022
+    ],
+    "fifaRanking": 27
   },
   {
     "id": "tur",
@@ -238,7 +392,16 @@
     "flag": "🇹🇷",
     "accentColors": [
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2026-03-31",
+    "totalQualifications": 4,
+    "lastQualifiedYear": 2002,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Third place",
+    "bestFinishYears": [
+      2002
+    ],
+    "fifaRanking": 22
   },
   {
     "id": "ger",
@@ -254,7 +417,19 @@
       "#f5f5f5",
       "#1f2937",
       "#1f2937"
-    ]
+    ],
+    "qualificationDate": "2025-11-17",
+    "totalQualifications": 21,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 19,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      1954,
+      1974,
+      1990,
+      2014
+    ],
+    "fifaRanking": 10
   },
   {
     "id": "cuw",
@@ -267,7 +442,14 @@
     "flag": "🇨🇼",
     "accentColors": [
       "#2563eb"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 1,
+    "lastQualifiedYear": null,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": null,
+    "bestFinishYears": null,
+    "fifaRanking": 82
   },
   {
     "id": "civ",
@@ -280,7 +462,18 @@
     "flag": "🇨🇮",
     "accentColors": [
       "#f28c28"
-    ]
+    ],
+    "qualificationDate": "2025-10-14",
+    "totalQualifications": 4,
+    "lastQualifiedYear": 2014,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      2006,
+      2010,
+      2014
+    ],
+    "fifaRanking": 34
   },
   {
     "id": "ecu",
@@ -295,7 +488,16 @@
       "#f0b90b",
       "#1d4ed8",
       "#d64545"
-    ]
+    ],
+    "qualificationDate": "2025-06-10",
+    "totalQualifications": 5,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 2,
+    "bestFinish": "Round of 16",
+    "bestFinishYears": [
+      2006
+    ],
+    "fifaRanking": 23
   },
   {
     "id": "ned",
@@ -308,7 +510,18 @@
     "flag": "🇳🇱",
     "accentColors": [
       "#f97316"
-    ]
+    ],
+    "qualificationDate": "2025-11-17",
+    "totalQualifications": 12,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 2,
+    "bestFinish": "Runners-up",
+    "bestFinishYears": [
+      1974,
+      1978,
+      2010
+    ],
+    "fifaRanking": 7
   },
   {
     "id": "jpn",
@@ -322,7 +535,19 @@
     "accentColors": [
       "#1f4fff",
       "#ffffff"
-    ]
+    ],
+    "qualificationDate": "2025-03-20",
+    "totalQualifications": 8,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 8,
+    "bestFinish": "Round of 16",
+    "bestFinishYears": [
+      2002,
+      2010,
+      2018,
+      2022
+    ],
+    "fifaRanking": 18
   },
   {
     "id": "swe",
@@ -336,7 +561,16 @@
     "accentColors": [
       "#f2c94c",
       "#1d4ed8"
-    ]
+    ],
+    "qualificationDate": "2026-03-31",
+    "totalQualifications": 13,
+    "lastQualifiedYear": 2018,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Runners-up",
+    "bestFinishYears": [
+      1958
+    ],
+    "fifaRanking": 38
   },
   {
     "id": "tun",
@@ -349,7 +583,21 @@
     "flag": "🇹🇳",
     "accentColors": [
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-09-08",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 3,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1978,
+      1998,
+      2002,
+      2006,
+      2018,
+      2022
+    ],
+    "fifaRanking": 44
   },
   {
     "id": "bel",
@@ -364,7 +612,16 @@
       "#7f1d1d",
       "#111111",
       "#f2c94c"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 15,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 4,
+    "bestFinish": "Third place",
+    "bestFinishYears": [
+      2018
+    ],
+    "fifaRanking": 9
   },
   {
     "id": "egy",
@@ -377,7 +634,16 @@
     "flag": "🇪🇬",
     "accentColors": [
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-10-08",
+    "totalQualifications": 4,
+    "lastQualifiedYear": 2018,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "First round",
+    "bestFinishYears": [
+      1934
+    ],
+    "fifaRanking": 29
   },
   {
     "id": "irn",
@@ -392,7 +658,21 @@
       "#f5f5f5",
       "#0b8f47",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-03-25",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 4,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1978,
+      1998,
+      2006,
+      2014,
+      2018,
+      2022
+    ],
+    "fifaRanking": 21
   },
   {
     "id": "nzl",
@@ -406,7 +686,17 @@
     "accentColors": [
       "#f5f5f5",
       "#173a7a"
-    ]
+    ],
+    "qualificationDate": "2025-03-24",
+    "totalQualifications": 3,
+    "lastQualifiedYear": 2010,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1982,
+      2010
+    ],
+    "fifaRanking": 85
   },
   {
     "id": "esp",
@@ -420,7 +710,16 @@
     "accentColors": [
       "#c62828",
       "#f2b705"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 17,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 13,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      2010
+    ],
+    "fifaRanking": 2
   },
   {
     "id": "cpv",
@@ -433,7 +732,14 @@
     "flag": "🇨🇻",
     "accentColors": [
       "#173a7a"
-    ]
+    ],
+    "qualificationDate": "2025-10-13",
+    "totalQualifications": 1,
+    "lastQualifiedYear": null,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": null,
+    "bestFinishYears": null,
+    "fifaRanking": 69
   },
   {
     "id": "ksa",
@@ -447,7 +753,16 @@
     "accentColors": [
       "#f5f5f5",
       "#1e8f4d"
-    ]
+    ],
+    "qualificationDate": "2025-10-14",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 3,
+    "bestFinish": "Round of 16",
+    "bestFinishYears": [
+      1994
+    ],
+    "fifaRanking": 61
   },
   {
     "id": "uru",
@@ -460,7 +775,17 @@
     "flag": "🇺🇾",
     "accentColors": [
       "#7ec8f6"
-    ]
+    ],
+    "qualificationDate": "2025-09-04",
+    "totalQualifications": 15,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 5,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      1930,
+      1950
+    ],
+    "fifaRanking": 17
   },
   {
     "id": "fra",
@@ -474,7 +799,17 @@
     "accentColors": [
       "#1d3fd8",
       "#d64545"
-    ]
+    ],
+    "qualificationDate": "2025-11-13",
+    "totalQualifications": 18,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 8,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      1998,
+      2018
+    ],
+    "fifaRanking": 1
   },
   {
     "id": "sen",
@@ -490,7 +825,16 @@
       "#138a4a",
       "#f2c94c",
       "#d94b3d"
-    ]
+    ],
+    "qualificationDate": "2025-10-14",
+    "totalQualifications": 4,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 3,
+    "bestFinish": "Quarter-finals",
+    "bestFinishYears": [
+      2002
+    ],
+    "fifaRanking": 14
   },
   {
     "id": "irq",
@@ -504,7 +848,16 @@
     "accentColors": [
       "#f5f5f5",
       "#138a4a"
-    ]
+    ],
+    "qualificationDate": "2026-03-31",
+    "totalQualifications": 2,
+    "lastQualifiedYear": 1986,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1986
+    ],
+    "fifaRanking": 57
   },
   {
     "id": "nor",
@@ -518,7 +871,16 @@
     "accentColors": [
       "#c62828",
       "#173a7a"
-    ]
+    ],
+    "qualificationDate": "2025-11-16",
+    "totalQualifications": 4,
+    "lastQualifiedYear": 1998,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Round of 16",
+    "bestFinishYears": [
+      1998
+    ],
+    "fifaRanking": 31
   },
   {
     "id": "arg",
@@ -532,7 +894,18 @@
     "accentColors": [
       "#7ec8f6",
       "#ffffff"
-    ]
+    ],
+    "qualificationDate": "2025-03-25",
+    "totalQualifications": 19,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 14,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      1978,
+      1986,
+      2022
+    ],
+    "fifaRanking": 3
   },
   {
     "id": "alg",
@@ -546,7 +919,16 @@
     "accentColors": [
       "#f5f5f5",
       "#138a4a"
-    ]
+    ],
+    "qualificationDate": "2025-10-09",
+    "totalQualifications": 5,
+    "lastQualifiedYear": 2014,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Round of 16",
+    "bestFinishYears": [
+      2014
+    ],
+    "fifaRanking": 28
   },
   {
     "id": "aut",
@@ -559,7 +941,16 @@
     "flag": "🇦🇹",
     "accentColors": [
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 9,
+    "lastQualifiedYear": 1998,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Third place",
+    "bestFinishYears": [
+      1954
+    ],
+    "fifaRanking": 24
   },
   {
     "id": "jor",
@@ -574,7 +965,14 @@
       "#f5f5f5",
       "#d62839",
       "#111111"
-    ]
+    ],
+    "qualificationDate": "2025-06-05",
+    "totalQualifications": 1,
+    "lastQualifiedYear": null,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": null,
+    "bestFinishYears": null,
+    "fifaRanking": 63
   },
   {
     "id": "por",
@@ -588,7 +986,16 @@
     "accentColors": [
       "#c62828",
       "#1e8f4d"
-    ]
+    ],
+    "qualificationDate": "2025-11-16",
+    "totalQualifications": 9,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 7,
+    "bestFinish": "Third place",
+    "bestFinishYears": [
+      1966
+    ],
+    "fifaRanking": 5
   },
   {
     "id": "cod",
@@ -603,7 +1010,16 @@
       "#64b5f6",
       "#f2c94c",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2026-03-31",
+    "totalQualifications": 2,
+    "lastQualifiedYear": 1974,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      1974
+    ],
+    "fifaRanking": 46
   },
   {
     "id": "uzb",
@@ -618,7 +1034,14 @@
       "#2563eb",
       "#f5f5f5",
       "#138a4a"
-    ]
+    ],
+    "qualificationDate": "2025-06-05",
+    "totalQualifications": 1,
+    "lastQualifiedYear": null,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": null,
+    "bestFinishYears": null,
+    "fifaRanking": 50
   },
   {
     "id": "col",
@@ -633,7 +1056,16 @@
       "#f2c94c",
       "#1d4ed8",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-09-04",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2018,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Quarter-finals",
+    "bestFinishYears": [
+      2014
+    ],
+    "fifaRanking": 13
   },
   {
     "id": "eng",
@@ -648,7 +1080,16 @@
       "#f5f5f5",
       "#173a7a",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-10-14",
+    "totalQualifications": 17,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 8,
+    "bestFinish": "Winners",
+    "bestFinishYears": [
+      1966
+    ],
+    "fifaRanking": 4
   },
   {
     "id": "cro",
@@ -662,7 +1103,16 @@
     "accentColors": [
       "#d62839",
       "#ffffff"
-    ]
+    ],
+    "qualificationDate": "2025-11-14",
+    "totalQualifications": 7,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 4,
+    "bestFinish": "Runners-up",
+    "bestFinishYears": [
+      2018
+    ],
+    "fifaRanking": 11
   },
   {
     "id": "gha",
@@ -678,7 +1128,16 @@
       "#f2c94c",
       "#138a4a",
       "#d62839"
-    ]
+    ],
+    "qualificationDate": "2025-10-12",
+    "totalQualifications": 5,
+    "lastQualifiedYear": 2022,
+    "currentConsecutiveAppearances": 2,
+    "bestFinish": "Quarter-finals",
+    "bestFinishYears": [
+      2010
+    ],
+    "fifaRanking": 74
   },
   {
     "id": "pan",
@@ -692,6 +1151,15 @@
     "accentColors": [
       "#d62839",
       "#1d4ed8"
-    ]
+    ],
+    "qualificationDate": "2025-11-18",
+    "totalQualifications": 2,
+    "lastQualifiedYear": 2018,
+    "currentConsecutiveAppearances": 1,
+    "bestFinish": "Group stage",
+    "bestFinishYears": [
+      2018
+    ],
+    "fifaRanking": 33
   }
 ]
