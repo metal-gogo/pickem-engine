@@ -1,0 +1,58 @@
+import { LeaderboardEntry } from "../../domain/models";
+
+export const mockedLeaderboard: LeaderboardEntry[] = [
+  {
+    id: "entry-01",
+    name: "Alex K.",
+    initials: "AK",
+    points: 2450,
+    rank: 1,
+    trend: "up",
+    movementLabel: "+2",
+  },
+  {
+    id: "entry-02",
+    name: "Sarah M.",
+    initials: "SM",
+    points: 2380,
+    rank: 2,
+    trend: "flat",
+    movementLabel: "--",
+  },
+  {
+    id: "entry-03",
+    name: "David L.",
+    initials: "DL",
+    points: 2310,
+    rank: 3,
+    trend: "down",
+    movementLabel: "-1",
+  },
+  {
+    id: "entry-04",
+    name: "Emma W.",
+    initials: "EW",
+    points: 2290,
+    rank: 4,
+    trend: "up",
+    movementLabel: "+1",
+  },
+  {
+    id: "entry-05",
+    name: "Noah R.",
+    initials: "NR",
+    points: 2220,
+    rank: 5,
+    trend: "up",
+    movementLabel: "+3",
+  },
+  {
+    id: "entry-06",
+    name: "Priya S.",
+    initials: "PS",
+    points: 2160,
+    rank: 6,
+    trend: "flat",
+    movementLabel: "--",
+  },
+];
