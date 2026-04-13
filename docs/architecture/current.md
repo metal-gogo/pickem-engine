@@ -26,6 +26,7 @@ It currently uses:
 - fixed fixture data and mocked leaderboard data stored separately from presentation
 - localStorage behind a small persistence adapter rather than direct component access
 - domain modules for pick state and lock state logic rather than embedding those rules inside React components
+- colocated module folders so React components can keep their stories and related support files nearby, with domain modules able to colocate focused unit tests as they grow
 - lightweight routing only for top-level screen validation
 - Storybook as a UI evaluation harness for isolated component and view review
 - Storybook MCP addon so agent workflows can inspect component docs, story previews, and story tests through the running Storybook instance

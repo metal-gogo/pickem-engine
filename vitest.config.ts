@@ -18,9 +18,18 @@ export default defineConfig({
       reporter: ["text", "html", "json-summary"],
       reportsDirectory: "./coverage/storybook",
       include: ["src/**/*.{ts,tsx}"],
-      exclude: ["src/**/*.stories.{ts,tsx}", "src/stories/**", "src/main.tsx", "src/vite-env.d.ts"],
+      exclude: ["src/**/*.stories.{ts,tsx}", "src/**/*.test.ts", "src/main.tsx", "src/vite-env.d.ts"],
     },
     projects: [
+      {
+        extends: true,
+        test: {
+          name: "unit",
+          environment: "node",
+          include: ["src/**/*.test.{ts,tsx}"],
+          exclude: ["src/**/*.stories.{ts,tsx}"],
+        },
+      },
       {
         extends: true,
         plugins: [

@@ -46,13 +46,17 @@ const preview: Preview = {
     },
   },
   decorators: [
-    (Story) => (
-      <MemoryRouter initialEntries={["/"]}>
-        <div style={{ minHeight: "100vh", padding: "24px" }}>
-          <Story />
-        </div>
-      </MemoryRouter>
-    ),
+    (Story, context) => {
+      const storyLayout = context.parameters.layout ?? "fullscreen";
+
+      return (
+        <MemoryRouter initialEntries={["/"]}>
+          <div style={{ minHeight: storyLayout === "fullscreen" ? "100vh" : undefined, padding: "24px" }}>
+            <Story />
+          </div>
+        </MemoryRouter>
+      );
+    },
   ],
 };
 
