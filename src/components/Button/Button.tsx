@@ -1,20 +1,20 @@
 import { ButtonHTMLAttributes } from "react";
 
-import { cn } from "../app/cn";
+import { cn } from "../../app/cn";
 import { ButtonTone, getButtonClassName } from "./buttonStyles";
 
-interface PrimaryButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   tone?: ButtonTone;
   fullWidth?: boolean;
 }
 
-export function PrimaryButton({
+export function Button({
   className,
   children,
   tone = "primary",
   fullWidth = false,
   ...buttonProps
-}: PrimaryButtonProps) {
+}: ButtonProps) {
   return (
     <button className={cn(getButtonClassName({ tone, fullWidth }), className)} {...buttonProps}>
       {children}

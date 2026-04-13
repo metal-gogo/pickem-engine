@@ -1,4 +1,4 @@
-import { cn } from "../app/cn";
+import { cn } from "../../app/cn";
 
 export type ButtonTone = "primary" | "secondary" | "ghost";
 export type ButtonSize = "default" | "compact";
