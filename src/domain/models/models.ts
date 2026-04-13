@@ -9,7 +9,8 @@ export interface Team {
   name: string;
   shortName: string;
   code: string;
-  accent: string;
+  flag: string;
+  accentColors: string[];
 }
 
 export interface Match {

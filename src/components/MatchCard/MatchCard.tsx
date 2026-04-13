@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useState } from "react";
 
 import { cn } from "../../app/cn";
@@ -18,6 +18,14 @@ interface MatchCardProps {
   comparisonPick?: MatchPick;
   actions?: ReactNode;
   onScoreChange?: (side: "homeScore" | "awayScore", nextValue: string) => void;
+}
+
+function getTeamAccent(accentColors: string[]): string {
+  if (accentColors.length <= 1) {
+    return accentColors[0] ?? "#2563ff";
+  }
+
+  return `linear-gradient(180deg, ${accentColors.join(", ")})`;
 }
 
 function getStatusLabel(
@@ -74,6 +82,8 @@ export function MatchCard({
   const isComplete = isPickComplete(pick);
   const isDirty = comparisonPick ? !arePicksEqual(pick, comparisonPick) : false;
   const isStarted = hasStartedPick(pick);
+  const homeAccent = getTeamAccent(match.homeTeam.accentColors);
+  const awayAccent = getTeamAccent(match.awayTeam.accentColors);
 
   return (
     <article
@@ -101,9 +111,8 @@ export function MatchCard({
       <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
         <div
           className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
-          style={{ "--team-accent": match.homeTeam.accent } as CSSProperties}
         >
-          <span className="absolute inset-y-0 left-0 w-2 bg-[var(--team-accent)]" />
+          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: homeAccent }} />
           <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.homeTeam.name}</span>
           <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
             {match.homeTeam.code}
@@ -117,9 +126,8 @@ export function MatchCard({
 
         <div
           className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
-          style={{ "--team-accent": match.awayTeam.accent } as CSSProperties}
         >
-          <span className="absolute inset-y-0 left-0 w-2 bg-[var(--team-accent)]" />
+          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: awayAccent }} />
           <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.awayTeam.name}</span>
           <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
             {match.awayTeam.code}

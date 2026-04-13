@@ -1,27 +1,28 @@
 import { Match, PoolSummary, Team } from "../../domain/models";
 
-function createTeam(id: string, name: string, code: string, accent: string): Team {
+function createTeam(id: string, name: string, code: string, flag: string, accentColors: string[]): Team {
   return {
     id,
     name,
     shortName: name,
     code,
-    accent,
+    flag,
+    accentColors,
   };
 }
 
-const mexico = createTeam("mex", "Mexico", "MEX", "#1f6dff");
-const japan = createTeam("jpn", "Japan", "JPN", "#ff6b3d");
-const spain = createTeam("esp", "Spain", "ESP", "#ffb703");
-const unitedStates = createTeam("usa", "United States", "USA", "#2f5be7");
-const brazil = createTeam("bra", "Brazil", "BRA", "#19a463");
-const morocco = createTeam("mar", "Morocco", "MAR", "#c44d56");
-const argentina = createTeam("arg", "Argentina", "ARG", "#59b6ff");
-const senegal = createTeam("sen", "Senegal", "SEN", "#1e8f5a");
-const france = createTeam("fra", "France", "FRA", "#1d3fd8");
-const southKorea = createTeam("kor", "South Korea", "KOR", "#ff7340");
-const portugal = createTeam("por", "Portugal", "POR", "#1f944c");
-const ecuador = createTeam("ecu", "Ecuador", "ECU", "#f0a300");
+const mexico = createTeam("mex", "Mexico", "MEX", "🇲🇽", ["#0b8f47", "#d0453b"]);
+const japan = createTeam("jpn", "Japan", "JPN", "🇯🇵", ["#1f4fff", "#ffffff"]);
+const spain = createTeam("esp", "Spain", "ESP", "🇪🇸", ["#c62828", "#f2b705"]);
+const unitedStates = createTeam("usa", "United States", "USA", "🇺🇸", ["#1d4ed8", "#d62839"]);
+const brazil = createTeam("bra", "Brazil", "BRA", "🇧🇷", ["#f4c20d", "#169c52"]);
+const morocco = createTeam("mar", "Morocco", "MAR", "🇲🇦", ["#c0392b", "#1c8b4f"]);
+const argentina = createTeam("arg", "Argentina", "ARG", "🇦🇷", ["#7ec8f6", "#ffffff"]);
+const senegal = createTeam("sen", "Senegal", "SEN", "🇸🇳", ["#138a4a", "#f2c94c", "#d94b3d"]);
+const france = createTeam("fra", "France", "FRA", "🇫🇷", ["#1d3fd8", "#d64545"]);
+const southKorea = createTeam("kor", "South Korea", "KOR", "🇰🇷", ["#d32f2f"]);
+const portugal = createTeam("por", "Portugal", "POR", "🇵🇹", ["#c62828", "#1e8f4d"]);
+const ecuador = createTeam("ecu", "Ecuador", "ECU", "🇪🇨", ["#f0b90b", "#1d4ed8", "#d64545"]);
 
 export const prototypePool: PoolSummary = {
   id: "friends-and-family-2026",
