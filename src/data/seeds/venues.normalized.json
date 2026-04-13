@@ -1,0 +1,118 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "hostCountries": ["Canada", "Mexico", "USA"],
+  "venues": [
+    {
+      "id": "atlanta-usa",
+      "city": "Atlanta",
+      "stadium": "Mercedes-Benz Stadium",
+      "country": "USA",
+      "groundAliases": ["Atlanta"]
+    },
+    {
+      "id": "boston-usa",
+      "city": "Boston",
+      "stadium": "Gillette Stadium",
+      "country": "USA",
+      "groundAliases": ["Boston (Foxborough)"]
+    },
+    {
+      "id": "dallas-usa",
+      "city": "Dallas",
+      "stadium": "AT&T Stadium",
+      "country": "USA",
+      "groundAliases": ["Dallas (Arlington)"]
+    },
+    {
+      "id": "guadalajara-mexico",
+      "city": "Guadalajara",
+      "stadium": "Estadio Akron",
+      "country": "Mexico",
+      "groundAliases": ["Guadalajara (Zapopan)"]
+    },
+    {
+      "id": "houston-usa",
+      "city": "Houston",
+      "stadium": "NRG Stadium",
+      "country": "USA",
+      "groundAliases": ["Houston"]
+    },
+    {
+      "id": "kansas-city-usa",
+      "city": "Kansas City",
+      "stadium": "Arrowhead Stadium",
+      "country": "USA",
+      "groundAliases": ["Kansas City"]
+    },
+    {
+      "id": "los-angeles-usa",
+      "city": "Los Angeles",
+      "stadium": "SoFi Stadium",
+      "country": "USA",
+      "groundAliases": ["Los Angeles (Inglewood)"]
+    },
+    {
+      "id": "mexico-city-mexico",
+      "city": "Mexico City",
+      "stadium": "Estadio Azteca",
+      "country": "Mexico",
+      "groundAliases": ["Mexico City"]
+    },
+    {
+      "id": "miami-usa",
+      "city": "Miami",
+      "stadium": "Hard Rock Stadium",
+      "country": "USA",
+      "groundAliases": ["Miami (Miami Gardens)"]
+    },
+    {
+      "id": "monterrey-mexico",
+      "city": "Monterrey",
+      "stadium": "Estadio BBVA",
+      "country": "Mexico",
+      "groundAliases": ["Monterrey (Guadalupe)"]
+    },
+    {
+      "id": "new-york-new-jersey-usa",
+      "city": "New York/New Jersey",
+      "stadium": "MetLife Stadium",
+      "country": "USA",
+      "groundAliases": ["New York/New Jersey (East Rutherford)"]
+    },
+    {
+      "id": "philadelphia-usa",
+      "city": "Philadelphia",
+      "stadium": "Lincoln Financial Field",
+      "country": "USA",
+      "groundAliases": ["Philadelphia"]
+    },
+    {
+      "id": "san-francisco-bay-area-usa",
+      "city": "San Francisco Bay Area",
+      "stadium": "Levi's Stadium",
+      "country": "USA",
+      "groundAliases": ["San Francisco Bay Area (Santa Clara)"]
+    },
+    {
+      "id": "seattle-usa",
+      "city": "Seattle",
+      "stadium": "Lumen Field",
+      "country": "USA",
+      "groundAliases": ["Seattle"]
+    },
+    {
+      "id": "toronto-canada",
+      "city": "Toronto",
+      "stadium": "BMO Field",
+      "country": "Canada",
+      "groundAliases": ["Toronto"]
+    },
+    {
+      "id": "vancouver-canada",
+      "city": "Vancouver",
+      "stadium": "BC Place",
+      "country": "Canada",
+      "groundAliases": ["Vancouver"]
+    }
+  ]
+}

@@ -54,9 +54,9 @@ These conventions are meant to reduce naming drift and keep the difference betwe
 
 ## Seed Data Layering
 
-Tournament source data now uses a layered seed approach under `src/data/seeds/openfootball/2026`.
+Tournament source data now uses a layered seed approach under `src/data/seeds/`.
 
-- raw upstream inputs are stored unmodified so the original source remains recoverable
+- raw upstream inputs are stored unmodified under `src/data/seeds/openfootball/` so the original source remains recoverable
 - derived helpers can summarize or regroup the raw source without pretending to be the final app model
 - normalized seeds translate source-specific field names and identifiers into internal shapes that are easier to consume elsewhere in the app
 

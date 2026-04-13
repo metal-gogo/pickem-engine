@@ -87,7 +87,7 @@ This is a sequencing rule, not a redefinition of the MVP.
   - leaderboard preview
 - mocked leaderboard scores because the real scoring model is still unresolved
 - prototype-only locked-state preview control so post-deadline UI can be inspected without changing the real rule set
-- raw, derived, and normalized OpenFootball 2026 seed files under `src/data/seeds/openfootball/2026` so fixture-modeling work can evolve without mutating upstream source files
+- raw, derived, and normalized World Cup 2026 seed files under `src/data/seeds/` so fixture-modeling work can evolve without mutating upstream source files
 
 ### Deferred MVP Concerns
 
