@@ -1,28 +1,84 @@
+import groupMatches from "../seeds/groupMatches.normalized.json";
+import teams from "../seeds/teams.normalized.json";
+import venues from "../seeds/venues.normalized.json";
 import { Match, PoolSummary, Team } from "../../domain/models";
 
-function createTeam(id: string, name: string, code: string, flag: string, accentColors: string[]): Team {
+type NormalizedTeam = {
+  id: string;
+  fifaCode: string;
+  name: string;
+  normalizedName: string | null;
+  group: string;
+  confederation: string;
+  continent: string;
+  flag: string;
+  accentColors: string[];
+};
+
+type NormalizedGroupMatch = {
+  id: string;
+  matchNumber: number;
+  stage: "group";
+  round: string;
+  group: string;
+  date: string;
+  time: string;
+  ground: string;
+  homeTeamId: string;
+  awayTeamId: string;
+};
+
+type NormalizedVenueCatalog = {
+  venues: Array<{
+    id: string;
+    city: string;
+    stadium: string;
+    country: string;
+    groundAliases: string[];
+  }>;
+};
+
+function toTeam(team: NormalizedTeam): Team {
   return {
-    id,
-    name,
-    shortName: name,
-    code,
-    flag,
-    accentColors,
+    id: team.id,
+    name: team.name,
+    shortName: team.name,
+    code: team.fifaCode,
+    flag: team.flag,
+    accentColors: team.accentColors,
   };
 }
 
-const mexico = createTeam("mex", "Mexico", "MEX", "🇲🇽", ["#0b8f47", "#d0453b"]);
-const japan = createTeam("jpn", "Japan", "JPN", "🇯🇵", ["#1f4fff", "#ffffff"]);
-const spain = createTeam("esp", "Spain", "ESP", "🇪🇸", ["#c62828", "#f2b705"]);
-const unitedStates = createTeam("usa", "United States", "USA", "🇺🇸", ["#1d4ed8", "#d62839"]);
-const brazil = createTeam("bra", "Brazil", "BRA", "🇧🇷", ["#f4c20d", "#169c52"]);
-const morocco = createTeam("mar", "Morocco", "MAR", "🇲🇦", ["#c0392b", "#1c8b4f"]);
-const argentina = createTeam("arg", "Argentina", "ARG", "🇦🇷", ["#7ec8f6", "#ffffff"]);
-const senegal = createTeam("sen", "Senegal", "SEN", "🇸🇳", ["#138a4a", "#f2c94c", "#d94b3d"]);
-const france = createTeam("fra", "France", "FRA", "🇫🇷", ["#1d3fd8", "#d64545"]);
-const southKorea = createTeam("kor", "South Korea", "KOR", "🇰🇷", ["#d32f2f"]);
-const portugal = createTeam("por", "Portugal", "POR", "🇵🇹", ["#c62828", "#1e8f4d"]);
-const ecuador = createTeam("ecu", "Ecuador", "ECU", "🇪🇨", ["#f0b90b", "#1d4ed8", "#d64545"]);
+function toIsoKickoff(date: string, time: string): string {
+  const [clock, utcOffset] = time.split(" ");
+  const offsetHours = Number.parseInt(utcOffset.replace("UTC", ""), 10);
+  const sign = offsetHours >= 0 ? "+" : "-";
+  const paddedHours = String(Math.abs(offsetHours)).padStart(2, "0");
+  return `${date}T${clock}:00${sign}${paddedHours}:00`;
+}
+
+const normalizedTeams = teams as NormalizedTeam[];
+const normalizedGroupMatches = groupMatches as NormalizedGroupMatch[];
+const normalizedVenueCatalog = venues as NormalizedVenueCatalog;
+
+const teamsById = new Map(normalizedTeams.map((team) => [team.id, toTeam(team)]));
+const venueByGroundAlias = new Map(
+  normalizedVenueCatalog.venues.flatMap((venue) => venue.groundAliases.map((alias) => [alias, venue.stadium] as const)),
+);
+
+function resolveTeam(teamId: string): Team {
+  const team = teamsById.get(teamId);
+
+  if (!team) {
+    throw new Error(`Unknown team id in normalized fixtures: ${teamId}`);
+  }
+
+  return team;
+}
+
+function resolveVenue(ground: string): string {
+  return venueByGroundAlias.get(ground) ?? ground;
+}
 
 export const prototypePool: PoolSummary = {
   id: "friends-and-family-2026",
@@ -32,65 +88,13 @@ export const prototypePool: PoolSummary = {
   description: "Local-first discovery build for exact-score picks, review, and standings.",
 };
 
-export const sampleMatches: Match[] = [
-  {
-    id: "match-001",
-    sequence: 1,
-    stage: "group",
-    group: "A",
-    kickoffAt: "2026-06-12T18:00:00-06:00",
-    venue: "Estadio Azteca",
-    homeTeam: mexico,
-    awayTeam: japan,
-  },
-  {
-    id: "match-002",
-    sequence: 2,
-    stage: "group",
-    group: "B",
-    kickoffAt: "2026-06-13T14:00:00-06:00",
-    venue: "MetLife Stadium",
-    homeTeam: spain,
-    awayTeam: unitedStates,
-  },
-  {
-    id: "match-003",
-    sequence: 3,
-    stage: "group",
-    group: "C",
-    kickoffAt: "2026-06-13T19:00:00-06:00",
-    venue: "SoFi Stadium",
-    homeTeam: brazil,
-    awayTeam: morocco,
-  },
-  {
-    id: "match-004",
-    sequence: 4,
-    stage: "group",
-    group: "D",
-    kickoffAt: "2026-06-14T12:00:00-06:00",
-    venue: "AT&T Stadium",
-    homeTeam: argentina,
-    awayTeam: senegal,
-  },
-  {
-    id: "match-005",
-    sequence: 5,
-    stage: "group",
-    group: "E",
-    kickoffAt: "2026-06-14T16:00:00-06:00",
-    venue: "Levi's Stadium",
-    homeTeam: france,
-    awayTeam: southKorea,
-  },
-  {
-    id: "match-006",
-    sequence: 6,
-    stage: "group",
-    group: "F",
-    kickoffAt: "2026-06-14T20:00:00-06:00",
-    venue: "BC Place",
-    homeTeam: portugal,
-    awayTeam: ecuador,
-  },
-];
+export const sampleMatches: Match[] = normalizedGroupMatches.map((match) => ({
+  id: match.id,
+  sequence: match.matchNumber,
+  stage: "group",
+  group: match.group,
+  kickoffAt: toIsoKickoff(match.date, match.time),
+  venue: resolveVenue(match.ground),
+  homeTeam: resolveTeam(match.homeTeamId),
+  awayTeam: resolveTeam(match.awayTeamId),
+}));

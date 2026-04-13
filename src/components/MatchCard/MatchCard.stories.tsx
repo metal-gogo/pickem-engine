@@ -76,7 +76,7 @@ export const Interactive: Story = {
   play: async ({ canvasElement, args }) => {
     const canvas = within(canvasElement);
     const homeScore = canvas.getByRole("spinbutton", { name: /mexico/i });
-    const awayScore = canvas.getByRole("spinbutton", { name: /japan/i });
+    const awayScore = canvas.getByRole("spinbutton", { name: /south africa/i });
 
     await userEvent.clear(homeScore);
     await userEvent.type(homeScore, "3");

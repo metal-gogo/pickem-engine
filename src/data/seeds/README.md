@@ -10,7 +10,7 @@ These files are kept as raw, derived, and normalized seed inputs for the 2026 Wo
   - `worldcup.groups.json`: group summary extracted from `openfootball/worldcup.json`, including teams and grounds per group
 
 - Normalized seeds:
-  - `teams.normalized.json`: normalized team entities with stable internal ids and host markers for host nations
+  - `teams.normalized.json`: normalized team entities with stable internal ids, host markers for host nations, flags, and UI accent palettes
   - `groups.normalized.json`: group records keyed by group id and team ids
   - `groupMatches.normalized.json`: concrete group-stage fixtures keyed by team ids
   - `knockoutFixtures.normalized.json`: scheduled knockout fixtures with typed participant references

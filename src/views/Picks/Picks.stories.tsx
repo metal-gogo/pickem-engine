@@ -99,7 +99,7 @@ export const EditableFlow: Story = {
   render: () => <PicksStoryHarness lockState="editable" />,
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
-    const mexicoScore = canvas.getByRole("spinbutton", { name: /mexico/i });
+    const mexicoScore = canvas.getAllByRole("spinbutton", { name: /mexico/i })[0];
 
     await userEvent.clear(mexicoScore);
     await userEvent.type(mexicoScore, "4");
