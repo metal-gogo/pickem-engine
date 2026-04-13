@@ -150,6 +150,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 - Treated free pre-deadline edits as a prototype assumption only, not a resolved business rule.
 - Added a prototype-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 - Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
+- Enriched normalized team seed data with FIFA ranking and World Cup history metadata to support future product-surface decisions.
 
 ### What Is Still Open
 
