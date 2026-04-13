@@ -63,16 +63,22 @@ This is a sequencing rule, not a redefinition of the MVP.
 - a small token-driven theme layer plus reusable UI primitives rather than a heavyweight UI kit
 - a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other high-touch details that read poorly as utility strings
 - explicit separation between:
+  - application shell and route wiring
+  - routed screens
+  - reusable components and modules
   - domain logic
   - fixture and leaderboard data
   - local persistence adapter
-  - React views and components
+- routed screens under `src/views/` named without a `View` suffix because the folder already provides that context
+- reusable components named by role rather than default styling, with nested folders used when subordinate relationships are real
 - localStorage-backed pick persistence behind a replaceable storage interface
 - Storybook workbench for isolated component and view evaluation during UI iteration
 - Storybook MCP wiring so agents can use the running Storybook as structured UI context during iteration
 - Storybook viewport presets and phone-sized story variants for reviewing responsive behavior without leaving the workbench
 - Storybook Vitest integration for story-driven interaction and accessibility checks via `npm run test-storybook`
 - Storybook coverage reporting via `npm run coverage-storybook` so the test lane exposes what parts of the app code are exercised
+- Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
+- direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
   - overview
@@ -81,6 +87,7 @@ This is a sequencing rule, not a redefinition of the MVP.
   - leaderboard preview
 - mocked leaderboard scores because the real scoring model is still unresolved
 - prototype-only locked-state preview control so post-deadline UI can be inspected without changing the real rule set
+- raw, derived, and normalized OpenFootball 2026 seed files under `src/data/seeds/openfootball/2026` so fixture-modeling work can evolve without mutating upstream source files
 
 ### Deferred MVP Concerns
 
@@ -132,14 +139,17 @@ This is a sequencing rule, not a redefinition of the MVP.
   - review and edit
   - leaderboard preview
 - Added Storybook stories for the main primitives, modules, and views so look-and-feel changes can be reviewed in isolation.
+- Tightened the frontend naming and placement conventions so routed screens, reusable modules, and app-level shell code stay easier to distinguish.
 - Added Storybook MCP wiring and repo guidance so UI-focused agent work can inspect stories and documentation before changing component behavior or styling.
 - Added Storybook viewport presets, phone-sized story variants, and a first round of interaction plus accessibility coverage on key stories.
 - Added a `test-storybook` CLI workflow using Storybook's Vitest addon so UI changes can be verified beyond manual review.
 - Added a `coverage-storybook` CLI workflow using Vitest's V8 provider so the Storybook test lane can generate local coverage reports.
+- Shifted hook-only behavior coverage such as `usePickSet` to direct Vitest tests instead of maintaining Storybook-only harness stories.
 - Swapped the styling foundation from a monolithic global stylesheet to Tailwind v4 with a token-driven theme layer and smaller authored CSS seams.
 - Kept domain logic, fixed data, and persistence separated so the shell can evolve toward a real application without carrying prototype-only wiring through the UI layer.
 - Treated free pre-deadline edits as a prototype assumption only, not a resolved business rule.
 - Added a prototype-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
+- Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
 
 ### What Is Still Open
 
@@ -158,6 +168,8 @@ The next useful moves are likely:
 
 - test the pick entry and review rhythm with real users
 - document any friction around score entry, save behavior, and locked-state expectations
+- decide which normalized seed shapes should become the app-facing tournament data contract
+- enrich the normalized team and fixture seeds with any missing fields the product will need later
 - refine the open business rules that most affect the current UI:
   - scoring model
   - knockout handling

@@ -9,6 +9,8 @@ This is the register of accepted cross-cutting project decisions.
 - `003` [Conventional commits](/home/mgogo/src/pickem-engine/docs/decisions/003-conventional-commits.md)
 - `004` [Agent usage baseline](/home/mgogo/src/pickem-engine/docs/decisions/004-agent-usage-baseline.md)
 - `005` [Shape work around one core vertical slice](/home/mgogo/src/pickem-engine/docs/decisions/005-shape-work-around-one-core-vertical-slice.md)
+- `006` [Frontend discovery build structure](/home/mgogo/src/pickem-engine/docs/decisions/006-frontend-discovery-build-structure.md)
+- `007` [Layer seed data from raw sources](/home/mgogo/src/pickem-engine/docs/decisions/007-layer-seed-data-from-raw-sources.md)
 
 ## Notes
 

@@ -1,6 +1,6 @@
 # Domain Glossary
 
-- Last updated: 2026-04-09
+- Last updated: 2026-04-12
 
 ## Pool
 
@@ -18,13 +18,33 @@ The person responsible for creating or managing a pool.
 
 A competition edition, starting with the `2026 FIFA World Cup`.
 
+## Team
+
+A national side participating in the tournament.
+
 ## Stage
 
 A tournament phase such as the group stage or knockout rounds.
 
+## Group
+
+A group-stage section containing a fixed set of teams and scheduled matches.
+
 ## Match
 
 A scheduled fixture between two teams in a tournament stage.
+
+## Group Match
+
+A group-stage match whose two teams are already known when the schedule is published.
+
+## Knockout Fixture
+
+A scheduled knockout-stage match whose participant slots may remain unresolved until earlier results are known.
+
+## Participant Slot
+
+An unresolved tournament reference used in knockout scheduling, such as a group finishing position, a best third-place qualifier, or the winner or loser of an earlier match.
 
 ## Match Pick
 
@@ -38,6 +58,8 @@ The platform-approved result used for scoring and leaderboard updates.
 
 The ranking of participants within a pool based on points.
 
+Use `leaderboard` as the stable domain term for pool ranking even if a frontend component uses a different presentation-oriented name to avoid collisions with a routed screen.
+
 ## Global Deadline
 
 The platform-managed cutoff time after which picks are locked for MVP.
@@ -45,4 +67,3 @@ The platform-managed cutoff time after which picks are locked for MVP.
 ## Terminology Note
 
 Use `pool` as the stable internal term. User-facing wording can vary by language later.
-

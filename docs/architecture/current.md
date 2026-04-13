@@ -37,6 +37,39 @@ It currently uses:
 
 This is an implementation shape for the discovery build, not a final commitment to the long-term product stack.
 
+## Frontend Organization Conventions
+
+The discovery build now follows a small set of naming and placement rules so the UI stays readable as the prototype grows.
+
+- `src/app/` owns application-level wiring such as route composition and the shared shell frame
+- `src/views/` owns routed screens, with screen components named without a `View` suffix because the folder already provides that context
+- `src/components/` owns reusable UI building blocks and higher-level modules, with nested directories used when one component is clearly subordinate to another
+- component names should describe role, not styling defaults; visual treatments belong in props rather than in names such as `PrimaryButton`
+- reusable modules should avoid colliding with routed screen names when that would blur responsibilities; for example, the pool ranking module is named `StandingsList` while the routed screen remains `Leaderboard`
+- Storybook titles should mirror component names and can nest to reflect real hierarchy, such as `Modules/StandingsList/StandingsRow`
+- stories that show multiple variants should explain what each variant is meant to communicate or when it should be used, rather than acting as unlabeled visual snapshots
+- Storybook remains the main review surface for UI components and screens, while hooks and domain behavior should prefer focused Vitest coverage over Storybook-only harness stories
+
+These conventions are meant to reduce naming drift and keep the difference between app wiring, routed screens, reusable modules, and pure logic easy to recover after a gap.
+
+## Seed Data Layering
+
+Tournament source data now uses a layered seed approach under `src/data/seeds/openfootball/2026`.
+
+- raw upstream inputs are stored unmodified so the original source remains recoverable
+- derived helpers can summarize or regroup the raw source without pretending to be the final app model
+- normalized seeds translate source-specific field names and identifiers into internal shapes that are easier to consume elsewhere in the app
+
+The current normalized layer uses:
+
+- stable team ids derived from FIFA codes
+- `confederation` instead of the upstream `confed` field name
+- separate `groupMatches` for fixtures with concrete teams already known
+- separate `knockoutFixtures` for scheduled bracket fixtures whose participant slots are still unresolved
+- typed participant references for knockout slots such as group positions, best third-place qualifiers, and winners or losers of prior matches
+
+This keeps the raw ingest repeatable while still letting the app grow around clearer internal shapes.
+
 ## High-Level Responsibilities
 
 - user-facing web experience
