@@ -108,48 +108,29 @@ export function MatchCard({
         <Badge label={status.label} tone={status.tone} />
       </header>
 
-      <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
-        <div
-          className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
-        >
-          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: homeAccent }} />
-          <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.homeTeam.name}</span>
-          <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
-            {match.homeTeam.code}
-          </span>
-        </div>
-
-        <div className="grid min-w-[72px] justify-items-start gap-1 md:justify-items-center">
-          <span className="font-display text-[0.82rem] uppercase tracking-[0.14em] text-app-muted">vs</span>
-          <span className="text-[0.84rem] font-bold text-app-muted-strong">{formatKickoffTime(match.kickoffAt)}</span>
-        </div>
-
-        <div
-          className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]"
-        >
-          <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: awayAccent }} />
-          <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.awayTeam.name}</span>
-          <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
-            {match.awayTeam.code}
-          </span>
-        </div>
-      </div>
-
       {mode === "interactive" ? (
-        <div className="grid gap-3 md:grid-cols-2">
+        <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
           <ScoreInput
             label={match.homeTeam.shortName}
             teamCode={match.homeTeam.code}
+            accent={homeAccent}
             value={pick.homeScore}
+            variant="compact"
             disabled={lockState === "locked"}
             onChange={(nextValue) => onScoreChange?.("homeScore", nextValue)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           />
+          <div className="grid min-w-[72px] justify-items-start gap-1 md:justify-items-center">
+            <span className="font-display text-[0.82rem] uppercase tracking-[0.14em] text-app-muted">vs</span>
+            <span className="text-[0.84rem] font-bold text-app-muted-strong">{formatKickoffTime(match.kickoffAt)}</span>
+          </div>
           <ScoreInput
             label={match.awayTeam.shortName}
             teamCode={match.awayTeam.code}
+            accent={awayAccent}
             value={pick.awayScore}
+            variant="compact"
             disabled={lockState === "locked"}
             onChange={(nextValue) => onScoreChange?.("awayScore", nextValue)}
             onFocus={() => setIsFocused(true)}
@@ -157,7 +138,30 @@ export function MatchCard({
           />
         </div>
       ) : (
-        <div className="grid min-h-[76px] items-center">
+        <div className="grid gap-4">
+          <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
+            <div className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: homeAccent }} />
+              <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.homeTeam.name}</span>
+              <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
+                {match.homeTeam.code}
+              </span>
+            </div>
+
+            <div className="grid min-w-[72px] justify-items-start gap-1 md:justify-items-center">
+              <span className="font-display text-[0.82rem] uppercase tracking-[0.14em] text-app-muted">vs</span>
+              <span className="text-[0.84rem] font-bold text-app-muted-strong">{formatKickoffTime(match.kickoffAt)}</span>
+            </div>
+
+            <div className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: awayAccent }} />
+              <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.awayTeam.name}</span>
+              <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
+                {match.awayTeam.code}
+              </span>
+            </div>
+          </div>
+
           {isComplete ? (
             <div className="inline-flex w-fit items-center gap-2.5 rounded-[18px] bg-app-cobalt-soft px-4 py-3 font-display">
               <span className="text-[0.86rem] uppercase tracking-[0.14em] text-app-muted">{match.homeTeam.code}</span>

@@ -22,6 +22,7 @@ const meta = {
   args: {
     label: "Mexico",
     teamCode: "MEX",
+    accent: "linear-gradient(180deg, #0b8f47, #ffffff, #d0453b)",
     value: 2,
     onChange: fn(),
     onFocus: fn(),
@@ -102,5 +103,53 @@ export const Disabled: Story = {
   args: {
     value: 1,
     disabled: true,
+  },
+};
+
+export const Compact: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use the compact variant when score entry needs to live directly inside a denser surface like the match card, where the team label and one- or two-digit input should share the same row footprint.",
+      },
+    },
+  },
+  args: {
+    value: 1,
+    variant: "compact",
+  },
+  render: (args) => {
+    const [value, setValue] = useState<number | null>(args.value);
+
+    return (
+      <div style={{ width: "340px" }}>
+        <ScoreInput
+          {...args}
+          value={value}
+          onChange={(nextValue) => {
+            args.onChange(nextValue);
+
+            if (nextValue.trim() === "") {
+              setValue(null);
+              return;
+            }
+
+            const parsed = Number.parseInt(nextValue, 10);
+            setValue(Number.isNaN(parsed) ? null : parsed);
+          }}
+        />
+      </div>
+    );
+  },
+  play: async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement);
+    const input = canvas.getByRole("spinbutton", { name: /mexico/i });
+
+    await userEvent.clear(input);
+    await userEvent.type(input, "2");
+
+    await expect(input).toHaveValue(2);
+    await expect(args.onChange).toHaveBeenLastCalledWith("2");
   },
 };
