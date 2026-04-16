@@ -46,6 +46,18 @@ export interface PoolSummary {
   description: string;
 }
 
+export interface PoolRuleSection {
+  id: string;
+  title: string;
+  body: string;
+}
+
+export interface PoolDetails extends PoolSummary {
+  shortRulesSummary: string;
+  pointsOverview: string[];
+  fullRules: PoolRuleSection[];
+}
+
 export interface LeaderboardEntry {
   id: string;
   name: string;
