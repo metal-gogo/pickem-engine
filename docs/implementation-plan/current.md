@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-12
+- Last updated: 2026-04-15
 
 ## Planning Objective
 
@@ -26,8 +26,10 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 1. Finalize the documentation system and canonical files.
 2. Shape the first discovery prototype around the core pick workflow:
-   - fixed fixture data
-   - exact-score entry
+   - pool list home for returning users
+   - pool dashboard with a lightweight rules and points summary
+   - tournament overview organized by groups rather than one flat match list
+   - focused group pick flow with exact-score entry and a save-and-continue rhythm
    - local persistence
    - review and edit flow
 3. Use the implemented frontend shell to validate information architecture, interaction states, and prototype assumptions.
@@ -46,6 +48,11 @@ This is a sequencing rule, not a redefinition of the MVP.
 - the eventual product direction remains a private World Cup 2026 pool for friends and family
 - the prototype is for discovery, not a redefinition of the MVP
 - the first slice should validate the central prediction workflow before broadening surrounding systems
+- the next discovery iteration should test a pool-centered flow:
+  - pool list home
+  - pool dashboard
+  - tournament overview
+  - focused group pick view
 
 ### Prototype Assumptions
 
@@ -55,6 +62,9 @@ This is a sequencing rule, not a redefinition of the MVP.
 - local persistence instead of database-backed persistence
 - review and edit flow before any real multi-user or pool workflow
 - for discovery only, the local user can edit picks freely until the global deadline so the interaction model can be tested; this does not resolve BR-O3
+- for discovery, a pool dashboard can show placeholder scoring copy and a placeholder full-rules modal even though the real scoring table is still unresolved
+- for discovery, a tournament overview can show projected group outcomes derived from the user's entered picks, but this must be labeled clearly as predicted rather than official
+- the first pass should prefer predicted group-state presentation over a full predicted-versus-official toggle so the prototype stays tightly bounded
 
 ### Current Frontend Slice
 
@@ -81,12 +91,20 @@ This is a sequencing rule, not a redefinition of the MVP.
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
-  - overview
-  - pick entry
-  - review and edit
-  - leaderboard preview
-- mocked leaderboard scores because the real scoring model is still unresolved
+  - pool list home
+  - pool dashboard
+  - focused group picks
+- pool-scoped local persistence so placeholder pools behave like separate spaces during discovery
+- predicted group tables derived from saved picks so the tournament overview can preview outcomes without pretending they are official
+- placeholder rules and points content are acceptable discovery scaffolding as long as they are presented as provisional and do not masquerade as settled business rules
 - prototype-only locked-state preview control so post-deadline UI can be inspected without changing the real rule set
+- Storybook stories aligned with the current active flow and modules:
+  - home
+  - pool dashboard
+  - group picks
+  - pool shell
+  - rules summary
+  - group overview cards
 - raw, derived, and normalized World Cup 2026 seed files under `src/data/seeds/` so fixture-modeling work can evolve without mutating upstream source files
 
 ### Deferred MVP Concerns
@@ -100,7 +118,9 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 ### Exit Criteria
 
-- the core flow can be clicked through from fixture viewing to score entry to save to review and edit
+- the core flow can be clicked through from pool selection to tournament overview to group score entry to save to review and edit
+- the grouped tournament view makes progress and the next useful action clearer than the current flat match list
+- predicted group-state presentation is understandable without being mistaken for official standings
 - the prototype exposes concrete UX friction or domain-model gaps worth documenting
 - the resulting learnings can be translated into clearer business rules, domain language, or MVP decisions
 - the prototype remains small enough that it does not turn into accidental long-term architecture
@@ -151,6 +171,20 @@ This is a sequencing rule, not a redefinition of the MVP.
 - Added a prototype-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 - Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
 - Enriched normalized team seed data with FIFA ranking and World Cup history metadata to support future product-surface decisions.
+- Chose the next prototype direction for discovery:
+  - pool list home for returning users
+  - pool dashboard with rules and points summary scaffolding
+  - group-based tournament overview instead of a single flat match list
+  - focused group pick screens with a save-and-continue rhythm
+- Decided that placeholder points content and placeholder full-rules modals are acceptable prototype scaffolding while the real scoring model remains unresolved.
+- Chose to treat group tables on the tournament overview as predicted outcomes derived from entered picks, with official-versus-predicted comparison deferred until the lighter predicted-only version has been tested.
+- Implemented the new pool-centered flow in the frontend shell:
+  - pool list home
+  - pool dashboard
+  - grouped tournament overview
+  - focused group pick view
+- Scoped local pick persistence by pool id so multiple placeholder pools can coexist without sharing the same saved pick set.
+- Updated the Storybook surface to document the new active views and modules instead of the older overview, picks, review, and leaderboard route stories.
 
 ### What Is Still Open
 
@@ -163,13 +197,13 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 ### Recommended Next Step
 
-Use the implemented shell to capture product and UX learnings before broadening platform scope.
+Implement the next discovery flow in the frontend shell and use it to capture product and UX learnings before broadening platform scope.
 
 The next useful moves are likely:
 
-- test the pick entry and review rhythm with real users
-- document any friction around score entry, save behavior, and locked-state expectations
-- decide which normalized seed shapes should become the app-facing tournament data contract
+- use the new Storybook surface to refine the pool dashboard hierarchy, group-card readability, and group-pick pacing
+- document any friction around score entry, predicted-state comprehension, save behavior, and locked-state expectations
+- decide which normalized seed shapes should become the app-facing tournament and group-table contract
 - enrich the normalized team and fixture seeds with any missing fields the product will need later
 - refine the open business rules that most affect the current UI:
   - scoring model
@@ -181,6 +215,6 @@ The next useful moves are likely:
 
 If helpful next session, start with:
 
-`Use the resume-work skill, inspect the implemented frontend discovery shell, then tighten the highest-leverage UX or rule gaps without pulling in auth, invites, or database-first architecture.`
+`Use the resume-work skill, inspect the grouped tournament-flow direction in docs/implementation-plan/current.md, then implement the smallest useful pool dashboard -> tournament overview -> group picks prototype without hardening placeholder rules or points copy into permanent product behavior.`
 
 The `resume-work` skill should remain part of the normal workflow because this project may sit idle between sessions and should be easy to restart without relying on memory.
