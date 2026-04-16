@@ -18,7 +18,7 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    children: "Save picks locally",
+    children: "Save and continue",
     onClick: fn(),
   },
 } satisfies Meta<typeof Button>;
@@ -39,12 +39,12 @@ export const Primary: Story = {
 export const Secondary: Story = {
   args: {
     tone: "secondary",
-    children: "Review saved picks",
+    children: "Save",
   },
   parameters: {
     docs: {
       description: {
-        story: "Use the secondary button for important supporting actions when there is already a clearer primary action nearby.",
+        story: "Use the secondary button for important supporting actions when there is already a clearer primary action nearby, such as keeping Save separate from Save and continue.",
       },
     },
   },
@@ -53,12 +53,27 @@ export const Secondary: Story = {
 export const Ghost: Story = {
   args: {
     tone: "ghost",
-    children: "Reset draft",
+    children: "See rules",
   },
   parameters: {
     docs: {
       description: {
-        story: "Use the ghost button for lower-emphasis actions, especially reversible or optional actions like reset, edit, or return links styled as buttons.",
+        story: "Use the ghost button for lower-emphasis actions, especially optional or informational actions like opening rules, returning to a previous surface, or dismissing a secondary control.",
+      },
+    },
+  },
+};
+
+export const Compact: Story = {
+  args: {
+    tone: "secondary",
+    size: "compact",
+    children: "Make picks",
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: "Use the compact size inside denser dashboard modules like group cards, where the action still needs button treatment but should not dominate the table content.",
       },
     },
   },
