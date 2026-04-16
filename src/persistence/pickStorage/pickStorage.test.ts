@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { createEmptyPickSet, markPickSetSaved, updatePickScore } from "../../domain/picks";
 import { sampleMatches } from "../../data/fixtures";
-import { localPickStorage } from "./pickStorage";
+import { createLocalPickStorage, localPickStorage } from "./pickStorage";
 
 function createLocalStorageMock() {
   const store = new Map<string, string>();
@@ -53,7 +53,7 @@ describe("localPickStorage", () => {
   });
 
   it("saves and loads a persisted pick set", () => {
-    const storage = attachStorage(createLocalStorageMock() as unknown as Storage);
+    attachStorage(createLocalStorageMock() as unknown as Storage);
     const savedPickSet = markPickSetSaved(updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[0].id, "homeScore", "1"));
 
     localPickStorage.save(savedPickSet);
@@ -66,7 +66,7 @@ describe("localPickStorage", () => {
 
   it("returns an empty pick set when stored data is invalid JSON", () => {
     const storage = attachStorage(createLocalStorageMock() as unknown as Storage);
-    storage.setItem("pickem-engine/discovery-picks/v1", "{ invalid-json ");
+    storage.setItem("pickem-engine/discovery-picks/v1/global", "{ invalid-json ");
 
     const loaded = localPickStorage.load(sampleMatches);
 
@@ -76,7 +76,7 @@ describe("localPickStorage", () => {
   it("returns an empty pick set when version is unsupported", () => {
     const storage = attachStorage(createLocalStorageMock() as unknown as Storage);
     storage.setItem(
-      "pickem-engine/discovery-picks/v1",
+      "pickem-engine/discovery-picks/v1/global",
       JSON.stringify({ version: 2, pickSet: createEmptyPickSet(sampleMatches) }),
     );
 
@@ -88,7 +88,7 @@ describe("localPickStorage", () => {
   it("normalizes invalid persisted pick data on hydrate", () => {
     const storage = attachStorage(createLocalStorageMock() as unknown as Storage);
     storage.setItem(
-      "pickem-engine/discovery-picks/v1",
+      "pickem-engine/discovery-picks/v1/global",
       JSON.stringify({
         version: 1,
         pickSet: {
@@ -132,10 +132,33 @@ describe("localPickStorage", () => {
 
   it("clears persisted picks from localStorage", () => {
     const storage = attachStorage(createLocalStorageMock() as unknown as Storage);
-    storage.setItem("pickem-engine/discovery-picks/v1", "some-value");
+    storage.setItem("pickem-engine/discovery-picks/v1/global", "some-value");
 
     localPickStorage.clear();
 
-    expect(storage.getItem("pickem-engine/discovery-picks/v1")).toBeNull();
+    expect(storage.getItem("pickem-engine/discovery-picks/v1/global")).toBeNull();
+  });
+
+  it("keeps different pool scopes isolated from each other", () => {
+    const storage = attachStorage(createLocalStorageMock() as unknown as Storage);
+    const familyStorage = createLocalPickStorage("family-pool");
+    const workStorage = createLocalPickStorage("work-pool");
+
+    const familyPickSet = markPickSetSaved(
+      updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[0].id, "homeScore", "2"),
+    );
+    const workPickSet = markPickSetSaved(
+      updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[1].id, "awayScore", "4"),
+    );
+
+    familyStorage.save(familyPickSet);
+    workStorage.save(workPickSet);
+
+    expect(familyStorage.load(sampleMatches).picks[sampleMatches[0].id].homeScore).toBe(2);
+    expect(familyStorage.load(sampleMatches).picks[sampleMatches[1].id].awayScore).toBeNull();
+    expect(workStorage.load(sampleMatches).picks[sampleMatches[0].id].homeScore).toBeNull();
+    expect(workStorage.load(sampleMatches).picks[sampleMatches[1].id].awayScore).toBe(4);
+    expect(storage.getItem("pickem-engine/discovery-picks/v1/family-pool")).not.toBeNull();
+    expect(storage.getItem("pickem-engine/discovery-picks/v1/work-pool")).not.toBeNull();
   });
 });

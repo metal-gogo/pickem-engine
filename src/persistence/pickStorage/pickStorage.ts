@@ -1,7 +1,7 @@
 import { Match, MatchPick, UserPickSet } from "../../domain/models";
 import { createEmptyPick, createEmptyPickSet } from "../../domain/picks";
 
-const STORAGE_KEY = "pickem-engine/discovery-picks/v1";
+const STORAGE_KEY_PREFIX = "pickem-engine/discovery-picks/v1";
 
 interface StoredPickSetRecord {
   version: 1;
@@ -12,6 +12,10 @@ export interface PickStorage {
   load(matches: Match[]): UserPickSet;
   save(pickSet: UserPickSet): void;
   clear(): void;
+}
+
+function getStorageKey(scope = "global") {
+  return `${STORAGE_KEY_PREFIX}/${scope}`;
 }
 
 function getSafeStorage(): Storage | null {
@@ -71,63 +75,69 @@ function hydratePickSet(candidate: unknown, matches: Match[]): UserPickSet {
   };
 }
 
-export const localPickStorage: PickStorage = {
-  load(matches) {
-    const storage = getSafeStorage();
+export function createLocalPickStorage(scope = "global"): PickStorage {
+  const storageKey = getStorageKey(scope);
 
-    if (!storage) {
-      return createEmptyPickSet(matches);
-    }
+  return {
+    load(matches) {
+      const storage = getSafeStorage();
 
-    try {
-      const rawValue = storage.getItem(STORAGE_KEY);
-
-      if (!rawValue) {
+      if (!storage) {
         return createEmptyPickSet(matches);
       }
 
-      const parsed = JSON.parse(rawValue) as Partial<StoredPickSetRecord>;
+      try {
+        const rawValue = storage.getItem(storageKey);
 
-      if (parsed.version !== 1) {
+        if (!rawValue) {
+          return createEmptyPickSet(matches);
+        }
+
+        const parsed = JSON.parse(rawValue) as Partial<StoredPickSetRecord>;
+
+        if (parsed.version !== 1) {
+          return createEmptyPickSet(matches);
+        }
+
+        return hydratePickSet(parsed.pickSet, matches);
+      } catch {
         return createEmptyPickSet(matches);
       }
+    },
 
-      return hydratePickSet(parsed.pickSet, matches);
-    } catch {
-      return createEmptyPickSet(matches);
-    }
-  },
+    save(pickSet) {
+      const storage = getSafeStorage();
 
-  save(pickSet) {
-    const storage = getSafeStorage();
+      if (!storage) {
+        return;
+      }
 
-    if (!storage) {
-      return;
-    }
+      const record: StoredPickSetRecord = {
+        version: 1,
+        pickSet,
+      };
 
-    const record: StoredPickSetRecord = {
-      version: 1,
-      pickSet,
-    };
+      try {
+        storage.setItem(storageKey, JSON.stringify(record));
+      } catch {
+        // Ignore storage failures in the discovery build and keep the session usable.
+      }
+    },
 
-    try {
-      storage.setItem(STORAGE_KEY, JSON.stringify(record));
-    } catch {
-      // Ignore storage failures in the discovery build and keep the session usable.
-    }
-  },
+    clear() {
+      const storage = getSafeStorage();
 
-  clear() {
-    const storage = getSafeStorage();
+      if (!storage) {
+        return;
+      }
 
-    if (!storage) {
-      return;
-    }
+      try {
+        storage.removeItem(storageKey);
+      } catch {
+        // Ignore storage failures in the discovery build and keep the session usable.
+      }
+    },
+  };
+}
 
-    try {
-      storage.removeItem(STORAGE_KEY);
-    } catch {
-      // Ignore storage failures in the discovery build and keep the session usable.
-    }
-  },
-};
+export const localPickStorage = createLocalPickStorage();
