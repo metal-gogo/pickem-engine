@@ -5,7 +5,11 @@ import { act } from "react";
 import { createRoot, type Root } from "react-dom/client";
 import { usePickSet } from "./usePickSet";
 
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+(
+  globalThis as typeof globalThis & {
+    IS_REACT_ACT_ENVIRONMENT: boolean;
+  }
+).IS_REACT_ACT_ENVIRONMENT = true;
 import { sampleMatches } from "../../data/fixtures";
 import { createEmptyPickSet, markPickSetSaved, updatePickScore } from "../../domain/picks";
 import type { PickStorage } from "../../persistence/pickStorage";
