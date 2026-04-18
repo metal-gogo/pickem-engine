@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TournamentGroup } from "../../domain/tournament";
 import { Badge } from "../Badge";
 import { getButtonClassName } from "../Button";
+import { TeamFlag } from "../TeamFlag";
 
 interface GroupOverviewCardProps {
   poolId: string;
@@ -78,9 +79,7 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
                 <td className="rounded-l-[18px] px-3 py-3 font-display text-[1.05rem]">{row.rank}</td>
                 <td className="px-3 py-3">
                   <div className="flex items-center gap-3">
-                    <span className="text-lg" aria-hidden>
-                      {row.team.flag}
-                    </span>
+                    <TeamFlag fallbackFlag={row.team.flag} size="sm" teamId={row.team.id} teamName={row.team.name} />
                     <div className="grid gap-0.5">
                       <span className="font-bold">{row.team.name}</span>
                       <span className="text-[0.72rem] font-extrabold uppercase tracking-[0.14em] text-app-muted">

@@ -20,8 +20,10 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
+    teamId: "mex",
     label: "Mexico",
     teamCode: "MEX",
+    fallbackFlag: "🇲🇽",
     accent: "linear-gradient(180deg, #0b8f47, #ffffff, #d0453b)",
     value: 2,
     onChange: fn(),

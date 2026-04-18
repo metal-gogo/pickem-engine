@@ -7,6 +7,7 @@ import { LockState, Match, MatchPick } from "../../domain/models";
 import { arePicksEqual, hasStartedPick, isPickComplete } from "../../domain/picks";
 import { Badge } from "../Badge";
 import { ScoreInput } from "../ScoreInput";
+import { TeamFlag } from "../TeamFlag";
 
 type MatchCardMode = "interactive" | "summary";
 
@@ -111,8 +112,10 @@ export function MatchCard({
       {mode === "interactive" ? (
         <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
           <ScoreInput
+            teamId={match.homeTeam.id}
             label={match.homeTeam.shortName}
             teamCode={match.homeTeam.code}
+            fallbackFlag={match.homeTeam.flag}
             accent={homeAccent}
             value={pick.homeScore}
             variant="compact"
@@ -126,8 +129,10 @@ export function MatchCard({
             <span className="text-[0.84rem] font-bold text-app-muted-strong">{formatKickoffTime(match.kickoffAt)}</span>
           </div>
           <ScoreInput
+            teamId={match.awayTeam.id}
             label={match.awayTeam.shortName}
             teamCode={match.awayTeam.code}
+            fallbackFlag={match.awayTeam.flag}
             accent={awayAccent}
             value={pick.awayScore}
             variant="compact"
@@ -142,10 +147,15 @@ export function MatchCard({
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
             <div className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
               <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: homeAccent }} />
-              <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.homeTeam.name}</span>
-              <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
-                {match.homeTeam.code}
-              </span>
+              <div className="flex items-center gap-3">
+                <TeamFlag fallbackFlag={match.homeTeam.flag} size="md" teamId={match.homeTeam.id} teamName={match.homeTeam.name} />
+                <div className="grid gap-1.5">
+                  <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.homeTeam.name}</span>
+                  <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
+                    {match.homeTeam.code}
+                  </span>
+                </div>
+              </div>
             </div>
 
             <div className="grid min-w-[72px] justify-items-start gap-1 md:justify-items-center">
@@ -155,10 +165,15 @@ export function MatchCard({
 
             <div className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
               <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: awayAccent }} />
-              <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.awayTeam.name}</span>
-              <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
-                {match.awayTeam.code}
-              </span>
+              <div className="flex items-center gap-3">
+                <TeamFlag fallbackFlag={match.awayTeam.flag} size="md" teamId={match.awayTeam.id} teamName={match.awayTeam.name} />
+                <div className="grid gap-1.5">
+                  <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.awayTeam.name}</span>
+                  <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
+                    {match.awayTeam.code}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
 
