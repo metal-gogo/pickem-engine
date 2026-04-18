@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-15
+- Last updated: 2026-04-18
 
 ## Planning Objective
 
@@ -31,7 +31,7 @@ This is a sequencing rule, not a redefinition of the MVP.
    - tournament overview organized by groups rather than one flat match list
    - focused group pick flow with exact-score entry and a save-and-continue rhythm
    - local persistence
-   - review and edit flow
+   - save, return, and revisit-group flow from the dashboard
 3. Use the implemented frontend shell to validate information architecture, interaction states, and prototype assumptions.
 4. Use prototype findings to refine business rules, glossary terms, and the eventual MVP flow.
 5. Resolve the highest-leverage deferred MVP questions once the core interaction model is more concrete:
@@ -60,7 +60,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 - fixed fixture data instead of live ingestion
 - exact score entry for included matches
 - local persistence instead of database-backed persistence
-- review and edit flow before any real multi-user or pool workflow
+- revisiting and editing saved picks within the grouped flow before any real multi-user or pool workflow
 - for discovery only, the local user can edit picks freely until the global deadline so the interaction model can be tested; this does not resolve BR-O3
 - for discovery, a pool dashboard can show placeholder scoring copy and a placeholder full-rules modal even though the real scoring table is still unresolved
 - for discovery, a tournament overview can show projected group outcomes derived from the user's entered picks, but this must be labeled clearly as predicted rather than official
@@ -118,7 +118,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 ### Exit Criteria
 
-- the core flow can be clicked through from pool selection to tournament overview to group score entry to save to review and edit
+- the core flow can be clicked through from pool selection to tournament overview to group score entry to save, continue, and revisit groups from the dashboard
 - the grouped tournament view makes progress and the next useful action clearer than the current flat match list
 - predicted group-state presentation is understandable without being mistaken for official standings
 - the prototype exposes concrete UX friction or domain-model gaps worth documenting
@@ -153,11 +153,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 ### What Changed
 
 - Implemented the first real frontend slice as a local-first web app shell using React, TypeScript, Vite, and localStorage.
-- Added reusable UI primitives and screens for:
-  - overview
-  - pick entry
-  - review and edit
-  - leaderboard preview
+- Added reusable UI primitives and earlier routed prototype surfaces that helped test overview, pick entry, review, and leaderboard presentation before the active flow shifted to the current pool-centered prototype.
 - Added Storybook stories for the main primitives, modules, and views so look-and-feel changes can be reviewed in isolation.
 - Tightened the frontend naming and placement conventions so routed screens, reusable modules, and app-level shell code stay easier to distinguish.
 - Added Storybook MCP wiring and repo guidance so UI-focused agent work can inspect stories and documentation before changing component behavior or styling.
