@@ -3,6 +3,13 @@
     "pickem-engine-storybook": {
       "url": "http://localhost:6100/mcp",
       "type": "http"
+    },
+    "stitch": {
+      "type": "http",
+      "url": "https://stitch.googleapis.com/mcp",
+      "headers": {
+        "X-Goog-Api-Key": "${STITCH_GOOGLE_API_KEY}"
+      }
     }
   }
 }

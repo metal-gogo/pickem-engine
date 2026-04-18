@@ -23,3 +23,15 @@ The current product direction is a private pool experience for friends and famil
 
 - Agent roles: [agents/README.md](agents/README.md)
 - Reusable skills: [.agents/skills/README.md](.agents/skills/README.md)
+
+## Project MCPs
+
+- Repo-local MCP config lives in `.codex/config.toml`, `.cursor/mcp.json`, and `.mcp.json`.
+- The shared `stitch` MCP entry expects a local `STITCH_GOOGLE_API_KEY` environment variable rather than a checked-in secret.
+- `.env.example` documents the required variables and local secrets live in `.env`, which is ignored by git.
+- If you do not already have a `.env`, create one from the example and then load it before launching Codex, Cursor, or Claude Code:
+
+```sh
+cp .env.example .env
+source .env
+```
