@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 
 import { PoolDetails } from "../../domain/models";
 import { cn } from "../cn";
-import { surfaceClass } from "../ui";
+import {
+  eyebrowClass,
+  inlineSummaryClass,
+  metricValueClass,
+  sectionCopyClass,
+  surfaceClass,
+  tileCardClass,
+} from "../ui";
 
 interface PoolShellProps {
   children: ReactNode;
@@ -25,59 +32,41 @@ export function PoolShell({
   const progressPercent = Math.round((savedPickCount / totalMatches) * 100);
 
   return (
-    <div className="relative min-h-screen overflow-hidden px-3 pb-9 pt-5 sm:px-4 sm:pb-12 sm:pt-7">
-      <div
-        aria-hidden
-        className="pointer-events-none fixed inset-[-15%] bg-[radial-gradient(circle_at_18%_18%,rgba(75,131,255,0.2),transparent_24%),radial-gradient(circle_at_85%_20%,rgba(255,180,90,0.14),transparent_18%),radial-gradient(circle_at_60%_88%,rgba(37,99,255,0.09),transparent_16%)]"
-      />
-
-      <div className="relative z-10 mx-auto grid max-w-[1200px] gap-4">
-        <nav aria-label="Breadcrumb" className="px-1">
-          <Link
-            className="inline-flex items-center gap-2 text-sm font-bold text-app-muted transition-colors hover:text-app-ink"
-            to="/"
-          >
-            <span>Pools</span>
-            <span aria-hidden>&gt;</span>
-          </Link>
-        </nav>
-
-        <header className={cn(surfaceClass, "grid gap-5 p-5 lg:grid-cols-[1.25fr_0.75fr] lg:p-7")}>
-          <div className="grid gap-3">
-            <div className="grid gap-2.5">
-              <span className="inline-flex w-fit items-center gap-2 text-[0.76rem] font-extrabold uppercase tracking-[0.14em] text-app-muted before:h-2 before:w-2 before:rounded-full before:bg-app-cobalt before:shadow-[0_0_0_4px_rgba(37,99,255,0.08)] before:content-['']">
-                pickem-engine
-              </span>
-              <div className="grid gap-2">
-                <h1 className="m-0 font-display text-[clamp(1.7rem,4vw,2.7rem)] tracking-[-0.04em] text-app-ink">
-                  {pool.name}
-                </h1>
-                <p className="m-0 max-w-[62ch] leading-7 text-app-muted">{pool.description}</p>
+    <div className="min-h-screen px-3 pb-10 pt-4 sm:px-5 sm:pb-12 sm:pt-5">
+      <div className="mx-auto grid max-w-[1240px] gap-6">
+        <header className="sticky top-3 z-20 rounded-[10px] border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
+          <div className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between lg:px-5">
+            <div className="grid gap-3">
+              <div className="flex flex-wrap items-center gap-3">
+                <Link className="font-display text-[1.45rem] font-black uppercase tracking-[-0.08em] text-app-ink" to="/">
+                  Pick'em WC
+                </Link>
+                <div className="flex flex-wrap gap-2">
+                  <Link
+                    className="rounded-[8px] border-[3px] border-app-ink bg-app-surface-strong px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink transition-colors hover:bg-app-panel"
+                    to="/"
+                  >
+                    Pools
+                  </Link>
+                  <span className="rounded-[8px] border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink">
+                    Picks
+                  </span>
+                </div>
+              </div>
+              <div className={inlineSummaryClass}>
+                <span>Private pool prototype</span>
+                <span>2026 FIFA World Cup</span>
+                <span>{pool.participantCount} players</span>
               </div>
             </div>
-          </div>
 
-          <div className="grid gap-3 lg:justify-items-stretch">
-            <div className="grid gap-2 rounded-[18px] border border-app-cobalt-soft bg-[#eef4ff] px-4 py-3">
-              <span className="font-bold text-app-ink">Saved picks</span>
-              <span className="font-display text-2xl tracking-[-0.03em] text-app-ink">
-                {savedPickCount}/{totalMatches}
-              </span>
-              <div className="relative h-3 overflow-hidden rounded-full bg-white/75">
-                <span
-                  className="block h-full rounded-full bg-[linear-gradient(90deg,#7eb3ff_0%,#2563ff_55%,#0d42d6_100%)]"
-                  style={{ width: `${progressPercent}%` }}
-                />
-              </div>
-              <span className="text-sm leading-6 text-app-muted">{progressPercent}% of fixtures saved</span>
-            </div>
-
-            <div className="inline-flex flex-wrap gap-2 rounded-[18px] border border-app-line bg-app-surface-soft p-1.5">
+            <div className="inline-flex flex-wrap gap-2 rounded-[10px] border-[3px] border-app-ink bg-app-panel p-1.5">
               <button
                 className={cn(
-                  "rounded-[14px] px-3.5 py-2.5 font-bold text-app-muted-strong transition-[background,color,transform,box-shadow] duration-150 hover:-translate-y-0.5",
-                  !previewLocked &&
-                    "bg-[linear-gradient(180deg,#2563ff_0%,#1249ed_100%)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_12px_24px_rgba(37,99,255,0.22)] hover:translate-y-0",
+                  "rounded-[8px] border-[3px] px-3.5 py-2 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] transition-[background,color,transform,box-shadow] duration-150 hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+                  !previewLocked
+                    ? "border-app-ink bg-app-lime text-app-ink shadow-[0_8px_0_rgba(56,56,52,0.14)]"
+                    : "border-transparent bg-transparent text-app-muted",
                 )}
                 type="button"
                 onClick={() => onPreviewLockedChange(false)}
@@ -86,9 +75,10 @@ export function PoolShell({
               </button>
               <button
                 className={cn(
-                  "rounded-[14px] px-3.5 py-2.5 font-bold text-app-muted-strong transition-[background,color,transform,box-shadow] duration-150 hover:-translate-y-0.5",
-                  previewLocked &&
-                    "bg-[linear-gradient(180deg,#2563ff_0%,#1249ed_100%)] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.24),0_12px_24px_rgba(37,99,255,0.22)] hover:translate-y-0",
+                  "rounded-[8px] border-[3px] px-3.5 py-2 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] transition-[background,color,transform,box-shadow] duration-150 hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+                  previewLocked
+                    ? "border-app-ink bg-app-ink text-app-canvas shadow-[0_8px_0_rgba(56,56,52,0.14)]"
+                    : "border-transparent bg-transparent text-app-muted",
                 )}
                 type="button"
                 onClick={() => onPreviewLockedChange(true)}
@@ -99,7 +89,48 @@ export function PoolShell({
           </div>
         </header>
 
-        <main>{children}</main>
+        <section className={cn(surfaceClass, "grid gap-5 p-5 lg:grid-cols-[1.18fr_0.82fr] lg:p-6")}>
+          <div className="grid gap-4">
+            <span className={eyebrowClass}>Active pool board</span>
+            <div className="grid gap-3">
+              <h1 className="m-0 font-display text-[clamp(2.2rem,5vw,4rem)] font-black uppercase leading-[0.9] tracking-[-0.07em] text-app-ink">
+                {pool.name}
+              </h1>
+              <p className={sectionCopyClass}>{pool.description}</p>
+            </div>
+          </div>
+
+          <div className="grid gap-4">
+            <div className={cn(tileCardClass, "bg-app-lime")}>
+              <span className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">
+                Saved picks
+              </span>
+              <span className={metricValueClass}>
+                {savedPickCount}/{totalMatches}
+              </span>
+              <div className="h-4 overflow-hidden rounded-[6px] border-[3px] border-app-ink bg-app-surface-strong">
+                <span
+                  className="block h-full bg-[linear-gradient(90deg,#5d6b00_0%,#daf900_100%)]"
+                  style={{ width: `${progressPercent}%` }}
+                />
+              </div>
+              <span className="text-sm font-medium leading-6 text-app-muted">
+                {progressPercent}% of fixtures saved to the current local snapshot.
+              </span>
+            </div>
+
+            <div className={tileCardClass}>
+              <span className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                Mode control
+              </span>
+              <p className="m-0 text-sm font-medium leading-6 text-app-muted">
+                Flip between live editing and a locked-state preview without changing the prototype rules themselves.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <main className="grid gap-6">{children}</main>
       </div>
     </div>
   );

@@ -70,7 +70,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 - React + TypeScript + Vite frontend shell
 - Tailwind v4 for spacing, layout, responsive behavior, and most structural styling
-- a small token-driven theme layer plus reusable UI primitives rather than a heavyweight UI kit
+- a small Stitch-informed Apex Kinetic token layer plus reusable UI primitives rather than a heavyweight UI kit
 - a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other high-touch details that read poorly as utility strings
 - explicit separation between:
   - application shell and route wiring
@@ -162,6 +162,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 - Added a `coverage-storybook` CLI workflow using Vitest's V8 provider so the Storybook test lane can generate local coverage reports.
 - Shifted hook-only behavior coverage such as `usePickSet` to direct Vitest tests instead of maintaining Storybook-only harness stories.
 - Swapped the styling foundation from a monolithic global stylesheet to Tailwind v4 with a token-driven theme layer and smaller authored CSS seams.
+- Re-based the active frontend shell and its main modules around a Stitch-derived Apex Kinetic design system adaptation while preserving the app's multicolor team accent strips for match and pick surfaces.
 - Kept domain logic, fixed data, and persistence separated so the shell can evolve toward a real application without carrying prototype-only wiring through the UI layer.
 - Treated free pre-deadline edits as a prototype assumption only, not a resolved business rule.
 - Added a prototype-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.

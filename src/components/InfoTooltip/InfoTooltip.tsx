@@ -15,7 +15,7 @@ export function InfoTooltip({ label, content }: InfoTooltipProps) {
       <button
         aria-label={label}
         aria-expanded={isOpen}
-        className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-app-line bg-app-surface-soft text-sm font-extrabold text-app-muted transition-colors hover:border-app-line-strong hover:text-app-ink focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(37,99,255,0.16)]"
+        className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border-[3px] border-app-ink bg-app-lime font-display text-[0.76rem] font-black text-app-ink transition-colors hover:bg-[#e8ff4e] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[rgba(218,249,0,0.24)]"
         type="button"
         onBlur={() => setIsOpen(false)}
         onClick={() => setIsOpen((current) => !current)}
@@ -28,7 +28,7 @@ export function InfoTooltip({ label, content }: InfoTooltipProps) {
 
       <span
         className={cn(
-          "pointer-events-none absolute right-0 top-[calc(100%+0.65rem)] z-20 w-[min(22rem,calc(100vw-2rem))] rounded-[18px] border border-app-line bg-white p-3 text-sm leading-6 text-app-muted shadow-[0_18px_42px_rgba(15,32,63,0.16)]",
+          "pointer-events-none absolute right-0 top-[calc(100%+0.65rem)] z-20 w-[min(22rem,calc(100vw-2rem))] rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong p-3 text-sm font-medium leading-6 text-app-muted shadow-surface",
           !isOpen && "hidden",
         )}
         role="tooltip"

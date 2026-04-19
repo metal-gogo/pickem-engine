@@ -90,19 +90,16 @@ export function MatchCard({
     <article
       id={`match-${match.id}`}
       className={cn(
-        "grid gap-4 rounded-[24px] border border-app-line bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,248,253,0.94)),linear-gradient(120deg,rgba(37,99,255,0.04),rgba(37,99,255,0))] p-5 shadow-[0_8px_24px_rgba(18,40,90,0.04)] transition-[transform,box-shadow,border-color,background] duration-150",
-        mode === "interactive" && "hover:-translate-y-0.5 hover:shadow-surface-raised",
-        isComplete && "border-app-cobalt-soft",
-        isStarted &&
-          "bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(240,246,255,0.94)),linear-gradient(120deg,rgba(37,99,255,0.06),rgba(255,190,90,0.04))]",
-        isDirty && "border-[#f0c37d] shadow-[0_18px_32px_rgba(239,155,32,0.08)]",
-        isFocused && "border-[#7aa0ff] shadow-[0_22px_40px_rgba(37,99,255,0.14)]",
-        lockState === "locked" &&
-          "bg-[linear-gradient(180deg,rgba(248,250,253,0.96),rgba(240,244,249,0.92)),linear-gradient(120deg,rgba(16,32,63,0.02),rgba(16,32,63,0))]",
+        "overflow-hidden rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong shadow-surface transition-[transform,box-shadow,border-color,background] duration-150",
+        mode === "interactive" && "hover:-translate-x-px hover:-translate-y-px hover:shadow-surface-raised",
+        isStarted && "bg-app-warm",
+        isDirty && "border-app-rust shadow-[0_18px_30px_-12px_rgba(184,53,0,0.32)]",
+        isFocused && "shadow-surface-raised",
+        lockState === "locked" && "bg-app-surface-soft",
       )}
     >
-      <header className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-3 text-[0.78rem] font-extrabold uppercase tracking-[0.08em] text-app-muted">
+      <header className="flex flex-col gap-3 border-b-[3px] border-app-ink bg-app-panel px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap gap-3 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
           <span>{formatStageLabel(match.stage, match.group)}</span>
           <span>Match {String(match.sequence).padStart(2, "0")}</span>
         </div>
@@ -110,7 +107,7 @@ export function MatchCard({
       </header>
 
       {mode === "interactive" ? (
-        <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
+        <div className="grid gap-4 p-5 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
           <ScoreInput
             teamId={match.homeTeam.id}
             label={match.homeTeam.shortName}
@@ -124,9 +121,11 @@ export function MatchCard({
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
           />
-          <div className="grid min-w-[72px] justify-items-start gap-1 md:justify-items-center">
-            <span className="font-display text-[0.82rem] uppercase tracking-[0.14em] text-app-muted">vs</span>
-            <span className="text-[0.84rem] font-bold text-app-muted-strong">{formatKickoffTime(match.kickoffAt)}</span>
+          <div className="grid min-w-[92px] justify-items-start gap-1 rounded-[10px] border-[3px] border-app-ink bg-app-panel px-3 py-3 md:justify-items-center">
+            <span className="font-display text-[0.74rem] font-black uppercase tracking-[0.18em] text-app-muted">vs</span>
+            <span className="font-display text-[0.82rem] font-black uppercase tracking-[0.04em] text-app-ink">
+              {formatKickoffTime(match.kickoffAt)}
+            </span>
           </div>
           <ScoreInput
             teamId={match.awayTeam.id}
@@ -143,33 +142,35 @@ export function MatchCard({
           />
         </div>
       ) : (
-        <div className="grid gap-4">
+        <div className="grid gap-4 p-5">
           <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center">
-            <div className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: homeAccent }} />
+            <div className="relative grid gap-1.5 overflow-hidden rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong px-4 py-4 pl-6">
+              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-3 border-r-[3px] border-app-ink" style={{ background: homeAccent }} />
               <div className="flex items-center gap-3">
                 <TeamFlag fallbackFlag={match.homeTeam.flag} size="md" teamId={match.homeTeam.id} teamName={match.homeTeam.name} />
-                <div className="grid gap-1.5">
-                  <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.homeTeam.name}</span>
-                  <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
+                <div className="grid gap-1">
+                  <span className="font-display text-[1rem] font-black uppercase tracking-[-0.04em] text-app-ink">{match.homeTeam.name}</span>
+                  <span className="font-display text-[0.66rem] font-black uppercase tracking-[0.18em] text-app-muted">
                     {match.homeTeam.code}
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="grid min-w-[72px] justify-items-start gap-1 md:justify-items-center">
-              <span className="font-display text-[0.82rem] uppercase tracking-[0.14em] text-app-muted">vs</span>
-              <span className="text-[0.84rem] font-bold text-app-muted-strong">{formatKickoffTime(match.kickoffAt)}</span>
+            <div className="grid min-w-[92px] justify-items-start gap-1 rounded-[10px] border-[3px] border-app-ink bg-app-panel px-3 py-3 md:justify-items-center">
+              <span className="font-display text-[0.74rem] font-black uppercase tracking-[0.18em] text-app-muted">vs</span>
+              <span className="font-display text-[0.82rem] font-black uppercase tracking-[0.04em] text-app-ink">
+                {formatKickoffTime(match.kickoffAt)}
+              </span>
             </div>
 
-            <div className="relative grid gap-1.5 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
-              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={{ background: awayAccent }} />
+            <div className="relative grid gap-1.5 overflow-hidden rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong px-4 py-4 pl-6">
+              <span aria-hidden="true" className="absolute inset-y-0 left-0 w-3 border-r-[3px] border-app-ink" style={{ background: awayAccent }} />
               <div className="flex items-center gap-3">
                 <TeamFlag fallbackFlag={match.awayTeam.flag} size="md" teamId={match.awayTeam.id} teamName={match.awayTeam.name} />
-                <div className="grid gap-1.5">
-                  <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{match.awayTeam.name}</span>
-                  <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">
+                <div className="grid gap-1">
+                  <span className="font-display text-[1rem] font-black uppercase tracking-[-0.04em] text-app-ink">{match.awayTeam.name}</span>
+                  <span className="font-display text-[0.66rem] font-black uppercase tracking-[0.18em] text-app-muted">
                     {match.awayTeam.code}
                   </span>
                 </div>
@@ -178,21 +179,21 @@ export function MatchCard({
           </div>
 
           {isComplete ? (
-            <div className="inline-flex w-fit items-center gap-2.5 rounded-[18px] bg-app-cobalt-soft px-4 py-3 font-display">
-              <span className="text-[0.86rem] uppercase tracking-[0.14em] text-app-muted">{match.homeTeam.code}</span>
-              <span className="min-w-[1.5ch] text-[1.5rem] text-app-ink">{pick.homeScore}</span>
-              <span className="text-[0.86rem] uppercase tracking-[0.14em] text-app-muted">:</span>
-              <span className="min-w-[1.5ch] text-[1.5rem] text-app-ink">{pick.awayScore}</span>
-              <span className="text-[0.86rem] uppercase tracking-[0.14em] text-app-muted">{match.awayTeam.code}</span>
+            <div className="inline-flex w-fit items-center gap-2.5 rounded-[10px] border-[3px] border-app-ink bg-app-lime px-4 py-3 font-display">
+              <span className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">{match.homeTeam.code}</span>
+              <span className="min-w-[1.5ch] text-[1.65rem] font-black text-app-ink">{pick.homeScore}</span>
+              <span className="text-[0.86rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">:</span>
+              <span className="min-w-[1.5ch] text-[1.65rem] font-black text-app-ink">{pick.awayScore}</span>
+              <span className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">{match.awayTeam.code}</span>
             </div>
           ) : (
-            <p className="m-0 leading-7 text-app-muted">No exact score saved for this fixture yet.</p>
+            <p className="m-0 text-sm font-medium leading-7 text-app-muted">No exact score saved for this fixture yet.</p>
           )}
         </div>
       )}
 
-      <footer className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-wrap gap-3 text-[0.78rem] font-extrabold uppercase tracking-[0.08em] text-app-muted">
+      <footer className="flex flex-col gap-3 border-t-[3px] border-app-ink bg-app-surface-soft px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-wrap gap-3 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
           <span>{formatKickoffDay(match.kickoffAt)}</span>
           <span>{match.venue}</span>
         </div>

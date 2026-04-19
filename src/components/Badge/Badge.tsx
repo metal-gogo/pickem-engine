@@ -10,19 +10,19 @@ interface BadgeProps {
 
 export function Badge({ label, tone = "neutral", subtle = false }: BadgeProps) {
   const toneClassName = {
-    neutral: "bg-[#edf1f8] text-app-muted-strong",
-    info: "bg-app-cobalt-soft text-app-cobalt-strong",
-    success: "bg-app-success-soft text-[#0f7c4b]",
-    warning: "bg-app-warning-soft text-[#a35c00]",
-    locked: "bg-app-locked text-white",
+    neutral: "border-app-outline bg-app-panel text-app-muted-strong",
+    info: "border-app-ink bg-app-lime text-app-ink",
+    success: "border-[#285a10] bg-app-success-soft text-[#285a10]",
+    warning: "border-app-ink bg-app-warning-soft text-app-rust",
+    locked: "border-app-ink bg-app-locked text-app-canvas",
   }[tone];
 
   return (
     <span
       className={cn(
-        "inline-flex min-h-8 w-fit items-center justify-center rounded-full px-3 py-1.5 text-[0.78rem] font-extrabold uppercase tracking-[0.07em]",
+        "inline-flex min-h-8 w-fit items-center justify-center rounded-[8px] border-2 px-3 py-1.5 font-display text-[0.68rem] font-black uppercase tracking-[0.16em]",
         toneClassName,
-        subtle && "min-w-12 px-2.5",
+        subtle && "min-w-12 px-2.5 text-[0.62rem]",
       )}
     >
       {label}

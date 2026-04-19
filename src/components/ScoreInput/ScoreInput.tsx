@@ -29,17 +29,21 @@ export function ScoreInput({
 }: ScoreInputProps) {
   if (variant === "compact") {
     return (
-      <label className="relative grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 overflow-hidden rounded-[20px] border border-app-line bg-app-surface-strong px-[18px] py-4 pl-[22px] shadow-[inset_0_1px_0_rgba(255,255,255,0.8)] transition-[transform,background,border-color,box-shadow] duration-150 focus-within:-translate-y-px focus-within:border-app-cobalt focus-within:bg-[#f5f9ff] focus-within:shadow-[0_18px_28px_rgba(37,99,255,0.12)]">
-        <span aria-hidden="true" className="absolute inset-y-0 left-0 w-2" style={accent ? { background: accent } : undefined} />
+      <label className="relative grid min-h-[84px] grid-cols-[minmax(0,1fr)_auto] items-center gap-3 overflow-hidden rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong px-4 py-4 pl-6 transition-[transform,background,border-color,box-shadow] duration-150 focus-within:-translate-x-px focus-within:-translate-y-px focus-within:bg-app-warm focus-within:shadow-surface-raised">
+        <span
+          aria-hidden="true"
+          className="absolute inset-y-0 left-0 w-3 border-r-[3px] border-app-ink"
+          style={accent ? { background: accent } : undefined}
+        />
         <span className="flex items-center gap-3 pr-2">
           <TeamFlag fallbackFlag={fallbackFlag} size="md" teamId={teamId} teamName={label} />
-          <span className="grid gap-1.5">
-            <span className="font-display text-[1.04rem] tracking-[-0.02em] text-app-ink">{label}</span>
-            <span className="text-[0.75rem] font-extrabold uppercase tracking-[0.16em] text-app-muted">{teamCode}</span>
+          <span className="grid gap-1">
+            <span className="font-display text-[1rem] font-black uppercase tracking-[-0.04em] text-app-ink">{label}</span>
+            <span className="font-display text-[0.66rem] font-black uppercase tracking-[0.18em] text-app-muted">{teamCode}</span>
           </span>
         </span>
         <input
-          className="score-field h-[4.1rem] w-[4.6rem] rounded-[18px] border border-app-line bg-white px-0 text-center font-display text-[2rem] text-app-ink shadow-[0_12px_24px_rgba(18,40,90,0.07)] outline-none transition-[border-color,box-shadow,background,color] duration-150 focus:border-app-cobalt disabled:bg-app-locked-soft disabled:text-app-muted disabled:shadow-none"
+          className="score-field h-[3.85rem] w-[4.1rem] rounded-[8px] border-[3px] border-app-ink bg-app-surface-strong px-0 text-center font-display text-[1.95rem] font-black text-app-ink shadow-[0_8px_18px_-10px_rgba(56,56,52,0.35)] outline-none transition-[border-color,box-shadow,background,color] duration-150 focus:bg-app-panel disabled:bg-app-locked-soft disabled:text-app-muted disabled:shadow-none"
           type="number"
           inputMode="numeric"
           min="0"
@@ -55,16 +59,16 @@ export function ScoreInput({
   }
 
   return (
-    <label className="grid gap-3 rounded-[20px] border border-app-cobalt-soft bg-app-surface-tint p-4 transition-[transform,background,border-color,box-shadow] duration-150 focus-within:-translate-y-px focus-within:border-app-cobalt focus-within:bg-[#ecf4ff] focus-within:shadow-[0_18px_28px_rgba(37,99,255,0.12)]">
+    <label className="grid gap-3 rounded-[10px] border-[3px] border-app-ink bg-app-surface-soft p-4 transition-[transform,background,border-color,box-shadow] duration-150 focus-within:-translate-x-px focus-within:-translate-y-px focus-within:bg-app-warm focus-within:shadow-surface-raised">
       <span className="flex items-center justify-between gap-3">
         <span className="flex items-center gap-3">
           <TeamFlag fallbackFlag={fallbackFlag} size="md" teamId={teamId} teamName={label} />
-          <span className="font-extrabold text-app-ink">{label}</span>
+          <span className="font-display font-black uppercase tracking-[-0.03em] text-app-ink">{label}</span>
         </span>
-        <span className="text-[0.78rem] font-extrabold uppercase tracking-[0.12em] text-app-muted">{teamCode}</span>
+        <span className="font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">{teamCode}</span>
       </span>
       <input
-        className="score-field w-full rounded-2xl border border-app-line bg-white px-3 py-3.5 text-center font-display text-[1.8rem] text-app-ink shadow-[0_12px_24px_rgba(18,40,90,0.07)] outline-none transition-[border-color,box-shadow,background,color] duration-150 focus:border-app-cobalt disabled:bg-app-locked-soft disabled:text-app-muted disabled:shadow-none"
+        className="score-field w-full rounded-[8px] border-[3px] border-app-ink bg-app-surface-strong px-3 py-3.5 text-center font-display text-[1.8rem] font-black text-app-ink shadow-[0_8px_18px_-10px_rgba(56,56,52,0.35)] outline-none transition-[border-color,box-shadow,background,color] duration-150 focus:bg-app-panel disabled:bg-app-locked-soft disabled:text-app-muted disabled:shadow-none"
         type="number"
         inputMode="numeric"
         min="0"

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 
+import { cn } from "../../app/cn";
 import { TournamentGroup } from "../../domain/tournament";
 import { Badge } from "../Badge";
 import { getButtonClassName } from "../Button";
@@ -36,11 +37,11 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
   const status = getStatusTone(group.status);
 
   return (
-    <article className="grid gap-4 rounded-[24px] border border-app-line bg-[linear-gradient(180deg,rgba(255,255,255,0.97),rgba(244,248,253,0.94))] p-5 shadow-[0_14px_30px_rgba(15,32,63,0.06)]">
-      <header className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
+    <article className="overflow-hidden rounded-[10px] border-[4px] border-app-ink bg-app-surface shadow-surface">
+      <header className="grid gap-3 bg-app-ink px-5 py-4 text-app-canvas lg:grid-cols-[1fr_auto] lg:items-end">
         <div className="grid gap-1.5">
-          <div className="text-[0.76rem] font-extrabold uppercase tracking-[0.14em] text-app-muted">{group.label}</div>
-          <div className="flex flex-wrap items-center gap-2.5 text-sm font-bold text-app-muted">
+          <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime">{group.label}</div>
+          <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium text-[#d9d5ca]">
             <span>
               {group.completedPickCount}/{group.matches.length} saved
             </span>
@@ -49,7 +50,7 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3 lg:justify-self-end">
           <Badge label={status.label} tone={status.tone} />
           <Link className={getButtonClassName({ tone: "secondary", size: "compact" })} to={`/pools/${poolId}/groups/${group.id}`}>
             {getActionLabel(group.status)}
@@ -58,51 +59,60 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
       </header>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full border-separate border-spacing-y-2 text-sm">
-          <thead>
-            <tr className="text-left text-[0.72rem] font-extrabold uppercase tracking-[0.12em] text-app-muted">
-              <th className="pr-4">#</th>
-              <th className="min-w-[180px] pr-6">Team</th>
-              <th className="pr-4 text-center">MP</th>
-              <th className="pr-4 text-center">W</th>
-              <th className="pr-4 text-center">D</th>
-              <th className="pr-4 text-center">L</th>
-              <th className="pr-4 text-center">GF</th>
-              <th className="pr-4 text-center">GA</th>
-              <th className="pr-4 text-center">GD</th>
-              <th className="text-center">Pts</th>
-            </tr>
-          </thead>
-          <tbody>
+        <div className="min-w-[780px]">
+          <div className="grid grid-cols-[minmax(180px,1.4fr)_repeat(8,minmax(44px,0.55fr))] gap-2 border-b-[4px] border-app-ink bg-app-panel px-4 py-3 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
+            <div>Team</div>
+            <div className="text-center">MP</div>
+            <div className="text-center">W</div>
+            <div className="text-center">D</div>
+            <div className="text-center">L</div>
+            <div className="text-center">GF</div>
+            <div className="text-center">GA</div>
+            <div className="text-center">GD</div>
+            <div className="text-center">Pts</div>
+          </div>
+
+          <div className="flex flex-col">
             {group.rows.map((row) => (
-              <tr key={row.team.id} className="rounded-[18px] bg-app-surface-soft text-app-ink">
-                <td className="rounded-l-[18px] px-3 py-3 font-display text-[1.05rem]">{row.rank}</td>
-                <td className="px-3 py-3">
-                  <div className="flex items-center gap-3">
-                    <TeamFlag fallbackFlag={row.team.flag} size="sm" teamId={row.team.id} teamName={row.team.name} />
-                    <div className="grid gap-0.5">
-                      <span className="font-bold">{row.team.name}</span>
-                      <span className="text-[0.72rem] font-extrabold uppercase tracking-[0.14em] text-app-muted">
-                        {row.team.code}
-                      </span>
-                    </div>
+              <div
+                key={row.team.id}
+                className={cn(
+                  "grid grid-cols-[minmax(180px,1.4fr)_repeat(8,minmax(44px,0.55fr))] gap-2 border-b-[3px] border-app-ink px-4 py-3 text-sm font-semibold text-app-ink last:border-b-0",
+                  row.rank <= 2 ? "bg-app-lime" : "bg-app-surface-soft",
+                )}
+              >
+                <div className="flex items-center gap-3">
+                  <span
+                    className={cn(
+                      "grid h-7 w-7 place-items-center rounded-full border-2 text-[0.72rem] font-display font-black",
+                      row.rank <= 2 ? "border-app-ink bg-app-surface-strong text-app-ink" : "border-transparent text-app-muted",
+                    )}
+                  >
+                    {row.rank}
+                  </span>
+                  <TeamFlag fallbackFlag={row.team.flag} size="sm" teamId={row.team.id} teamName={row.team.name} />
+                  <div className="grid gap-0.5">
+                    <span className="font-display text-[0.9rem] font-black uppercase tracking-[-0.03em]">{row.team.name}</span>
+                    <span className="font-display text-[0.62rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                      {row.team.code}
+                    </span>
                   </div>
-                </td>
-                <td className="px-2 py-3 text-center">{row.matchesPlayed}</td>
-                <td className="px-2 py-3 text-center">{row.wins}</td>
-                <td className="px-2 py-3 text-center">{row.draws}</td>
-                <td className="px-2 py-3 text-center">{row.losses}</td>
-                <td className="px-2 py-3 text-center">{row.goalsFor}</td>
-                <td className="px-2 py-3 text-center">{row.goalsAgainst}</td>
-                <td className="px-2 py-3 text-center">{row.goalDifference}</td>
-                <td className="rounded-r-[18px] px-3 py-3 text-center font-bold">{row.points}</td>
-              </tr>
+                </div>
+                <div className="text-center">{row.matchesPlayed}</div>
+                <div className="text-center">{row.wins}</div>
+                <div className="text-center">{row.draws}</div>
+                <div className="text-center">{row.losses}</div>
+                <div className="text-center">{row.goalsFor}</div>
+                <div className="text-center">{row.goalsAgainst}</div>
+                <div className="text-center">{row.goalDifference}</div>
+                <div className="text-center font-display text-[1rem] font-black">{row.points}</div>
+              </div>
             ))}
-          </tbody>
-        </table>
+          </div>
+        </div>
       </div>
 
-      <footer className="text-sm leading-6 text-app-muted">
+      <footer className="border-t-[4px] border-app-ink bg-app-surface-soft px-4 py-3 text-sm font-medium leading-6 text-app-muted">
         {group.isProvisional
           ? "Table order is provisional and based only on the matches you have saved so far."
           : "All six saved picks are reflected in this provisional group preview."}
