@@ -20,7 +20,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Current pool dashboard view for the grouped tournament prototype. This is the primary reference surface for checking whether progress, deadline context, rules scaffolding, and predicted group tables work together without overwhelming the user.",
+          "Current pool dashboard view for the grouped tournament prototype. This is the primary reference surface for checking whether progress, deadline context, rules scaffolding, and predicted group tables read as one editorial sports surface instead of a stack of generic cards.",
       },
     },
   },
@@ -42,7 +42,7 @@ export const CleanState: Story = {
     docs: {
       description: {
         story:
-          "Use the clean state as the baseline pool dashboard when saved picks are in a stable state and the page should emphasize structure, progress, deadline, and direct paths into group picking.",
+          "Use the clean state as the baseline dashboard when the page should communicate structural mass, generous spacing, and clear next actions without relying on extra separators or filler decoration.",
       },
     },
   },
@@ -63,7 +63,7 @@ export const WithDraftWarning: Story = {
     docs: {
       description: {
         story:
-          "Use the draft-warning variant when the user has unsaved group edits elsewhere and the dashboard needs to remind them that the projected tables only reflect the last saved snapshot.",
+          "Use the draft-warning variant when the user has unsaved group edits elsewhere and the dashboard needs one concentrated warning surface without letting alert styling overtake the rest of the page.",
       },
     },
   },
@@ -84,7 +84,7 @@ export const LockedPreview: Story = {
     docs: {
       description: {
         story:
-          "Use the locked preview to inspect the same dashboard hierarchy when editing is no longer available but the user still needs clear access to the predicted tournament map and rules scaffolding.",
+          "Use the locked preview to inspect the same dashboard hierarchy when editing is no longer available but the user still needs the projected tournament map and rules scaffolding to feel solid and legible.",
       },
     },
   },
@@ -105,7 +105,7 @@ export const Phone: Story = {
     docs: {
       description: {
         story:
-          "Use the phone variant to verify that the dashboard still feels like one coherent pool surface rather than a stack of unrelated cards on narrow screens.",
+          "Use the phone variant to verify that the dashboard still feels like one coherent pool surface rather than a pile of unrelated modules on narrow screens.",
       },
     },
   },

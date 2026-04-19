@@ -16,7 +16,7 @@ const meta = {
     docs: {
       description: {
         component:
-          "Current persistent frame for the prototype pool experience. This is the main surface for tuning breadcrumb placement, pool identity hierarchy, saved-picks framing, and the locked-preview controls around the new grouped tournament flow.",
+          "Current persistent frame for the prototype pool experience. Treat it as the paper-and-scoreboard chassis for the app: a sticky frosted header, bold display hierarchy, and layered structural panels that should feel sturdier than default SaaS chrome.",
       },
     },
   },
@@ -38,7 +38,7 @@ export const LiveEdit: Story = {
     docs: {
       description: {
         story:
-          "Use the live-edit shell as the main reference for the active prototype, where the user should feel oriented inside a pool and immediately see both overall progress and editing mode.",
+          "Use the live-edit shell as the main reference for checking whether the pool frame feels grounded and editorial while still keeping progress, navigation, and edit mode obvious at a glance.",
       },
     },
   },
@@ -65,7 +65,7 @@ export const LockedPreview: Story = {
     docs: {
       description: {
         story:
-          "Use the locked-preview shell to validate that the persistent controls still read clearly when the rest of the pool flow shifts into inspection instead of editing.",
+          "Use the locked-preview shell to validate that the same structural frame still reads clearly when the flow shifts from active editing to inspection.",
       },
     },
   },

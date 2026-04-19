@@ -42,6 +42,28 @@ It currently uses:
 
 This is an implementation shape for the discovery build, not a final commitment to the long-term product stack.
 
+## Current Visual Language
+
+The active frontend should keep translating the existing Stitch-informed direction into a small set of repo-specific rules that are easy to recover later.
+
+- treat the interface as a warm editorial sports surface rather than cool generic SaaS chrome:
+  - prefer cream and paper-like canvases with dark `ink` structure
+  - use the lime and rust accents as high-energy emphasis, not as constant fill colors
+- use Lexend for display moments and Inter for body and data-heavy copy so loud headlines and readable detail stay in tension
+- default shared surfaces should feel structural and bolted down:
+  - squared corners by default for cards, badges, inputs, and buttons
+  - heavy 3px to 4px dark borders for primary containers
+  - rounded treatments reserved for roles that are naturally circular or softer, such as flags or avatars
+- avoid thin internal divider lines inside modules:
+  - use spacing, tonal surface shifts, and grouped sub-blocks before adding more rules
+  - if a boundary still needs extra definition, prefer a heavier structural edge or a low-contrast outline over a default 1px separator
+- on compact screens, keep dense data modules legible by collapsing lower-priority details before letting key labels or table-like structures break awkwardly
+- favor tactile interaction over soft polish:
+  - buttons and focused inputs should feel pressable through displacement, stronger borders, and surface shifts
+  - floating or sticky elements can use blur and layered surfaces to keep the heavy structure from feeling oppressive
+- preserve the product-specific multicolor team accents where they help match and pick surfaces feel tied to real teams; they are a complement to the core shell palette, not a replacement for it
+- Storybook docs and stories should describe components using this same vocabulary so the review surface reinforces the design rules instead of drifting into generic component prose
+
 ## Frontend Organization Conventions
 
 The discovery build now follows a small set of naming and placement rules so the UI stays readable as the prototype grows.

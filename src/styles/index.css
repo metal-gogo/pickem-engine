@@ -8,6 +8,7 @@
   --font-sans: "Inter", "Avenir Next", "Segoe UI", sans-serif;
   --font-display: "Lexend", "Trebuchet MS", sans-serif;
 
+  /* Warm paper surfaces and dark ink keep the shell editorial instead of generic SaaS. */
   --color-app-canvas: #fcffdc;
   --color-app-warm: #fcf9f2;
   --color-app-surface: rgba(252, 255, 220, 0.88);
@@ -21,6 +22,8 @@
   --color-app-ink: #383834;
   --color-app-muted: #656460;
   --color-app-muted-strong: #515050;
+
+  /* These are the loud accents, so keep them for action or high-energy emphasis. */
   --color-app-lime: #daf900;
   --color-app-lime-strong: #cdea00;
   --color-app-lime-ink: #5d6b00;
@@ -34,6 +37,7 @@
   --color-app-locked: #383834;
   --color-app-locked-soft: #ebe8e0;
 
+  /* Shadows should feel like physical displacement more than soft ambient blur. */
   --shadow-surface: 0 12px 32px -4px rgba(56, 56, 52, 0.08);
   --shadow-surface-raised: 0 18px 30px -10px rgba(56, 56, 52, 0.14), 8px 8px 0 rgba(56, 56, 52, 0.1);
   --shadow-press: 0 0 0 rgba(56, 56, 52, 0);
