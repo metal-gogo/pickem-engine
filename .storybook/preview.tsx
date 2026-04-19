@@ -4,8 +4,10 @@ import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 
 import "../src/styles/index.css";
 
+const { mobile1: _smallMobile, ...minimalViewportsWithoutSmallMobile } = MINIMAL_VIEWPORTS;
+
 const viewportOptions = {
-  ...MINIMAL_VIEWPORTS,
+  ...minimalViewportsWithoutSmallMobile,
   desktopWide: {
     name: "Wide desktop",
     styles: {
