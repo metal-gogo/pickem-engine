@@ -43,7 +43,6 @@ export interface PoolSummary {
   name: string;
   participantCount: number;
   deadlineAt: string;
-  description: string;
 }
 
 export interface PoolRuleSection {
@@ -53,9 +52,7 @@ export interface PoolRuleSection {
 }
 
 export interface PoolDetails extends PoolSummary {
-  shortRulesSummary: string;
   pointsOverview: string[];
-  fullRules: PoolRuleSection[];
 }
 
 export interface LeaderboardEntry {

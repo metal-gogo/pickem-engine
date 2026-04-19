@@ -44,15 +44,15 @@ export function getDeadlineLabel(deadlineAt: string, now = new Date()): string {
   const remainingDays = Math.floor(remainingHours / 24);
 
   if (remainingDays >= 1) {
-    return `${remainingDays} day${remainingDays === 1 ? "" : "s"} left until ${shortDeadlineFormatter.format(deadline)}`;
+    return `${remainingDays} day${remainingDays === 1 ? "" : "s"} left`;
   }
 
   if (remainingHours >= 1) {
-    return `${remainingHours} hour${remainingHours === 1 ? "" : "s"} left until ${shortDeadlineFormatter.format(deadline)}`;
+    return `${remainingHours} hour${remainingHours === 1 ? "" : "s"} left`;
   }
 
   const remainingMinutes = Math.max(1, Math.floor(remainingMs / (1000 * 60)));
-  return `${remainingMinutes} minute${remainingMinutes === 1 ? "" : "s"} left until ${shortDeadlineFormatter.format(deadline)}`;
+  return `${remainingMinutes} minute${remainingMinutes === 1 ? "" : "s"} left`;
 }
 
 export function getPrototypeLockedNow(deadlineAt: string): Date {
