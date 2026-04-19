@@ -14,11 +14,11 @@ export function Home({ pools }: HomeProps) {
   return (
     <div className="min-h-screen px-3 pb-10 pt-4 sm:px-5 sm:pb-12 sm:pt-5">
       <div className="mx-auto grid max-w-[1160px] gap-6">
-        <header className="sticky top-3 z-20 rounded-[10px] border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
+        <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
           <div className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between lg:px-5">
             <div className="flex flex-wrap items-center gap-3">
               <span className="font-display text-[1.45rem] font-black uppercase tracking-[-0.08em] text-app-ink">Pick'em WC</span>
-              <span className="rounded-[8px] border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink">
+              <span className="rounded-none border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink">
                 Pools
               </span>
             </div>
@@ -57,11 +57,11 @@ export function Home({ pools }: HomeProps) {
           {pools.map((pool) => (
             <article
               key={pool.id}
-              className="grid gap-5 rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong p-5 shadow-surface"
+              className="grid gap-5 rounded-none border-[3px] border-app-ink bg-app-surface-strong p-5 shadow-surface"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div className="grid gap-2">
-                  <span className="w-fit rounded-[8px] border-[3px] border-app-ink bg-app-panel px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                  <span className="w-fit rounded-none border-[3px] border-app-ink bg-app-panel px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
                     Invite only
                   </span>
                   <h2 className="m-0 font-display text-[2rem] font-black uppercase leading-[0.92] tracking-[-0.06em] text-app-ink">
@@ -69,7 +69,7 @@ export function Home({ pools }: HomeProps) {
                   </h2>
                 </div>
 
-                <div className="rounded-[10px] border-[3px] border-app-ink bg-app-lime px-3 py-2 text-right">
+                <div className="rounded-none border-[3px] border-app-ink bg-app-lime px-3 py-2 text-right">
                   <span className="block font-display text-[0.66rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">
                     Participants
                   </span>

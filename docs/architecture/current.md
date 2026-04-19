@@ -22,6 +22,7 @@ It currently uses:
 
 - a client-rendered React + TypeScript + Vite web app
 - Tailwind v4 utilities, a Stitch-informed Apex Kinetic token layer, and reusable UI primitives for the prototype interaction model
+- shared UI primitives now biased toward sharper, squared structural surfaces for buttons, badges, and cards so the implemented shell stays closer to the current Stitch direction
 - a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other UI details that are less readable as utility strings
 - fixed tournament, pool, and placeholder rules data stored separately from presentation
 - localStorage behind a small persistence adapter rather than direct component access, now scoped by pool id for the prototype's multi-pool flow

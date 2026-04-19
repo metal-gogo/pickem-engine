@@ -34,7 +34,7 @@ export function PoolShell({
   return (
     <div className="min-h-screen px-3 pb-10 pt-4 sm:px-5 sm:pb-12 sm:pt-5">
       <div className="mx-auto grid max-w-[1240px] gap-6">
-        <header className="sticky top-3 z-20 rounded-[10px] border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
+        <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
           <div className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between lg:px-5">
             <div className="grid gap-3">
               <div className="flex flex-wrap items-center gap-3">
@@ -43,12 +43,12 @@ export function PoolShell({
                 </Link>
                 <div className="flex flex-wrap gap-2">
                   <Link
-                    className="rounded-[8px] border-[3px] border-app-ink bg-app-surface-strong px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink transition-colors hover:bg-app-panel"
+                    className="rounded-none border-[3px] border-app-ink bg-app-surface-strong px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink transition-colors hover:bg-app-panel"
                     to="/"
                   >
                     Pools
                   </Link>
-                  <span className="rounded-[8px] border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink">
+                  <span className="rounded-none border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink">
                     Picks
                   </span>
                 </div>
@@ -60,10 +60,10 @@ export function PoolShell({
               </div>
             </div>
 
-            <div className="inline-flex flex-wrap gap-2 rounded-[10px] border-[3px] border-app-ink bg-app-panel p-1.5">
+            <div className="inline-flex flex-wrap gap-2 rounded-none border-[3px] border-app-ink bg-app-panel p-1.5">
               <button
                 className={cn(
-                  "rounded-[8px] border-[3px] px-3.5 py-2 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] transition-[background,color,transform,box-shadow] duration-150 hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+                  "rounded-none border-[3px] px-3.5 py-2 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] transition-[background,color,transform,box-shadow] duration-150 hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
                   !previewLocked
                     ? "border-app-ink bg-app-lime text-app-ink shadow-[0_8px_0_rgba(56,56,52,0.14)]"
                     : "border-transparent bg-transparent text-app-muted",
@@ -75,7 +75,7 @@ export function PoolShell({
               </button>
               <button
                 className={cn(
-                  "rounded-[8px] border-[3px] px-3.5 py-2 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] transition-[background,color,transform,box-shadow] duration-150 hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
+                  "rounded-none border-[3px] px-3.5 py-2 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] transition-[background,color,transform,box-shadow] duration-150 hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none",
                   previewLocked
                     ? "border-app-ink bg-app-ink text-app-canvas shadow-[0_8px_0_rgba(56,56,52,0.14)]"
                     : "border-transparent bg-transparent text-app-muted",
@@ -108,7 +108,7 @@ export function PoolShell({
               <span className={metricValueClass}>
                 {savedPickCount}/{totalMatches}
               </span>
-              <div className="h-4 overflow-hidden rounded-[6px] border-[3px] border-app-ink bg-app-surface-strong">
+              <div className="h-4 overflow-hidden rounded-none border-[3px] border-app-ink bg-app-surface-strong">
                 <span
                   className="block h-full bg-[linear-gradient(90deg,#5d6b00_0%,#daf900_100%)]"
                   style={{ width: `${progressPercent}%` }}

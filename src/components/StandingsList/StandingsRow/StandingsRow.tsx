@@ -12,7 +12,7 @@ export function StandingsRow({ entry }: StandingsRowProps) {
   return (
     <div
       className={cn(
-        "grid items-start gap-3 rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong p-[18px] sm:grid-cols-[auto_auto_minmax(0,1fr)] sm:items-center lg:grid-cols-[auto_auto_minmax(0,1fr)_auto_auto]",
+        "grid items-start gap-3 rounded-none border-[3px] border-app-ink bg-app-surface-strong p-[18px] sm:grid-cols-[auto_auto_minmax(0,1fr)] sm:items-center lg:grid-cols-[auto_auto_minmax(0,1fr)_auto_auto]",
         entry.rank === 1 && "bg-app-lime shadow-[0_10px_0_rgba(56,56,52,0.14)]",
         entry.rank > 1 && entry.rank <= 3 && "bg-app-panel",
       )}

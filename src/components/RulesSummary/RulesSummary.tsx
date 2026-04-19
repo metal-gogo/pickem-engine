@@ -12,7 +12,7 @@ export function RulesSummary({ pool }: RulesSummaryProps) {
 
   return (
     <>
-      <section className="flex flex-col gap-4 rounded-[10px] border-[3px] border-app-ink bg-app-surface-strong p-5 shadow-surface lg:flex-row lg:items-start lg:justify-between">
+      <section className="flex flex-col gap-4 rounded-none border-[3px] border-app-ink bg-app-surface-strong p-5 shadow-surface lg:flex-row lg:items-start lg:justify-between">
         <div className="grid gap-2">
           <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-muted">Points overview</div>
           <ul className="m-0 grid gap-2 pl-5 text-sm font-medium leading-6 text-app-muted">
@@ -33,7 +33,7 @@ export function RulesSummary({ pool }: RulesSummaryProps) {
           onClick={() => setIsOpen(false)}
         >
           <div
-            className="grid max-h-[min(90vh,760px)] w-full max-w-[760px] gap-5 overflow-y-auto rounded-[10px] border-[4px] border-app-ink bg-app-surface-strong p-6 shadow-[0_24px_48px_-16px_rgba(56,56,52,0.28)]"
+            className="grid max-h-[min(90vh,760px)] w-full max-w-[760px] gap-5 overflow-y-auto rounded-none border-[4px] border-app-ink bg-app-surface-strong p-6 shadow-[0_24px_48px_-16px_rgba(56,56,52,0.28)]"
             onClick={(event) => event.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4">
@@ -51,7 +51,7 @@ export function RulesSummary({ pool }: RulesSummaryProps) {
 
             <div className="grid gap-4">
               {pool.fullRules.map((section) => (
-                <section key={section.id} className="grid gap-2 rounded-[10px] border-[3px] border-app-ink bg-app-panel p-4">
+                <section key={section.id} className="grid gap-2 rounded-none border-[3px] border-app-ink bg-app-panel p-4">
                   <h3 className="m-0 font-display text-[1.05rem] font-black uppercase tracking-[-0.03em] text-app-ink">
                     {section.title}
                   </h3>

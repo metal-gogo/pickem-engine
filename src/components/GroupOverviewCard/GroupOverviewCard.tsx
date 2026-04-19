@@ -37,7 +37,7 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
   const status = getStatusTone(group.status);
 
   return (
-    <article className="overflow-hidden rounded-[10px] border-[4px] border-app-ink bg-app-surface shadow-surface">
+    <article className="overflow-hidden rounded-none border-[4px] border-app-ink bg-app-surface shadow-surface">
       <header className="grid gap-3 bg-app-ink px-5 py-4 text-app-canvas lg:grid-cols-[1fr_auto] lg:items-end">
         <div className="grid gap-1.5">
           <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime">{group.label}</div>

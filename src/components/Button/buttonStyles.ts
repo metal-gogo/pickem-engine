@@ -10,7 +10,7 @@ interface ButtonClassNameOptions {
 }
 
 const baseClassName =
-  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-[10px] border-[3px] border-app-ink font-display font-black uppercase tracking-[0.16em] transition-[transform,box-shadow,background,border-color,color,opacity] duration-150 outline-none hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none disabled:translate-x-0 disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-55 disabled:shadow-none focus-visible:ring-4 focus-visible:ring-[rgba(218,249,0,0.24)] motion-reduce:transform-none motion-reduce:transition-none";
+  "inline-flex items-center justify-center gap-2.5 whitespace-nowrap rounded-none border-[3px] border-app-ink font-display font-black uppercase tracking-[0.16em] transition-[transform,box-shadow,background,border-color,color,opacity] duration-150 outline-none hover:-translate-x-px hover:-translate-y-px active:translate-x-[2px] active:translate-y-[2px] active:shadow-none disabled:translate-x-0 disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-55 disabled:shadow-none focus-visible:ring-4 focus-visible:ring-[rgba(218,249,0,0.24)] motion-reduce:transform-none motion-reduce:transition-none";
 
 const toneClassNames: Record<ButtonTone, string> = {
   primary:
@@ -23,7 +23,7 @@ const toneClassNames: Record<ButtonTone, string> = {
 
 const sizeClassNames: Record<ButtonSize, string> = {
   default: "min-h-[54px] px-5 py-3.5 text-[0.8rem]",
-  compact: "min-h-10 rounded-[8px] px-4 py-2.5 text-[0.72rem]",
+  compact: "min-h-10 rounded-none px-4 py-2.5 text-[0.72rem]",
 };
 
 export function getButtonClassName({
