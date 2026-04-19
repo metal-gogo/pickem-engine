@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 
 import { cn } from "../../app/cn";
 import { TournamentGroup } from "../../domain/tournament";
-import { Badge } from "../Badge";
 import { getButtonClassName } from "../Button";
 import { TeamFlag } from "../TeamFlag";
 
@@ -11,16 +10,24 @@ interface GroupOverviewCardProps {
   group: TournamentGroup;
 }
 
-function getStatusTone(status: TournamentGroup["status"]) {
-  switch (status) {
-    case "complete":
-      return { label: "Complete", tone: "success" as const };
-    case "in-progress":
-      return { label: "In progress", tone: "warning" as const };
-    default:
-      return { label: "Not started", tone: "neutral" as const };
-  }
-}
+type GroupOverviewRow = TournamentGroup["rows"][number];
+
+const statHeaders = [
+  { short: "MP", long: "Matches played", hideOnMobile: true, getValue: (row: GroupOverviewRow) => row.matchesPlayed },
+  { short: "W", long: "Wins", getValue: (row: GroupOverviewRow) => row.wins },
+  { short: "D", long: "Draws", getValue: (row: GroupOverviewRow) => row.draws },
+  { short: "L", long: "Losses", getValue: (row: GroupOverviewRow) => row.losses },
+  { short: "GF", long: "Goals for", hideOnMobile: true, getValue: (row: GroupOverviewRow) => row.goalsFor },
+  { short: "GA", long: "Goals against", hideOnMobile: true, getValue: (row: GroupOverviewRow) => row.goalsAgainst },
+  { short: "GD", long: "Goal difference", getValue: (row: GroupOverviewRow) => row.goalDifference },
+  { short: "Pts", long: "Points", emphasized: true, getValue: (row: GroupOverviewRow) => row.points },
+] satisfies ReadonlyArray<{
+  short: string;
+  long: string;
+  getValue: (row: GroupOverviewRow) => number;
+  hideOnMobile?: boolean;
+  emphasized?: boolean;
+}>;
 
 function getActionLabel(status: TournamentGroup["status"]) {
   switch (status) {
@@ -34,89 +41,105 @@ function getActionLabel(status: TournamentGroup["status"]) {
 }
 
 export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
-  const status = getStatusTone(group.status);
-
   return (
     <article className="overflow-hidden rounded-none border-[4px] border-app-ink bg-app-surface shadow-surface">
-      <header className="grid gap-3 bg-app-ink px-5 py-4 text-app-canvas lg:grid-cols-[1fr_auto] lg:items-end">
-        <div className="grid gap-1.5">
+      <header className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 bg-app-ink px-2 py-4 text-app-canvas">
+        <div className="grid min-w-0 gap-1.5">
           <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime">{group.label}</div>
           <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium text-[#d9d5ca]">
             <span>
               {group.completedPickCount}/{group.matches.length} saved
             </span>
-            <span>•</span>
-            <span>{group.isProvisional ? "Predicted from saved picks" : "Saved table preview"}</span>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 lg:justify-self-end">
-          <Badge label={status.label} tone={status.tone} />
-          <Link className={getButtonClassName({ tone: "secondary", size: "compact" })} to={`/pools/${poolId}/groups/${group.id}`}>
+        <div className="flex items-center justify-end gap-3 self-start justify-self-end">
+          <Link className={cn(getButtonClassName({ tone: "secondary", size: "compact" }), "border-app-lime")} to={`/pools/${poolId}/groups/${group.id}`}>
             {getActionLabel(group.status)}
           </Link>
         </div>
       </header>
 
       <div className="overflow-x-auto">
-        <div className="min-w-[780px]">
-          <div className="grid grid-cols-[minmax(180px,1.4fr)_repeat(8,minmax(44px,0.55fr))] gap-2 border-b-[4px] border-app-ink bg-app-panel px-4 py-3 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
-            <div>Team</div>
-            <div className="text-center">MP</div>
-            <div className="text-center">W</div>
-            <div className="text-center">D</div>
-            <div className="text-center">L</div>
-            <div className="text-center">GF</div>
-            <div className="text-center">GA</div>
-            <div className="text-center">GD</div>
-            <div className="text-center">Pts</div>
-          </div>
+        <table className="w-full border-separate border-spacing-0">
+          <caption className="sr-only">{group.label} standings</caption>
+          <thead>
+            <tr className="bg-app-panel font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-muted">
+              <th className="border-b-[4px] border-app-ink px-2 py-3 text-left" scope="col">
+                Team
+              </th>
+              {statHeaders.map((header) => (
+                <th
+                  key={header.short}
+                  className={cn(
+                    "w-[32px] border-b-[4px] border-app-ink py-3 text-center",
+                    header.short === "Pts" && "pe-2",
+                    header.hideOnMobile && "hidden sm:table-cell",
+                  )}
+                  scope="col"
+                >
+                  <span aria-hidden="true">{header.short}</span>
+                  <span className="sr-only">{header.long}</span>
+                </th>
+              ))}
+            </tr>
+          </thead>
 
-          <div className="flex flex-col">
-            {group.rows.map((row) => (
-              <div
-                key={row.team.id}
-                className={cn(
-                  "grid grid-cols-[minmax(180px,1.4fr)_repeat(8,minmax(44px,0.55fr))] gap-2 border-b-[3px] border-app-ink px-4 py-3 text-sm font-semibold text-app-ink last:border-b-0",
-                  row.rank <= 2 ? "bg-app-lime" : "bg-app-surface-soft",
-                )}
-              >
-                <div className="flex items-center gap-3">
-                  <span
-                    className={cn(
-                      "grid h-7 w-7 place-items-center rounded-full border-2 text-[0.72rem] font-display font-black",
-                      row.rank <= 2 ? "border-app-ink bg-app-surface-strong text-app-ink" : "border-transparent text-app-muted",
-                    )}
-                  >
-                    {row.rank}
-                  </span>
-                  <TeamFlag fallbackFlag={row.team.flag} size="sm" teamId={row.team.id} teamName={row.team.name} />
-                  <div className="grid gap-0.5">
-                    <span className="font-display text-[0.9rem] font-black uppercase tracking-[-0.03em]">{row.team.name}</span>
-                    <span className="font-display text-[0.62rem] font-black uppercase tracking-[0.18em] text-app-muted">
-                      {row.team.code}
-                    </span>
-                  </div>
-                </div>
-                <div className="text-center">{row.matchesPlayed}</div>
-                <div className="text-center">{row.wins}</div>
-                <div className="text-center">{row.draws}</div>
-                <div className="text-center">{row.losses}</div>
-                <div className="text-center">{row.goalsFor}</div>
-                <div className="text-center">{row.goalsAgainst}</div>
-                <div className="text-center">{row.goalDifference}</div>
-                <div className="text-center font-display text-[1rem] font-black">{row.points}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+          <tbody>
+            {group.rows.map((row, index) => {
+              const isQualified = row.rank <= 2;
+              const rowBorderClass = index === group.rows.length - 1 ? "border-b-0" : "border-b-[3px] border-app-ink";
+
+              return (
+                <tr
+                  key={row.team.id}
+                  className={cn("[&>td:last-child]:pe-2", isQualified ? "bg-app-lime" : "bg-app-surface-soft")}
+                >
+                  <th className={cn("px-2 py-3 text-left text-sm font-semibold text-app-ink", rowBorderClass)} scope="row">
+                    <div className="flex min-w-0 items-center gap-2 sm:gap-3">
+                      <span
+                        className={cn(
+                          "grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 text-[0.72rem] font-display font-black",
+                          isQualified ? "border-app-ink bg-app-surface-strong text-app-ink" : "border-transparent text-app-muted",
+                        )}
+                      >
+                        {row.rank}
+                      </span>
+                      <span className="hidden shrink-0 sm:block">
+                        <TeamFlag fallbackFlag={row.team.flag} size="sm" teamId={row.team.id} teamName={row.team.name} />
+                      </span>
+                      <span className="grid min-w-0 gap-0.5">
+                        <span
+                          className="block truncate font-display text-[0.9rem] font-black uppercase tracking-[-0.03em]"
+                          title={row.team.name}
+                        >
+                          {row.team.name}
+                        </span>
+                        <span className="font-display text-[0.62rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                          {row.team.code}
+                        </span>
+                      </span>
+                    </div>
+                  </th>
+                  {statHeaders.map((header) => (
+                    <td
+                      key={`${row.team.id}-${header.short}`}
+                      className={cn(
+                        "text-center text-sm font-semibold text-app-ink",
+                        header.emphasized && "font-display text-[1rem] font-black",
+                        rowBorderClass,
+                        header.hideOnMobile && "hidden sm:table-cell",
+                      )}
+                    >
+                      {header.getValue(row)}
+                    </td>
+                  ))}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
-
-      <footer className="border-t-[4px] border-app-ink bg-app-surface-soft px-4 py-3 text-sm font-medium leading-6 text-app-muted">
-        {group.isProvisional
-          ? "Table order is provisional and based only on the matches you have saved so far."
-          : "All six saved picks are reflected in this provisional group preview."}
-      </footer>
     </article>
   );
 }
