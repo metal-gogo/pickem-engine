@@ -115,7 +115,6 @@ export function MatchCard({
             fallbackFlag={match.homeTeam.flag}
             accent={homeAccent}
             value={pick.homeScore}
-            variant="compact"
             disabled={lockState === "locked"}
             onChange={(nextValue) => onScoreChange?.("homeScore", nextValue)}
             onFocus={() => setIsFocused(true)}
@@ -134,7 +133,6 @@ export function MatchCard({
             fallbackFlag={match.awayTeam.flag}
             accent={awayAccent}
             value={pick.awayScore}
-            variant="compact"
             disabled={lockState === "locked"}
             onChange={(nextValue) => onScoreChange?.("awayScore", nextValue)}
             onFocus={() => setIsFocused(true)}
