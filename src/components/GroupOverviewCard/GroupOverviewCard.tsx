@@ -105,20 +105,27 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
                       >
                         {row.rank}
                       </span>
-                      <span className="hidden shrink-0 sm:block">
-                        <TeamFlag fallbackFlag={row.team.flag} size="sm" teamId={row.team.id} teamName={row.team.name} />
-                      </span>
-                      <span className="grid min-w-0 gap-0.5">
-                        <span
-                          className="block truncate font-display text-[0.9rem] font-black uppercase tracking-[-0.03em]"
-                          title={row.team.name}
-                        >
-                          {row.team.name}
+                      <div className="flex min-w-0 gap-2 sm:gap-3">
+                        <TeamFlag
+                          fallbackFlag={row.team.flag}
+                          size="sm"
+                          shape="rectangle"
+                          teamId={row.team.id}
+                          teamName={row.team.name}
+                          className="hidden aspect-[10/7] sm:inline-flex"
+                        />
+                        <span className="grid min-w-0 content-center gap-0.5">
+                          <span
+                            className="block truncate font-display text-[0.9rem] font-black uppercase tracking-[-0.03em]"
+                            title={row.team.name}
+                          >
+                            {row.team.name}
+                          </span>
+                          <span className="font-display text-[0.62rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                            {row.team.code}
+                          </span>
                         </span>
-                        <span className="font-display text-[0.62rem] font-black uppercase tracking-[0.18em] text-app-muted">
-                          {row.team.code}
-                        </span>
-                      </span>
+                      </div>
                     </div>
                   </th>
                   {statHeaders.map((header) => (

@@ -7,7 +7,7 @@ interface TeamFlagProps {
   teamName: string;
   fallbackFlag?: string;
   size?: "sm" | "md" | "lg";
-  shape?: "rounded" | "pill";
+  shape?: "rounded" | "pill" | "rectangle";
   className?: string;
 }
 
@@ -46,7 +46,7 @@ export function TeamFlag({
       aria-hidden="true"
       className={cn(
         "relative inline-flex shrink-0 items-center justify-center overflow-hidden border border-app-line bg-white shadow-[0_8px_18px_rgba(18,40,90,0.08)]",
-        shape === "pill" ? "rounded-full" : "rounded-[12px]",
+        shape === "pill" ? "rounded-full" : shape === "rectangle" ? "rounded-none" : "rounded-[12px]",
         styles.frame,
         className,
       )}
