@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-18
+- Last updated: 2026-04-25
 
 ## Planning Objective
 
@@ -48,6 +48,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 - the eventual product direction remains a private World Cup 2026 pool for friends and family
 - the prototype is for discovery, not a redefinition of the MVP
 - the first slice should validate the central prediction workflow before broadening surrounding systems
+- the next database-backed architecture should use React Router v7 framework mode on Cloudflare, React 19, strict TypeScript with a dedicated typecheck lane, Tailwind v4 plus the existing design-token/CSS direction, Prisma ORM, Neon Postgres, Zod, WorkOS AuthKit, typed environment configuration, a mise-managed Node 24 LTS plus pnpm tooling baseline, oxlint/oxfmt, Sentry plus Cloudflare native observability, trunk-based GitHub Actions CI/CD with layered validation lanes, and layered Storybook/Vitest/Cloudflare Vitest/Playwright validation when app setup begins
 - the next discovery iteration should test a pool-centered flow:
   - pool list home
   - pool dashboard
@@ -90,6 +91,8 @@ This is a sequencing rule, not a redefinition of the MVP.
 - Storybook coverage reporting via `npm run coverage-storybook` so the test lane exposes what parts of the app code are exercised
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
+- for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys
+- for the next database-backed app, use GitHub Actions validation lanes for format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
   - pool list home
@@ -110,10 +113,9 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 ### Deferred MVP Concerns
 
-- identity and join flow
+- join and invite flow details, now with WorkOS AuthKit chosen as the auth provider
 - pool creation mechanics
-- invite flow
-- database-backed persistence
+- database-backed persistence implementation, now with Prisma ORM and Neon Postgres as the chosen direction
 - official results ingestion infrastructure
 - multi-user permissions and membership
 
@@ -136,13 +138,14 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 - no exact scoring table yet
 - no finalized knockout scoring rule yet
-- no decided MVP identity model yet
+- no finalized MVP join/invite model yet
 - no chosen ingestion approach yet
 - the first prototype slice still needs to stay tightly bounded so it does not absorb surrounding concerns
 
 ## Planning Guardrails
 
-- do not choose stack details before product constraints require it
+- do not choose additional stack details before product constraints require them
+- do not implement the React Router v7, Cloudflare, Neon, Prisma, WorkOS, environment-file, mise, Node, package-manager, linting, typecheck, observability, or CI/CD setup until the project explicitly moves from architecture choice into backend setup work
 - keep the MVP coherent and small
 - preserve flexibility for later public growth without optimizing for it prematurely
 - do not let prototype shortcuts leak into canonical business rules
@@ -189,7 +192,7 @@ This is a sequencing rule, not a redefinition of the MVP.
 
 - exact scoring model
 - knockout match handling
-- identity and join flow
+- join and invite flow details
 - result ingestion strategy
 - multilingual launch scope
 - pool creation scope
