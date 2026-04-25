@@ -2,7 +2,13 @@ import { describe, expect, it } from "vitest";
 
 import type { Match, Team } from "../models";
 import { createEmptyPickSet, updatePickScore } from "../picks";
-import { buildTournamentGroups, getFirstIncompleteGroupId, getNextGroupId, getPreviousGroupId, listGroupIds } from ".";
+import {
+  buildTournamentGroups,
+  getFirstIncompleteGroupId,
+  getNextGroupId,
+  getPreviousGroupId,
+  listGroupIds,
+} from ".";
 
 function createTeam(id: string, name: string, code: string): Team {
   return {
@@ -10,6 +16,7 @@ function createTeam(id: string, name: string, code: string): Team {
     name,
     shortName: name,
     code,
+    fifaRanking: 1,
     flag: "🏳️",
     accentColors: ["#2563ff"],
   };

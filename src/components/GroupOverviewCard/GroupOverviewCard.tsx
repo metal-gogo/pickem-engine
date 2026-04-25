@@ -13,14 +13,34 @@ interface GroupOverviewCardProps {
 type GroupOverviewRow = TournamentGroup["rows"][number];
 
 const statHeaders = [
-  { short: "MP", long: "Matches played", hideOnMobile: true, getValue: (row: GroupOverviewRow) => row.matchesPlayed },
+  {
+    short: "MP",
+    long: "Matches played",
+    hideOnMobile: true,
+    getValue: (row: GroupOverviewRow) => row.matchesPlayed,
+  },
   { short: "W", long: "Wins", getValue: (row: GroupOverviewRow) => row.wins },
   { short: "D", long: "Draws", getValue: (row: GroupOverviewRow) => row.draws },
   { short: "L", long: "Losses", getValue: (row: GroupOverviewRow) => row.losses },
-  { short: "GF", long: "Goals for", hideOnMobile: true, getValue: (row: GroupOverviewRow) => row.goalsFor },
-  { short: "GA", long: "Goals against", hideOnMobile: true, getValue: (row: GroupOverviewRow) => row.goalsAgainst },
+  {
+    short: "GF",
+    long: "Goals for",
+    hideOnMobile: true,
+    getValue: (row: GroupOverviewRow) => row.goalsFor,
+  },
+  {
+    short: "GA",
+    long: "Goals against",
+    hideOnMobile: true,
+    getValue: (row: GroupOverviewRow) => row.goalsAgainst,
+  },
   { short: "GD", long: "Goal difference", getValue: (row: GroupOverviewRow) => row.goalDifference },
-  { short: "Pts", long: "Points", emphasized: true, getValue: (row: GroupOverviewRow) => row.points },
+  {
+    short: "Pts",
+    long: "Points",
+    emphasized: true,
+    getValue: (row: GroupOverviewRow) => row.points,
+  },
 ] satisfies ReadonlyArray<{
   short: string;
   long: string;
@@ -45,7 +65,9 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
     <article className="overflow-hidden rounded-none border-[4px] border-app-ink bg-app-surface shadow-surface">
       <header className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 bg-app-ink px-2 py-4 text-app-canvas">
         <div className="grid min-w-0 gap-1.5">
-          <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime">{group.label}</div>
+          <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime">
+            {group.label}
+          </div>
           <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium text-[#d9d5ca]">
             <span>
               {group.completedPickCount}/{group.matches.length} saved
@@ -54,7 +76,13 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
         </div>
 
         <div className="flex items-center justify-end gap-3 self-start justify-self-end">
-          <Link className={cn(getButtonClassName({ tone: "secondary", size: "compact" }), "border-app-lime")} to={`/pools/${poolId}/groups/${group.id}`}>
+          <Link
+            className={cn(
+              getButtonClassName({ tone: "secondary", size: "compact" }),
+              "border-app-lime",
+            )}
+            to={`/pools/${poolId}/groups/${group.id}`}
+          >
             {getActionLabel(group.status)}
           </Link>
         </div>
@@ -88,19 +116,31 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
           <tbody>
             {group.rows.map((row, index) => {
               const isQualified = row.rank <= 2;
-              const rowBorderClass = index === group.rows.length - 1 ? "border-b-0" : "border-b-[3px] border-app-ink";
+              const rowBorderClass =
+                index === group.rows.length - 1 ? "border-b-0" : "border-b-[3px] border-app-ink";
 
               return (
                 <tr
                   key={row.team.id}
-                  className={cn("[&>td:last-child]:pe-2", isQualified ? "bg-app-lime" : "bg-app-surface-soft")}
+                  className={cn(
+                    "[&>td:last-child]:pe-2",
+                    isQualified ? "bg-app-lime" : "bg-app-surface-soft",
+                  )}
                 >
-                  <th className={cn("px-2 py-3 text-left text-sm font-semibold text-app-ink", rowBorderClass)} scope="row">
+                  <th
+                    className={cn(
+                      "px-2 py-3 text-left text-sm font-semibold text-app-ink",
+                      rowBorderClass,
+                    )}
+                    scope="row"
+                  >
                     <div className="flex min-w-0 items-center gap-2 sm:gap-3">
                       <span
                         className={cn(
                           "grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 text-[0.72rem] font-display font-black",
-                          isQualified ? "border-app-ink bg-app-surface-strong text-app-ink" : "border-transparent text-app-muted",
+                          isQualified
+                            ? "border-app-ink bg-app-surface-strong text-app-ink"
+                            : "border-transparent text-app-muted",
                         )}
                       >
                         {row.rank}
@@ -109,7 +149,7 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
                         <TeamFlag
                           fallbackFlag={row.team.flag}
                           size="sm"
-                          shape="rectangle"
+                          shape="pill"
                           teamId={row.team.id}
                           teamName={row.team.name}
                           className="hidden aspect-[10/7] sm:inline-flex"

@@ -6,6 +6,7 @@ import { Match, PoolSummary, Team } from "../../domain/models";
 type NormalizedTeam = {
   id: string;
   fifaCode: string;
+  fifaRanking: number;
   name: string;
   normalizedName: string | null;
   group: string;
@@ -44,6 +45,7 @@ function toTeam(team: NormalizedTeam): Team {
     name: team.name,
     shortName: team.name,
     code: team.fifaCode,
+    fifaRanking: team.fifaRanking,
     flag: team.flag,
     accentColors: team.accentColors,
   };
@@ -63,7 +65,9 @@ const normalizedVenueCatalog = venues as NormalizedVenueCatalog;
 
 const teamsById = new Map(normalizedTeams.map((team) => [team.id, toTeam(team)]));
 const venueByGroundAlias = new Map(
-  normalizedVenueCatalog.venues.flatMap((venue) => venue.groundAliases.map((alias) => [alias, venue.stadium] as const)),
+  normalizedVenueCatalog.venues.flatMap((venue) =>
+    venue.groundAliases.map((alias) => [alias, venue.stadium] as const),
+  ),
 );
 
 function resolveTeam(teamId: string): Team {

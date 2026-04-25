@@ -24,6 +24,7 @@ const matches: Match[] = [
       name: "Mexico",
       shortName: "Mexico",
       code: "MEX",
+      fifaRanking: 15,
       flag: "🇲🇽",
       accentColors: ["#0b8f47", "#d0453b"],
     },
@@ -32,6 +33,7 @@ const matches: Match[] = [
       name: "Japan",
       shortName: "Japan",
       code: "JPN",
+      fifaRanking: 18,
       flag: "🇯🇵",
       accentColors: ["#1f4fff", "#ffffff"],
     },
@@ -47,6 +49,7 @@ const matches: Match[] = [
       name: "United States",
       shortName: "USA",
       code: "USA",
+      fifaRanking: 16,
       flag: "🇺🇸",
       accentColors: ["#1d4ed8", "#d62839"],
     },
@@ -55,6 +58,7 @@ const matches: Match[] = [
       name: "Ghana",
       shortName: "Ghana",
       code: "GHA",
+      fifaRanking: 74,
       flag: "🇬🇭",
       accentColors: ["#ffffff", "#f2c94c", "#111111"],
     },
@@ -91,7 +95,12 @@ describe("picks", () => {
     vi.setSystemTime(new Date("2026-06-01T10:00:00Z"));
 
     const basePickSet = createEmptyPickSet(matches);
-    const draftPickSet = updatePickScore(updatePickScore(basePickSet, "match-1", "homeScore", "2"), "match-1", "awayScore", "1");
+    const draftPickSet = updatePickScore(
+      updatePickScore(basePickSet, "match-1", "homeScore", "2"),
+      "match-1",
+      "awayScore",
+      "1",
+    );
     const savedPickSet = markPickSetSaved(draftPickSet);
     const changedDraft = updatePickScore(savedPickSet, "match-2", "homeScore", "1");
 

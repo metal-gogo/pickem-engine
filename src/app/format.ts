@@ -32,6 +32,10 @@ export function formatSavedAt(savedAt: string | null): string {
   return savedAtFormatter.format(new Date(savedAt));
 }
 
+export function formatFifaRanking(fifaRanking: number): string {
+  return `FIFA #${fifaRanking}`;
+}
+
 export function formatStageLabel(stage: string, group?: string): string {
   if (stage === "group" && group) {
     return `Group ${group}`;

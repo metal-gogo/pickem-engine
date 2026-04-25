@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { formatSavedAt } from "../../app/format";
-import { cn } from "../../app/cn";
-import { eyebrowClass, heroTitleClass, sectionCopyClass, surfaceClass, tileCardClass } from "../../app/ui";
+
+import { heroTitleClass, tileCardClass } from "../../app/ui";
 import { getButtonClassName } from "../../components/Button";
 import { PoolDetails } from "../../domain/models";
 
@@ -16,40 +16,25 @@ export function Home({ pools }: HomeProps) {
       <div className="mx-auto grid max-w-[1160px] gap-6">
         <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
           <div className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between lg:px-5">
-
-            <div className="flex flex-wrap gap-2">
-              <button className={getButtonClassName({ tone: "primary" })} disabled type="button">
-                Join with code
-              </button>
+            <h1 className={heroTitleClass}>Your pools</h1>
+            <div className={tileCardClass}>
+              <span className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                Tournament starts on
+              </span>
+              <span className="font-display text-[1.3rem] font-black uppercase leading-tight tracking-[-0.04em] text-app-ink">
+                {formatSavedAt("2026-06-10T21:00:00-06:00")}
+              </span>
             </div>
           </div>
         </header>
-
-        <section className={cn(surfaceClass, "grid gap-6 p-5 lg:grid-cols-[1.2fr_0.8fr] lg:p-7")}>
-          <div className="grid gap-4">
-            <div className="grid gap-3">
-              <h1 className={heroTitleClass}>Your pools</h1>
-              <div className={tileCardClass}>
-                  <span className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-muted">
-                    Tournament starts on
-                  </span>
-                  <span className="font-display text-[1.3rem] font-black uppercase leading-tight tracking-[-0.04em] text-app-ink">
-                    {formatSavedAt("2026-06-10T21:00:00-06:00")}
-                  </span>
-                </div>
-            </div>
-          </div>
-
-          <div className={tileCardClass}>
-            <span className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-muted">Pool creation</span>
-            <p className="m-0 text-sm font-medium leading-7 text-app-muted">
-              Self-serve pool creation remains out of scope for this prototype while the core tournament interaction model is still being tested.
-            </p>
-            <button className={getButtonClassName({ tone: "ghost" })} disabled type="button">
-              Create new pool
-            </button>
-          </div>
-        </section>
+        <div className="flex gap-4 justify-end-safe">
+          <button className={getButtonClassName({ tone: "primary" })} disabled type="button">
+            Join with code
+          </button>
+          <button className={getButtonClassName({ tone: "ghost" })} disabled type="button">
+            Create new pool
+          </button>
+        </div>
 
         <section className="grid gap-5 md:grid-cols-2">
           {pools.map((pool) => (
@@ -58,22 +43,19 @@ export function Home({ pools }: HomeProps) {
               className="grid gap-5 rounded-none border-[3px] border-app-ink bg-app-surface-strong p-5 shadow-surface"
             >
               <div className="flex flex-wrap items-start justify-between gap-4">
-                  <h2 className="m-0 font-display text-[2rem] font-black uppercase leading-[0.92] tracking-[-0.06em] text-app-ink">
-                    {pool.name}
-                  </h2>
-                
+                <h2 className="m-0 font-display text-[2rem] font-black uppercase leading-[0.92] tracking-[-0.06em] text-app-ink">
+                  {pool.name}
+                </h2>
+                <span>
+                  {pool.participantCount}{" "}
+                  {pool.participantCount === 1 ? "participant" : "participants"}
+                </span>
               </div>
 
               <div className="grid gap-4">
-                <div className={tileCardClass}>
-                  
-                </div>
-{pool.participantCount} {pool.participantCount === 1 ? "participant" : "participants"}
-                
-                  <Link className={getButtonClassName()} to={`/pools/${pool.id}`}>
-                    Open pool
-                  </Link>
-                
+                <Link className={getButtonClassName()} to={`/pools/${pool.id}`}>
+                  Open pool
+                </Link>
               </div>
             </article>
           ))}

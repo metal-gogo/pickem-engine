@@ -1,4 +1,10 @@
-export type TournamentStage = "group" | "round-of-32" | "round-of-16" | "quarterfinal" | "semifinal" | "final";
+export type TournamentStage =
+  | "group"
+  | "round-of-32"
+  | "round-of-16"
+  | "quarterfinal"
+  | "semifinal"
+  | "final";
 
 export type LockState = "editable" | "locking-soon" | "locked";
 
@@ -9,6 +15,7 @@ export interface Team {
   name: string;
   shortName: string;
   code: string;
+  fifaRanking: number;
   flag: string;
   accentColors: string[];
 }
