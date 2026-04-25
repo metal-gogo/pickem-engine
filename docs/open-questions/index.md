@@ -1,6 +1,6 @@
 # Open Questions Index
 
-- Last updated: 2026-04-09
+- Last updated: 2026-04-25
 
 This is the active list of unresolved questions that still affect planning or implementation.
 
@@ -31,13 +31,13 @@ A clear rule for score interpretation, advancement, and points.
 ### OQ-003 Identity And Join Flow
 
 Question:
-How should participants identify themselves and join a private pool in MVP?
+With WorkOS AuthKit chosen as the auth provider, how should authenticated users join a private pool and become pool participants in MVP?
 
 Why it matters:
-This affects onboarding, permissions, invites, and product complexity.
+This affects onboarding, permissions, invites, user-to-participant mapping, pool ownership, and product complexity.
 
 Decision needed:
-A lightweight MVP identity model.
+A lightweight MVP join model, including invite mechanics, pool roles, and how WorkOS users map to app users and pool participants.
 
 ### OQ-004 Results Ingestion Strategy
 
@@ -76,4 +76,3 @@ Whether self-serve pool creation is v1 or later.
 
 - Resolved questions should be moved into the canonical docs they affect.
 - Archive the previous active set when the question list is substantially re-baselined.
-
