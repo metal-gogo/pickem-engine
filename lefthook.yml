@@ -1,0 +1,17 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      run: pnpm run fmt:check
+    lint:
+      run: pnpm run lint
+
+pre-push:
+  parallel: true
+  commands:
+    types:
+      run: pnpm run verify:types
+    db:
+      run: pnpm run verify:db
+    tests:
+      run: pnpm run verify:tests
