@@ -16,6 +16,7 @@ Use layered GitHub Actions validation lanes.
 The default pull-request validation lane should run:
 
 - dependency install with the pinned package manager and frozen lockfile
+- dependency security audit for high-or-higher advisories
 - format check
 - lint
 - type generation and typecheck
@@ -39,6 +40,7 @@ Deployment workflows should be separate from basic validation:
 
 - pull requests run validation and may later create preview deployments
 - merges to `main` run validation before staging or production deployment
+- deployment workflows run a production dependency security audit for high-or-higher advisories before releasing
 - staging deploys can be automatic or manually dispatched from `main`
 - production deploys should remain explicit and controlled
 - production database migrations should have a deliberate approval path
@@ -62,6 +64,7 @@ Separating validation from deployment keeps production releases more deliberate,
 
 - Add GitHub Actions workflows only when the project moves into setup work.
 - Make the fast PR lane required before merging to `main`.
+- Gate CI/CD on high-or-higher dependency advisories while keeping full and production audit scripts available for local investigation.
 - Keep typecheck separate from linting and tests.
 - Keep deployment workflows separate from pull-request validation.
 - Use GitHub Environments for staging and production secrets.
