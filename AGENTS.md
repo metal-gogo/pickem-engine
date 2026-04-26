@@ -51,14 +51,14 @@ Unless newer canonical docs say otherwise:
 When working on UI components, stories, styling, or page composition:
 
 - read `DESIGN.md` before changing visual direction or asking Stitch to generate design references
-- start Storybook with `npm run storybook` if it is not already running
+- start Storybook with `pnpm run storybook` if it is not already running
 - use the `pickem-engine-storybook` MCP tools before making assumptions about component usage or story coverage
 - prefer Storybook stories as the main review surface for visual and interaction changes before editing broader app flows
 - use documentation and story previews to understand existing component states before inventing new ones
 - use Storybook guidance and tests when adding or updating stories
 - use the built-in viewport presets and the `Phone` story variants when reviewing responsive behavior
-- run `npm run test-storybook` after meaningful UI changes to execute story-driven interaction and accessibility tests
-- run `npm run coverage-storybook` when you need a coverage report for the story-driven test lane
+- run `pnpm run test-storybook` after meaningful UI changes to execute story-driven interaction and accessibility tests
+- run `pnpm run coverage-storybook` when you need a coverage report for the story-driven test lane
 
 Repo-local MCP registration for this workflow lives in:
 

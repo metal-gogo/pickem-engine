@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-25
+- Last updated: 2026-04-26
 
 ## Planning Objective
 
@@ -78,6 +78,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 ### Current Frontend Slice
 
 - React + TypeScript + Vite frontend shell
+- mise-pinned Node `24.15.0` and pnpm `10.33.2` tooling, with `pnpm-lock.yaml` as the dependency lockfile
 - Tailwind v4 for spacing, layout, responsive behavior, and most structural styling
 - a small Stitch-informed Apex Kinetic token layer plus reusable UI primitives rather than a heavyweight UI kit
 - the active shell should favor sharper, squared structural surfaces for cards, badges, and buttons unless a rounded shape clearly serves a specific role such as flags or avatars
@@ -95,8 +96,8 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - Storybook workbench for isolated component and view evaluation during UI iteration
 - Storybook MCP wiring so agents can use the running Storybook as structured UI context during iteration
 - Storybook viewport presets and phone-sized story variants for reviewing responsive behavior without leaving the workbench
-- Storybook Vitest integration for story-driven interaction and accessibility checks via `npm run test-storybook`
-- Storybook coverage reporting via `npm run coverage-storybook` so the test lane exposes what parts of the app code are exercised
+- Storybook Vitest integration for story-driven interaction and accessibility checks via `pnpm run test-storybook`
+- Storybook coverage reporting via `pnpm run coverage-storybook` so the test lane exposes what parts of the app code are exercised
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys

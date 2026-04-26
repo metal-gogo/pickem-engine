@@ -1,6 +1,6 @@
 # Current Architecture Direction
 
-- Last updated: 2026-04-25
+- Last updated: 2026-04-26
 
 ## Technical Direction
 
@@ -39,6 +39,7 @@ It currently uses:
 - Storybook's Vitest addon for story-driven interaction and accessibility testing in local CLI runs
 - V8 coverage reporting for the Storybook Vitest lane so component-driven test coverage can be reviewed locally
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook server can remain a project-scoped tool instead of a global machine dependency
+- repo tooling pinned by `mise.toml` to Node `24.15.0` and pnpm `10.33.2`, with dependencies locked in `pnpm-lock.yaml`
 
 This is an implementation reference for the local frontend shell. The selected platform stack is captured below.
 
@@ -89,12 +90,12 @@ Environment configuration should split local, deployed runtime, and CI concerns:
 - GitHub Actions should use GitHub Environment secrets for migrations, preview database setup, and deployment
 - application/server code should read typed config through a small validated config boundary rather than scattering raw environment access
 
-Tooling should be pinned through mise and package-manager metadata when setup begins:
+Tooling is pinned through mise and package-manager metadata:
 
-- `mise.toml` should pin Node 24 LTS and pnpm
-- `package.json` should include an exact `packageManager` value for pnpm
+- `mise.toml` pins Node `24.15.0` and pnpm `10.33.2`
+- `package.json` includes the exact `packageManager` value `pnpm@10.33.2`
 - CI should install dependencies with `pnpm install --frozen-lockfile`
-- the existing npm lockfile should be replaced by `pnpm-lock.yaml` during the package-manager migration
+- `pnpm-lock.yaml` is the package lockfile; the previous npm lockfile has been retired
 
 Validation should use distinct lanes:
 

@@ -8,12 +8,9 @@ set -euo pipefail
 
 if command -v mise >/dev/null 2>&1; then
   mise install
-fi
-
-if [ -f package-lock.json ]; then
-  mise exec -- npm ci
+  mise exec -- pnpm install --frozen-lockfile
 else
-  mise exec -- npm install
+  pnpm install --frozen-lockfile
 fi
 '''
 
@@ -25,9 +22,10 @@ set -euo pipefail
 
 if command -v mise >/dev/null 2>&1; then
   mise install
+  mise exec -- pnpm run dev
+else
+  pnpm run dev
 fi
-
-mise exec -- npm run dev
 '''
 
 [[actions]]
@@ -38,7 +36,8 @@ set -euo pipefail
 
 if command -v mise >/dev/null 2>&1; then
   mise install
+  mise exec -- pnpm run storybook
+else
+  pnpm run storybook
 fi
-
-mise exec -- npm run storybook
 '''
