@@ -5,6 +5,8 @@ pre-commit:
       run: pnpm run fmt:check
     lint:
       run: pnpm run lint
+    secrets:
+      run: pnpm run security:secrets:staged
 
 pre-push:
   parallel: true
@@ -13,5 +15,7 @@ pre-push:
       run: pnpm run verify:types
     db:
       run: pnpm run verify:db
+    security:
+      run: pnpm run verify:security
     tests:
       run: pnpm run verify:tests

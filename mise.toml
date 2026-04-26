@@ -1,3 +1,4 @@
 [tools]
 node = "24.15.0"
 pnpm = "10.33.2"
+"ubi:gitleaks/gitleaks" = "8.30.1"
