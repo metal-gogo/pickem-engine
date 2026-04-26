@@ -79,6 +79,8 @@ The intended database environment shape is:
 
 This direction preserves Prisma's model-based developer experience while using Neon for the managed Postgres platform layer. It is still reversible because Prisma ORM can connect to another Postgres provider later.
 
+The initial Prisma ORM setup is present in the repository. Prisma CLI and migration commands use `DIRECT_URL` from `prisma.config.ts` so they connect to Neon's direct endpoint. `DATABASE_URL` remains the pooled runtime connection string for app/server query paths, with Cloudflare Hyperdrive still planned as a later runtime connection layer.
+
 React Router v7 replaces the earlier Remix v3 direction because the platform build should preserve a clear Storybook, Vitest, and Playwright testing path. Remix v3 remains a possible future candidate once its component model and tooling ecosystem are clearer.
 
 Authentication should use WorkOS as the identity provider and hosted auth/session layer. Product authorization remains in the app database: pools, pool participants, pool roles, picks, scoring, and leaderboards are internal `pickem-engine` concepts linked to an app user record, not WorkOS domain concepts.

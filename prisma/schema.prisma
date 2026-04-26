@@ -1,0 +1,11 @@
+// Prisma schema for pickem-engine.
+// Add models here only after the corresponding product/domain rule is settled.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}

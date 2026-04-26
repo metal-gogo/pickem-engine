@@ -79,6 +79,8 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 
 - React + TypeScript + Vite frontend shell
 - mise-pinned Node `24.15.0` and pnpm `10.33.2` tooling, with `pnpm-lock.yaml` as the dependency lockfile
+- Prisma ORM is installed and initialized with a PostgreSQL schema/config baseline; no product tables have been added yet
+- local Neon development connection variables are expected as `DATABASE_URL` for pooled runtime access and `DIRECT_URL` for direct Prisma CLI and migration access
 - Tailwind v4 for spacing, layout, responsive behavior, and most structural styling
 - a small Stitch-informed Apex Kinetic token layer plus reusable UI primitives rather than a heavyweight UI kit
 - the active shell should favor sharper, squared structural surfaces for cards, badges, and buttons unless a rounded shape clearly serves a specific role such as flags or avatars
