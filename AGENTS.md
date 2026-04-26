@@ -46,6 +46,23 @@ Unless newer canonical docs say otherwise:
 - When creating commits, use Conventional Commits and prefer atomic, coherent changes.
 - When a workflow repeats across sessions, suggest creating or updating a skill under `.agents/skills/`.
 
+## Execution Discipline
+
+Use these rules to reduce avoidable agent mistakes. They are intentionally agent-agnostic and apply to Codex, Claude, Cursor, and any other assistant working in this repo.
+
+- Start by naming the goal and the success criteria for non-trivial work.
+- State assumptions when they affect behavior, data, permissions, architecture, or product scope.
+- Ask before deciding when multiple interpretations would lead to meaningfully different outcomes.
+- Prefer simple, direct changes. Do not add speculative features, abstractions, configuration, or defensive code that the current task does not need.
+- Keep edits surgical. Touch only files that are required for the requested change.
+- Match the local style and existing patterns before introducing a new pattern.
+- Do not clean up unrelated code, comments, formatting, or dead code unless asked.
+- Remove only unused code that your own change made obsolete.
+- Make every changed line trace back to the user request, a required verification fix, or repo guidance.
+- For bug fixes, prefer a failing test or clear reproduction before changing behavior.
+- For refactors, verify behavior before and after when practical.
+- Loop until the work is verified or clearly report the remaining blocker.
+
 ## UI Workflow With Storybook MCP
 
 When working on UI components, stories, styling, or page composition:
