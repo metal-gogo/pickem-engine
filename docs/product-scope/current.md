@@ -1,16 +1,16 @@
 # Current Product Scope
 
-- Last updated: 2026-04-09
+- Last updated: 2026-04-25
 
 ## Product Direction
 
-Build a shareable World Cup 2026 pick'em experience that is simple enough to launch for a private group and structured enough to grow later.
+Build a shareable World Cup 2026 pick'em platform that starts with private pools and stays structured enough to grow later.
 
 The first version is for friends and family, but the project should stay flexible enough to become a public product if it proves compelling.
 
 ## Current North Star
 
-Launch a private World Cup pool that feels coherent, usable, and easy to share.
+Build the platform path for private World Cup pools: pool creation, constrained rules setup, predictions, scoring, and leaderboards.
 
 ## Target User
 
@@ -21,8 +21,13 @@ Launch a private World Cup pool that feels coherent, usable, and easy to share.
 
 - private, invite-only pool experience
 - 2026 FIFA World Cup as the initial tournament target
+- self-serve pool creation and configuration
 - exact score predictions for matches
-- one platform-wide scoring model
+- one platform-owned scoring model with constrained pool-level point settings
+- required winner-or-draw points configured by the pool owner
+- optional bonuses for exact result, tournament top scorer, tournament best player, and World Cup champion
+- a reusable scoring-system summary component or surface
+- tournament-rules explanation surfaces for real World Cup advancement and knockout rules
 - one global prediction deadline before the tournament starts
 - official-result-based scoring and leaderboard updates
 - documentation and planning structure that supports stop-and-start development
@@ -31,28 +36,30 @@ Launch a private World Cup pool that feels coherent, usable, and easy to share.
 
 - public/discoverable pools
 - monetization design beyond keeping future flexibility in mind
-- pool-specific scoring customization
+- custom scoring formulas, custom scoring categories, or per-match scoring overrides
 - pool-specific custom deadlines
+- pool-specific tournament rules
 - notifications as a required v1 feature
-- detailed stack or infrastructure choices before product rules are clearer
+- technology exploration that delays the selected platform build path
 
 ## Near-Term Priorities
 
 1. Keep the project definition clear and durable.
-2. Make the core business rules explicit.
-3. Define the smallest real MVP for World Cup usage.
+2. Build from the selected platform architecture and keep setup decisions reversible where possible.
+3. Make the configurable scoring rules explicit enough to design, implement, and test.
 4. Keep future extensibility in mind without overengineering for it.
 
 ## Explicit Non-Goals For Now
 
 - building a generic sports platform before proving the World Cup use case
 - creating a heavy documentation process
-- choosing implementation technology too early
+- reopening settled implementation technology choices without a concrete blocker
 
 ## Open Edges
 
-- the exact scoring table is still open
+- default scoring point values, allowed ranges, and validation constraints are still open
 - knockout-stage prediction rules are still open
-- onboarding and identity are still open
-- multilingual support is important, but MVP depth is still open
-
+- authenticated join and invite flow details are still open
+- result ingestion strategy is still open
+- multilingual launch scope is still open
+- official bonus-result definitions are still open

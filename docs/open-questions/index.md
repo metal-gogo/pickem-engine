@@ -6,16 +6,16 @@ This is the active list of unresolved questions that still affect planning or im
 
 ## Active Questions
 
-### OQ-001 Exact Scoring Model
+### OQ-001 Scoring Defaults And Bounds
 
 Question:
-What exact point table should the product use for exact-score picks?
+What default point values, allowed ranges, and validation constraints should apply to the configurable pool scoring settings?
 
 Why it matters:
-This is the main unresolved rule driving scoring logic, UI copy, and test cases.
+This affects pool setup UX, scoring logic, UI copy, and test cases.
 
 Decision needed:
-A concrete scoring formula.
+A concrete default configuration and validation policy for required winner-or-draw points and optional bonus point values.
 
 ### OQ-002 Knockout Match Handling
 
@@ -31,13 +31,13 @@ A clear rule for score interpretation, advancement, and points.
 ### OQ-003 Identity And Join Flow
 
 Question:
-With WorkOS AuthKit chosen as the auth provider, how should authenticated users join a private pool and become pool participants in MVP?
+With WorkOS AuthKit chosen as the auth provider, how should authenticated users join a private pool and become pool participants?
 
 Why it matters:
 This affects onboarding, permissions, invites, user-to-participant mapping, pool ownership, and product complexity.
 
 Decision needed:
-A lightweight MVP join model, including invite mechanics, pool roles, and how WorkOS users map to app users and pool participants.
+A lightweight join model, including invite mechanics, pool roles, and how WorkOS users map to app users and pool participants.
 
 ### OQ-004 Results Ingestion Strategy
 
@@ -53,7 +53,7 @@ A preferred initial strategy with fallback expectations.
 ### OQ-005 Multilingual Scope
 
 Question:
-Is multilingual support part of MVP or should the first release be single-language while remaining localization-ready?
+Should the first platform release be single-language while remaining localization-ready, or should multilingual support ship from the start?
 
 Why it matters:
 This affects content structure, UX planning, and implementation effort.
@@ -61,16 +61,16 @@ This affects content structure, UX planning, and implementation effort.
 Decision needed:
 A launch-language plan.
 
-### OQ-006 Pool Creation Scope
+### OQ-006 Bonus Result Definitions
 
 Question:
-Must users be able to self-create pools in MVP, or can initial pools be provisioned manually?
+Which official result source and tie-break handling should resolve tournament top scorer and tournament best-player bonus predictions?
 
 Why it matters:
-This determines how much pool-management functionality is required for the first usable release.
+This affects scoring determinism, result ingestion, and how rules are explained to users.
 
 Decision needed:
-Whether self-serve pool creation is v1 or later.
+A specific official-source policy for bonus prediction outcomes.
 
 ## Review Notes
 

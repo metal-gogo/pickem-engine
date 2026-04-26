@@ -1,6 +1,6 @@
 # Domain Glossary
 
-- Last updated: 2026-04-12
+- Last updated: 2026-04-25
 
 ## Pool
 
@@ -50,6 +50,26 @@ An unresolved tournament reference used in knockout scheduling, such as a group 
 
 A participant's predicted exact score for a match.
 
+## Scoring Model
+
+The platform-defined set of scoring categories and scoring behavior used to calculate pool points.
+
+## Pool Scoring Settings
+
+The constrained per-pool point configuration chosen by the pool owner from platform-supported scoring categories.
+
+## Winner Or Draw Points
+
+The required scoring category that awards points when a participant correctly predicts the match winner or correctly predicts that the match is a draw.
+
+## Exact Result Bonus
+
+An optional pool scoring bonus for predicting the exact match score. When enabled, it is layered on top of winner-or-draw points.
+
+## Tournament Bonus Prediction
+
+A tournament-level prediction such as tournament top scorer, tournament best player, or World Cup champion.
+
 ## Official Result
 
 The platform-approved result used for scoring and leaderboard updates.
@@ -62,7 +82,7 @@ Use `leaderboard` as the stable domain term for pool ranking even if a frontend 
 
 ## Global Deadline
 
-The platform-managed cutoff time after which picks are locked for MVP.
+The platform-managed cutoff time after which picks are locked.
 
 ## Terminology Note
 
