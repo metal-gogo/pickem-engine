@@ -66,6 +66,7 @@ The platform direction now has a confirmed stack baseline:
 - oxlint and oxfmt will be the linting and formatting baseline.
 - Sentry will be the primary application error tracking provider.
 - Cloudflare native observability will be the initial runtime logs, metrics, and tracing baseline.
+- Porkbun is the registrar for `futbol.quest`, with Cloudflare continuing to serve the deployed app and DNS path.
 - CI/CD will use a trunk-based workflow with `main` as the deployable source of truth.
 - GitHub Actions validation will use layered lanes for formatting, linting, typechecking, tests, builds, runtime checks, database checks, Storybook checks, and E2E smoke tests.
 - GitHub Actions should be able to run migrations and, where useful, create short-lived Neon branches for pull request checks or migration rehearsal.
@@ -155,7 +156,9 @@ CI/CD validation should use layered GitHub Actions lanes:
 - staging and production deployments should be separate workflows from basic pull-request validation
 - CI should default to standard Linux runners and avoid expensive runners unless a concrete need appears
 
-These decisions are captured individually in decision records `008` through `025`.
+Public domain registration uses Porkbun for `futbol.quest`, while Cloudflare remains the hosting and DNS/runtime platform. The domain name gives the product a soccer, game, and journey feel without changing the first-release scope.
+
+These decisions are captured individually in decision records `008` through `027`.
 
 ## Working Assumptions
 

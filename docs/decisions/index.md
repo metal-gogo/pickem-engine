@@ -30,6 +30,7 @@ This is the register of accepted cross-cutting project decisions.
 - `024` [Use trunk-based CI/CD for solo development](/home/mgogo/src/pickem-engine/docs/decisions/024-use-trunk-based-ci-cd-for-solo-development.md)
 - `025` [Use layered GitHub Actions validation lanes](/home/mgogo/src/pickem-engine/docs/decisions/025-use-layered-github-actions-validation-lanes.md)
 - `026` [Use constrained pool scoring settings](/home/mgogo/src/pickem-engine/docs/decisions/026-use-constrained-pool-scoring-settings.md)
+- `027` [Use Porkbun for futbol.quest domain registration](/home/mgogo/src/pickem-engine/docs/decisions/027-use-porkbun-for-futbol-quest-domain-registration.md)
 
 ## Notes
 
