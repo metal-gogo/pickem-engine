@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HashRouter, Navigate, Route, Routes, useParams } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes, useParams } from "react-router";
 
 import { prototypePool, sampleMatches } from "../../data/fixtures";
 import { getPoolById, prototypePools } from "../../data/pools";

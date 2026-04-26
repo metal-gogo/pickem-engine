@@ -1,5 +1,5 @@
 import type { Preview } from "@storybook/react-vite";
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from "react-router";
 import { MINIMAL_VIEWPORTS } from "storybook/viewport";
 
 import "../src/styles/index.css";
