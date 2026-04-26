@@ -115,3 +115,7 @@ When leaving the repo in a meaningfully different state, preserve enough context
 - what should happen next
 
 Keep that handoff concise. Do not add process heavier than the project needs.
+
+## Windows / WSL Shell Preference
+
+On Windows, prefer running repository commands through WSL instead of PowerShell.

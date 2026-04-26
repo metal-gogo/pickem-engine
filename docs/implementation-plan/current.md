@@ -77,7 +77,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 
 ### Current Frontend Slice
 
-- React + TypeScript + Vite frontend shell
+- React Router v7 framework-mode app using React, TypeScript, and Vite
 - mise-pinned Node `24.15.0` and pnpm `10.33.2` tooling, with `pnpm-lock.yaml` as the dependency lockfile
 - Prisma ORM is installed and initialized with a PostgreSQL schema/config baseline; no product tables have been added yet
 - local Neon development connection variables are expected as `DATABASE_URL` for pooled runtime access and `DIRECT_URL` for direct Prisma CLI and migration access
@@ -92,6 +92,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - domain logic
   - fixture and leaderboard data
   - local persistence adapter
+- initial WorkOS AuthKit plumbing includes server-handled `/login`, `/callback`, and `/logout` routes; app-owned user, participant, invite, and authorization behavior remains undecided
 - routed screens under `src/views/` named without a `View` suffix because the folder already provides that context
 - reusable components named by role rather than default styling, with nested folders used when subordinate relationships are real
 - localStorage-backed pick persistence behind a replaceable storage interface
@@ -100,10 +101,15 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - Storybook viewport presets and phone-sized story variants for reviewing responsive behavior without leaving the workbench
 - Storybook Vitest integration for story-driven interaction and accessibility checks via `pnpm run test-storybook`
 - Storybook coverage reporting via `pnpm run coverage-storybook` so the test lane exposes what parts of the app code are exercised
+- dependency security audit scripts:
+  - `pnpm run security:audit` for local full dependency investigation
+  - `pnpm run security:audit:prod` for local production dependency investigation
+  - `pnpm run security:audit:ci` for high-or-higher severity pull-request checks
+  - `pnpm run security:audit:ci:prod` for high-or-higher severity deployment checks against production dependencies
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys
-- for the next database-backed app, use GitHub Actions validation lanes for format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
+- for the next database-backed app, use GitHub Actions validation lanes for dependency security audit, format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
   - pool list home

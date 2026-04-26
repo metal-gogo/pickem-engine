@@ -20,7 +20,7 @@ The current implementation is a frontend-first web shell that remains useful as 
 
 It currently uses:
 
-- a client-rendered React + TypeScript + Vite web app
+- a React Router v7 framework-mode app using React, TypeScript, Vite, and server-handled auth routes
 - Tailwind v4 utilities, a Stitch-informed Apex Kinetic token layer, and reusable UI primitives for the current interaction model
 - shared UI primitives now biased toward sharper, squared structural surfaces for buttons, badges, and cards so the implemented shell stays closer to the current Stitch direction
 - a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other UI details that are less readable as utility strings
@@ -33,6 +33,7 @@ It currently uses:
   - pool list home
   - pool dashboard
   - focused group picks
+- initial WorkOS AuthKit route plumbing for `/login`, `/callback`, and `/logout`
 - Storybook as a UI evaluation harness for isolated component and view review
 - Storybook MCP addon so agent workflows can inspect component docs, story previews, and story tests through the running Storybook instance
 - Storybook viewport presets and phone-sized story variants for responsive review during UI iteration
@@ -99,6 +100,11 @@ Tooling is pinned through mise and package-manager metadata:
 - `package.json` includes the exact `packageManager` value `pnpm@10.33.2`
 - CI should install dependencies with `pnpm install --frozen-lockfile`
 - `pnpm-lock.yaml` is the package lockfile; the previous npm lockfile has been retired
+- dependency security checks use pnpm audit scripts:
+  - `pnpm run security:audit` for local full dependency investigation
+  - `pnpm run security:audit:prod` for local production dependency investigation
+  - `pnpm run security:audit:ci` for high-or-higher severity pull-request checks
+  - `pnpm run security:audit:ci:prod` for high-or-higher severity deployment checks against production dependencies
 
 Validation should use distinct lanes:
 
@@ -149,13 +155,14 @@ CI/CD should stay simple for solo development:
 
 CI/CD validation should use layered GitHub Actions lanes:
 
-- pull requests should run dependency install with a frozen lockfile, format check, lint, type generation, typecheck, unit/focused integration tests, and production build
+- pull requests should run dependency install with a frozen lockfile, dependency security audit for high-or-higher advisories, format check, lint, type generation, typecheck, unit/focused integration tests, and production build
 - typecheck should remain separate from linting and tests
 - Storybook build, story-driven interaction/accessibility checks, and browser/component tests should run in CI once the UI validation setup is wired for the next app
 - Cloudflare runtime tests should run through the Cloudflare Vitest/Miniflare path once server/runtime code exists
 - Prisma schema/client validation, migration checks, and database integration tests should run against isolated development or pull-request database environments once persistence exists
 - Playwright E2E should start as a focused smoke lane rather than a broad slow suite
 - staging and production deployments should be separate workflows from basic pull-request validation
+- deployment workflows should run a production dependency security audit for high-or-higher advisories before releasing
 - CI should default to standard Linux runners and avoid expensive runners unless a concrete need appears
 
 Public domain registration uses Porkbun for `futbol.quest`, while Cloudflare remains the hosting and DNS/runtime platform. The domain name gives the product a soccer, game, and journey feel without changing the first-release scope.

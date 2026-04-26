@@ -17,7 +17,7 @@ interface PoolExperienceProps {
   onPreviewLockedChange: (nextValue: boolean) => void;
 }
 
-function PoolExperience({ previewLocked, onPreviewLockedChange }: PoolExperienceProps) {
+export function PoolExperience({ previewLocked, onPreviewLockedChange }: PoolExperienceProps) {
   const { poolId = "" } = useParams();
   const pool = getPoolById(poolId);
 
@@ -26,7 +26,8 @@ function PoolExperience({ previewLocked, onPreviewLockedChange }: PoolExperience
   }
 
   const storage = createLocalPickStorage(pool.id);
-  const { savedPickSet, draftPickSet, draftDirty, completedSavedCount, updateScore, saveDraft } = usePickSet(sampleMatches, storage);
+  const { savedPickSet, draftPickSet, draftDirty, completedSavedCount, updateScore, saveDraft } =
+    usePickSet(sampleMatches, storage);
   const now = previewLocked ? getPrototypeLockedNow(prototypePool.deadlineAt) : new Date();
   const lockState = getLockState(prototypePool.deadlineAt, now);
   const deadlineLabel = getDeadlineLabel(prototypePool.deadlineAt, now);
@@ -93,7 +94,15 @@ interface GroupRouteProps {
   onSaveDraft: () => void;
 }
 
-function GroupRoute({ poolId, groups, draftPickSet, savedPickSet, lockState, onScoreChange, onSaveDraft }: GroupRouteProps) {
+function GroupRoute({
+  poolId,
+  groups,
+  draftPickSet,
+  savedPickSet,
+  lockState,
+  onScoreChange,
+  onSaveDraft,
+}: GroupRouteProps) {
   const { groupId = "" } = useParams();
   const pool = getPoolById(poolId);
   const group = groups.find((entry) => entry.id === groupId);
@@ -125,7 +134,12 @@ export function App() {
         <Route path="/" element={<Home pools={prototypePools} />} />
         <Route
           path="/pools/:poolId/*"
-          element={<PoolExperience previewLocked={previewLocked} onPreviewLockedChange={setPreviewLocked} />}
+          element={
+            <PoolExperience
+              previewLocked={previewLocked}
+              onPreviewLockedChange={setPreviewLocked}
+            />
+          }
         />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
