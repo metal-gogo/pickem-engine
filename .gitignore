@@ -1,7 +1,10 @@
 node_modules/
 dist/
+build/
+.react-router/
 storybook-static/
 coverage/
+generated/
 .DS_Store
 *.tsbuildinfo
 .env
