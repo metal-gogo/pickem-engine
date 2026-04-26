@@ -50,6 +50,7 @@ Unless newer canonical docs say otherwise:
 
 When working on UI components, stories, styling, or page composition:
 
+- read `DESIGN.md` before changing visual direction or asking Stitch to generate design references
 - start Storybook with `npm run storybook` if it is not already running
 - use the `pickem-engine-storybook` MCP tools before making assumptions about component usage or story coverage
 - prefer Storybook stories as the main review surface for visual and interaction changes before editing broader app flows
