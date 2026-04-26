@@ -9,5 +9,10 @@
     "allowSyntheticDefaultImports": true,
     "noEmit": true
   },
-  "include": ["react-router.config.ts", "vite.config.ts", "vitest.config.ts"]
+  "include": [
+    "react-router.config.ts",
+    "storybook.vite.config.ts",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ]
 }

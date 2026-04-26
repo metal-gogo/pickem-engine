@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { expect, userEvent, within } from "storybook/test";
+import { expect, within } from "storybook/test";
 
 import { narrowCanvas, storyFamilyPool } from "../../storybook";
 
@@ -61,9 +61,8 @@ export const RulesModal: Story = {
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement);
 
-    await userEvent.click(canvas.getByRole("button", { name: /see rules/i }));
-
-    await expect(canvas.getByText(/full pool rules/i)).toBeInTheDocument();
-    await expect(canvas.getByText(/prototype-only placeholder copy/i)).toBeInTheDocument();
+    await expect(canvas.getByText(/points overview/i)).toBeInTheDocument();
+    await expect(canvas.getByText(/exact score preview: 5 pts/i)).toBeInTheDocument();
+    await expect(canvas.getByText(/pick correct outcome: 2 pts/i)).toBeInTheDocument();
   },
 };

@@ -13,7 +13,9 @@ import { GroupPicks } from ".";
 function GroupPicksStoryHarness({ lockState }: { lockState: LockState }) {
   const [savedPickSet, setSavedPickSet] = useState(seededSavedPickSet);
   const [draftPickSet, setDraftPickSet] = useState(() => clonePickSet(seededSavedPickSet));
-  const currentGroup = buildTournamentGroups(storyMatches, savedPickSet).find((group) => group.id === "A");
+  const currentGroup = buildTournamentGroups(storyMatches, savedPickSet).find(
+    (group) => group.id === "A",
+  );
 
   if (!currentGroup) {
     return null;
@@ -28,7 +30,9 @@ function GroupPicksStoryHarness({ lockState }: { lockState: LockState }) {
       savedPickSet={savedPickSet}
       lockState={lockState}
       onScoreChange={(matchId, side, nextValue) => {
-        setDraftPickSet((currentPickSet) => updatePickScore(currentPickSet, matchId, side, nextValue));
+        setDraftPickSet((currentPickSet) =>
+          updatePickScore(currentPickSet, matchId, side, nextValue),
+        );
       }}
       onSaveDraft={() => {
         if (lockState === "locked") {
@@ -43,7 +47,9 @@ function GroupPicksStoryHarness({ lockState }: { lockState: LockState }) {
   );
 }
 
-const currentGroup = buildTournamentGroups(storyMatches, seededSavedPickSet).find((group) => group.id === "A")!;
+const currentGroup = buildTournamentGroups(storyMatches, seededSavedPickSet).find(
+  (group) => group.id === "A",
+)!;
 
 const meta = {
   title: "Views/GroupPicks",
@@ -91,14 +97,12 @@ export const EditableFlow: Story = {
     await userEvent.clear(mexicoScore);
     await userEvent.type(mexicoScore, "4");
 
-    const saveButton = canvas.getByRole("button", { name: /^save$/i });
+    const saveButton = canvas.getByRole("button", { name: /save and continue/i });
     await expect(saveButton).toBeEnabled();
-    await expect(canvas.getByText(/fixture changed in group a since the last save/i)).toBeInTheDocument();
 
     await userEvent.click(saveButton);
 
-    await expect(saveButton).toBeDisabled();
-    await expect(canvas.getByText(/everything in this group already matches the saved snapshot/i)).toBeInTheDocument();
+    await expect(canvas.getByText(/points overview/i)).toBeInTheDocument();
   },
 };
 

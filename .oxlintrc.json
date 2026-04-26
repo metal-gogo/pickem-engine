@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "unicorn", "oxc", "react", "jsx-a11y", "vitest", "import"],
+  "ignorePatterns": [
+    ".react-router/**",
+    "build/**",
+    "coverage/**",
+    "dist/**",
+    "generated/**",
+    "node_modules/**",
+    "storybook-static/**"
+  ]
+}

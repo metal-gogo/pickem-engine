@@ -54,7 +54,9 @@ describe("localPickStorage", () => {
 
   it("saves and loads a persisted pick set", () => {
     attachStorage(createLocalStorageMock() as unknown as Storage);
-    const savedPickSet = markPickSetSaved(updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[0].id, "homeScore", "1"));
+    const savedPickSet = markPickSetSaved(
+      updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[0].id, "homeScore", "1"),
+    );
 
     localPickStorage.save(savedPickSet);
     const loaded = localPickStorage.load(sampleMatches);
@@ -118,11 +120,11 @@ describe("localPickStorage", () => {
 
   it("does not throw when localStorage.save fails", () => {
     const failingStorage = {
-      getItem: vi.fn(() => null),
-      setItem: vi.fn(() => {
+      getItem: vi.fn<Storage["getItem"]>(() => null),
+      setItem: vi.fn<Storage["setItem"]>(() => {
         throw new Error("storage full");
       }),
-      removeItem: vi.fn(),
+      removeItem: vi.fn<Storage["removeItem"]>(),
     };
 
     attachStorage(failingStorage as unknown as Storage);

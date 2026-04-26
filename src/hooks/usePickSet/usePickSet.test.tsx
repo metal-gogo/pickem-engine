@@ -53,9 +53,9 @@ afterEach(() => {
 describe("usePickSet", () => {
   it("initializes from saved picks and tracks draft state", () => {
     const storage: PickStorage = {
-      load: vi.fn(() => createEmptyPickSet(sampleMatches)),
-      save: vi.fn(),
-      clear: vi.fn(),
+      load: vi.fn<PickStorage["load"]>(() => createEmptyPickSet(sampleMatches)),
+      save: vi.fn<PickStorage["save"]>(),
+      clear: vi.fn<PickStorage["clear"]>(),
     };
 
     renderHookWithStorage(storage);
@@ -99,11 +99,13 @@ describe("usePickSet", () => {
   });
 
   it("keeps draft and saved pick sets separate when editing", () => {
-    const initialPickSet = markPickSetSaved(updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[1].id, "awayScore", "3"));
+    const initialPickSet = markPickSetSaved(
+      updatePickScore(createEmptyPickSet(sampleMatches), sampleMatches[1].id, "awayScore", "3"),
+    );
     const storage: PickStorage = {
-      load: vi.fn(() => initialPickSet),
-      save: vi.fn(),
-      clear: vi.fn(),
+      load: vi.fn<PickStorage["load"]>(() => initialPickSet),
+      save: vi.fn<PickStorage["save"]>(),
+      clear: vi.fn<PickStorage["clear"]>(),
     };
 
     renderHookWithStorage(storage);
