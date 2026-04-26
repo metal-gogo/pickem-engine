@@ -14,22 +14,22 @@ The architecture should support:
 - official-result-based scoring
 - enough flexibility to support future tournaments later
 
-## Current Discovery Build Shape
+## Current Local Frontend Reference
 
-The current implementation is a frontend-first web shell intended to validate the core prediction flow before backend commitments.
+The current implementation is a frontend-first web shell that remains useful as a design and interaction reference while the platform build begins.
 
 It currently uses:
 
 - a client-rendered React + TypeScript + Vite web app
-- Tailwind v4 utilities, a Stitch-informed Apex Kinetic token layer, and reusable UI primitives for the prototype interaction model
+- Tailwind v4 utilities, a Stitch-informed Apex Kinetic token layer, and reusable UI primitives for the current interaction model
 - shared UI primitives now biased toward sharper, squared structural surfaces for buttons, badges, and cards so the implemented shell stays closer to the current Stitch direction
 - a small amount of authored CSS reserved for global atmosphere, number-input normalization, and other UI details that are less readable as utility strings
 - fixed tournament, pool, and placeholder rules data stored separately from presentation
-- localStorage behind a small persistence adapter rather than direct component access, now scoped by pool id for the prototype's multi-pool flow
+- localStorage behind a small persistence adapter rather than direct component access, now scoped by pool id for the current multi-pool flow
 - domain modules for pick state and lock state logic rather than embedding those rules inside React components
 - domain helpers for grouped tournament projections so the dashboard can derive provisional group tables from saved exact-score picks
 - colocated module folders so React components can keep their stories and related support files nearby, with domain modules able to colocate focused unit tests as they grow
-- lightweight routing around the active discovery flow:
+- lightweight routing around the active local flow:
   - pool list home
   - pool dashboard
   - focused group picks
@@ -40,11 +40,11 @@ It currently uses:
 - V8 coverage reporting for the Storybook Vitest lane so component-driven test coverage can be reviewed locally
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook server can remain a project-scoped tool instead of a global machine dependency
 
-This is an implementation shape for the discovery build, not a final commitment to the long-term product stack.
+This is an implementation reference for the local frontend shell. The selected platform stack is captured below.
 
-## Confirmed Next App Architecture Decisions
+## Confirmed Platform Architecture Decisions
 
-The discovery build is still local-first, but the next database-backed app direction now has a confirmed stack baseline:
+The platform direction now has a confirmed stack baseline:
 
 - React Router v7 framework mode will be the app framework.
 - React 19 will be the UI runtime.
@@ -77,7 +77,7 @@ The intended database environment shape is:
 
 This direction preserves Prisma's model-based developer experience while using Neon for the managed Postgres platform layer. It is still reversible because Prisma ORM can connect to another Postgres provider later.
 
-React Router v7 replaces the earlier Remix v3 direction because MVP implementation should preserve a clear Storybook, Vitest, and Playwright testing path. Remix v3 remains a possible future candidate once its component model and tooling ecosystem are clearer.
+React Router v7 replaces the earlier Remix v3 direction because the platform build should preserve a clear Storybook, Vitest, and Playwright testing path. Remix v3 remains a possible future candidate once its component model and tooling ecosystem are clearer.
 
 Authentication should use WorkOS as the identity provider and hosted auth/session layer. Product authorization remains in the app database: pools, pool participants, pool roles, picks, scoring, and leaderboards are internal `pickem-engine` concepts linked to an app user record, not WorkOS domain concepts.
 
@@ -158,12 +158,46 @@ These decisions are captured individually in decision records `008` through `025
 
 ## Working Assumptions
 
-- The exact MVP join and invite flow is not decided yet.
+- The exact join and invite flow is not decided yet.
+
+## Confirmed Product Rule Shape
+
+The platform owns the scoring model while allowing constrained pool-level point settings:
+
+- winner-or-draw points are required and configured by the pool owner
+- exact result points are an optional bonus that can be enabled or disabled by the pool owner
+- tournament top scorer, tournament best player, and World Cup champion are optional bonus predictions with configurable point values when enabled
+- pool owners cannot create custom formulas, per-match point overrides, custom tournament advancement rules, or custom deadlines
+
+This direction is captured in decision `026`.
+
+## Design Proposal Targets
+
+Use Stitch MCP design proposals to explore these surfaces:
+
+- landing page
+- create/configure pool flow, including constrained rules setup
+- reusable scoring-system summary component
+- tournament-rules page explaining actual World Cup advancement and knockout rules
+- user/account settings
+- authentication or auth-transition screen if WorkOS hosted auth still leaves an app-owned transition surface
+- team single page with team information, players, manager, and World Cup history
+- my pools or pool list screen
+- pool dashboard
+- join pool or invite acceptance flow
+- picks entry and picks review
+- leaderboard
+- match schedule and results
+- empty, locked, invalid-invite, and error states
+
+Design proposals should be mobile-first, support tablet and desktop layouts, and support light and dark mode from the start.
 
 ## Current Visual Language
 
 The active frontend should keep translating the existing Stitch-informed direction into a small set of repo-specific rules that are easy to recover later.
 
+- design mobile-first, then expand carefully for tablet and desktop
+- support light and dark mode through design tokens from the start
 - treat the interface as a warm editorial sports surface rather than cool generic SaaS chrome:
   - prefer cream and paper-like canvases with dark `ink` structure
   - use the lime and rust accents as high-energy emphasis, not as constant fill colors
@@ -184,10 +218,10 @@ The active frontend should keep translating the existing Stitch-informed directi
 
 ## Frontend Organization Conventions
 
-The discovery build now follows a small set of naming and placement rules so the UI stays readable as the prototype grows.
+The current frontend shell follows a small set of naming and placement rules so the UI stays readable as the platform grows.
 
 - `src/app/` owns application-level wiring such as route composition and the shared shell frame
-- the active shared shell frame for the prototype lives in `src/app/PoolShell/`, while older shells should not stay the main Storybook reference once the routed flow has moved on
+- the active shared shell frame lives in `src/app/PoolShell/`, while older shells should not stay the main Storybook reference once the routed flow has moved on
 - `src/views/` owns routed screens, with screen components named without a `View` suffix because the folder already provides that context
 - `src/components/` owns reusable UI building blocks and higher-level modules, with nested directories used when one component is clearly subordinate to another
 - component names should describe role, not styling defaults; visual treatments belong in props rather than in names such as `PrimaryButton`
@@ -234,7 +268,9 @@ This keeps the raw ingest repeatable while still letting the app grow around cle
 
 ## Known Unknowns
 
-- how authenticated users should join a private pool and become pool participants in MVP
-- how result ingestion should work in MVP
-- whether multilingual support is MVP or later
+- how authenticated users should join a private pool and become pool participants
+- how result ingestion should work
+- whether multilingual support ships in the first platform release or later
 - how much tournament progression needs to be modeled explicitly
+- what defaults, bounds, and validation constraints should apply to scoring point settings
+- how official tournament top scorer and tournament best-player bonus outcomes should be resolved
