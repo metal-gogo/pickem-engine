@@ -1,16 +1,9 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
 import { PoolDetails } from "../../domain/models";
 import { cn } from "../cn";
-import {
-  eyebrowClass,
-  inlineSummaryClass,
-  metricValueClass,
-  sectionCopyClass,
-  surfaceClass,
-  tileCardClass,
-} from "../ui";
+import { surfaceClass } from "../ui";
 
 interface PoolShellProps {
   children: ReactNode;
@@ -24,13 +17,7 @@ interface PoolShellProps {
 export function PoolShell({
   children,
   pool,
-  previewLocked,
-  onPreviewLockedChange,
-  savedPickCount,
-  totalMatches,
 }: PoolShellProps) {
-  const progressPercent = Math.round((savedPickCount / totalMatches) * 100);
-
   return (
     <div className="min-h-screen px-3 pb-10 pt-4 sm:px-5 sm:pb-12 sm:pt-5">
       <div className="mx-auto grid max-w-[1240px] gap-6">
@@ -52,7 +39,6 @@ export function PoolShell({
               </div>
             </div>
 
-            
           </div>
         </header>
 
@@ -60,7 +46,6 @@ export function PoolShell({
           <h1 className="m-0 font-display text-[clamp(2.2rem,5vw,4rem)] font-black uppercase leading-[0.9] tracking-[-0.07em] text-app-ink">
                 {pool.name}
               </h1>
-        
         </section>
 
         <main className="grid gap-6">{children}</main>

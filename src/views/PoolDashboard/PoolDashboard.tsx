@@ -1,11 +1,6 @@
-import { Link } from "react-router-dom";
-
 import { cn } from "../../app/cn";
-import { eyebrowClass, noticeClass, pageStackClass, sectionCopyClass, sectionTitleClass, surfaceClass, tileCardClass } from "../../app/ui";
-import { Badge } from "../../components/Badge";
-import { getButtonClassName } from "../../components/Button";
+import { noticeClass, pageStackClass, surfaceClass } from "../../app/ui";
 import { GroupOverviewCard } from "../../components/GroupOverviewCard";
-import { InfoTooltip } from "../../components/InfoTooltip";
 import { RulesSummary } from "../../components/RulesSummary";
 import { LockState, PoolDetails } from "../../domain/models";
 import { TournamentGroup } from "../../domain/tournament";
@@ -22,9 +17,7 @@ interface PoolDashboardProps {
 export function PoolDashboard({
   pool,
   groups,
-  lockState,
   deadlineLabel,
-  resumeGroupId,
   draftDirty,
 }: PoolDashboardProps) {
   return (

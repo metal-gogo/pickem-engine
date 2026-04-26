@@ -1,24 +1,13 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { cn } from "../../app/cn";
-import { formatSavedAt } from "../../app/format";
-import {
-  eyebrowClass,
-  pageStackClass,
-  panelHeaderClass,
-  sectionCopyClass,
-  sectionPanelClass,
-  sectionTitleClass,
-  surfaceClass,
-  tileCardClass,
-} from "../../app/ui";
-import { Badge } from "../../components/Badge";
+import { pageStackClass, surfaceClass } from "../../app/ui";
 import { Button } from "../../components/Button";
 import { MatchCard } from "../../components/MatchCard";
 import { RulesSummary } from "../../components/RulesSummary";
 import { LockState, PoolDetails, UserPickSet } from "../../domain/models";
-import { countChangedMatches, countCompletedPicks, getPick } from "../../domain/picks";
-import { TournamentGroup, getNextGroupId, getPreviousGroupId } from "../../domain/tournament";
+import { countChangedMatches, getPick } from "../../domain/picks";
+import { TournamentGroup, getNextGroupId } from "../../domain/tournament";
 
 interface GroupPicksProps {
   pool: PoolDetails;
@@ -50,12 +39,9 @@ export function GroupPicks({
   onSaveDraft,
 }: GroupPicksProps) {
   const navigate = useNavigate();
-  const completedDraftCount = countCompletedPicks(draftPickSet, group.matches);
-  const completedSavedCount = countCompletedPicks(savedPickSet, group.matches);
   const changedMatchCount = countChangedMatches(draftPickSet, savedPickSet, group.matches);
   const groupDirty = changedMatchCount > 0;
   const nextGroupId = getNextGroupId(allMatches, group.id);
-  const previousGroupId = getPreviousGroupId(allMatches, group.id);
 
   function handleSaveAndContinue() {
     if (lockState !== "locked" && groupDirty) {

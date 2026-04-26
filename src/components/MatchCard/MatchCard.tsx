@@ -109,6 +109,7 @@ export function MatchCard({
           <span>{formatStageLabel(match.stage, match.group)}</span>
           <span>Match {String(match.sequence).padStart(2, "0")}</span>
         </div>
+        <Badge label={status.label} tone={status.tone} subtle />
       </header>
 
       {mode === "interactive" ? (

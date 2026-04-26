@@ -89,7 +89,6 @@ export const prototypePool: PoolSummary = {
   name: "Friends and Family Cup",
   participantCount: 8,
   deadlineAt: "2026-06-10T21:00:00-06:00",
-  description: "Local-first discovery build for exact-score picks, review, and standings.",
 };
 
 export const sampleMatches: Match[] = normalizedGroupMatches.map((match) => ({
