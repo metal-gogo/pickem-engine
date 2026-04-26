@@ -45,5 +45,6 @@ The accepted tradeoff is extra CI and provider setup compared with a single shar
   - `NEON_API_KEY` as a GitHub Actions secret
   - `NEON_PROJECT_ID` as a GitHub Actions variable
 - For migrations, provide `DATABASE_URL` and, when using pooled runtime connections, `DIRECT_URL` to Prisma.
+- With Prisma ORM 7, connection URLs live in `prisma.config.ts`, not in `schema.prisma`; the local config should use `DIRECT_URL` for CLI and migration commands when it is set, otherwise fall back to `DATABASE_URL`.
 - Keep staging and production migration credentials in GitHub Environments rather than broad repository secrets when deployment workflows are introduced.
 - Production migration runs should require deliberate approval before using production credentials.
