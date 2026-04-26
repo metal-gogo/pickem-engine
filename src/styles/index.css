@@ -8,10 +8,10 @@
   --font-sans: "Inter", "Avenir Next", "Segoe UI", sans-serif;
   --font-display: "Lexend", "Trebuchet MS", sans-serif;
 
-  /* Warm paper surfaces and dark ink keep the shell editorial instead of generic SaaS. */
-  --color-app-canvas: #fcffdc;
-  --color-app-warm: #fcf9f2;
-  --color-app-surface: rgba(252, 255, 220, 0.88);
+  /* Neutral paper surfaces and dark ink. Reduced yellow tones. */
+  --color-app-canvas: #f7fafc;
+  --color-app-warm: #f6f8fa;
+  --color-app-surface: rgba(247, 250, 252, 0.88);
   --color-app-surface-strong: #ffffff;
   --color-app-surface-soft: #f6f3ec;
   --color-app-surface-tint: #f0eee6;
@@ -64,10 +64,13 @@
     min-height: 100%;
     font-family: var(--font-sans);
     color: var(--color-app-ink);
-    background:
-      radial-gradient(circle at 12% 10%, rgba(218, 249, 0, 0.26), transparent 20%),
-      radial-gradient(circle at 86% 16%, rgba(184, 53, 0, 0.12), transparent 17%),
-      linear-gradient(180deg, var(--color-app-canvas) 0%, #f8f5ea 54%, var(--color-app-warm) 100%);
+    /* Use a subtle neutral canvas -> warm gradient and remove bright yellow overlays. */
+    background: linear-gradient(
+      180deg,
+      var(--color-app-canvas) 0%,
+      #f8f9fb 54%,
+      var(--color-app-warm) 100%
+    );
   }
 
   a {
