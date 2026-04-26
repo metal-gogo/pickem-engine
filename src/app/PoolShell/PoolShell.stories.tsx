@@ -53,7 +53,8 @@ export const LiveEdit: Story = {
       <section className={sectionPanelClass}>
         <h2 className={sectionTitleClass}>Representative content area</h2>
         <p className={sectionCopyClass}>
-          Use this frame story to adjust shell density, saved-progress framing, and how the breadcrumb sits above the main pool card.
+          Use this frame story to adjust shell density, saved-progress framing, and how the
+          breadcrumb sits above the main pool card.
         </p>
       </section>
     </PoolShell>
@@ -79,7 +80,9 @@ export const LockedPreview: Story = {
     >
       <section className={sectionPanelClass}>
         <h2 className={sectionTitleClass}>Representative content area</h2>
-        <p className={sectionCopyClass}>This variant helps tune the persistent shell while the prototype is intentionally locked.</p>
+        <p className={sectionCopyClass}>
+          This variant helps tune the persistent shell while the prototype is intentionally locked.
+        </p>
       </section>
     </PoolShell>
   ),

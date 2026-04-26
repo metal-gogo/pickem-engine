@@ -21,4 +21,3 @@ Translate confirmed product rules into simple technical direction and boundary d
 - light and durable
 - grounded in current product truth
 - avoids pretending unknowns are settled
-

@@ -34,7 +34,12 @@ export function AppShell({
       />
 
       <div className="relative z-10 mx-auto grid max-w-[1200px] gap-4">
-        <header className={cn(surfaceClass, "flex flex-col gap-6 p-5 lg:flex-row lg:items-start lg:justify-between lg:p-7")}>
+        <header
+          className={cn(
+            surfaceClass,
+            "flex flex-col gap-6 p-5 lg:flex-row lg:items-start lg:justify-between lg:p-7",
+          )}
+        >
           <div className="grid max-w-[720px] gap-2.5">
             <span className="inline-flex w-fit items-center gap-2 text-[0.76rem] font-extrabold uppercase tracking-[0.14em] text-app-muted before:h-2 before:w-2 before:rounded-full before:bg-app-cobalt before:shadow-[0_0_0_4px_rgba(37,99,255,0.08)] before:content-['']">
               pickem-engine
@@ -44,7 +49,8 @@ export function AppShell({
                 World Cup pick&apos;em discovery build
               </h1>
               <p className="m-0 max-w-[62ch] leading-7 text-app-muted">
-                Frontend-first, local-first, and structured to grow without pretending the backend exists yet.
+                Frontend-first, local-first, and structured to grow without pretending the backend
+                exists yet.
               </p>
             </div>
           </div>

@@ -21,4 +21,3 @@ The project should remain lean because it is a passion project, but it should al
 - keeping the project organized across non-daily work sessions
 - avoiding documentation sprawl
 - preserving decision context instead of only storing notes
-

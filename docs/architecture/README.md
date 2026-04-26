@@ -14,4 +14,3 @@ This folder holds the current high-level technical direction and architecture-sp
 - known unknowns
 
 Keep this area light until product rules and workflow requirements are more settled.
-

@@ -54,4 +54,3 @@ Do not create an archive snapshot for minor wording edits.
 - Prefer updating an existing canonical file over starting a parallel note.
 - Link decisions and open questions back to the canonical state they affect.
 - Keep archive files as historical snapshots, not living documents.
-

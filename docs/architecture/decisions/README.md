@@ -10,4 +10,3 @@ Examples:
 - scoring update execution model
 
 Do not create architecture decisions just to speculate. Record them when a real choice has been made.
-

@@ -51,10 +51,13 @@ export function Overview({
       <section className="grid gap-7 rounded-[26px] border border-app-line bg-app-surface p-6 shadow-surface backdrop-blur-[16px] lg:grid-cols-[1.35fr_0.95fr] lg:p-8">
         <div className="grid content-start gap-4">
           <div className={eyebrowClass}>2026 FIFA World Cup discovery build</div>
-          <h1 className={heroTitleClass}>Quiet structure at rest, tactile confidence when it is time to pick.</h1>
+          <h1 className={heroTitleClass}>
+            Quiet structure at rest, tactile confidence when it is time to pick.
+          </h1>
           <p className={sectionCopyClass}>
-            This first slice is deliberately local-first: exact-score entry, editable picks before the prototype lock,
-            and standings mocked just enough to validate hierarchy and competitive energy.
+            This first slice is deliberately local-first: exact-score entry, editable picks before
+            the prototype lock, and standings mocked just enough to validate hierarchy and
+            competitive energy.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link to="/picks" className={getButtonClassName()}>
@@ -78,15 +81,29 @@ export function Overview({
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
-            <span className="leading-7 text-app-muted">{progressPercent}% of fixtures saved locally</span>
+            <span className="leading-7 text-app-muted">
+              {progressPercent}% of fixtures saved locally
+            </span>
           </div>
 
           <div className={tileCardClass}>
             <span className="font-bold text-app-ink">Global deadline</span>
             <span className={metricValueSmallClass}>{deadlineLabel}</span>
             <Badge
-              label={lockState === "locked" ? "Locked" : lockState === "locking-soon" ? "Locking soon" : "Editable"}
-              tone={lockState === "locked" ? "locked" : lockState === "locking-soon" ? "warning" : "info"}
+              label={
+                lockState === "locked"
+                  ? "Locked"
+                  : lockState === "locking-soon"
+                    ? "Locking soon"
+                    : "Editable"
+              }
+              tone={
+                lockState === "locked"
+                  ? "locked"
+                  : lockState === "locking-soon"
+                    ? "warning"
+                    : "info"
+              }
             />
           </div>
 
@@ -104,7 +121,9 @@ export function Overview({
             <h2 className="mb-1.5 font-display text-[1.35rem] tracking-[-0.02em] text-app-ink">
               You have unsaved pick changes.
             </h2>
-            <p className="m-0 leading-7 text-app-muted">Review uses the last saved local snapshot, not your current draft.</p>
+            <p className="m-0 leading-7 text-app-muted">
+              Review uses the last saved local snapshot, not your current draft.
+            </p>
           </div>
           <Link to="/picks" className={getButtonClassName({ tone: "secondary" })}>
             Go to picks

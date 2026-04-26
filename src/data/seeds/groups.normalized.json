@@ -1,27 +1,12 @@
 [
   {
     "id": "A",
-    "teamIds": [
-      "cze",
-      "kor",
-      "mex",
-      "rsa"
-    ],
-    "grounds": [
-      "Atlanta",
-      "Guadalajara (Zapopan)",
-      "Mexico City",
-      "Monterrey (Guadalupe)"
-    ]
+    "teamIds": ["cze", "kor", "mex", "rsa"],
+    "grounds": ["Atlanta", "Guadalajara (Zapopan)", "Mexico City", "Monterrey (Guadalupe)"]
   },
   {
     "id": "B",
-    "teamIds": [
-      "bih",
-      "can",
-      "qat",
-      "sui"
-    ],
+    "teamIds": ["bih", "can", "qat", "sui"],
     "grounds": [
       "Los Angeles (Inglewood)",
       "San Francisco Bay Area (Santa Clara)",
@@ -32,12 +17,7 @@
   },
   {
     "id": "C",
-    "teamIds": [
-      "bra",
-      "hai",
-      "mar",
-      "sco"
-    ],
+    "teamIds": ["bra", "hai", "mar", "sco"],
     "grounds": [
       "Atlanta",
       "Boston (Foxborough)",
@@ -48,12 +28,7 @@
   },
   {
     "id": "D",
-    "teamIds": [
-      "aus",
-      "par",
-      "tur",
-      "usa"
-    ],
+    "teamIds": ["aus", "par", "tur", "usa"],
     "grounds": [
       "Los Angeles (Inglewood)",
       "San Francisco Bay Area (Santa Clara)",
@@ -63,12 +38,7 @@
   },
   {
     "id": "E",
-    "teamIds": [
-      "civ",
-      "cuw",
-      "ecu",
-      "ger"
-    ],
+    "teamIds": ["civ", "cuw", "ecu", "ger"],
     "grounds": [
       "Houston",
       "Kansas City",
@@ -79,56 +49,22 @@
   },
   {
     "id": "F",
-    "teamIds": [
-      "jpn",
-      "ned",
-      "swe",
-      "tun"
-    ],
-    "grounds": [
-      "Dallas (Arlington)",
-      "Houston",
-      "Kansas City",
-      "Monterrey (Guadalupe)"
-    ]
+    "teamIds": ["jpn", "ned", "swe", "tun"],
+    "grounds": ["Dallas (Arlington)", "Houston", "Kansas City", "Monterrey (Guadalupe)"]
   },
   {
     "id": "G",
-    "teamIds": [
-      "bel",
-      "egy",
-      "irn",
-      "nzl"
-    ],
-    "grounds": [
-      "Los Angeles (Inglewood)",
-      "Seattle",
-      "Vancouver"
-    ]
+    "teamIds": ["bel", "egy", "irn", "nzl"],
+    "grounds": ["Los Angeles (Inglewood)", "Seattle", "Vancouver"]
   },
   {
     "id": "H",
-    "teamIds": [
-      "cpv",
-      "esp",
-      "ksa",
-      "uru"
-    ],
-    "grounds": [
-      "Atlanta",
-      "Guadalajara (Zapopan)",
-      "Houston",
-      "Miami (Miami Gardens)"
-    ]
+    "teamIds": ["cpv", "esp", "ksa", "uru"],
+    "grounds": ["Atlanta", "Guadalajara (Zapopan)", "Houston", "Miami (Miami Gardens)"]
   },
   {
     "id": "I",
-    "teamIds": [
-      "fra",
-      "irq",
-      "nor",
-      "sen"
-    ],
+    "teamIds": ["fra", "irq", "nor", "sen"],
     "grounds": [
       "Boston (Foxborough)",
       "New York/New Jersey (East Rutherford)",
@@ -138,26 +74,12 @@
   },
   {
     "id": "J",
-    "teamIds": [
-      "alg",
-      "arg",
-      "aut",
-      "jor"
-    ],
-    "grounds": [
-      "Dallas (Arlington)",
-      "Kansas City",
-      "San Francisco Bay Area (Santa Clara)"
-    ]
+    "teamIds": ["alg", "arg", "aut", "jor"],
+    "grounds": ["Dallas (Arlington)", "Kansas City", "San Francisco Bay Area (Santa Clara)"]
   },
   {
     "id": "K",
-    "teamIds": [
-      "cod",
-      "col",
-      "por",
-      "uzb"
-    ],
+    "teamIds": ["cod", "col", "por", "uzb"],
     "grounds": [
       "Atlanta",
       "Guadalajara (Zapopan)",
@@ -168,12 +90,7 @@
   },
   {
     "id": "L",
-    "teamIds": [
-      "cro",
-      "eng",
-      "gha",
-      "pan"
-    ],
+    "teamIds": ["cro", "eng", "gha", "pan"],
     "grounds": [
       "Boston (Foxborough)",
       "Dallas (Arlington)",

@@ -13,4 +13,3 @@ This folder tracks active unresolved questions that still need decisions.
 - assumptions that need validation
 
 Archive older question sets when a planning phase closes or the active list is substantially reworked.
-

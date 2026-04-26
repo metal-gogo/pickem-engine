@@ -48,7 +48,11 @@ function compareRows(left: MutableGroupTableRow, right: MutableGroupTableRow) {
   );
 }
 
-function getStatus(completedPickCount: number, startedPickCount: number, totalMatches: number): GroupProgressState {
+function getStatus(
+  completedPickCount: number,
+  startedPickCount: number,
+  totalMatches: number,
+): GroupProgressState {
   if (completedPickCount === totalMatches && totalMatches > 0) {
     return "complete";
   }
@@ -90,7 +94,11 @@ function createEmptyRows(matches: Match[]) {
   );
 }
 
-function applyCompletePick(rowsByTeamId: Map<string, MutableGroupTableRow>, match: Match, pickSet: UserPickSet) {
+function applyCompletePick(
+  rowsByTeamId: Map<string, MutableGroupTableRow>,
+  match: Match,
+  pickSet: UserPickSet,
+) {
   const pick = getPick(pickSet, match.id);
 
   if (!isPickComplete(pick)) {
@@ -134,13 +142,21 @@ function applyCompletePick(rowsByTeamId: Map<string, MutableGroupTableRow>, matc
 }
 
 export function listGroupIds(matches: Match[]) {
-  return [...new Set(matches.map((match) => match.group).filter((group): group is string => Boolean(group)))].sort();
+  return [
+    ...new Set(
+      matches.map((match) => match.group).filter((group): group is string => Boolean(group)),
+    ),
+  ].sort();
 }
 
 export function getMatchesForGroup(matches: Match[], groupId: string) {
   return matches
     .filter((match) => match.group === groupId)
-    .sort((left, right) => new Date(left.kickoffAt).getTime() - new Date(right.kickoffAt).getTime() || left.sequence - right.sequence);
+    .sort(
+      (left, right) =>
+        new Date(left.kickoffAt).getTime() - new Date(right.kickoffAt).getTime() ||
+        left.sequence - right.sequence,
+    );
 }
 
 export function buildTournamentGroups(matches: Match[], pickSet: UserPickSet): TournamentGroup[] {
@@ -156,8 +172,12 @@ export function buildTournamentGroups(matches: Match[], pickSet: UserPickSet): T
       rank: index + 1,
       ...row,
     }));
-    const completedPickCount = groupMatches.filter((match) => isPickComplete(getPick(pickSet, match.id))).length;
-    const startedPickCount = groupMatches.filter((match) => hasStartedPick(getPick(pickSet, match.id))).length;
+    const completedPickCount = groupMatches.filter((match) =>
+      isPickComplete(getPick(pickSet, match.id)),
+    ).length;
+    const startedPickCount = groupMatches.filter((match) =>
+      hasStartedPick(getPick(pickSet, match.id)),
+    ).length;
 
     return {
       id: groupId,

@@ -25,10 +25,12 @@ export function Leaderboard({ leaderboard }: LeaderboardProps) {
         <div className={panelHeaderClass}>
           <div>
             <div className={eyebrowClass}>Standings preview</div>
-            <h1 className={sectionTitleClass}>Leaderboard hierarchy without overcommitting the scoring model</h1>
+            <h1 className={sectionTitleClass}>
+              Leaderboard hierarchy without overcommitting the scoring model
+            </h1>
             <p className={sectionCopyClass}>
-              Scores are mocked on purpose. This screen is here to validate rhythm, emphasis, and how competitive state
-              should feel once real scoring rules are confirmed.
+              Scores are mocked on purpose. This screen is here to validate rhythm, emphasis, and
+              how competitive state should feel once real scoring rules are confirmed.
             </p>
           </div>
           <Badge label="Mocked scoring" tone="warning" />
@@ -39,10 +41,17 @@ export function Leaderboard({ leaderboard }: LeaderboardProps) {
         {leaders.map((entry) => (
           <article
             key={entry.id}
-            className={cn(tileCardClass, "grid min-h-[164px] justify-items-start gap-2 rounded-[26px] shadow-surface")}
+            className={cn(
+              tileCardClass,
+              "grid min-h-[164px] justify-items-start gap-2 rounded-[26px] shadow-surface",
+            )}
           >
-            <span className="text-[0.84rem] font-extrabold uppercase tracking-[0.14em] text-app-muted">#{entry.rank}</span>
-            <span className="font-display text-[1.18rem] tracking-[-0.02em] text-app-ink">{entry.name}</span>
+            <span className="text-[0.84rem] font-extrabold uppercase tracking-[0.14em] text-app-muted">
+              #{entry.rank}
+            </span>
+            <span className="font-display text-[1.18rem] tracking-[-0.02em] text-app-ink">
+              {entry.name}
+            </span>
             <span className="font-display text-[clamp(1.7rem,3vw,2.4rem)] tracking-[-0.03em] text-app-ink">
               {entry.points}
             </span>

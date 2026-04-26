@@ -23,4 +23,3 @@ Keep the system lightweight and practical rather than process-heavy.
 - Future sessions should be able to recover product and technical context quickly.
 - The repository has one clear home for current scope, rules, questions, planning, and glossary terms.
 - New docs should fit into the existing structure instead of being scattered across ad hoc notes.
-

@@ -20,4 +20,3 @@ Turn product and rule clarity into a near-term execution plan.
 - near-term, not speculative
 - ordered by dependency and delivery value
 - grounded in the current business rules
-

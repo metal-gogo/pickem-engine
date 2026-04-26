@@ -16,4 +16,3 @@ At initial setup, the main open questions are:
 ## Why These Were Captured
 
 These questions are the main blockers between broad product direction and implementation-ready definition.
-

@@ -70,14 +70,27 @@ export function Picks({
             <div className={eyebrowClass}>Pick entry</div>
             <h1 className={sectionTitleClass}>Build your exact-score slate</h1>
             <p className={sectionCopyClass}>
-              Working assumption for discovery only: the local user can edit freely until the single global deadline.
+              Working assumption for discovery only: the local user can edit freely until the single
+              global deadline.
             </p>
           </div>
 
           <div className={inlineSummaryClass}>
             <Badge
-              label={lockState === "locked" ? "Locked" : lockState === "locking-soon" ? "Locking soon" : "Editable"}
-              tone={lockState === "locked" ? "locked" : lockState === "locking-soon" ? "warning" : "info"}
+              label={
+                lockState === "locked"
+                  ? "Locked"
+                  : lockState === "locking-soon"
+                    ? "Locking soon"
+                    : "Editable"
+              }
+              tone={
+                lockState === "locked"
+                  ? "locked"
+                  : lockState === "locking-soon"
+                    ? "warning"
+                    : "info"
+              }
             />
             <span>{completedDraftCount} complete picks</span>
             <span>{pool.name}</span>
@@ -114,10 +127,17 @@ export function Picks({
         ))}
       </section>
 
-      <section className={cn(surfaceClass, "flex flex-col gap-4 p-5 lg:flex-row lg:items-center lg:justify-between lg:p-6")}>
+      <section
+        className={cn(
+          surfaceClass,
+          "flex flex-col gap-4 p-5 lg:flex-row lg:items-center lg:justify-between lg:p-6",
+        )}
+      >
         <div>
           <h2 className="mb-1.5 font-display text-[1.35rem] tracking-[-0.02em] text-app-ink">
-            {lockState === "locked" ? "Picks are locked in this preview mode." : "Save the current pick set"}
+            {lockState === "locked"
+              ? "Picks are locked in this preview mode."
+              : "Save the current pick set"}
           </h2>
           <p className="m-0 leading-7 text-app-muted">
             {draftDirty
@@ -131,7 +151,11 @@ export function Picks({
             Reset draft
           </Button>
           <Button onClick={onSaveDraft} disabled={!draftDirty || lockState === "locked"}>
-            {lockState === "locked" ? "Locked" : draftDirty ? "Save picks locally" : "Saved locally"}
+            {lockState === "locked"
+              ? "Locked"
+              : draftDirty
+                ? "Save picks locally"
+                : "Saved locally"}
           </Button>
         </div>
       </section>

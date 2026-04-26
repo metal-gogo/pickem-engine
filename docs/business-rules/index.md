@@ -36,13 +36,13 @@ Leaderboards should update after official results are available.
 
 Each pool has a scoring configuration made from platform-defined categories:
 
-| Category | Required? | Pool Owner Control |
-| --- | --- | --- |
-| Winner or draw | Yes | Set the point value. This category cannot be disabled. |
-| Exact result bonus | No | Enable or disable the bonus and set the bonus point value when enabled. |
-| Tournament top scorer bonus | No | Enable or disable the bonus and set the point value when enabled. |
-| Tournament best-player bonus | No | Enable or disable the bonus and set the point value when enabled. |
-| World Cup champion bonus | No | Enable or disable the bonus and set the point value when enabled. |
+| Category                     | Required? | Pool Owner Control                                                      |
+| ---------------------------- | --------- | ----------------------------------------------------------------------- |
+| Winner or draw               | Yes       | Set the point value. This category cannot be disabled.                  |
+| Exact result bonus           | No        | Enable or disable the bonus and set the bonus point value when enabled. |
+| Tournament top scorer bonus  | No        | Enable or disable the bonus and set the point value when enabled.       |
+| Tournament best-player bonus | No        | Enable or disable the bonus and set the point value when enabled.       |
+| World Cup champion bonus     | No        | Enable or disable the bonus and set the point value when enabled.       |
 
 The exact result category is a bonus layered on top of the required winner-or-draw category, not a separate custom formula.
 

@@ -86,16 +86,28 @@ export function arePickSetsEqual(left: UserPickSet, right: UserPickSet, matches:
 }
 
 export function countCompletedPicks(pickSet: UserPickSet, matches: Match[]): number {
-  return matches.reduce((count, match) => count + (isPickComplete(getPick(pickSet, match.id)) ? 1 : 0), 0);
+  return matches.reduce(
+    (count, match) => count + (isPickComplete(getPick(pickSet, match.id)) ? 1 : 0),
+    0,
+  );
 }
 
 export function countStartedPicks(pickSet: UserPickSet, matches: Match[]): number {
-  return matches.reduce((count, match) => count + (hasStartedPick(getPick(pickSet, match.id)) ? 1 : 0), 0);
+  return matches.reduce(
+    (count, match) => count + (hasStartedPick(getPick(pickSet, match.id)) ? 1 : 0),
+    0,
+  );
 }
 
-export function countChangedMatches(draftPickSet: UserPickSet, savedPickSet: UserPickSet, matches: Match[]): number {
+export function countChangedMatches(
+  draftPickSet: UserPickSet,
+  savedPickSet: UserPickSet,
+  matches: Match[],
+): number {
   return matches.reduce(
-    (count, match) => count + (arePicksEqual(getPick(draftPickSet, match.id), getPick(savedPickSet, match.id)) ? 0 : 1),
+    (count, match) =>
+      count +
+      (arePicksEqual(getPick(draftPickSet, match.id), getPick(savedPickSet, match.id)) ? 0 : 1),
     0,
   );
 }

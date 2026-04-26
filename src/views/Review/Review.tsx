@@ -27,7 +27,9 @@ interface ReviewProps {
 
 export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewProps) {
   const savedMatches = matches.filter((match) => isPickComplete(getPick(savedPickSet, match.id)));
-  const missingMatches = matches.filter((match) => !isPickComplete(getPick(savedPickSet, match.id)));
+  const missingMatches = matches.filter(
+    (match) => !isPickComplete(getPick(savedPickSet, match.id)),
+  );
 
   return (
     <div className={pageStackClass}>
@@ -37,7 +39,8 @@ export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewP
             <div className={eyebrowClass}>Review and edit</div>
             <h1 className={sectionTitleClass}>Saved picks snapshot</h1>
             <p className={sectionCopyClass}>
-              This screen is intentionally calm and scannable so a returning user can understand their state quickly.
+              This screen is intentionally calm and scannable so a returning user can understand
+              their state quickly.
             </p>
           </div>
           <div className={inlineSummaryClass}>
@@ -71,7 +74,9 @@ export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewP
           <div className={panelHeaderClass}>
             <div>
               <div className={eyebrowClass}>Saved picks</div>
-              <h2 className={sectionTitleClass}>{savedMatches.length} fixtures locked into your local snapshot</h2>
+              <h2 className={sectionTitleClass}>
+                {savedMatches.length} fixtures locked into your local snapshot
+              </h2>
             </div>
           </div>
 
@@ -86,7 +91,10 @@ export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewP
                   mode="summary"
                   actions={
                     lockState === "locked" ? null : (
-                      <Link to={`/picks?match=${match.id}`} className={getButtonClassName({ tone: "ghost", size: "compact" })}>
+                      <Link
+                        to={`/picks?match=${match.id}`}
+                        className={getButtonClassName({ tone: "ghost", size: "compact" })}
+                      >
                         Edit pick
                       </Link>
                     )
@@ -96,7 +104,9 @@ export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewP
             </div>
           ) : (
             <div className="grid justify-items-start gap-3.5 pb-1.5 pt-4">
-              <h3 className="m-0 font-display text-[1.35rem] tracking-[-0.02em] text-app-ink">No saved picks yet.</h3>
+              <h3 className="m-0 font-display text-[1.35rem] tracking-[-0.02em] text-app-ink">
+                No saved picks yet.
+              </h3>
               <p className="m-0 leading-7 text-app-muted">
                 Make at least one exact-score pick to start validating the flow.
               </p>
@@ -111,7 +121,9 @@ export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewP
           <div className={panelHeaderClass}>
             <div>
               <div className={eyebrowClass}>Still open</div>
-              <h2 className={sectionTitleClass}>{missingMatches.length} fixtures without a saved score</h2>
+              <h2 className={sectionTitleClass}>
+                {missingMatches.length} fixtures without a saved score
+              </h2>
             </div>
           </div>
 
@@ -127,7 +139,10 @@ export function Review({ matches, savedPickSet, lockState, draftDirty }: ReviewP
                   </span>
                   <span className="text-sm text-app-muted">{match.venue}</span>
                 </div>
-                <Link to={`/picks?match=${match.id}`} className={getButtonClassName({ tone: "ghost", size: "compact" })}>
+                <Link
+                  to={`/picks?match=${match.id}`}
+                  className={getButtonClassName({ tone: "ghost", size: "compact" })}
+                >
                   Add score
                 </Link>
               </div>

@@ -1,6 +1,12 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { narrowCanvas, storyFamilyPool, storyGroupA, storyGroupAComplete, storyGroupB } from "../../storybook";
+import {
+  narrowCanvas,
+  storyFamilyPool,
+  storyGroupA,
+  storyGroupAComplete,
+  storyGroupB,
+} from "../../storybook";
 
 import { GroupOverviewCard } from ".";
 

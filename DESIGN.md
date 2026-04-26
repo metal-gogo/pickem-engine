@@ -234,13 +234,13 @@ Generate and maintain design references for:
 
 The platform owns the scoring model. Pool owners can configure only constrained point settings:
 
-| Category | Required? | Pool Owner Control |
-| --- | --- | --- |
-| Winner or draw | Yes | Set the point value. Cannot be disabled. |
-| Exact result bonus | No | Enable or disable and set bonus points when enabled. |
-| Tournament top scorer bonus | No | Enable or disable and set points when enabled. |
-| Tournament best-player bonus | No | Enable or disable and set points when enabled. |
-| World Cup champion bonus | No | Enable or disable and set points when enabled. |
+| Category                     | Required? | Pool Owner Control                                   |
+| ---------------------------- | --------- | ---------------------------------------------------- |
+| Winner or draw               | Yes       | Set the point value. Cannot be disabled.             |
+| Exact result bonus           | No        | Enable or disable and set bonus points when enabled. |
+| Tournament top scorer bonus  | No        | Enable or disable and set points when enabled.       |
+| Tournament best-player bonus | No        | Enable or disable and set points when enabled.       |
+| World Cup champion bonus     | No        | Enable or disable and set points when enabled.       |
 
 Exact result is a bonus layered on top of winner-or-draw points.
 

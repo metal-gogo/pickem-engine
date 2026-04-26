@@ -21,4 +21,3 @@ Keep the documentation system clear, current, and low-maintenance.
 - concise
 - non-duplicative
 - clearly distinguishes decisions from assumptions and open questions
-

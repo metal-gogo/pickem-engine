@@ -10,25 +10,25 @@ Use the role briefs in `agents/` as the source of truth for role intent. Keep cl
 
 ## Team
 
-| Role | Purpose | Primary ownership |
-| --- | --- | --- |
-| `product-strategist` | clarify product direction, release boundaries, and tradeoffs | `docs/product-scope/current.md` and product-facing open-question updates |
-| `business-rules-steward` | keep business rules and domain language clear, consistent, and visible | `docs/business-rules/index.md` and linked glossary alignment |
-| `technical-architect` | translate confirmed product rules into technical direction | `docs/architecture/current.md` and architecture-side decision framing |
-| `implementation-planner` | turn product and architecture clarity into near-term slices | `docs/implementation-plan/current.md` |
-| `documentation-editor` | keep canonical docs concise, current, and internally consistent | doc cleanup, cross-links, and wording cleanup across canonical docs |
+| Role                     | Purpose                                                                | Primary ownership                                                        |
+| ------------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| `product-strategist`     | clarify product direction, release boundaries, and tradeoffs           | `docs/product-scope/current.md` and product-facing open-question updates |
+| `business-rules-steward` | keep business rules and domain language clear, consistent, and visible | `docs/business-rules/index.md` and linked glossary alignment             |
+| `technical-architect`    | translate confirmed product rules into technical direction             | `docs/architecture/current.md` and architecture-side decision framing    |
+| `implementation-planner` | turn product and architecture clarity into near-term slices            | `docs/implementation-plan/current.md`                                    |
+| `documentation-editor`   | keep canonical docs concise, current, and internally consistent        | doc cleanup, cross-links, and wording cleanup across canonical docs      |
 
 If two roles need the same file, let one gather findings and let the owner apply the final edit.
 
 ## Defaults
 
-| Role | Claude Code | Codex | Cursor |
-| --- | --- | --- | --- |
-| `product-strategist` | `opus`, `medium` | `gpt-5.4`, `medium` | `Auto` |
-| `business-rules-steward` | `sonnet`, `medium` | `gpt-5.4`, `medium` | `Auto` |
-| `technical-architect` | `opus`, `high` | `gpt-5.4`, `high` | `Auto` |
-| `implementation-planner` | `sonnet`, `medium` | `gpt-5.4`, `medium` | `Auto` |
-| `documentation-editor` | `sonnet`, `medium` | `gpt-5.4-mini`, `medium` | `Auto` |
+| Role                     | Claude Code        | Codex                    | Cursor |
+| ------------------------ | ------------------ | ------------------------ | ------ |
+| `product-strategist`     | `opus`, `medium`   | `gpt-5.4`, `medium`      | `Auto` |
+| `business-rules-steward` | `sonnet`, `medium` | `gpt-5.4`, `medium`      | `Auto` |
+| `technical-architect`    | `opus`, `high`     | `gpt-5.4`, `high`        | `Auto` |
+| `implementation-planner` | `sonnet`, `medium` | `gpt-5.4`, `medium`      | `Auto` |
+| `documentation-editor`   | `sonnet`, `medium` | `gpt-5.4-mini`, `medium` | `Auto` |
 
 Notes:
 

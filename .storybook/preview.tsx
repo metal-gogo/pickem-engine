@@ -53,7 +53,12 @@ const preview: Preview = {
 
       return (
         <MemoryRouter initialEntries={["/"]}>
-          <div style={{ minHeight: storyLayout === "fullscreen" ? "100vh" : undefined, padding: "24px" }}>
+          <div
+            style={{
+              minHeight: storyLayout === "fullscreen" ? "100vh" : undefined,
+              padding: "24px",
+            }}
+          >
             <Story />
           </div>
         </MemoryRouter>

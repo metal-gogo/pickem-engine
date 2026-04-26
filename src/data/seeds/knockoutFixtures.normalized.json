@@ -35,13 +35,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "A",
-        "B",
-        "C",
-        "D",
-        "F"
-      ],
+      "groups": ["A", "B", "C", "D", "F"],
       "raw": "3A/B/C/D/F"
     }
   },
@@ -101,13 +95,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "C",
-        "D",
-        "F",
-        "G",
-        "H"
-      ],
+      "groups": ["C", "D", "F", "G", "H"],
       "raw": "3C/D/F/G/H"
     }
   },
@@ -147,13 +135,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "C",
-        "E",
-        "F",
-        "H",
-        "I"
-      ],
+      "groups": ["C", "E", "F", "H", "I"],
       "raw": "3C/E/F/H/I"
     }
   },
@@ -173,13 +155,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "E",
-        "H",
-        "I",
-        "J",
-        "K"
-      ],
+      "groups": ["E", "H", "I", "J", "K"],
       "raw": "3E/H/I/J/K"
     }
   },
@@ -199,13 +175,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "B",
-        "E",
-        "F",
-        "I",
-        "J"
-      ],
+      "groups": ["B", "E", "F", "I", "J"],
       "raw": "3B/E/F/I/J"
     }
   },
@@ -225,13 +195,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "A",
-        "E",
-        "H",
-        "I",
-        "J"
-      ],
+      "groups": ["A", "E", "H", "I", "J"],
       "raw": "3A/E/H/I/J"
     }
   },
@@ -291,13 +255,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "E",
-        "F",
-        "G",
-        "I",
-        "J"
-      ],
+      "groups": ["E", "F", "G", "I", "J"],
       "raw": "3E/F/G/I/J"
     }
   },
@@ -337,13 +295,7 @@
     "awayParticipant": {
       "kind": "best-third-place",
       "position": 3,
-      "groups": [
-        "D",
-        "E",
-        "I",
-        "J",
-        "L"
-      ],
+      "groups": ["D", "E", "I", "J", "L"],
       "raw": "3D/E/I/J/L"
     }
   },

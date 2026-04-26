@@ -15,4 +15,3 @@ Keep each record short:
 - consequences
 
 Update `index.md` whenever a new decision record is added.
-

@@ -18,7 +18,10 @@ export function Button({
   ...buttonProps
 }: ButtonProps) {
   return (
-    <button className={cn(getButtonClassName({ tone, size, fullWidth }), className)} {...buttonProps}>
+    <button
+      className={cn(getButtonClassName({ tone, size, fullWidth }), className)}
+      {...buttonProps}
+    >
       {children}
     </button>
   );

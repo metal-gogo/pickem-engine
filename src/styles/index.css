@@ -39,7 +39,8 @@
 
   /* Shadows should feel like physical displacement more than soft ambient blur. */
   --shadow-surface: 0 12px 32px -4px rgba(56, 56, 52, 0.08);
-  --shadow-surface-raised: 0 18px 30px -10px rgba(56, 56, 52, 0.14), 8px 8px 0 rgba(56, 56, 52, 0.1);
+  --shadow-surface-raised:
+    0 18px 30px -10px rgba(56, 56, 52, 0.14), 8px 8px 0 rgba(56, 56, 52, 0.1);
   --shadow-press: 0 0 0 rgba(56, 56, 52, 0);
   --shadow-button-primary: 0 10px 0 rgba(56, 56, 52, 0.14);
   --shadow-button-secondary: 0 8px 0 rgba(130, 128, 124, 0.16);

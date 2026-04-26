@@ -2,7 +2,11 @@ import { prototypePool, sampleMatches } from "../data/fixtures";
 import { mockedLeaderboard } from "../data/leaderboard";
 import { prototypePools } from "../data/pools";
 import { getDeadlineLabel } from "../domain/lock";
-import { buildTournamentGroups, getFirstIncompleteGroupId, getMatchesForGroup } from "../domain/tournament";
+import {
+  buildTournamentGroups,
+  getFirstIncompleteGroupId,
+  getMatchesForGroup,
+} from "../domain/tournament";
 import type { MatchPick, UserPickSet } from "../domain/models";
 import { createEmptyPickSet, getPick, markPickSetSaved, updatePickScore } from "../domain/picks";
 
@@ -29,12 +33,7 @@ const baseEmptyPickSet = createEmptyPickSet(sampleMatches);
 
 const seededDraftPickSet = applyScore(
   applyScore(
-    applyScore(
-      applyScore(baseEmptyPickSet, sampleMatches[0].id, 2, 1),
-      sampleMatches[1].id,
-      1,
-      1,
-    ),
+    applyScore(applyScore(baseEmptyPickSet, sampleMatches[0].id, 2, 1), sampleMatches[1].id, 1, 1),
     sampleMatches[2].id,
     3,
     0,
@@ -98,10 +97,15 @@ export const lockedDeadlineLabel = getDeadlineLabel(
 
 export const emptyTournamentGroups = buildTournamentGroups(sampleMatches, emptyPickSet);
 export const seededTournamentGroups = buildTournamentGroups(sampleMatches, seededSavedPickSet);
-export const groupACompleteTournamentGroups = buildTournamentGroups(sampleMatches, groupACompleteSavedPickSet);
+export const groupACompleteTournamentGroups = buildTournamentGroups(
+  sampleMatches,
+  groupACompleteSavedPickSet,
+);
 
 export const storyGroupA = seededTournamentGroups.find((group) => group.id === "A")!;
-export const storyGroupAComplete = groupACompleteTournamentGroups.find((group) => group.id === "A")!;
+export const storyGroupAComplete = groupACompleteTournamentGroups.find(
+  (group) => group.id === "A",
+)!;
 export const storyGroupB = emptyTournamentGroups.find((group) => group.id === "B")!;
 export const storyResumeGroupId = getFirstIncompleteGroupId(seededTournamentGroups);
 
@@ -115,7 +119,12 @@ export const wideCanvas = {
   margin: "0 auto",
 };
 
-export function createEditablePick(matchId: string, pick: MatchPick, side: "homeScore" | "awayScore", value: string) {
+export function createEditablePick(
+  matchId: string,
+  pick: MatchPick,
+  side: "homeScore" | "awayScore",
+  value: string,
+) {
   return {
     ...pick,
     matchId,

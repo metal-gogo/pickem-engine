@@ -67,7 +67,9 @@ function hydratePickSet(candidate: unknown, matches: Match[]): UserPickSet {
   return {
     userId: typeof pickSetRecord.userId === "string" ? pickSetRecord.userId : emptyPickSet.userId,
     displayName:
-      typeof pickSetRecord.displayName === "string" ? pickSetRecord.displayName : emptyPickSet.displayName,
+      typeof pickSetRecord.displayName === "string"
+        ? pickSetRecord.displayName
+        : emptyPickSet.displayName,
     updatedAt: typeof pickSetRecord.updatedAt === "string" ? pickSetRecord.updatedAt : null,
     picks: Object.fromEntries(
       matches.map((match) => [match.id, normalizePick(storedPicks[match.id], match.id)]),

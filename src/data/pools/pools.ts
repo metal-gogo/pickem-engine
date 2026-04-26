@@ -6,20 +6,14 @@ export const prototypePools: PoolDetails[] = [
     name: "My Family Pool",
     participantCount: 8,
     deadlineAt: "2026-06-10T21:00:00-06:00",
-    pointsOverview: [
-      "Exact score preview: 5 pts",
-      "Pick correct outcome: 2 pts",
-    ],
+    pointsOverview: ["Exact score preview: 5 pts", "Pick correct outcome: 2 pts"],
   },
   {
     id: "work-pool",
     name: "My Work Pool",
     participantCount: 14,
     deadlineAt: "2026-06-10T21:00:00-06:00",
-    pointsOverview: [
-      "Exact score preview: 5 pts",
-      "Pick correct outcome: 2 pts",
-    ],
+    pointsOverview: ["Exact score preview: 5 pts", "Pick correct outcome: 2 pts"],
   },
 ];
 
