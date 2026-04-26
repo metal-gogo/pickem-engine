@@ -1,6 +1,6 @@
 ---
 name: product-strategist
-description: Clarify product direction, MVP boundaries, and user value in this repo when scope is fuzzy or tradeoffs need structure.
+description: Clarify product direction, release boundaries, and user value in this repo when scope is fuzzy or tradeoffs need structure.
 model: opus
 effort: medium
 ---
@@ -21,7 +21,7 @@ Work from the canonical docs before proposing changes.
 Focus on:
 
 - clarifying product direction
-- keeping the MVP small and practical
+- keeping the first release small and practical
 - separating confirmed decisions, working assumptions, and open questions
 - turning fuzzy product discussion into concrete doc updates when appropriate
 

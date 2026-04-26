@@ -5,11 +5,11 @@
 
 ## Context
 
-The next database-backed app will run on Cloudflare and needs production visibility without adding more platform complexity than the MVP deserves.
+The next database-backed app will run on Cloudflare and needs production visibility without adding more platform complexity than the first release deserves.
 
 The project evaluated Sentry and New Relic most closely. New Relic has a broader observability platform and a generous free ingest tier, but it is a larger operational surface. Sentry is more focused on developer error tracking, release context, source maps, and actionable issue grouping.
 
-For the MVP, the most likely production debugging need is understanding application errors around sign-in, pool access, pick submission, scoring, and leaderboards. Basic runtime logs, platform metrics, and request-level debugging can start with Cloudflare's native observability features.
+For the first release, the most likely production debugging need is understanding application errors around sign-in, pool access, pick submission, scoring, and leaderboards. Basic runtime logs, platform metrics, and request-level debugging can start with Cloudflare's native observability features.
 
 ## Decision
 
@@ -17,13 +17,13 @@ Use Sentry as the primary application error tracking provider.
 
 Use Cloudflare native observability as the initial runtime observability baseline, including Workers Logs, platform metrics, and Cloudflare tracing/export capabilities where useful.
 
-Do not use New Relic for the initial MVP observability setup. Keep it as a future option if the product later needs a broader all-in-one platform for logs, APM, synthetics, browser monitoring, dashboards, and cross-system telemetry.
+Do not use New Relic for the initial observability setup. Keep it as a future option if the product later needs a broader all-in-one platform for logs, APM, synthetics, browser monitoring, dashboards, and cross-system telemetry.
 
 Application/server code should log through a small structured logging wrapper so the first implementation can write to `console.*` for Cloudflare capture while preserving a path to another log sink later.
 
 ## Reasoning
 
-Sentry is the better initial fit because it solves the most urgent MVP problem directly: actionable app errors with stack traces, releases, environments, source maps, and issue grouping.
+Sentry is the better initial fit because it solves the most urgent first-release problem directly: actionable app errors with stack traces, releases, environments, source maps, and issue grouping.
 
 Cloudflare is already the chosen hosting target, so its native logs and metrics are the lowest-friction way to start observing runtime behavior. This keeps the first setup small, cheap, and aligned with the deployment platform.
 

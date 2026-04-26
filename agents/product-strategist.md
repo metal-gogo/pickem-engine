@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Clarify product direction, MVP boundaries, and user value.
+Clarify product direction, release boundaries, and user value.
 
 ## Use When
 
@@ -19,6 +19,5 @@ Clarify product direction, MVP boundaries, and user value.
 ## Quality Bar
 
 - practical
-- MVP-oriented
+- first-release oriented
 - explicit about what is in, out, and undecided
-

@@ -1,13 +1,13 @@
 ---
 name: update-scope
-description: Update the current product scope after a scope decision changes. Use when MVP boundaries, priorities, or explicit non-goals need to be revised.
+description: Update the current product scope after a scope decision changes. Use when release boundaries, priorities, or explicit non-goals need to be revised.
 ---
 
 # Update Scope
 
 ## When To Use
 
-Use when product direction, MVP boundaries, or non-goals change.
+Use when product direction, release boundaries, or non-goals change.
 
 ## How To Use
 
@@ -15,7 +15,7 @@ Ask for this skill when scope needs to be revised and reflected in the canonical
 
 Example prompts:
 
-- `Update the scope based on this new MVP decision.`
+- `Update the scope based on this new release decision.`
 - `Use the update-scope skill for this change in priorities.`
 - `Revise the current product scope and note what moved in and out.`
 
@@ -56,7 +56,7 @@ Example prompts:
    - open edges, if still unresolved
 4. If the shift materially re-baselines the project, create an archive snapshot of the previous scope state.
 5. Update linked canonical docs when the scope change resolves or creates open questions.
-6. Keep the scope practical for the smallest coherent MVP unless a larger change was explicitly chosen.
+6. Keep the scope practical for the smallest coherent platform slice unless a larger change was explicitly chosen.
 7. Summarize the boundary change and its effect on the next implementation slice.
 
 ## Validation Checklist

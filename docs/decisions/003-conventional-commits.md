@@ -17,7 +17,7 @@ Preferred format:
 
 Examples:
 
-- `docs(scope): tighten MVP boundaries`
+- `docs(scope): tighten first release boundaries`
 - `feat(pool): add invite token model`
 - `fix(scoring): handle draw prediction correctly`
 
@@ -36,4 +36,3 @@ The `scope` is optional when it does not add clarity.
 - Commit history should become easier to scan and reason about.
 - Planning, documentation, and implementation work can share one consistent commit style.
 - Agents and humans have a clear default instead of inventing ad hoc message formats.
-

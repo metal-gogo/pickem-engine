@@ -15,7 +15,7 @@ Use Prisma ORM for application/server database access.
 
 The project owner prefers Prisma's model-based API and understands the `schema.prisma` plus migration workflow. That preference matters because this codebase will likely be developed in stop-and-start sessions where fast context recovery and clear tooling are valuable.
 
-The accepted tradeoff is less direct SQL-shaped control than Drizzle. That is acceptable because Prisma still allows raw SQL or TypedSQL where needed, and most MVP work should benefit more from Prisma's model-first workflow than from hand-shaped query APIs.
+The accepted tradeoff is less direct SQL-shaped control than Drizzle. That is acceptable because Prisma still allows raw SQL or TypedSQL where needed, and most platform work should benefit more from Prisma's model-first workflow than from hand-shaped query APIs.
 
 ## Consequences
 

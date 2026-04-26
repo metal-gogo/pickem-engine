@@ -11,11 +11,10 @@ The project starts as a passion project for the `2026 FIFA World Cup`. It needs 
 
 Optimize the initial product for private pools shared with friends and family.
 
-Design the domain and documentation so the product can later expand toward a public application, but do not let speculative future scale make the MVP heavier than necessary.
+Design the domain and documentation so the product can later expand toward a public application, but do not let speculative future scale make the first platform release heavier than necessary.
 
 ## Consequences
 
-- MVP decisions should prefer simplicity, clarity, and low operational overhead.
+- First-release decisions should prefer simplicity, clarity, and low operational overhead.
 - Invite-only pool flows are a better first fit than public discovery features.
 - Public growth and monetization remain background constraints, not primary drivers of the first release.
-

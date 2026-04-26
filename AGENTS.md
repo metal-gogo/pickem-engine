@@ -38,7 +38,7 @@ Unless newer canonical docs say otherwise:
 
 - Do not invent business rules silently.
 - Separate `Confirmed decisions`, `Working assumptions`, and `Open questions`.
-- Prefer the smallest coherent MVP that supports real use.
+- Prefer the smallest coherent platform slice that supports real use.
 - Keep architecture and process lightweight and reversible until requirements justify more.
 - Favor stable internal domain language and defer to `docs/domain/glossary.md`.
 - Update existing canonical docs instead of creating ad hoc notes.

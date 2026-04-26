@@ -5,7 +5,7 @@
 
 ## Context
 
-The next database-backed app needs authentication with as little custom auth logic as possible. The auth layer should support passwordless and/or social sign-in for the private friends-and-family MVP, while leaving room for future organization or single sign-on use cases if the product later grows beyond a private pool.
+The next database-backed app needs authentication with as little custom auth logic as possible. The auth layer should support passwordless and/or social sign-in for the private friends-and-family first release, while leaving room for future organization or single sign-on use cases if the product later grows beyond a private pool.
 
 WorkOS AuthKit and Auth0 were the final options under consideration. Both are substantial managed identity platforms. Auth0 is broader and more general-purpose, with deep CIAM, enterprise identity, AI-agent, and compliance surfaces. WorkOS AuthKit is still a serious platform, but its app-facing path is narrower for hosted auth, users, organizations, SSO, social login, passkeys, and Magic Auth.
 
@@ -27,7 +27,7 @@ Auth0 remains a strong fallback if `pickem-engine` later needs a broader custome
 - Keep product authorization and domain membership in the app database: pools, pool participants, pool roles, picks, scoring, and leaderboards remain `pickem-engine` concepts.
 - Store an app user record linked to the WorkOS user subject rather than making WorkOS the source of truth for pool membership.
 - Configure separate WorkOS environments for local development, staging, and production when backend setup begins.
-- Decide the exact MVP login methods during setup, such as Magic Auth, social providers, or both.
+- Decide the exact initial login methods during setup, such as Magic Auth, social providers, or both.
 - Keep the private pool join/invite flow open until the app's user-to-participant mapping is designed.
 - If React Router v7, Cloudflare, or edge-runtime compatibility creates a serious blocker, reassess Auth0, Better Auth, or another provider before implementing custom auth.
 

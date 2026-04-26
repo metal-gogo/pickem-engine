@@ -7,7 +7,7 @@
 
 The current implementation is a React, TypeScript, Vite, and localStorage discovery build. That prototype is useful for product discovery, but the real app will need server-side application code, authentication, database-backed persistence, environment-specific configuration, and deployment workflows.
 
-Remix v3 was initially attractive because of its Web API-centered direction and its promised skills-oriented model. After reviewing the surrounding tooling risk, the project should not make Remix v3 the production baseline yet. Its alpha status and unclear Storybook/component-testing compatibility create avoidable uncertainty for the MVP.
+Remix v3 was initially attractive because of its Web API-centered direction and its promised skills-oriented model. After reviewing the surrounding tooling risk, the project should not make Remix v3 the production baseline yet. Its alpha status and unclear Storybook/component-testing compatibility create avoidable uncertainty for the first platform release.
 
 ## Decision
 

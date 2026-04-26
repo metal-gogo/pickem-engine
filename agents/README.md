@@ -18,7 +18,7 @@ Codex and Cursor specifics are documented in `agents/team-baseline.md`.
 
 Start with the role that owns the canonical file or decision stream you expect to change.
 
-- `product-strategist` for scope, MVP boundaries, and product tradeoffs
+- `product-strategist` for scope, release boundaries, and product tradeoffs
 - `business-rules-steward` for confirmed rules, glossary alignment, and domain language
 - `technical-architect` for architecture direction and technical implications
 - `implementation-planner` for near-term slices, sequencing, and blockers

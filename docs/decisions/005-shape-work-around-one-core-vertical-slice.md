@@ -7,7 +7,7 @@
 
 The project is still early, and there is a real risk of mistaking layered setup work for meaningful progress. It would be easy to spend time on identity, pool creation, invite flow, storage, and infrastructure decisions before proving that the core prediction workflow is understandable, practical, and worth building around.
 
-At the same time, the project still needs discipline. A prototype-first approach should not become an excuse to avoid core MVP constraints forever or to let temporary shortcuts quietly redefine the product.
+At the same time, the project still needs discipline. A prototype-first approach should not become an excuse to avoid core first-release constraints forever or to let temporary shortcuts quietly redefine the product.
 
 ## Decision
 
@@ -26,11 +26,11 @@ The current first slice should be a discovery prototype of the core pick workflo
 - reviewing picks
 - editing picks
 
-This prototype is explicitly not a redefinition of the MVP. Identity, pool membership, invites, database-backed persistence, and result-ingestion infrastructure remain important MVP concerns, but they should not lead the work before the central prediction flow is concrete enough to evaluate.
+This prototype is explicitly not a redefinition of the product. Identity, pool membership, invites, database-backed persistence, and result-ingestion infrastructure remain important platform concerns, but they should not lead the work before the central prediction flow is concrete enough to evaluate.
 
 ## Consequences
 
 - Near-term implementation work should favor a bounded local-first prototype of the core pick loop before expanding surrounding infrastructure.
-- Canonical docs should distinguish clearly between confirmed decisions, prototype assumptions, open questions, and deferred MVP concerns.
+- Canonical docs should distinguish clearly between confirmed decisions, prototype assumptions, open questions, and deferred platform concerns.
 - The prototype needs explicit exit criteria so it does not expand indefinitely.
-- Future sessions should use the prototype findings to refine business rules, domain language, and the eventual MVP shape instead of treating the prototype as the product.
+- Future sessions should use the prototype findings to refine business rules, domain language, and the first platform shape instead of treating the prototype as the product.

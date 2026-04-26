@@ -15,7 +15,7 @@ Use React 19 as the UI runtime for the next app architecture.
 
 React 19 aligns with React Router v7 framework mode, the current prototype's implementation model, and the desired Storybook testing workflow. It gives the project a mature component ecosystem while keeping the frontend path familiar and easy to validate.
 
-The accepted tradeoff is that the project is no longer optimizing around Remix v3's experimental component model. That is acceptable because near-term MVP reliability and testing clarity matter more than adopting the newest framework direction.
+The accepted tradeoff is that the project is no longer optimizing around Remix v3's experimental component model. That is acceptable because near-term platform reliability and testing clarity matter more than adopting the newest framework direction.
 
 ## Consequences
 

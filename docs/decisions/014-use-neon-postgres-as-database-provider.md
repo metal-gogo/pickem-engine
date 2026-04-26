@@ -7,7 +7,7 @@
 
 The project needs a relational database provider that supports free-tier-friendly development, separate environments, migrations, GitHub Actions integration, and a path toward a real public app. Neon Postgres and Prisma Postgres were compared as the main candidates.
 
-Neon's 0.5 GB free storage limit was considered. For the expected private-pool MVP, storage is not a near-term blocker because even hundreds of complete pick submissions create only tens of thousands of pick rows.
+Neon's 0.5 GB free storage limit was considered. For the expected private-pool first release, storage is not a near-term blocker because even hundreds of complete pick submissions create only tens of thousands of pick rows.
 
 ## Decision
 

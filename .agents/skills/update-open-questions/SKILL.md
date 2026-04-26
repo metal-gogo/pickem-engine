@@ -16,7 +16,7 @@ Ask for this skill when the active unresolved-question list should be updated af
 Example prompts:
 
 - `Update the open questions based on this discussion.`
-- `Use the update-open-questions skill for the MVP decisions we just made.`
+- `Use the update-open-questions skill for the release decisions we just made.`
 - `Remove the resolved questions and add the new ones.`
 
 ## Required Inputs

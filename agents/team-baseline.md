@@ -12,7 +12,7 @@ Use the role briefs in `agents/` as the source of truth for role intent. Keep cl
 
 | Role | Purpose | Primary ownership |
 | --- | --- | --- |
-| `product-strategist` | clarify product direction, MVP boundaries, and tradeoffs | `docs/product-scope/current.md` and product-facing open-question updates |
+| `product-strategist` | clarify product direction, release boundaries, and tradeoffs | `docs/product-scope/current.md` and product-facing open-question updates |
 | `business-rules-steward` | keep business rules and domain language clear, consistent, and visible | `docs/business-rules/index.md` and linked glossary alignment |
 | `technical-architect` | translate confirmed product rules into technical direction | `docs/architecture/current.md` and architecture-side decision framing |
 | `implementation-planner` | turn product and architecture clarity into near-term slices | `docs/implementation-plan/current.md` |
@@ -70,7 +70,7 @@ Recommended advisor mapping:
 
 - `business-rules-steward` for confirmed rules, glossary alignment, and avoiding unstated business-rule assumptions
 - `technical-architect` for implementation structure, architectural tradeoffs, or risky technical choices
-- `product-strategist` for MVP scope, business-rule framing, or unresolved product tradeoffs
+- `product-strategist` for release scope, business-rule framing, or unresolved product tradeoffs
 - `documentation-editor` for final cleanup and consistency passes
 
 ## Client Notes
