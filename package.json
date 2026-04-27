@@ -13,6 +13,7 @@
     "prepare": "lefthook install",
     "preview": "wrangler dev",
     "deploy": "wrangler deploy",
+    "deploy:preview": "wrangler versions upload",
     "security:audit": "pnpm audit",
     "security:audit:prod": "pnpm audit --prod",
     "security:audit:ci": "pnpm audit --audit-level high",
