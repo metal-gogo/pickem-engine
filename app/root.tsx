@@ -4,25 +4,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  data,
   isRouteErrorResponse,
   useRouteError,
 } from "react-router";
-import { authkitLoader, getSignInUrl, getSignUpUrl } from "./auth/workos.server";
 
 import stylesheet from "../src/styles/index.css?url";
 
-import type { LinksFunction, LoaderFunctionArgs } from "react-router";
+import type { LinksFunction } from "react-router";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: stylesheet }];
-
-export const loader = (args: LoaderFunctionArgs) =>
-  authkitLoader(args, async () =>
-    data({
-      signInUrl: await getSignInUrl(undefined, args.request),
-      signUpUrl: await getSignUpUrl(undefined, args.request),
-    }),
-  );
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (

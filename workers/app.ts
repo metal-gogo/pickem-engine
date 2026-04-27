@@ -1,4 +1,5 @@
 import { createRequestHandler } from "react-router";
+import { configure } from "@workos-inc/authkit-react-router";
 
 declare module "react-router" {
   export interface AppLoadContext {
@@ -14,8 +15,18 @@ const requestHandler = createRequestHandler(
   import.meta.env.MODE,
 );
 
+function configureWorkOS(env: Env) {
+  const values = env as unknown as Record<string, string | undefined>;
+  const processEnv = (globalThis as unknown as { process?: { env?: Record<string, string> } })
+    .process?.env;
+
+  configure((key) => values[key] ?? processEnv?.[key]);
+}
+
 export default {
   async fetch(request, env, ctx): Promise<Response> {
+    configureWorkOS(env);
+
     return requestHandler(request, {
       cloudflare: {
         env,
