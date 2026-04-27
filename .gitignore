@@ -8,6 +8,7 @@ generated/
 .wrangler/
 .DS_Store
 *.tsbuildinfo
+worker-configuration.check.*.d.ts*
 .env
 .env.local
 .env.*.local

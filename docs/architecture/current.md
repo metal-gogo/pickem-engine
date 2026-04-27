@@ -1,6 +1,6 @@
 # Current Architecture Direction
 
-- Last updated: 2026-04-26
+- Last updated: 2026-04-27
 
 ## Technical Direction
 
@@ -40,6 +40,7 @@ It currently uses:
 - Storybook's Vitest addon for story-driven interaction and accessibility testing in local CLI runs
 - V8 coverage reporting for the Storybook Vitest lane so component-driven test coverage can be reviewed locally
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook server can remain a project-scoped tool instead of a global machine dependency
+- a GitHub Actions deployment workflow that validates pushes to `main` and deploys the Cloudflare Worker with bundled static assets through Wrangler
 - repo tooling pinned by `mise.toml` to Node `24.15.0` and pnpm `10.33.2`, with dependencies locked in `pnpm-lock.yaml`
 
 This is an implementation reference for the local frontend shell. The selected platform stack is captured below.
@@ -148,7 +149,8 @@ CI/CD should stay simple for solo development:
 - pull requests can be used as CI checkpoints and compact review surfaces even when working alone
 - deployment environments should represent local, preview, staging, and production concerns instead of permanent git branches
 - pull requests can later create preview deployments and short-lived Neon branches
-- production deploys and production database migrations should remain explicit and controlled
+- production deploys currently run from pushes to `main` through `.github/workflows/deploy-main.yml`, using GitHub's `production` environment plus a Cloudflare account variable and API-token secret
+- production database migrations should remain explicit and controlled
 
 CI/CD validation should use layered GitHub Actions lanes:
 

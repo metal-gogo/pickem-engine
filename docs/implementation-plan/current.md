@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-26
+- Last updated: 2026-04-27
 
 ## Planning Objective
 
@@ -104,6 +104,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - `pnpm run security:audit:prod` for local production dependency investigation
   - `pnpm run security:audit:ci` for high-or-higher severity pull-request checks
   - `pnpm run security:audit:ci:prod` for high-or-higher severity deployment checks against production dependencies
+- `.github/workflows/deploy-main.yml` validates pushes to `main`, builds the React Router app, and deploys the configured Cloudflare Worker through Wrangler using GitHub `production` environment configuration
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys
