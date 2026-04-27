@@ -33,10 +33,10 @@ export function PoolDashboard({ pool, groups, deadlineLabel, draftDirty }: PoolD
       <section
         className={cn(
           surfaceClass,
-          "grid gap-4 bg-app-lime p-5 lg:grid-cols-[1fr_auto] lg:items-center lg:p-6",
+          "grid gap-4 border-app-deadline-border bg-app-deadline p-5 lg:grid-cols-[1fr_auto] lg:items-center lg:p-6",
         )}
       >
-        <h2 className="m-0 font-display text-[clamp(1.7rem,3vw,2.5rem)] font-black uppercase tracking-[-0.05em] text-app-ink">
+        <h2 className="m-0 font-display text-[clamp(1.7rem,3vw,2.5rem)] font-black uppercase tracking-[-0.05em] text-app-deadline-ink">
           {deadlineLabel}
         </h2>
       </section>

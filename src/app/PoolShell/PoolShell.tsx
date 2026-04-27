@@ -3,6 +3,7 @@ import { Link } from "react-router";
 
 import { PoolDetails } from "../../domain/models";
 import { cn } from "../cn";
+import { ThemeModeSelector } from "../theme";
 import { surfaceClass } from "../ui";
 
 interface PoolShellProps {
@@ -18,7 +19,7 @@ export function PoolShell({ children, pool }: PoolShellProps) {
   return (
     <div className="min-h-screen px-3 pb-10 pt-4 sm:px-5 sm:pb-12 sm:pt-5">
       <div className="mx-auto grid max-w-[1240px] gap-6">
-        <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
+        <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-app-header shadow-surface backdrop-blur-[18px]">
           <div className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between lg:px-5">
             <div className="grid gap-3">
               <div className="flex flex-wrap items-center gap-3">
@@ -38,6 +39,7 @@ export function PoolShell({ children, pool }: PoolShellProps) {
                 </div>
               </div>
             </div>
+            <ThemeModeSelector />
           </div>
         </header>
 

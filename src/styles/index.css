@@ -16,10 +16,13 @@
   --color-app-surface-soft: #f6f3ec;
   --color-app-surface-tint: #f0eee6;
   --color-app-panel: #ebe8e0;
+  --color-app-header: rgba(252, 255, 220, 0.92);
   --color-app-line: rgba(56, 56, 52, 0.18);
   --color-app-line-strong: #383834;
   --color-app-outline: #82807c;
   --color-app-ink: #383834;
+  --color-app-ink-fill: #383834;
+  --color-app-on-ink-fill: #fcf9f2;
   --color-app-muted: #656460;
   --color-app-muted-strong: #515050;
 
@@ -27,6 +30,12 @@
   --color-app-lime: #daf900;
   --color-app-lime-strong: #cdea00;
   --color-app-lime-ink: #5d6b00;
+  --color-app-deadline: #daf900;
+  --color-app-deadline-border: #383834;
+  --color-app-deadline-ink: #383834;
+  --color-app-qualified-row: #daf900;
+  --color-app-qualified-ink: #383834;
+  --color-app-qualified-muted: #5d6b00;
   --color-app-rust: #b83500;
   --color-app-rust-soft: #ffc4b3;
   --color-app-cobalt: #daf900;
@@ -36,6 +45,7 @@
   --color-app-warning-soft: #ffe1d6;
   --color-app-locked: #383834;
   --color-app-locked-soft: #ebe8e0;
+  --color-app-success-ink: #285a10;
 
   /* Shadows should feel like physical displacement more than soft ambient blur. */
   --shadow-surface: 0 12px 32px -4px rgba(56, 56, 52, 0.08);
@@ -48,6 +58,60 @@
 
 :root {
   color-scheme: light;
+  --app-body-background: linear-gradient(
+    180deg,
+    var(--color-app-canvas) 0%,
+    #f8f9fb 54%,
+    var(--color-app-warm) 100%
+  );
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-app-canvas: #171511;
+  --color-app-warm: #201c16;
+  --color-app-surface: rgba(36, 32, 24, 0.9);
+  --color-app-surface-strong: #242018;
+  --color-app-surface-soft: #302a20;
+  --color-app-surface-tint: #3a3327;
+  --color-app-panel: #383025;
+  --color-app-header: rgba(36, 32, 24, 0.94);
+  --color-app-line: rgba(246, 239, 226, 0.2);
+  --color-app-line-strong: #f6efe2;
+  --color-app-outline: #a79d8b;
+  --color-app-ink: #f6efe2;
+  --color-app-ink-fill: #171511;
+  --color-app-on-ink-fill: #f6efe2;
+  --color-app-muted: #c7bca9;
+  --color-app-muted-strong: #e0d3bd;
+
+  --color-app-lime: #c8ff3d;
+  --color-app-lime-strong: #dcff68;
+  --color-app-lime-ink: #243000;
+  --color-app-deadline: #242018;
+  --color-app-deadline-border: #c8ff3d;
+  --color-app-deadline-ink: #c8ff3d;
+  --color-app-qualified-row: #26331d;
+  --color-app-qualified-ink: #f6efe2;
+  --color-app-qualified-muted: #c8ff3d;
+  --color-app-rust: #ff8a68;
+  --color-app-rust-soft: #5a261c;
+  --color-app-cobalt: #8fd3ff;
+  --color-app-cobalt-strong: #bde8ff;
+  --color-app-cobalt-soft: rgba(143, 211, 255, 0.22);
+  --color-app-success-soft: #183c27;
+  --color-app-success-ink: #bdf3cc;
+  --color-app-warning-soft: #53351e;
+  --color-app-locked: #f6efe2;
+  --color-app-locked-soft: #3a3327;
+
+  --shadow-surface: 0 18px 42px -12px rgba(0, 0, 0, 0.5);
+  --shadow-surface-raised:
+    0 20px 38px -14px rgba(0, 0, 0, 0.58), 8px 8px 0 rgba(246, 239, 226, 0.08);
+  --shadow-button-primary: 0 10px 0 rgba(246, 239, 226, 0.16);
+  --shadow-button-secondary: 0 8px 0 rgba(246, 239, 226, 0.12);
+  --app-body-background: linear-gradient(180deg, #171511 0%, #1f1a14 55%, #242018 100%);
 }
 
 @layer base {
@@ -64,13 +128,7 @@
     min-height: 100%;
     font-family: var(--font-sans);
     color: var(--color-app-ink);
-    /* Use a subtle neutral canvas -> warm gradient and remove bright yellow overlays. */
-    background: linear-gradient(
-      180deg,
-      var(--color-app-canvas) 0%,
-      #f8f9fb 54%,
-      var(--color-app-warm) 100%
-    );
+    background: var(--app-body-background);
   }
 
   a {

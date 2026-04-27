@@ -213,13 +213,13 @@ export function MatchCard({
               <span className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">
                 {match.homeTeam.code}
               </span>
-              <span className="min-w-[1.5ch] text-[1.65rem] font-black text-app-ink">
+              <span className="min-w-[1.5ch] text-[1.65rem] font-black text-app-lime-ink">
                 {pick.homeScore}
               </span>
               <span className="text-[0.86rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">
                 :
               </span>
-              <span className="min-w-[1.5ch] text-[1.65rem] font-black text-app-ink">
+              <span className="min-w-[1.5ch] text-[1.65rem] font-black text-app-lime-ink">
                 {pick.awayScore}
               </span>
               <span className="text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime-ink">

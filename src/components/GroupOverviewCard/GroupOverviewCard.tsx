@@ -63,12 +63,12 @@ function getActionLabel(status: TournamentGroup["status"]) {
 export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
   return (
     <article className="overflow-hidden rounded-none border-[4px] border-app-ink bg-app-surface shadow-surface">
-      <header className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 bg-app-ink px-2 py-4 text-app-canvas">
+      <header className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-3 bg-app-ink-fill px-2 py-4 text-app-on-ink-fill">
         <div className="grid min-w-0 gap-1.5">
           <div className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-lime">
             {group.label}
           </div>
-          <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium text-[#d9d5ca]">
+          <div className="flex flex-wrap items-center gap-2.5 text-sm font-medium text-app-on-ink-fill">
             <span>
               {group.completedPickCount}/{group.matches.length} saved
             </span>
@@ -124,12 +124,13 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
                   key={row.team.id}
                   className={cn(
                     "[&>td:last-child]:pe-2",
-                    isQualified ? "bg-app-lime" : "bg-app-surface-soft",
+                    isQualified ? "bg-app-qualified-row" : "bg-app-surface-soft text-app-ink",
                   )}
                 >
                   <th
                     className={cn(
-                      "px-2 py-3 text-left text-sm font-semibold text-app-ink",
+                      "px-2 py-3 text-left text-sm font-semibold",
+                      isQualified ? "text-app-qualified-ink" : "text-app-ink",
                       rowBorderClass,
                     )}
                     scope="row"
@@ -161,7 +162,12 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
                           >
                             {row.team.name}
                           </span>
-                          <span className="font-display text-[0.62rem] font-black uppercase tracking-[0.18em] text-app-muted">
+                          <span
+                            className={cn(
+                              "font-display text-[0.62rem] font-black uppercase tracking-[0.18em]",
+                              isQualified ? "text-app-qualified-muted" : "text-app-muted",
+                            )}
+                          >
                             {row.team.code}
                           </span>
                         </span>
@@ -172,7 +178,8 @@ export function GroupOverviewCard({ poolId, group }: GroupOverviewCardProps) {
                     <td
                       key={`${row.team.id}-${header.short}`}
                       className={cn(
-                        "text-center text-sm font-semibold text-app-ink",
+                        "text-center text-sm font-semibold",
+                        isQualified ? "text-app-qualified-ink" : "text-app-ink",
                         header.emphasized && "font-display text-[1rem] font-black",
                         rowBorderClass,
                         header.hideOnMobile && "hidden sm:table-cell",

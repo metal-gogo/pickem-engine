@@ -11,6 +11,7 @@ import { Home } from "../../views/Home";
 import { GroupPicks } from "../../views/GroupPicks";
 import { PoolDashboard } from "../../views/PoolDashboard";
 import { PoolShell } from "../PoolShell";
+import { ThemeProvider } from "../theme";
 
 interface PoolExperienceProps {
   previewLocked: boolean;
@@ -129,20 +130,22 @@ export function App() {
   const [previewLocked, setPreviewLocked] = useState(false);
 
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Home pools={prototypePools} />} />
-        <Route
-          path="/pools/:poolId/*"
-          element={
-            <PoolExperience
-              previewLocked={previewLocked}
-              onPreviewLockedChange={setPreviewLocked}
-            />
-          }
-        />
-        <Route path="*" element={<Navigate replace to="/" />} />
-      </Routes>
-    </HashRouter>
+    <ThemeProvider>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Home pools={prototypePools} />} />
+          <Route
+            path="/pools/:poolId/*"
+            element={
+              <PoolExperience
+                previewLocked={previewLocked}
+                onPreviewLockedChange={setPreviewLocked}
+              />
+            }
+          />
+          <Route path="*" element={<Navigate replace to="/" />} />
+        </Routes>
+      </HashRouter>
+    </ThemeProvider>
   );
 }

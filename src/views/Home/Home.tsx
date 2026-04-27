@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { formatSavedAt } from "../../app/format";
 
 import { heroTitleClass, tileCardClass } from "../../app/ui";
+import { ThemeModeSelector } from "../../app/theme";
 import { getButtonClassName } from "../../components/Button";
 import { PoolDetails } from "../../domain/models";
 
@@ -14,20 +15,21 @@ export function Home({ pools }: HomeProps) {
   return (
     <div className="min-h-screen px-3 pb-10 pt-4 sm:px-5 sm:pb-12 sm:pt-5">
       <div className="mx-auto grid max-w-[1160px] gap-6">
-        <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-[rgba(252,255,220,0.92)] shadow-surface backdrop-blur-[18px]">
+        <header className="sticky top-3 z-20 rounded-none border-[3px] border-app-ink bg-app-header shadow-surface backdrop-blur-[18px]">
           <div className="flex flex-col gap-4 p-4 lg:flex-row lg:items-center lg:justify-between lg:px-5">
             <h1 className={heroTitleClass}>Your pools</h1>
-            <div className={tileCardClass}>
-              <span className="font-display text-[0.72rem] font-black uppercase tracking-[0.18em] text-app-muted">
-                Tournament starts on
-              </span>
-              <span className="font-display text-[1.3rem] font-black uppercase leading-tight tracking-[-0.04em] text-app-ink">
-                {formatSavedAt("2026-06-10T21:00:00-06:00")}
-              </span>
-            </div>
+            <ThemeModeSelector />
           </div>
         </header>
-        <div className="flex gap-4 justify-end-safe">
+        <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-stretch sm:justify-end">
+          <div className={`${tileCardClass} min-h-[54px] min-w-[min(100%,16rem)] justify-center`}>
+            <span className="font-display text-[0.64rem] font-black uppercase tracking-[0.18em] text-app-muted">
+              Tournament starts
+            </span>
+            <span className="font-display text-[1rem] font-black uppercase leading-tight tracking-[-0.02em] text-app-ink">
+              {formatSavedAt("2026-06-10T21:00:00-06:00")}
+            </span>
+          </div>
           <button className={getButtonClassName({ tone: "primary" })} disabled type="button">
             Join with code
           </button>

@@ -9,14 +9,36 @@ import {
 } from "react-router";
 
 import stylesheet from "../src/styles/index.css?url";
+import { THEME_MODE_STORAGE_KEY, ThemeProvider } from "../src/app/theme";
 
 import type { LinksFunction } from "react-router";
 
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: stylesheet }];
 
+const themeInitScript = `
+(() => {
+  try {
+    const storedMode = window.localStorage.getItem("${THEME_MODE_STORAGE_KEY}");
+    const mode = storedMode === "light" || storedMode === "dark" || storedMode === "system"
+      ? storedMode
+      : "system";
+    const systemDark = window.matchMedia?.("(prefers-color-scheme: dark)")?.matches;
+    const resolvedTheme = mode === "system" ? (systemDark ? "dark" : "light") : mode;
+    const root = document.documentElement;
+    root.dataset.themeMode = mode;
+    root.dataset.theme = resolvedTheme;
+    root.style.colorScheme = resolvedTheme;
+  } catch {
+    document.documentElement.dataset.theme = "light";
+    document.documentElement.dataset.themeMode = "system";
+    document.documentElement.style.colorScheme = "light";
+  }
+})();
+`;
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,10 +48,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
         <title>pickem-engine</title>
         <Meta />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <Links />
       </head>
       <body>
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
         <ScrollRestoration />
         <Scripts />
       </body>
