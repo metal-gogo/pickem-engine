@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 
-import { storyPools } from "../../storybook";
+import { expectVisibleTextContrast, storyPools } from "../../storybook";
 
 import { Home } from ".";
 
@@ -49,5 +49,23 @@ export const Phone: Story = {
   render: () => <Home pools={storyPools} />,
   globals: {
     viewport: { value: "mobile2" },
+  },
+};
+
+export const DarkMode: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use the dark-mode variant to keep the returning-user entry point inside automated contrast checks instead of treating dark mode as a visual-only review.",
+      },
+    },
+  },
+  render: () => <Home pools={storyPools} />,
+  globals: {
+    themeMode: "dark",
+  },
+  play: async ({ canvasElement }) => {
+    await expectVisibleTextContrast(canvasElement);
   },
 };
