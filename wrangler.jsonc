@@ -1,0 +1,13 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "pickem-engine",
+  "compatibility_date": "2026-04-26",
+  "compatibility_flags": ["nodejs_compat"],
+  "main": "./workers/app.ts",
+  "assets": {
+    "directory": "./build/client",
+  },
+  "observability": {
+    "enabled": true,
+  },
+}

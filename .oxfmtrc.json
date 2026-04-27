@@ -1,4 +1,4 @@
 {
   "$schema": "./node_modules/oxfmt/configuration_schema.json",
-  "ignorePatterns": ["coverage/**", "dist/**", "storybook-static/**"]
+  "ignorePatterns": ["coverage/**", "dist/**", "storybook-static/**", "worker-configuration.d.ts"]
 }
