@@ -9,7 +9,7 @@ export const panelHeaderClass =
   "mb-4 flex flex-col gap-4 md:flex-row md:items-end md:justify-between";
 
 export const eyebrowClass =
-  "inline-flex w-fit items-center gap-2 rounded-none border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-ink";
+  "inline-flex w-fit items-center gap-2 rounded-none border-[3px] border-app-ink bg-app-lime px-3 py-1 font-display text-[0.68rem] font-black uppercase tracking-[0.18em] text-app-lime-ink";
 
 export const sectionTitleClass =
   "m-0 font-display text-[clamp(1.6rem,3vw,2.35rem)] font-black uppercase leading-[0.94] tracking-[-0.05em] text-app-ink";

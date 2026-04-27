@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 
 import {
   editableDeadlineLabel,
+  expectVisibleTextContrast,
   lockedDeadlineLabel,
   seededTournamentGroups,
   storyFamilyPool,
@@ -121,5 +122,32 @@ export const Phone: Story = {
   ),
   globals: {
     viewport: { value: "mobile2" },
+  },
+};
+
+export const DarkMode: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Use the dark-mode variant to verify that the main pool dashboard keeps enough contrast for progress, rules scaffolding, predicted tables, and primary actions.",
+      },
+    },
+  },
+  render: () => (
+    <PoolDashboard
+      pool={storyFamilyPool}
+      groups={seededTournamentGroups}
+      lockState="editable"
+      deadlineLabel={editableDeadlineLabel}
+      resumeGroupId={storyResumeGroupId}
+      draftDirty={false}
+    />
+  ),
+  globals: {
+    themeMode: "dark",
+  },
+  play: async ({ canvasElement }) => {
+    await expectVisibleTextContrast(canvasElement);
   },
 };

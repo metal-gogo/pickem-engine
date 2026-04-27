@@ -11,8 +11,8 @@ interface BadgeProps {
 export function Badge({ label, tone = "neutral", subtle = false }: BadgeProps) {
   const toneClassName = {
     neutral: "border-app-outline bg-app-panel text-app-muted-strong",
-    info: "border-app-ink bg-app-lime text-app-ink",
-    success: "border-[#285a10] bg-app-success-soft text-[#285a10]",
+    info: "border-app-ink bg-app-lime text-app-lime-ink",
+    success: "border-app-success-ink bg-app-success-soft text-app-success-ink",
     warning: "border-app-ink bg-app-warning-soft text-app-rust",
     locked: "border-app-ink bg-app-locked text-app-canvas",
   }[tone];

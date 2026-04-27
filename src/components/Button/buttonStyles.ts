@@ -14,7 +14,7 @@ const baseClassName =
 
 const toneClassNames: Record<ButtonTone, string> = {
   primary:
-    "bg-app-lime text-app-ink shadow-button-primary hover:bg-[#e8ff4e] active:bg-app-lime-strong",
+    "bg-app-lime text-app-lime-ink shadow-button-primary hover:bg-[#e8ff4e] active:bg-app-lime-strong",
   secondary:
     "bg-app-surface-strong text-app-ink shadow-button-secondary hover:bg-app-panel active:bg-app-surface-soft",
   ghost:
