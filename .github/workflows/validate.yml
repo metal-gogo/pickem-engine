@@ -1,0 +1,69 @@
+name: Validate
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.15.0
+
+      - name: Enable pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@10.33.2 --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright browser
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Check formatting
+        run: pnpm run verify:format
+
+      - name: Lint
+        run: pnpm run verify:lint
+
+      - name: Typecheck
+        run: pnpm run verify:types
+
+      - name: Check database schema
+        run: pnpm run verify:db
+        env:
+          DATABASE_URL: postgresql://pickem:pickem@localhost:5432/pickem_engine
+          DIRECT_URL: postgresql://pickem:pickem@localhost:5432/pickem_engine
+
+      - name: Run security checks
+        run: pnpm run verify:security
+
+      - name: Run unit tests
+        run: pnpm run verify:tests
+
+      - name: Run Storybook checks
+        run: pnpm run verify:storybook
+
+      - name: Build app
+        run: pnpm run verify:build

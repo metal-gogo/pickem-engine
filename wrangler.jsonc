@@ -4,9 +4,16 @@
   "compatibility_date": "2026-04-26",
   "compatibility_flags": ["nodejs_compat"],
   "main": "./workers/app.ts",
+  "preview_urls": true,
   "assets": {
     "directory": "./build/client",
   },
+  "routes": [
+    {
+      "pattern": "futbol.quest",
+      "custom_domain": true,
+    },
+  ],
   "observability": {
     "enabled": true,
   },

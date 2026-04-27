@@ -19,8 +19,8 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: stylesheet
 export const loader = (args: LoaderFunctionArgs) =>
   authkitLoader(args, async () =>
     data({
-      signInUrl: await getSignInUrl(),
-      signUpUrl: await getSignUpUrl(),
+      signInUrl: await getSignInUrl(undefined, args.request),
+      signUpUrl: await getSignUpUrl(undefined, args.request),
     }),
   );
 
