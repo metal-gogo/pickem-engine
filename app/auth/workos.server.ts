@@ -1,4 +1,3 @@
-import "dotenv/config";
 import { redirect } from "react-router";
 import { signOut } from "@workos-inc/authkit-react-router";
 

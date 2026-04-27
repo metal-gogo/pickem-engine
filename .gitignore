@@ -5,6 +5,7 @@ build/
 storybook-static/
 coverage/
 generated/
+.wrangler/
 .DS_Store
 *.tsbuildinfo
 .env

@@ -4,14 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "react-router dev",
-    "build": "pnpm run typecheck && react-router build",
+    "dev": "wrangler dev",
+    "build": "react-router build",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint . --deny-warnings",
     "lint:fix": "pnpm run lint -- --fix",
     "prepare": "lefthook install",
-    "preview": "react-router-serve ./build/server/index.js",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
     "security:audit": "pnpm audit",
     "security:audit:prod": "pnpm audit --prod",
     "security:audit:ci": "pnpm audit --audit-level high",
@@ -24,8 +25,10 @@
     "db:pull": "prisma db pull",
     "db:studio": "prisma studio",
     "db:validate": "prisma validate",
+    "worker:types": "wrangler types worker-configuration.d.ts",
+    "worker:types:check": "wrangler types worker-configuration.d.ts --check",
     "typegen": "react-router typegen",
-    "typecheck": "pnpm run typegen && tsc -b --pretty false",
+    "typecheck": "pnpm run typegen && pnpm run worker:types:check && tsc -b --pretty false",
     "test": "pnpm run test:unit",
     "test:unit": "vitest run --project=unit",
     "storybook": "storybook dev -p 6100",
@@ -55,6 +58,7 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.33.2",
     "@react-router/dev": "^7.14.2",
     "@storybook/addon-a11y": "^10.3.5",
     "@storybook/addon-docs": "^10.3.5",
@@ -80,7 +84,8 @@
     "tailwindcss": "^4.2.4",
     "typescript": "^6.0.3",
     "vite": "^8.0.10",
-    "vitest": "^4.1.5"
+    "vitest": "^4.1.5",
+    "wrangler": "^4.0.0"
   },
   "packageManager": "pnpm@10.33.2",
   "pnpm": {
