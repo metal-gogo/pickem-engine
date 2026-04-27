@@ -116,6 +116,18 @@ The first product shape is a private pool experience for friends and family, but
 
 Design mobile-first. Expand carefully to tablet and desktop only when more space improves comparison, review, or setup clarity. Light and dark mode should be supported from the start through tokens rather than one-off color choices.
 
+## Source Of Truth
+
+This file is the canonical design source for `pickem-engine`.
+
+Generated Stitch exports, mockups, screenshots, and local test briefs are supporting references only. They may contribute useful token, component, or mood refinements, but they do not override this file, the canonical product docs under `docs/`, or confirmed business rules. When a generated proposal changes the intended direction, update `DESIGN.md` deliberately instead of leaving a second competing design brief in the repo.
+
+## Accessibility Validation
+
+Color choices must be checked with automated contrast validation before they become part of the product UI. Storybook product stories should run accessibility checks as errors, including WCAG AA contrast checks. Exploratory palette stories may be marked as accessibility todo while candidates are being compared, but they should display computed contrast ratios so failures stay visible.
+
+When meaningful theme work lands, include both light and dark Storybook variants for the main product surfaces instead of relying on manual dark-mode spot checks.
+
 ## Colors
 
 - **Primary lime (#C8FF3D):** high-energy action, active progress, and selected states. Use as emphasis, not as a constant fill.
@@ -129,6 +141,8 @@ Design mobile-first. Expand carefully to tablet and desktop only when more space
 - **Status colors:** success, warning, and error are reserved for real state communication.
 
 Team and national colors may appear as narrow accent strips, small marks, flag-adjacent treatments, or match-context highlights. They should complement the core palette, not replace it.
+
+Separate foreground, structural fill, and emphasis roles in code tokens. Do not use the main text token as a dark structural fill in dark mode. Any lime-filled control or badge must use a dedicated dark-on-lime text token, and large dark-mode emphasis surfaces should prefer dark panels with lime text or borders over large neon fills.
 
 ## Typography
 
