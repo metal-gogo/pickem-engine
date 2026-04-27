@@ -41,6 +41,7 @@ It currently uses:
 - V8 coverage reporting for the Storybook Vitest lane so component-driven test coverage can be reviewed locally
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook server can remain a project-scoped tool instead of a global machine dependency
 - a GitHub Actions validation workflow for pull requests and `main`, with Cloudflare Workers Builds intended to own preview and production deployments
+- Cloudflare Workers Builds should read Node from `.node-version` and pnpm from the `packageManager` metadata through Corepack rather than duplicating tool versions as dashboard variables
 - repo tooling pinned by `mise.toml` to Node `24.15.0` and pnpm `10.33.2`, with dependencies locked in `pnpm-lock.yaml`
 
 This is an implementation reference for the local frontend shell. The selected platform stack is captured below.

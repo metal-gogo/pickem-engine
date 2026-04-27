@@ -106,6 +106,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - `pnpm run security:audit:ci:prod` for high-or-higher severity deployment checks against production dependencies
 - `.github/workflows/validate.yml` validates pull requests and pushes to `main`; Cloudflare Workers Builds should own PR preview uploads and production deploys
 - `wrangler.jsonc` enables Worker preview URLs and configures `futbol.quest` as the production custom domain
+- `.node-version` lets Cloudflare Workers Builds pick up the repo's Node version, while `corepack enable` in the build command should activate the pnpm version declared in `package.json`
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys
