@@ -14,7 +14,7 @@ This skill is especially useful when:
 - the same kind of request keeps appearing across sessions
 - a repeated task needs more consistency
 - a useful pattern is currently living only in chat history
-- a workflow should be easier for future agents or humans to invoke
+- a workflow should be easier for future Gemini, Claude, or human operators to invoke
 
 ## How To Use
 

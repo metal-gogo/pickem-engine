@@ -48,7 +48,7 @@ Unless newer canonical docs say otherwise:
 
 ## Execution Discipline
 
-Use these rules to reduce avoidable agent mistakes. They are intentionally agent-agnostic and apply to Codex, Claude, Cursor, and any other assistant working in this repo.
+Use these rules to reduce avoidable agent mistakes. They are intentionally agent-agnostic and apply to Codex, Claude, Cursor, Gemini, and any other assistant working in this repo.
 
 - Start by naming the goal and the success criteria for non-trivial work.
 - State assumptions when they affect behavior, data, permissions, architecture, or product scope.
@@ -82,10 +82,12 @@ Repo-local MCP registration for this workflow lives in:
 - `.codex/config.toml` for Codex
 - `.cursor/mcp.json` for Cursor
 - `.mcp.json` for Claude Code
+- `.mcp.json` for Gemini Code Assist
 
 For agent behavior:
 
 - do not guess component props or supported states when Storybook documentation is available
+- use the `ui-iteration` skill to maintain consistency across UI and story changes
 - query component and story documentation first, then inspect previews, then edit code
 - use the latest story-writing instructions before creating or changing stories
 - run relevant Storybook tests after meaningful UI changes when the tool is available
