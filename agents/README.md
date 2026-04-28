@@ -6,7 +6,7 @@ These are lightweight working guides, not strict process machinery.
 
 Use them when a task benefits from a focused role with a clear output shape.
 
-`agents/team-baseline.md` maps these shared roles onto the current Claude Code, Codex, and Cursor agent features.
+`agents/team-baseline.md` maps these shared roles onto the current Gemini, Claude Code, Codex, and Cursor agent features.
 
 Repo-backed agent artifacts currently live in:
 
@@ -30,6 +30,7 @@ For most tasks, use one primary role and let it keep end-to-end ownership. Add o
 
 Sometimes, but do not treat automatic selection as the baseline contract.
 
+- Gemini Code Assist uses project context and system instructions to guide role behavior.
 - Claude Code can delegate based on subagent descriptions, so clear role names help.
 - Codex custom-agent descriptions can also guide spawned agents, but this repo does not currently track `.codex/agents/`, so explicit prompts are the reliable default here.
 - Cursor custom modes and background agents are selected and launched explicitly.

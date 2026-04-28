@@ -1,6 +1,6 @@
 ---
 name: define-agent-team
-description: Define or update a reusable team of project agents across Claude Code, Codex, and Cursor using the shared role briefs under `agents/`.
+description: Define or update a reusable team of project agents across Gemini, Claude Code, Codex, and Cursor using the shared role briefs under `agents/`.
 ---
 
 # Define Agent Team
@@ -11,7 +11,7 @@ Use when the repo needs a reusable team of specialized agents, or when the curre
 
 This skill is especially useful when:
 
-- the same repo roles should work in Claude Code, Codex, and Cursor
+- the same repo roles should work in Gemini, Claude Code, Codex, and Cursor
 - model defaults or role boundaries need to be refreshed
 - the user wants repeatable parallel-agent workflows instead of one-off prompts
 - official client capabilities have changed and the repo baseline must catch up
@@ -22,7 +22,7 @@ Ask for this skill when you want the agent to define or refresh the repo's agent
 
 Example prompts:
 
-- `Define a team of agents for this repo.`
+- `Define a team of Gemini and Claude agents for this repo.`
 - `Use the define-agent-team skill to update our Claude/Codex/Cursor setup.`
 - `Refresh the agent roles and model defaults across clients.`
 
@@ -37,6 +37,7 @@ Example prompts:
 
 - updates to `agents/` when the shared role layer changes
 - updated repo-scoped Claude agent definitions when supported
+- updated Gemini Custom Instructions or system prompt guidance
 - documented Codex local config guidance when `.codex` is intentionally local-only
 - documented Cursor custom-mode and background-agent guidance when manual UI setup is still required
 - explicit guidance on when to use a full parallel team versus an advisor loop
@@ -45,7 +46,7 @@ Example prompts:
 ## Default Pattern
 
 1. Read the existing role briefs in `agents/`.
-2. Verify the current official docs for each target client.
+2. Verify the current official docs for each target client (Gemini, Claude, etc).
 3. Keep `agents/` as the conceptual source of truth for role purpose and output shape.
 4. Add or update repo-scoped client definitions where the platform supports them.
 5. Document manual steps explicitly where the platform still expects UI configuration.
@@ -55,7 +56,7 @@ Example prompts:
 
 ## Validation Checklist
 
-- Confirm the role system stays conceptually aligned across Claude Code, Codex, and Cursor.
+- Confirm the role system stays conceptually aligned across Gemini, Claude Code, Codex, and Cursor.
 - Confirm repo-tracked files only include configurations the target client actually supports.
 - Confirm manual setup steps are documented where automation is not supported.
 - Confirm the recommended team shape is the smallest coherent one for the repo.
@@ -65,7 +66,7 @@ Example prompts:
 ## Guardrails
 
 - Do not invent unsupported config formats.
-- Do not let Claude, Codex, and Cursor baselines drift into three different role systems.
+- Do not let Gemini, Claude, Codex, and Cursor baselines drift into different role systems.
 - Do not hardcode brittle Cursor model names when the official docs treat model availability as dynamic.
 - Do not replace a local-only `.codex` convention with tracked repo files unless the repo explicitly chooses to do that.
 - Do not use a full team when one executor plus one advisor would be simpler and safer.
