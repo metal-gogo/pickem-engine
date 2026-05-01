@@ -1,6 +1,13 @@
 import { prototypePool, sampleMatches } from "../data/fixtures";
 import { mockedLeaderboard } from "../data/leaderboard";
 import { prototypePools } from "../data/pools";
+import {
+  getGroupById,
+  getTeamById,
+  publicGroups,
+  publicMatches,
+  publicVenues,
+} from "../data/tournament";
 import { getDeadlineLabel } from "../domain/lock";
 import {
   buildTournamentGroups,
@@ -81,6 +88,13 @@ export const storyWorkPool = prototypePools[1]!;
 export const storyPool = storyFamilyPool;
 export const storyMatches = sampleMatches;
 export const storyLeaderboard = mockedLeaderboard;
+export const storyPublicMatches = publicMatches;
+export const storyPublicVenues = publicVenues;
+export const storyPublicGroups = publicGroups;
+export const storyPublicGroupA = getGroupById("A")!;
+export const storyPublicGroupC = getGroupById("C")!;
+export const storyMexico = getTeamById("mex")!;
+export const storyBrazil = getTeamById("bra")!;
 
 export const editableDeadlineLabel = getDeadlineLabel(
   prototypePool.deadlineAt,

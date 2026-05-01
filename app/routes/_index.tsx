@@ -1,6 +1,5 @@
-import { prototypePools } from "../../src/data/pools";
-import { Home } from "../../src/views/Home";
+import { TournamentOverview } from "../../src/views/TournamentOverview";
 
-export default function HomeRoute() {
-  return <Home pools={prototypePools} />;
+export default function TournamentRoute() {
+  return <TournamentOverview />;
 }
