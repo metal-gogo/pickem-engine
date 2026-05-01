@@ -2,11 +2,12 @@ import { useState } from "react";
 import { HashRouter, Navigate, Route, Routes, useParams } from "react-router";
 
 import { prototypePool, sampleMatches } from "../../data/fixtures";
-import { getPoolById } from "../../data/pools";
+import { getPoolById, prototypePools } from "../../data/pools";
 import { getDeadlineLabel, getLockState, getPrototypeLockedNow } from "../../domain/lock";
 import { buildTournamentGroups, getFirstIncompleteGroupId } from "../../domain/tournament";
 import { usePickSet } from "../../hooks/usePickSet";
 import { createLocalPickStorage } from "../../persistence/pickStorage";
+import { Home } from "../../views/Home";
 import { GroupProfile } from "../../views/GroupProfile";
 import { GroupPicks } from "../../views/GroupPicks";
 import { PoolDashboard } from "../../views/PoolDashboard";
@@ -26,7 +27,7 @@ export function PoolExperience({ previewLocked, onPreviewLockedChange }: PoolExp
   const pool = getPoolById(poolId);
 
   if (!pool) {
-    return <Navigate replace to="/" />;
+    return <Navigate replace to="/pools" />;
   }
 
   const storage = createLocalPickStorage(pool.id);
@@ -159,6 +160,7 @@ export function App() {
       <HashRouter>
         <Routes>
           <Route path="/" element={<TournamentOverview />} />
+          <Route path="/pools" element={<Home pools={prototypePools} />} />
           <Route path="/teams/:teamId" element={<PublicTeamRoute />} />
           <Route path="/groups/:groupId" element={<PublicGroupRoute />} />
           <Route
