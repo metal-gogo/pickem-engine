@@ -32,6 +32,8 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
    - user/account settings
    - authentication or auth-transition screen if needed
    - team single page
+   - group single page
+   - tournament, team, and group calendar export flows
    - pool list, pool dashboard, invite acceptance, picks, leaderboard, schedule/results, and key system states
 2. Keep design proposals mobile-first, with tablet/desktop adaptations and light/dark mode support from the start.
 3. Use the selected platform stack as the implementation baseline: React Router v7 framework mode, React 19, TypeScript, Tailwind v4, Cloudflare, Prisma, Neon, WorkOS AuthKit, Zod, Sentry, mise, pnpm, and GitHub Actions.
@@ -113,9 +115,17 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - for the next database-backed app, use GitHub Actions validation lanes for dependency security audit, format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
+  - public tournament overview landing page
+  - public team profile
+  - public group profile
   - pool list home
   - pool dashboard
   - focused group picks
+- reusable public information modules for:
+  - generated ICS calendar downloads
+  - public match schedule lists
+  - public venue grids
+  - shared group tables that can be highlighted for predicted pool standings or left neutral for pre-tournament public pages
 - pool-scoped local persistence so placeholder pools behave like separate spaces in the local shell
 - predicted group tables derived from saved picks so the tournament overview can preview outcomes without pretending they are official
 - placeholder rules and points content are acceptable local scaffolding as long as they are presented as provisional and do not masquerade as settled business rules
@@ -191,6 +201,12 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - Added a local-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 - Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
 - Enriched normalized team seed data with FIFA ranking and World Cup history metadata to support future product-surface decisions.
+- Added seed-backed public tournament information pages as the unauthenticated landing direction:
+  - tournament overview with rules, groups, venues, sources, and full-tournament calendar export
+  - team profile pages with manager, ranking, World Cup history, group fixtures, venues, and team calendar export
+  - group profile pages with team summaries, pre-tournament table, fixtures, venues, historical World Cup finals head-to-head seed data, and group calendar export
+- Extracted the group table into a reusable module shared by predicted pool standings and neutral public pre-tournament group tables.
+- Added reusable public schedule, venue, calendar download, public shell, and site-header modules with Storybook coverage.
 - Chose the current local-shell direction:
   - pool list home for returning users
   - pool dashboard with rules and points summary scaffolding
