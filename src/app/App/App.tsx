@@ -2,14 +2,17 @@ import { useState } from "react";
 import { HashRouter, Navigate, Route, Routes, useParams } from "react-router";
 
 import { prototypePool, sampleMatches } from "../../data/fixtures";
-import { getPoolById, prototypePools } from "../../data/pools";
+import { getPoolById } from "../../data/pools";
 import { getDeadlineLabel, getLockState, getPrototypeLockedNow } from "../../domain/lock";
 import { buildTournamentGroups, getFirstIncompleteGroupId } from "../../domain/tournament";
 import { usePickSet } from "../../hooks/usePickSet";
 import { createLocalPickStorage } from "../../persistence/pickStorage";
-import { Home } from "../../views/Home";
+import { GroupProfile } from "../../views/GroupProfile";
 import { GroupPicks } from "../../views/GroupPicks";
 import { PoolDashboard } from "../../views/PoolDashboard";
+import { TeamProfile } from "../../views/TeamProfile";
+import { TournamentOverview } from "../../views/TournamentOverview";
+import { getGroupById, getTeamById } from "../../data/tournament";
 import { PoolShell } from "../PoolShell";
 import { ThemeProvider } from "../theme";
 
@@ -85,6 +88,28 @@ export function PoolExperience({ previewLocked, onPreviewLockedChange }: PoolExp
   );
 }
 
+function PublicTeamRoute() {
+  const { teamId = "" } = useParams();
+  const team = getTeamById(teamId.toLowerCase());
+
+  if (!team) {
+    return <Navigate replace to="/" />;
+  }
+
+  return <TeamProfile team={team} />;
+}
+
+function PublicGroupRoute() {
+  const { groupId = "" } = useParams();
+  const group = getGroupById(groupId);
+
+  if (!group) {
+    return <Navigate replace to="/" />;
+  }
+
+  return <GroupProfile group={group} />;
+}
+
 interface GroupRouteProps {
   poolId: string;
   groups: ReturnType<typeof buildTournamentGroups>;
@@ -133,7 +158,9 @@ export function App() {
     <ThemeProvider>
       <HashRouter>
         <Routes>
-          <Route path="/" element={<Home pools={prototypePools} />} />
+          <Route path="/" element={<TournamentOverview />} />
+          <Route path="/teams/:teamId" element={<PublicTeamRoute />} />
+          <Route path="/groups/:groupId" element={<PublicGroupRoute />} />
           <Route
             path="/pools/:poolId/*"
             element={
