@@ -1,6 +1,6 @@
 # Current Architecture Direction
 
-- Last updated: 2026-04-27
+- Last updated: 2026-05-01
 
 ## Technical Direction
 
@@ -92,6 +92,65 @@ Environment configuration should split local, deployed runtime, and CI concerns:
 - Cloudflare should store deployed runtime secrets as Worker secrets
 - GitHub Actions should use GitHub Environment secrets for migrations, preview database setup, and deployment
 - application/server code should read typed config through a small validated config boundary rather than scattering raw environment access
+
+## Initial Database Foundation
+
+The initial relational database foundation is implemented with Prisma ORM, Prisma Migrate, Neon Postgres, and the Neon Prisma driver adapter.
+
+Current files:
+
+- `prisma/schema.prisma` owns the database model.
+- `prisma/migrations/20260501000000_init/migration.sql` is the first migration.
+- `prisma/seed.ts` seeds static World Cup 2026 tournament data.
+- `src/data/seeds/databaseSeed.ts` transforms existing normalized JSON seeds into database seed records.
+- `app/db.server.ts` centralizes Worker runtime Prisma client creation.
+
+Runtime shape:
+
+- The app-facing generated Prisma Client targets Cloudflare Workers through the `cloudflare` runtime and lives under ignored `generated/prisma/`.
+- A separate ignored Node-targeted Prisma Client under `generated/prisma-node/` exists only for local CLI seed scripts.
+- Application code should create Prisma clients through `app/db.server.ts` using Cloudflare `env` or another server-side environment object.
+- Do not import Prisma setup directly into UI components.
+
+Environment variables:
+
+- `DATABASE_URL` is required for app/runtime database access and local seed runs.
+- `DIRECT_URL` is optional and should point at a direct database URL for Prisma Migrate when `DATABASE_URL` is pooled.
+- Local development should use an uncommitted `.env` pointing at a non-production Neon branch.
+- Deployed `DATABASE_URL` and `DIRECT_URL` values should be Cloudflare Worker secrets, not plaintext Wrangler vars.
+- GitHub Actions should use environment-scoped secrets for migration and deployment workflows.
+
+Migration flow:
+
+- Create a local migration with `pnpm run db:migrate:create -- --name <name>` when a database is available.
+- Apply local development migrations with `pnpm run db:migrate:dev`.
+- Apply committed migrations in staging or production with `pnpm run db:migrate:deploy`.
+- Validate and regenerate clients with `pnpm run db:check`.
+- Prisma Migrate does not provide automatic down migrations; rollback should use a forward corrective migration or restore from a database backup/branch.
+
+Seed flow:
+
+- Dry-run and validate the fixture transform with `pnpm run db:seed:check`.
+- Apply static tournament seed data with `pnpm run db:seed` after migrations are applied.
+- The seed is idempotent and updates static tournament, group, team, venue, tournament-team, and match rows by stable ids.
+- The seed does not create users, pools, pool participants, picks, scoring settings, or match results.
+
+Current schema overview:
+
+- `users` stores app-owned users linked to external auth by `authProvider` and `authProviderUserId`; WorkOS is not treated as the whole user model.
+- `tournaments`, `tournament_groups`, `teams`, `tournament_teams`, `venues`, and `matches` store the static tournament structure and fixture data.
+- `matches` stores concrete group-stage teams and JSON participant slots for unresolved knockout fixtures.
+- `match_results` stores the platform-approved official result for a match.
+- `pools`, `pool_participants`, `match_picks`, and `pool_scoring_settings` support private pools, membership, exact-score picks, and constrained scoring settings.
+
+Known limitations:
+
+- The seeded tournament `pickLockAt` is currently `null` because the exact production global deadline timestamp is not confirmed.
+- Pool scoring settings require point values, but defaults, bounds, and validation constraints remain open.
+- Tournament-level bonus predictions are not modeled yet because bonus result definitions are still unresolved.
+- Knockout fixtures are seeded, but knockout prediction and scoring semantics remain unresolved.
+- Join/invite records are not modeled yet because the identity and join flow is still open.
+- Result ingestion is not implemented; `match_results` is only the storage target for platform-approved results.
 
 Tooling is pinned through mise and package-manager metadata:
 
@@ -287,3 +346,4 @@ This keeps the raw ingest repeatable while still letting the app grow around cle
 - how much tournament progression needs to be modeled explicitly
 - what defaults, bounds, and validation constraints should apply to scoring point settings
 - how official tournament top scorer and tournament best-player bonus outcomes should be resolved
+- what exact global prediction deadline timestamp and time zone policy should be stored on the tournament

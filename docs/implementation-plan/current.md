@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-27
+- Last updated: 2026-05-01
 
 ## Planning Objective
 
@@ -138,12 +138,13 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - rules summary
   - group overview cards
 - raw, derived, and normalized World Cup 2026 seed files under `src/data/seeds/` so fixture-modeling work can evolve without mutating upstream source files
+- initial Prisma database foundation with Neon-compatible Postgres schema, first migration, Worker-runtime DB client factory, Node seed client, and idempotent static tournament seed flow from the existing normalized seed files
 
 ### Platform Concerns Not Yet Implemented
 
 - join and invite flow details, now with WorkOS AuthKit chosen as the auth provider
 - pool creation mechanics and constrained rules setup
-- database-backed persistence implementation, now with Prisma ORM and Neon Postgres as the chosen direction
+- database-backed route persistence for users, pools, picks, scoring settings, official results, and leaderboards; the schema and static seed foundation now exist, but the current routed app still reads local fixtures/localStorage
 - official results ingestion infrastructure
 - multi-user permissions and membership
 
@@ -169,11 +170,12 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - no finalized join/invite model yet
 - no chosen ingestion approach yet
 - no finalized bonus-result definition policy yet
+- no finalized global prediction deadline timestamp or time zone policy yet
 
 ## Planning Guardrails
 
 - do not choose additional stack details before product constraints require them
-- do not implement the React Router v7, Cloudflare, Neon, Prisma, WorkOS, environment-file, mise, Node, package-manager, linting, typecheck, observability, or CI/CD setup until the project explicitly moves from architecture choice into backend setup work
+- keep the newly added database foundation small and reversible until the app starts reading and writing real persisted users, pools, picks, and results
 - keep the platform build coherent and small
 - preserve flexibility for later public growth without optimizing for it prematurely
 - do not let local-shell shortcuts leak into canonical business rules
@@ -200,6 +202,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - Treated free pre-deadline edits as a local-shell assumption only, not a resolved business rule.
 - Added a local-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 - Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
+- Added the initial relational database foundation with Prisma, Neon Postgres assumptions, Prisma Migrate, generated Cloudflare and Node Prisma clients, and an idempotent static World Cup 2026 seed path.
 - Enriched normalized team seed data with FIFA ranking and World Cup history metadata to support future product-surface decisions.
 - Added seed-backed public tournament information pages as the unauthenticated landing direction:
   - tournament overview with rules, groups, venues, sources, and full-tournament calendar export
@@ -230,6 +233,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - result ingestion strategy
 - multilingual launch scope
 - bonus result definitions
+- global deadline timestamp and time zone policy
 
 ### Recommended Next Step
 
@@ -247,6 +251,7 @@ The next useful moves are likely:
   - pick editing semantics
   - identity and join flow
   - bonus result definitions
+  - global deadline timestamp and time zone policy
 
 ### Resume Prompt
 

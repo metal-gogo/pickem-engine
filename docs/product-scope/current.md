@@ -1,6 +1,6 @@
 # Current Product Scope
 
-- Last updated: 2026-04-27
+- Last updated: 2026-05-01
 
 ## Product Direction
 
@@ -67,3 +67,4 @@ Build the platform path for private World Cup pools, supported by public World C
 - result ingestion strategy is still open
 - multilingual launch scope is still open
 - official bonus-result definitions are still open
+- exact global prediction deadline timestamp and time zone policy are still open
