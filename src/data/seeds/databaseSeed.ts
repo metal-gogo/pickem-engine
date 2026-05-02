@@ -122,6 +122,7 @@ export interface GroupSeedRecord {
 export interface TeamSeedRecord {
   id: string;
   fifaCode: string;
+  slug: string;
   name: string;
   normalizedName: string | null;
   confederation: string;
@@ -198,6 +199,16 @@ export function getTournamentGroupSeedId(groupCode: string) {
 
 function toDateOnly(value: string) {
   return new Date(`${value}T00:00:00.000Z`);
+}
+
+function toSlug(value: string) {
+  return value
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/&/g, " and ")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
 function toKickoffAt(date: string, time: string) {
@@ -307,6 +318,7 @@ export function buildWorldCup2026DatabaseSeed(): WorldCup2026DatabaseSeed {
   const teams = normalizedTeams.map((team) => ({
     id: team.id,
     fifaCode: team.fifaCode,
+    slug: toSlug(team.normalizedName ?? team.name),
     name: team.name,
     normalizedName: team.normalizedName,
     confederation: team.confederation,

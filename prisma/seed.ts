@@ -77,6 +77,7 @@ async function seedStaticTournamentData(db: PrismaClient) {
         create: team,
         update: {
           fifaCode: team.fifaCode,
+          slug: team.slug,
           name: team.name,
           normalizedName: team.normalizedName,
           confederation: team.confederation,

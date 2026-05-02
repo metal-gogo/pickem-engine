@@ -35,6 +35,7 @@ describe("World Cup 2026 database seed", () => {
 
     expectUnique(seed.groups.map((group) => group.id));
     expectUnique(seed.teams.map((team) => team.id));
+    expectUnique(seed.teams.map((team) => team.slug));
     expectUnique(seed.venues.map((venue) => venue.id));
     expectUnique(seed.matches.map((match) => match.id));
 

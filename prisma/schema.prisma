@@ -88,6 +88,7 @@ model TournamentGroup {
 model Team {
   id              String           @id
   fifaCode        String           @unique
+  slug            String           @unique
   name            String
   normalizedName  String?
   confederation   String
@@ -169,8 +170,10 @@ model Match {
   @@index([awayTeamId])
   @@index([groupId])
   @@index([homeTeamId])
+  @@index([kickoffAt])
   @@index([stage])
   @@index([tournamentId])
+  @@index([venueId])
   @@map("matches")
 }
 
