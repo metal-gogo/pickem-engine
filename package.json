@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "wrangler dev",
     "dev:db": "pnpm run build && wrangler dev --env-file=.env --port 5173",
-    "build": "react-router build",
+    "build": "pnpm run db:generate && react-router build",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint . --deny-warnings",
