@@ -23,7 +23,7 @@ type NormalizedTeamSeed = {
   lastQualifiedYear: number | null;
   currentConsecutiveAppearances: number;
   bestFinish: string | null;
-  bestFinishYears: number[];
+  bestFinishYears: number[] | null;
 };
 
 type NormalizedGroupSeed = {
@@ -350,7 +350,7 @@ export function buildWorldCup2026DatabaseSeed(): WorldCup2026DatabaseSeed {
       lastQualifiedYear: team.lastQualifiedYear,
       currentConsecutiveAppearances: team.currentConsecutiveAppearances,
       bestFinish: team.bestFinish,
-      bestFinishYears: team.bestFinishYears,
+      bestFinishYears: team.bestFinishYears ?? [],
     };
   });
 

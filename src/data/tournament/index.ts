@@ -24,7 +24,7 @@ type NormalizedTeamSeed = {
   lastQualifiedYear: number | null;
   currentConsecutiveAppearances: number;
   bestFinish: string | null;
-  bestFinishYears: number[];
+  bestFinishYears: number[] | null;
 };
 
 type NormalizedGroupSeed = {
@@ -92,19 +92,20 @@ interface ManagerSeed {
   sourceLabel: string;
 }
 
-interface HeadToHeadMeetingSeed {
+export interface HeadToHeadMeetingSeed {
   year: number;
   stage: string;
   result: string;
 }
 
-interface HeadToHeadSeed {
+export interface HeadToHeadSeed {
   groupId: string;
   teamIds: [string, string];
   meetings: HeadToHeadMeetingSeed[];
 }
 
 export interface PublicTeam extends Team {
+  slug?: string;
   groupId: string;
   confederation: string;
   continent: string;
@@ -167,7 +168,20 @@ export interface TournamentRuleSection {
   sourceHref: string;
 }
 
-export const tournamentInfo = {
+export interface TournamentInfo {
+  name: string;
+  officialName: string;
+  startsAt: string;
+  endsAt: string;
+  hostCountries: string[];
+  teamCount: number;
+  groupCount: number;
+  groupMatchCount: number;
+  matchCount: number;
+  venueCount: number;
+}
+
+export const tournamentInfo: TournamentInfo = {
   name: "World Cup 2026",
   officialName: "FIFA World Cup 26",
   startsAt: "2026-06-11",
@@ -337,6 +351,14 @@ const headToHeadSeeds: HeadToHeadSeed[] = [
   },
 ];
 
+export function getManagerForTeamId(teamId: string) {
+  return managerSeedByTeamId[teamId] ?? null;
+}
+
+export function getHeadToHeadSeedsForGroup(groupId: string) {
+  return headToHeadSeeds.filter((entry) => entry.groupId === groupId.toUpperCase());
+}
+
 export const tournamentRuleSections: TournamentRuleSection[] = [
   {
     id: "format",
@@ -409,7 +431,7 @@ function toIsoKickoff(date: string, time: string) {
 }
 
 function toPublicTeam(team: NormalizedTeamSeed): PublicTeam {
-  const manager = managerSeedByTeamId[team.id] ?? null;
+  const manager = getManagerForTeamId(team.id);
 
   return {
     id: team.id,
@@ -428,7 +450,7 @@ function toPublicTeam(team: NormalizedTeamSeed): PublicTeam {
     lastQualifiedYear: team.lastQualifiedYear,
     currentConsecutiveAppearances: team.currentConsecutiveAppearances,
     bestFinish: team.bestFinish,
-    bestFinishYears: team.bestFinishYears,
+    bestFinishYears: team.bestFinishYears ?? [],
     managerName: manager?.name ?? null,
     managerSourceLabel: manager?.sourceLabel ?? null,
   };
@@ -579,20 +601,18 @@ export const knockoutMatches: PublicMatch[] = normalizedKnockoutFixtures.map((ma
 export const publicMatches = [...groupStageMatches, ...knockoutMatches].sort(compareMatches);
 
 function getHeadToHeadsForGroup(groupId: string): PublicHeadToHead[] {
-  return headToHeadSeeds
-    .filter((entry) => entry.groupId === groupId)
-    .map((entry) => {
-      const teams: [PublicTeam, PublicTeam] = [
-        requireTeam(entry.teamIds[0]),
-        requireTeam(entry.teamIds[1]),
-      ];
+  return getHeadToHeadSeedsForGroup(groupId).map((entry) => {
+    const teams: [PublicTeam, PublicTeam] = [
+      requireTeam(entry.teamIds[0]),
+      requireTeam(entry.teamIds[1]),
+    ];
 
-      return {
-        id: `${entry.teamIds[0]}-${entry.teamIds[1]}`,
-        teams,
-        meetings: entry.meetings,
-      };
-    });
+    return {
+      id: `${entry.teamIds[0]}-${entry.teamIds[1]}`,
+      teams,
+      meetings: entry.meetings,
+    };
+  });
 }
 
 export const publicGroups: PublicGroup[] = normalizedGroups.map((group) => {

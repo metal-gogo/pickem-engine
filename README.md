@@ -35,3 +35,19 @@ The current product direction is a private pool experience for friends and famil
 cp .env.example .env
 source .env
 ```
+
+## Local Database Run
+
+Point `DATABASE_URL` and `DIRECT_URL` in `.env` at a non-production Neon branch, then apply the committed migrations and seed the static World Cup 2026 catalog:
+
+```sh
+pnpm run db:setup
+```
+
+Start the Worker with those local env values:
+
+```sh
+pnpm run dev:db
+```
+
+The public tournament, group, and team pages read their tournament catalog from the database-backed route loaders.

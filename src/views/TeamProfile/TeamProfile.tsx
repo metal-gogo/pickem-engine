@@ -23,12 +23,18 @@ import {
   getMatchesForTeam,
   getTeamGroup,
   getVenuesForMatches,
+  type PublicGroup,
+  type PublicMatch,
   type PublicTeam,
+  type TournamentVenue,
 } from "../../data/tournament";
 import { createCalendarDataUri } from "../../domain/calendar";
 
 interface TeamProfileProps {
   team: PublicTeam;
+  group?: PublicGroup | null;
+  matches?: PublicMatch[];
+  venues?: TournamentVenue[];
 }
 
 function formatLastAppearance(team: PublicTeam) {
@@ -43,10 +49,15 @@ function formatBestFinish(team: PublicTeam) {
   return `${team.bestFinish} (${formatYears(team.bestFinishYears)})`;
 }
 
-export function TeamProfile({ team }: TeamProfileProps) {
-  const group = getTeamGroup(team.id);
-  const matches = getMatchesForTeam(team.id);
-  const venues = getVenuesForMatches(matches);
+export function TeamProfile({
+  team,
+  group: providedGroup,
+  matches: providedMatches,
+  venues: providedVenues,
+}: TeamProfileProps) {
+  const group = providedGroup === undefined ? getTeamGroup(team.id) : providedGroup;
+  const matches = providedMatches ?? getMatchesForTeam(team.id);
+  const venues = providedVenues ?? getVenuesForMatches(matches);
   const calendarHref = createCalendarDataUri(getCalendarEventsForMatches(matches), {
     calendarName: `World Cup 2026 - ${team.name}`,
   });

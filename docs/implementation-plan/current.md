@@ -115,9 +115,9 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - for the next database-backed app, use GitHub Actions validation lanes for dependency security audit, format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
-  - public tournament overview landing page
-  - public team profile
-  - public group profile
+  - database-backed public tournament overview landing page
+  - database-backed public team profile
+  - database-backed public group profile
   - pool list home
   - pool dashboard
   - focused group picks
@@ -139,12 +139,13 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - group overview cards
 - raw, derived, and normalized World Cup 2026 seed files under `src/data/seeds/` so fixture-modeling work can evolve without mutating upstream source files
 - initial Prisma database foundation with Neon-compatible Postgres schema, first migration, Worker-runtime DB client factory, Node seed client, and idempotent static tournament seed flow from the existing normalized seed files
+- database-backed route loaders for the public tournament, group, and team pages, while keeping the pool shell local-first
 
 ### Platform Concerns Not Yet Implemented
 
 - join and invite flow details, now with WorkOS AuthKit chosen as the auth provider
 - pool creation mechanics and constrained rules setup
-- database-backed route persistence for users, pools, picks, scoring settings, official results, and leaderboards; the schema and static seed foundation now exist, but the current routed app still reads local fixtures/localStorage
+- database-backed route persistence for users, pools, picks, scoring settings, official results, and leaderboards; public tournament information now reads from the seeded database, but the private pool shell still reads local fixtures/localStorage
 - official results ingestion infrastructure
 - multi-user permissions and membership
 
@@ -203,6 +204,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - Added a local-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 - Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
 - Added the initial relational database foundation with Prisma, Neon Postgres assumptions, Prisma Migrate, generated Cloudflare and Node Prisma clients, and an idempotent static World Cup 2026 seed path.
+- Moved the public tournament overview, team profile, and group profile routes to Prisma-backed loaders reading the seeded database catalog.
 - Enriched normalized team seed data with FIFA ranking and World Cup history metadata to support future product-surface decisions.
 - Added seed-backed public tournament information pages as the unauthenticated landing direction:
   - tournament overview with rules, groups, venues, sources, and full-tournament calendar export

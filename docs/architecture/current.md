@@ -131,9 +131,17 @@ Migration flow:
 Seed flow:
 
 - Dry-run and validate the fixture transform with `pnpm run db:seed:check`.
+- Apply committed migrations and seed the configured development database with `pnpm run db:setup`.
 - Apply static tournament seed data with `pnpm run db:seed` after migrations are applied.
 - The seed is idempotent and updates static tournament, group, team, venue, tournament-team, and match rows by stable ids.
 - The seed does not create users, pools, pool participants, picks, scoring settings, or match results.
+- The seed transaction uses an extended timeout because the full 2026 catalog is applied through many idempotent upserts against the configured Neon branch.
+
+Current app data flow:
+
+- The public tournament overview, group profile, and team profile routes now use React Router loaders backed by Prisma queries.
+- `app/data/publicTournament.server.ts` maps seeded database rows into the existing public tournament view contracts so the UI can stay stable while the storage source changes.
+- The private pool shell still uses local fixture and localStorage data; pool persistence has not moved to the database yet.
 
 Current schema overview:
 

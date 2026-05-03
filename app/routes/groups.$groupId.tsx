@@ -1,15 +1,20 @@
-import { Navigate, useParams } from "react-router";
+import { useLoaderData, type LoaderFunctionArgs } from "react-router";
 
-import { getGroupById } from "../../src/data/tournament";
+import { getGroupProfileData } from "../data/publicTournament.server";
 import { GroupProfile } from "../../src/views/GroupProfile";
 
-export default function GroupRoute() {
-  const { groupId = "" } = useParams();
-  const group = getGroupById(groupId);
+export async function loader({ context, params }: LoaderFunctionArgs) {
+  const groupId = params["groupId"];
 
-  if (!group) {
-    return <Navigate replace to="/" />;
+  if (!groupId) {
+    throw new Response("Group was not found.", { status: 404 });
   }
 
-  return <GroupProfile group={group} />;
+  return getGroupProfileData(context.cloudflare.env, groupId);
+}
+
+export default function GroupRoute() {
+  const data = useLoaderData<typeof loader>();
+
+  return <GroupProfile group={data.group} />;
 }

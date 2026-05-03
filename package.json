@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
+    "dev:db": "pnpm run build && wrangler dev --env-file=.env --port 5173",
     "build": "react-router build",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
@@ -28,6 +29,7 @@
     "db:pull": "prisma db pull",
     "db:seed": "prisma db seed",
     "db:seed:check": "tsx prisma/seed.ts --dry-run",
+    "db:setup": "pnpm run db:migrate:deploy && pnpm run db:seed",
     "db:studio": "prisma studio",
     "db:validate": "prisma validate",
     "worker:types": "wrangler types worker-configuration.d.ts --env-file=worker-configuration.env",
