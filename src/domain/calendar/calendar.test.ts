@@ -19,6 +19,7 @@ describe("createIcsCalendar", () => {
 
     expect(calendar).toContain("BEGIN:VCALENDAR");
     expect(calendar).toContain("VERSION:2.0");
+    expect(calendar).toContain("DTSTAMP:20260611T190000Z");
     expect(calendar).toContain("DTSTART:20260611T190000Z");
     expect(calendar).toContain("DTEND:20260611T210000Z");
     expect(calendar).toContain("SUMMARY:World Cup 2026: Mexico vs South Africa");
@@ -42,5 +43,20 @@ describe("createIcsCalendar", () => {
     expect(calendar).toContain("X-WR-CALNAME:A\\; B");
     expect(calendar).toContain("SUMMARY:Group A: one\\, two\\; three");
     expect(calendar).toContain("DESCRIPTION:Line one\\nLine two");
+  });
+
+  it("allows callers to provide a calendar revision timestamp", () => {
+    const calendar = createIcsCalendar(
+      [
+        {
+          id: "match-1",
+          title: "World Cup 2026: Mexico vs South Africa",
+          startsAt: "2026-06-11T13:00:00-06:00",
+        },
+      ],
+      { calendarName: "World Cup 2026", revisionAt: "2026-01-01T00:00:00.000Z" },
+    );
+
+    expect(calendar).toContain("DTSTAMP:20260101T000000Z");
   });
 });

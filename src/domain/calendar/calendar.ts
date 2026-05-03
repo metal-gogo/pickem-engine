@@ -11,7 +11,10 @@ export interface CalendarEventInput {
 interface CalendarOptions {
   calendarName: string;
   productId?: string;
+  revisionAt?: string | Date;
 }
+
+const WORLD_CUP_2026_CALENDAR_REVISION_AT = "2026-06-11T19:00:00.000Z";
 
 function escapeCalendarText(value: string) {
   return value
@@ -36,7 +39,7 @@ function addMinutes(value: string, durationMinutes: number) {
 }
 
 export function createIcsCalendar(events: CalendarEventInput[], options: CalendarOptions) {
-  const now = toCalendarTimestamp(new Date());
+  const revisionAt = toCalendarTimestamp(options.revisionAt ?? WORLD_CUP_2026_CALENDAR_REVISION_AT);
   const productId = options.productId ?? "-//pickem-engine//World Cup 2026//EN";
   const lines = [
     "BEGIN:VCALENDAR",
@@ -55,7 +58,7 @@ export function createIcsCalendar(events: CalendarEventInput[], options: Calenda
     lines.push(
       "BEGIN:VEVENT",
       `UID:${escapeCalendarText(event.id)}@pickem-engine.local`,
-      `DTSTAMP:${now}`,
+      `DTSTAMP:${revisionAt}`,
       `DTSTART:${startsAt}`,
       `DTEND:${endsAt}`,
       `SUMMARY:${escapeCalendarText(event.title)}`,
