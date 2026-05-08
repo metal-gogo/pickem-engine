@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-05-01
+- Last updated: 2026-05-08
 
 ## Planning Objective
 
@@ -106,9 +106,12 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - `pnpm run security:audit:prod` for local production dependency investigation
   - `pnpm run security:audit:ci` for high-or-higher severity pull-request checks
   - `pnpm run security:audit:ci:prod` for high-or-higher severity deployment checks against production dependencies
-- `.github/workflows/validate.yml` validates pull requests and pushes to `main`; Cloudflare Workers Builds should own PR preview uploads and production deploys
+- `.github/workflows/validate.yml` validates pull requests and pushes to `main`
+- `.github/workflows/deploy-preview.yml` runs after successful pull-request validation to upload Cloudflare PR preview versions
+- `.github/workflows/deploy-production.yml` runs after successful `main` validation to deploy production
 - `wrangler.jsonc` enables Worker preview URLs and configures `futbol.quest` as the production custom domain
-- `.node-version` lets Cloudflare Workers Builds pick up the repo's Node version, while `corepack enable` in the build command should activate the pnpm version declared in `package.json`
+- `wrangler.preview.jsonc` configures the dedicated Cloudflare preview Worker
+- GitHub Actions uses the repo's pinned Node and activates the pnpm version declared in `package.json` through Corepack
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
 - for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against non-production dev/CI environments, and Playwright Test for focused E2E journeys
@@ -116,6 +119,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - local development and Cloudflare preview deployments intentionally share the long-lived Neon `dev` branch/database so the local and preview app see the same non-production data
 - there is no staging environment in the current environment strategy
 - preview deployments do not run `prisma migrate dev`; they consume the schema currently present on Neon `dev`
+- production deployments run `prisma migrate deploy` before `wrangler deploy`, using GitHub Environment secrets
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
   - database-backed public tournament overview landing page

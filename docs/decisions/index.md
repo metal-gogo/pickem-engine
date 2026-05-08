@@ -31,6 +31,7 @@ This is the register of accepted cross-cutting project decisions.
 - `025` [Use layered GitHub Actions validation lanes](/home/mgogo/src/pickem-engine/docs/decisions/025-use-layered-github-actions-validation-lanes.md)
 - `026` [Use constrained pool scoring settings](/home/mgogo/src/pickem-engine/docs/decisions/026-use-constrained-pool-scoring-settings.md)
 - `027` [Share dev database between local and preview](/home/mgogo/src/pickem-engine/docs/decisions/027-share-dev-database-between-local-and-preview.md)
+- `028` [Use GitHub Actions for Cloudflare deployments](/home/mgogo/src/pickem-engine/docs/decisions/028-use-github-actions-for-cloudflare-deployments.md)
 
 ## Notes
 

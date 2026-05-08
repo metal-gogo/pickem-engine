@@ -1,6 +1,6 @@
 # Current Architecture Direction
 
-- Last updated: 2026-05-01
+- Last updated: 2026-05-08
 
 ## Technical Direction
 
@@ -40,8 +40,8 @@ It currently uses:
 - Storybook's Vitest addon for story-driven interaction and accessibility testing in local CLI runs
 - V8 coverage reporting for the Storybook Vitest lane so component-driven test coverage can be reviewed locally
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook server can remain a project-scoped tool instead of a global machine dependency
-- a GitHub Actions validation workflow for pull requests and `main`, with Cloudflare Workers Builds intended to own preview and production deployments
-- Cloudflare Workers Builds should read Node from `.node-version` and pnpm from the `packageManager` metadata through Corepack rather than duplicating tool versions as dashboard variables
+- separate GitHub Actions validation, preview deployment, and production deployment workflows, with Wrangler owning Cloudflare preview uploads and production deploys
+- GitHub Actions should read Node from `.node-version` or the workflow's pinned Node setup and activate the pnpm version declared in `package.json` through Corepack
 - repo tooling pinned by `mise.toml` to Node `24.15.0` and pnpm `10.33.2`, with dependencies locked in `pnpm-lock.yaml`
 
 This is an implementation reference for the local frontend shell. The selected platform stack is captured below.
@@ -123,7 +123,8 @@ Environment variables:
 - Cloudflare preview deployments should also point at Neon `dev` so local and preview stay in sync.
 - Cloudflare production should point only at Neon `prod`.
 - Deployed `DATABASE_URL` and `DIRECT_URL` values should be Cloudflare Worker secrets, not plaintext Wrangler vars.
-- GitHub Actions should use environment-scoped secrets for migration and deployment workflows.
+- GitHub Actions should use environment-scoped secrets for migration and deployment workflows. Production migrations use `NEON_PROD_DATABASE_URL` and `NEON_PROD_DIRECT_URL`.
+- Cloudflare dashboard/API setup is still required for Worker runtime secrets, preview URL enablement, custom domain routing, and an API token that GitHub Actions can use.
 
 Migration flow:
 
@@ -223,9 +224,10 @@ CI/CD should stay simple for solo development:
 - pull requests can be used as CI checkpoints and compact review surfaces even when working alone
 - deployment environments should represent local, preview, and production concerns instead of permanent git branches
 - local development and preview deployments intentionally share the long-lived Neon `dev` branch
-- production deploys should run from pushes to `main` through Cloudflare Workers Builds
-- pull-request preview deploys should run through Cloudflare Workers Builds non-production branch builds using `wrangler versions upload`
+- production deploys should run from pushes to `main` through GitHub Actions using React Router's generated Worker config and `wrangler deploy`
+- pull-request preview deploys should run through GitHub Actions using `wrangler versions upload --config wrangler.preview.jsonc`
 - the production Worker is configured for the `futbol.quest` custom domain through `wrangler.jsonc`
+- the preview Worker is configured through `wrangler.preview.jsonc` and uses Cloudflare versioned preview URLs with stable `pr-<number>` preview aliases
 - production database migrations should remain explicit and controlled
 
 CI/CD validation should use layered GitHub Actions lanes:
@@ -240,7 +242,7 @@ CI/CD validation should use layered GitHub Actions lanes:
 - deployment workflows should run a production dependency security audit for high-or-higher advisories before releasing
 - CI should default to standard Linux runners and avoid expensive runners unless a concrete need appears
 
-These decisions are captured individually in decision records `008` through `025`.
+These decisions are captured individually in decision records `008` through `028`.
 
 ## Working Assumptions
 
