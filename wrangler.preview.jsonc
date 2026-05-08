@@ -1,26 +1,27 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "pickem-engine",
+  "name": "pickem-engine-preview",
   "compatibility_date": "2026-04-26",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "./workers/app.ts",
+  "main": "./build/server/index.js",
+  "rules": [
+    {
+      "type": "ESModule",
+      "globs": ["**/*.js", "**/*.mjs"],
+    },
+  ],
   "preview_urls": true,
   "assets": {
     "directory": "./build/client",
   },
-  "routes": [
-    {
-      "pattern": "futbol.quest",
-      "custom_domain": true,
-    },
-  ],
   "observability": {
     "enabled": true,
   },
   "vars": {
-    "APP_ENV": "production",
+    "APP_ENV": "preview",
   },
   "secrets": {
     "required": ["DATABASE_URL"],
   },
+  "no_bundle": true,
 }
