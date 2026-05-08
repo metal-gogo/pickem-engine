@@ -1,6 +1,6 @@
 # Business Rules Index
 
-- Last updated: 2026-04-25
+- Last updated: 2026-05-01
 
 This file is the current register of confirmed and unresolved business rules.
 
@@ -90,6 +90,13 @@ The official source and tie-break handling for tournament top scorer and tournam
 
 Why it matters:
 This affects result ingestion, scoring tests, and user-facing rule copy.
+
+### BR-O6 Global Deadline Timestamp
+
+The app will use one platform-defined global prediction deadline before the tournament starts, but the exact timestamp and time zone policy are not yet defined.
+
+Why it matters:
+This affects pick locking, user-facing deadline copy, seed configuration, and tests.
 
 ## Usage Notes
 

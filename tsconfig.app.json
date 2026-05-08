@@ -19,5 +19,5 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [".react-router/types/**/*", "app/**/*", "src/**/*"]
+  "include": [".react-router/types/**/*", "app/**/*", "generated/prisma/**/*", "src/**/*"]
 }

@@ -1,6 +1,6 @@
 # Current Architecture Direction
 
-- Last updated: 2026-04-27
+- Last updated: 2026-05-08
 
 ## Technical Direction
 
@@ -40,8 +40,8 @@ It currently uses:
 - Storybook's Vitest addon for story-driven interaction and accessibility testing in local CLI runs
 - V8 coverage reporting for the Storybook Vitest lane so component-driven test coverage can be reviewed locally
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook server can remain a project-scoped tool instead of a global machine dependency
-- a GitHub Actions validation workflow for pull requests and `main`, with Cloudflare Workers Builds intended to own preview and production deployments
-- Cloudflare Workers Builds should read Node from `.node-version` and pnpm from the `packageManager` metadata through Corepack rather than duplicating tool versions as dashboard variables
+- separate GitHub Actions validation, preview deployment, and production deployment workflows, with Wrangler owning Cloudflare preview uploads and production deploys
+- GitHub Actions should read Node from `.node-version` or the workflow's pinned Node setup and activate the pnpm version declared in `package.json` through Corepack
 - repo tooling pinned by `mise.toml` to Node `24.15.0` and pnpm `10.33.2`, with dependencies locked in `pnpm-lock.yaml`
 
 This is an implementation reference for the local frontend shell. The selected platform stack is captured below.
@@ -71,13 +71,14 @@ The platform direction now has a confirmed stack baseline:
 - Cloudflare native observability will be the initial runtime logs, metrics, and tracing baseline.
 - CI/CD will use a trunk-based workflow with `main` as the deployable source of truth.
 - GitHub Actions validation will use layered lanes for formatting, linting, typechecking, tests, builds, runtime checks, database checks, Storybook checks, and E2E smoke tests.
-- GitHub Actions should be able to run migrations and, where useful, create short-lived Neon branches for pull request checks or migration rehearsal.
+- GitHub Actions should be able to run production migrations through an explicit, controlled path.
 
 The intended database environment shape is:
 
 - a production Neon project with a protected production branch
-- a non-production Neon project with long-lived `staging` and `dev` branches
-- short-lived pull request branches such as `pr-123-add-picks-table`
+- a non-production Neon project with a long-lived `dev` branch shared by local development and Cloudflare preview deployments
+
+There is no staging environment in the current strategy. Short-lived pull-request database branches are not part of the default workflow; they can be introduced later for specific risky migration rehearsal if shared `dev` becomes a blocker.
 
 This direction preserves Prisma's model-based developer experience while using Neon for the managed Postgres platform layer. It is still reversible because Prisma ORM can connect to another Postgres provider later.
 
@@ -90,8 +91,81 @@ Environment configuration should split local, deployed runtime, and CI concerns:
 - local development should use an uncommitted `.env` file, with a committed `.env.example` added when backend setup begins
 - Cloudflare should store deployed non-secret values as environment-specific `vars`
 - Cloudflare should store deployed runtime secrets as Worker secrets
-- GitHub Actions should use GitHub Environment secrets for migrations, preview database setup, and deployment
+- local and Cloudflare preview database secrets should point at Neon `dev`
+- Cloudflare production database secrets should point at Neon `prod`
+- GitHub Actions should use environment-scoped secrets for production migrations and deployment
 - application/server code should read typed config through a small validated config boundary rather than scattering raw environment access
+
+## Initial Database Foundation
+
+The initial relational database foundation is implemented with Prisma ORM, Prisma Migrate, Neon Postgres, and the Neon Prisma driver adapter.
+
+Current files:
+
+- `prisma/schema.prisma` owns the database model.
+- `prisma/migrations/20260501000000_init/migration.sql` is the first migration.
+- `prisma/seed.ts` seeds static World Cup 2026 tournament data.
+- `src/data/seeds/databaseSeed.ts` transforms existing normalized JSON seeds into database seed records.
+- `app/db.server.ts` centralizes Worker runtime Prisma client creation.
+
+Runtime shape:
+
+- The app-facing generated Prisma Client targets Cloudflare Workers through the `cloudflare` runtime and lives under ignored `generated/prisma/`.
+- A separate ignored Node-targeted Prisma Client under `generated/prisma-node/` exists only for local CLI seed scripts.
+- Application code should create Prisma clients through `app/db.server.ts` using Cloudflare `env` or another server-side environment object.
+- Do not import Prisma setup directly into UI components.
+
+Environment variables:
+
+- `DATABASE_URL` is required for app/runtime database access and local seed runs.
+- `DIRECT_URL` is optional and should point at a direct database URL for Prisma Migrate when `DATABASE_URL` is pooled.
+- Local development should use an uncommitted `.env` pointing at Neon `dev`.
+- Cloudflare preview deployments should also point at Neon `dev` so local and preview stay in sync.
+- Cloudflare production should point only at Neon `prod`.
+- Deployed `DATABASE_URL` and `DIRECT_URL` values should be Cloudflare Worker secrets, not plaintext Wrangler vars.
+- GitHub Actions should use environment-scoped secrets for migration and deployment workflows. Production migrations use `NEON_PROD_DATABASE_URL` and `NEON_PROD_DIRECT_URL`.
+- Cloudflare dashboard/API setup is still required for Worker runtime secrets, preview URL enablement, custom domain routing, and an API token that GitHub Actions can use.
+
+Migration flow:
+
+- Create a local migration with `pnpm run db:migrate:create -- --name <name>` when a database is available.
+- Apply local development migrations with `pnpm run db:migrate:dev` against Neon `dev`.
+- Cloudflare preview deployments do not run migrations; they consume the schema currently present on Neon `dev`.
+- Apply committed migrations in production with `pnpm run db:migrate:deploy`.
+- Validate and regenerate clients with `pnpm run db:check`.
+- Prisma Migrate does not provide automatic down migrations; rollback should use a forward corrective migration or restore from a database backup/branch.
+
+Seed flow:
+
+- Dry-run and validate the fixture transform with `pnpm run db:seed:check`.
+- Apply committed migrations and seed the configured development database with `pnpm run db:setup`.
+- Apply static tournament seed data with `pnpm run db:seed` after migrations are applied.
+- The seed is idempotent and updates static tournament, group, team, venue, tournament-team, and match rows by stable ids.
+- The seed does not create users, pools, pool participants, picks, scoring settings, or match results.
+- The seed transaction uses an extended timeout because the full 2026 catalog is applied through many idempotent upserts against the configured Neon branch.
+
+Current app data flow:
+
+- The public tournament overview, group profile, and team profile routes now use React Router loaders backed by Prisma queries.
+- `app/data/publicTournament.server.ts` maps seeded database rows into the existing public tournament view contracts so the UI can stay stable while the storage source changes.
+- The private pool shell still uses local fixture and localStorage data; pool persistence has not moved to the database yet.
+
+Current schema overview:
+
+- `users` stores app-owned users linked to external auth by `authProvider` and `authProviderUserId`; WorkOS is not treated as the whole user model.
+- `tournaments`, `tournament_groups`, `teams`, `tournament_teams`, `venues`, and `matches` store the static tournament structure and fixture data.
+- `matches` stores concrete group-stage teams and JSON participant slots for unresolved knockout fixtures.
+- `match_results` stores the platform-approved official result for a match.
+- `pools`, `pool_participants`, `match_picks`, and `pool_scoring_settings` support private pools, membership, exact-score picks, and constrained scoring settings.
+
+Known limitations:
+
+- The seeded tournament `pickLockAt` is currently `null` because the exact production global deadline timestamp is not confirmed.
+- Pool scoring settings require point values, but defaults, bounds, and validation constraints remain open.
+- Tournament-level bonus predictions are not modeled yet because bonus result definitions are still unresolved.
+- Knockout fixtures are seeded, but knockout prediction and scoring semantics remain unresolved.
+- Join/invite records are not modeled yet because the identity and join flow is still open.
+- Result ingestion is not implemented; `match_results` is only the storage target for platform-approved results.
 
 Tooling is pinned through mise and package-manager metadata:
 
@@ -148,11 +222,12 @@ CI/CD should stay simple for solo development:
 - meaningful changes should use short-lived feature or fix branches
 - a long-lived `develop` branch should not be used while the project is solo-developed
 - pull requests can be used as CI checkpoints and compact review surfaces even when working alone
-- deployment environments should represent local, preview, staging, and production concerns instead of permanent git branches
-- pull requests can later create preview deployments and short-lived Neon branches
-- production deploys should run from pushes to `main` through Cloudflare Workers Builds
-- pull-request preview deploys should run through Cloudflare Workers Builds non-production branch builds using `wrangler versions upload`
+- deployment environments should represent local, preview, and production concerns instead of permanent git branches
+- local development and preview deployments intentionally share the long-lived Neon `dev` branch
+- production deploys should run from pushes to `main` through GitHub Actions using React Router's generated Worker config and `wrangler deploy`
+- pull-request preview deploys should run through GitHub Actions using `wrangler versions upload --config wrangler.preview.jsonc`
 - the production Worker is configured for the `futbol.quest` custom domain through `wrangler.jsonc`
+- the preview Worker is configured through `wrangler.preview.jsonc` and uses Cloudflare versioned preview URLs with stable `pr-<number>` preview aliases
 - production database migrations should remain explicit and controlled
 
 CI/CD validation should use layered GitHub Actions lanes:
@@ -161,13 +236,13 @@ CI/CD validation should use layered GitHub Actions lanes:
 - typecheck should remain separate from linting and tests
 - Storybook build, story-driven interaction/accessibility checks, and browser/component tests should run in CI once the UI validation setup is wired for the next app
 - Cloudflare runtime tests should run through the Cloudflare Vitest/Miniflare path once server/runtime code exists
-- Prisma schema/client validation, migration checks, and database integration tests should run against isolated development or pull-request database environments once persistence exists
+- Prisma schema/client validation, migration checks, and database integration tests should run against non-production database environments once persistence exists
 - Playwright E2E should start as a focused smoke lane rather than a broad slow suite
-- staging and production deployments should be separate workflows from basic pull-request validation
+- production deployments should be separate workflows from basic pull-request validation
 - deployment workflows should run a production dependency security audit for high-or-higher advisories before releasing
 - CI should default to standard Linux runners and avoid expensive runners unless a concrete need appears
 
-These decisions are captured individually in decision records `008` through `025`.
+These decisions are captured individually in decision records `008` through `028`.
 
 ## Working Assumptions
 
@@ -287,3 +362,4 @@ This keeps the raw ingest repeatable while still letting the app grow around cle
 - how much tournament progression needs to be modeled explicitly
 - what defaults, bounds, and validation constraints should apply to scoring point settings
 - how official tournament top scorer and tournament best-player bonus outcomes should be resolved
+- what exact global prediction deadline timestamp and time zone policy should be stored on the tournament

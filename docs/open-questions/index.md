@@ -1,6 +1,6 @@
 # Open Questions Index
 
-- Last updated: 2026-04-25
+- Last updated: 2026-05-01
 
 This is the active list of unresolved questions that still affect planning or implementation.
 
@@ -71,6 +71,17 @@ This affects scoring determinism, result ingestion, and how rules are explained 
 
 Decision needed:
 A specific official-source policy for bonus prediction outcomes.
+
+### OQ-007 Global Deadline Timestamp
+
+Question:
+What exact timestamp and time zone policy should define the one global prediction deadline for the 2026 FIFA World Cup tournament?
+
+Why it matters:
+The database now supports a tournament-level lock timestamp, but the seed leaves it unset so the prototype deadline is not silently promoted into production behavior.
+
+Decision needed:
+A concrete lock timestamp, time zone, display policy, and confirmation that the deadline applies to all pools for the tournament.
 
 ## Review Notes
 

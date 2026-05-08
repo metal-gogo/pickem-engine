@@ -19,28 +19,42 @@ import { VenueGrid } from "../../components/VenueGrid";
 import { getButtonClassName } from "../../components/Button";
 import {
   getCalendarEventsForMatches,
-  publicGroups,
-  publicMatches,
-  publicVenues,
-  tournamentInfo,
+  publicGroups as staticPublicGroups,
+  publicMatches as staticPublicMatches,
+  publicVenues as staticPublicVenues,
+  tournamentInfo as staticTournamentInfo,
   tournamentRuleSections,
   tournamentSources,
+  type PublicGroup,
+  type PublicMatch,
+  type TournamentInfo,
+  type TournamentVenue,
 } from "../../data/tournament";
 import { createCalendarDataUri } from "../../domain/calendar";
 
-const tournamentCalendarHref = createCalendarDataUri(getCalendarEventsForMatches(publicMatches), {
-  calendarName: "World Cup 2026 full tournament",
-});
+interface TournamentOverviewProps {
+  tournamentInfo?: TournamentInfo;
+  groups?: PublicGroup[];
+  matches?: PublicMatch[];
+  venues?: TournamentVenue[];
+}
 
-const metricTiles = [
-  { label: "Teams", value: tournamentInfo.teamCount },
-  { label: "Groups", value: tournamentInfo.groupCount },
-  { label: "Matches", value: tournamentInfo.matchCount },
-  { label: "Venues", value: tournamentInfo.venueCount },
-];
-
-export function TournamentOverview() {
-  const openingMatches = publicMatches.slice(0, 8);
+export function TournamentOverview({
+  tournamentInfo = staticTournamentInfo,
+  groups = staticPublicGroups,
+  matches = staticPublicMatches,
+  venues = staticPublicVenues,
+}: TournamentOverviewProps) {
+  const openingMatches = matches.slice(0, 8);
+  const tournamentCalendarHref = createCalendarDataUri(getCalendarEventsForMatches(matches), {
+    calendarName: "World Cup 2026 full tournament",
+  });
+  const metricTiles = [
+    { label: "Teams", value: tournamentInfo.teamCount },
+    { label: "Groups", value: tournamentInfo.groupCount },
+    { label: "Matches", value: tournamentInfo.matchCount },
+    { label: "Venues", value: tournamentInfo.venueCount },
+  ];
 
   return (
     <PublicPageShell>
@@ -137,7 +151,7 @@ export function TournamentOverview() {
         </div>
 
         <div className="grid gap-4 xl:grid-cols-2">
-          {publicGroups.map((group) => (
+          {groups.map((group) => (
             <article
               key={group.id}
               className="overflow-hidden rounded-none border-[4px] border-app-ink bg-app-surface shadow-surface"
@@ -186,7 +200,7 @@ export function TournamentOverview() {
             The tournament is spread across Canada, Mexico, and the USA, with 16 host-city venues.
           </p>
         </div>
-        <VenueGrid venues={publicVenues} matches={publicMatches} />
+        <VenueGrid venues={venues} matches={matches} />
       </section>
 
       <section className={sectionPanelClass}>

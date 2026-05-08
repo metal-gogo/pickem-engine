@@ -1,15 +1,22 @@
-import { Navigate, useParams } from "react-router";
+import { useLoaderData, type LoaderFunctionArgs } from "react-router";
 
-import { getTeamById } from "../../src/data/tournament";
+import { getTeamProfileData } from "../data/publicTournament.server";
 import { TeamProfile } from "../../src/views/TeamProfile";
 
-export default function TeamRoute() {
-  const { teamId = "" } = useParams();
-  const team = getTeamById(teamId.toLowerCase());
+export async function loader({ context, params }: LoaderFunctionArgs) {
+  const teamId = params["teamId"];
 
-  if (!team) {
-    return <Navigate replace to="/" />;
+  if (!teamId) {
+    throw new Response("Team was not found.", { status: 404 });
   }
 
-  return <TeamProfile team={team} />;
+  return getTeamProfileData(context.cloudflare.env, teamId);
+}
+
+export default function TeamRoute() {
+  const data = useLoaderData<typeof loader>();
+
+  return (
+    <TeamProfile group={data.group} matches={data.matches} team={data.team} venues={data.venues} />
+  );
 }

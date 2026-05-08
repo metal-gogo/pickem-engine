@@ -5,15 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
-    "build": "react-router build",
+    "dev:db": "pnpm run build && wrangler dev --env-file=.env --port 5173",
+    "build": "pnpm run db:generate && react-router build",
     "fmt": "oxfmt",
     "fmt:check": "oxfmt --check",
     "lint": "oxlint . --deny-warnings",
     "lint:fix": "pnpm run lint -- --fix",
     "prepare": "lefthook install",
     "preview": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "deploy:preview": "wrangler versions upload",
+    "deploy": "pnpm run deploy:prod",
+    "deploy:prod": "wrangler deploy",
+    "deploy:preview": "wrangler versions upload --config wrangler.preview.jsonc",
+    "deploy:preview:live": "wrangler deploy --config wrangler.preview.jsonc",
     "security:audit": "pnpm audit",
     "security:audit:prod": "pnpm audit --prod",
     "security:audit:ci": "pnpm audit --audit-level high",
@@ -21,15 +24,20 @@
     "security:secrets": "scripts/gitleaks.sh detect --source . --redact --verbose",
     "security:secrets:staged": "scripts/gitleaks.sh protect --staged --redact --verbose",
     "db:generate": "prisma generate",
-    "db:check": "pnpm run db:validate && pnpm run db:generate",
+    "db:check": "pnpm run db:validate && pnpm run db:generate && pnpm run db:seed:check",
+    "db:migrate:create": "prisma migrate dev --create-only",
+    "db:migrate:deploy": "prisma migrate deploy",
     "db:migrate:dev": "prisma migrate dev",
     "db:pull": "prisma db pull",
+    "db:seed": "prisma db seed",
+    "db:seed:check": "tsx prisma/seed.ts --dry-run",
+    "db:setup": "pnpm run db:migrate:deploy && pnpm run db:seed",
     "db:studio": "prisma studio",
     "db:validate": "prisma validate",
     "worker:types": "wrangler types worker-configuration.d.ts --env-file=worker-configuration.env",
     "worker:types:check": "sh scripts/check-worker-types.sh",
     "typegen": "react-router typegen",
-    "typecheck": "pnpm run typegen && pnpm run worker:types:check && tsc -b --pretty false",
+    "typecheck": "pnpm run typegen && pnpm run worker:types:check && pnpm run db:generate && tsc -b --pretty false",
     "test": "pnpm run test:unit",
     "test:unit": "vitest run --project=unit",
     "storybook": "storybook dev -p 6100",
@@ -47,6 +55,8 @@
     "verify:build": "pnpm run build"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "@react-router/node": "^7.14.2",
     "@react-router/serve": "^7.14.2",
@@ -56,7 +66,8 @@
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-router": "^7.14.2",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "zod": "^4.4.2"
   },
   "devDependencies": {
     "@cloudflare/vite-plugin": "^1.33.2",
@@ -83,6 +94,7 @@
     "prisma": "^7.8.0",
     "storybook": "^10.3.5",
     "tailwindcss": "^4.2.4",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.3",
     "vite": "^8.0.10",
     "vitest": "^4.1.5",
@@ -91,9 +103,7 @@
   "packageManager": "pnpm@10.33.2",
   "pnpm": {
     "overrides": {
-      "@hono/node-server": "1.19.13",
-      "cookie": "0.7.2",
-      "qs": "6.14.2"
+      "@hono/node-server": "1.19.13"
     },
     "onlyBuiltDependencies": [
       "@prisma/engines",

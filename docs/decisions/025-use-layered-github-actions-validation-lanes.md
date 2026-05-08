@@ -26,7 +26,7 @@ The default pull-request validation lane should run:
 As the backend setup is introduced, add required lanes for:
 
 - Prisma schema validation and client generation
-- migration validation against an isolated development or pull-request database environment
+- Prisma migration validation suitable for the shared development database strategy
 - Cloudflare runtime tests through the Cloudflare Vitest/Miniflare path
 - focused Playwright end-to-end smoke tests
 
@@ -39,9 +39,8 @@ As the UI test setup matures, run Storybook-oriented validation in CI:
 Deployment workflows should be separate from basic validation:
 
 - pull requests run validation and may later create preview deployments
-- merges to `main` run validation before staging or production deployment
+- merges to `main` run validation before production deployment
 - deployment workflows run a production dependency security audit for high-or-higher advisories before releasing
-- staging deploys can be automatic or manually dispatched from `main`
 - production deploys should remain explicit and controlled
 - production database migrations should have a deliberate approval path
 
@@ -67,8 +66,8 @@ Separating validation from deployment keeps production releases more deliberate,
 - Gate CI/CD on high-or-higher dependency advisories while keeping full and production audit scripts available for local investigation.
 - Keep typecheck separate from linting and tests.
 - Keep deployment workflows separate from pull-request validation.
-- Use GitHub Environments for staging and production secrets.
-- Add preview deployments and Neon pull-request branches later, not before backend setup needs them.
+- Use GitHub Environments for production secrets.
+- Add Neon pull-request branches later only if shared `dev` blocks specific risky migration rehearsal or concurrent branch review.
 - Revisit which lanes are required if CI runtime becomes noisy or expensive.
 
 ## Accounts And Configuration
@@ -76,7 +75,7 @@ Separating validation from deployment keeps production releases more deliberate,
 - Use the GitHub repository's Actions settings for CI/CD.
 - Use `GITHUB_TOKEN` for repository-scoped automation where sufficient.
 - Store `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` for deployment workflows.
-- Store `NEON_API_KEY` and `NEON_PROJECT_ID` for pull-request database branch automation.
+- Store `NEON_API_KEY` and `NEON_PROJECT_ID` only if pull-request database branch automation is introduced later.
 - Store environment-specific `DATABASE_URL` and `DIRECT_URL` values for migration and database integration lanes.
 - Store `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` for release/source-map lanes.
 - Store WorkOS secrets only in workflows or environments that truly need auth integration testing or deployment.

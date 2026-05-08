@@ -1,6 +1,6 @@
 # Current Implementation Plan
 
-- Last updated: 2026-04-27
+- Last updated: 2026-05-08
 
 ## Planning Objective
 
@@ -106,18 +106,25 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - `pnpm run security:audit:prod` for local production dependency investigation
   - `pnpm run security:audit:ci` for high-or-higher severity pull-request checks
   - `pnpm run security:audit:ci:prod` for high-or-higher severity deployment checks against production dependencies
-- `.github/workflows/validate.yml` validates pull requests and pushes to `main`; Cloudflare Workers Builds should own PR preview uploads and production deploys
+- `.github/workflows/validate.yml` validates pull requests and pushes to `main`
+- `.github/workflows/deploy-preview.yml` runs after successful pull-request validation to upload Cloudflare PR preview versions
+- `.github/workflows/deploy-production.yml` runs after successful `main` validation to deploy production
 - `wrangler.jsonc` enables Worker preview URLs and configures `futbol.quest` as the production custom domain
-- `.node-version` lets Cloudflare Workers Builds pick up the repo's Node version, while `corepack enable` in the build command should activate the pnpm version declared in `package.json`
+- `wrangler.preview.jsonc` configures the dedicated Cloudflare preview Worker
+- GitHub Actions uses the repo's pinned Node and activates the pnpm version declared in `package.json` through Corepack
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
-- for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys
+- for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against non-production dev/CI environments, and Playwright Test for focused E2E journeys
 - for the next database-backed app, use GitHub Actions validation lanes for dependency security audit, format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
+- local development and Cloudflare preview deployments intentionally share the long-lived Neon `dev` branch/database so the local and preview app see the same non-production data
+- there is no staging environment in the current environment strategy
+- preview deployments do not run `prisma migrate dev`; they consume the schema currently present on Neon `dev`
+- production deployments run `prisma migrate deploy` before `wrangler deploy`, using GitHub Environment secrets
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
-  - public tournament overview landing page
-  - public team profile
-  - public group profile
+  - database-backed public tournament overview landing page
+  - database-backed public team profile
+  - database-backed public group profile
   - pool list home
   - pool dashboard
   - focused group picks
@@ -138,12 +145,14 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
   - rules summary
   - group overview cards
 - raw, derived, and normalized World Cup 2026 seed files under `src/data/seeds/` so fixture-modeling work can evolve without mutating upstream source files
+- initial Prisma database foundation with Neon-compatible Postgres schema, first migration, Worker-runtime DB client factory, Node seed client, and idempotent static tournament seed flow from the existing normalized seed files
+- database-backed route loaders for the public tournament, group, and team pages, while keeping the pool shell local-first
 
 ### Platform Concerns Not Yet Implemented
 
 - join and invite flow details, now with WorkOS AuthKit chosen as the auth provider
 - pool creation mechanics and constrained rules setup
-- database-backed persistence implementation, now with Prisma ORM and Neon Postgres as the chosen direction
+- database-backed route persistence for users, pools, picks, scoring settings, official results, and leaderboards; public tournament information now reads from the seeded database, but the private pool shell still reads local fixtures/localStorage
 - official results ingestion infrastructure
 - multi-user permissions and membership
 
@@ -169,11 +178,12 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - no finalized join/invite model yet
 - no chosen ingestion approach yet
 - no finalized bonus-result definition policy yet
+- no finalized global prediction deadline timestamp or time zone policy yet
 
 ## Planning Guardrails
 
 - do not choose additional stack details before product constraints require them
-- do not implement the React Router v7, Cloudflare, Neon, Prisma, WorkOS, environment-file, mise, Node, package-manager, linting, typecheck, observability, or CI/CD setup until the project explicitly moves from architecture choice into backend setup work
+- keep the newly added database foundation small and reversible until the app starts reading and writing real persisted users, pools, picks, and results
 - keep the platform build coherent and small
 - preserve flexibility for later public growth without optimizing for it prematurely
 - do not let local-shell shortcuts leak into canonical business rules
@@ -200,6 +210,8 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - Treated free pre-deadline edits as a local-shell assumption only, not a resolved business rule.
 - Added a local-only locked-state preview so the app can validate both editable and locked modes before the real lock behavior is finalized.
 - Added raw OpenFootball seed files plus derived and normalized 2026 tournament seed artifacts so team, group, and fixture modeling can mature without losing source traceability.
+- Added the initial relational database foundation with Prisma, Neon Postgres assumptions, Prisma Migrate, generated Cloudflare and Node Prisma clients, and an idempotent static World Cup 2026 seed path.
+- Moved the public tournament overview, team profile, and group profile routes to Prisma-backed loaders reading the seeded database catalog.
 - Enriched normalized team seed data with FIFA ranking and World Cup history metadata to support future product-surface decisions.
 - Added seed-backed public tournament information pages as the unauthenticated landing direction:
   - tournament overview with rules, groups, venues, sources, and full-tournament calendar export
@@ -230,6 +242,7 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - result ingestion strategy
 - multilingual launch scope
 - bonus result definitions
+- global deadline timestamp and time zone policy
 
 ### Recommended Next Step
 
@@ -247,6 +260,7 @@ The next useful moves are likely:
   - pick editing semantics
   - identity and join flow
   - bonus result definitions
+  - global deadline timestamp and time zone policy
 
 ### Resume Prompt
 
