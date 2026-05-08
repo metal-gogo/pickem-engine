@@ -30,8 +30,8 @@ Prisma Postgres remains attractive for an all-in Prisma workflow, but Neon offer
 
 - Create a Neon account.
 - Create the production Neon project and the non-production Neon project when backend setup begins.
-- Capture environment-specific Postgres connection strings for local development, dev, staging, pull-request previews, and production.
+- Capture environment-specific Postgres connection strings for shared local/preview development and production.
 - Store database connection strings as `DATABASE_URL` and, if needed, `DIRECT_URL`.
 - Store local database URLs in uncommitted local env files.
 - Store deployed database URLs as Cloudflare Worker secrets.
-- Store CI database URLs or Neon branch outputs in GitHub Actions environment secrets/outputs.
+- Store CI database URLs or Neon branch outputs in GitHub Actions environment secrets/outputs if database automation is introduced later.

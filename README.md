@@ -38,7 +38,7 @@ source .env
 
 ## Local Database Run
 
-Point `DATABASE_URL` and `DIRECT_URL` in `.env` at a non-production Neon branch, then apply the committed migrations and seed the static World Cup 2026 catalog:
+Point `DATABASE_URL` and `DIRECT_URL` in `.env` at the shared Neon `dev` branch used by local development and Cloudflare previews, then apply the committed migrations and seed the static World Cup 2026 catalog:
 
 ```sh
 pnpm run db:setup

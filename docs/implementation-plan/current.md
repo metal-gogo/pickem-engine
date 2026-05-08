@@ -111,8 +111,11 @@ This is a sequencing rule, not permission to let temporary scaffolding become pr
 - `.node-version` lets Cloudflare Workers Builds pick up the repo's Node version, while `corepack enable` in the build command should activate the pnpm version declared in `package.json`
 - Storybook story titles and docs aligned with component names and hierarchy so variant-heavy stories explain intent, not just render states
 - direct Vitest coverage for hook and domain behavior where Storybook adds little value, such as `usePickSet`
-- for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against isolated dev/CI environments, and Playwright Test for focused E2E journeys
+- for the next database-backed app, use Storybook for UI states, Storybook plus Vitest Browser Mode and Playwright for component interaction and accessibility checks, Vitest for domain/server logic, Cloudflare Vitest for Workers runtime behavior, database integration tests against non-production dev/CI environments, and Playwright Test for focused E2E journeys
 - for the next database-backed app, use GitHub Actions validation lanes for dependency security audit, format check, lint, type generation, typecheck, unit and focused integration tests, production build, Storybook validation, Cloudflare runtime tests, database/migration checks, and focused Playwright smoke tests as each part of the stack becomes available
+- local development and Cloudflare preview deployments intentionally share the long-lived Neon `dev` branch/database so the local and preview app see the same non-production data
+- there is no staging environment in the current environment strategy
+- preview deployments do not run `prisma migrate dev`; they consume the schema currently present on Neon `dev`
 - repo-local MCP client configuration for Cursor, Claude Code, and Codex so the Storybook workflow stays scoped to this repository
 - top-level screens for:
   - database-backed public tournament overview landing page

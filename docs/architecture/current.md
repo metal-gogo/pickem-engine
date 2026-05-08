@@ -71,13 +71,14 @@ The platform direction now has a confirmed stack baseline:
 - Cloudflare native observability will be the initial runtime logs, metrics, and tracing baseline.
 - CI/CD will use a trunk-based workflow with `main` as the deployable source of truth.
 - GitHub Actions validation will use layered lanes for formatting, linting, typechecking, tests, builds, runtime checks, database checks, Storybook checks, and E2E smoke tests.
-- GitHub Actions should be able to run migrations and, where useful, create short-lived Neon branches for pull request checks or migration rehearsal.
+- GitHub Actions should be able to run production migrations through an explicit, controlled path.
 
 The intended database environment shape is:
 
 - a production Neon project with a protected production branch
-- a non-production Neon project with long-lived `staging` and `dev` branches
-- short-lived pull request branches such as `pr-123-add-picks-table`
+- a non-production Neon project with a long-lived `dev` branch shared by local development and Cloudflare preview deployments
+
+There is no staging environment in the current strategy. Short-lived pull-request database branches are not part of the default workflow; they can be introduced later for specific risky migration rehearsal if shared `dev` becomes a blocker.
 
 This direction preserves Prisma's model-based developer experience while using Neon for the managed Postgres platform layer. It is still reversible because Prisma ORM can connect to another Postgres provider later.
 
@@ -90,7 +91,9 @@ Environment configuration should split local, deployed runtime, and CI concerns:
 - local development should use an uncommitted `.env` file, with a committed `.env.example` added when backend setup begins
 - Cloudflare should store deployed non-secret values as environment-specific `vars`
 - Cloudflare should store deployed runtime secrets as Worker secrets
-- GitHub Actions should use GitHub Environment secrets for migrations, preview database setup, and deployment
+- local and Cloudflare preview database secrets should point at Neon `dev`
+- Cloudflare production database secrets should point at Neon `prod`
+- GitHub Actions should use environment-scoped secrets for production migrations and deployment
 - application/server code should read typed config through a small validated config boundary rather than scattering raw environment access
 
 ## Initial Database Foundation
@@ -116,15 +119,18 @@ Environment variables:
 
 - `DATABASE_URL` is required for app/runtime database access and local seed runs.
 - `DIRECT_URL` is optional and should point at a direct database URL for Prisma Migrate when `DATABASE_URL` is pooled.
-- Local development should use an uncommitted `.env` pointing at a non-production Neon branch.
+- Local development should use an uncommitted `.env` pointing at Neon `dev`.
+- Cloudflare preview deployments should also point at Neon `dev` so local and preview stay in sync.
+- Cloudflare production should point only at Neon `prod`.
 - Deployed `DATABASE_URL` and `DIRECT_URL` values should be Cloudflare Worker secrets, not plaintext Wrangler vars.
 - GitHub Actions should use environment-scoped secrets for migration and deployment workflows.
 
 Migration flow:
 
 - Create a local migration with `pnpm run db:migrate:create -- --name <name>` when a database is available.
-- Apply local development migrations with `pnpm run db:migrate:dev`.
-- Apply committed migrations in staging or production with `pnpm run db:migrate:deploy`.
+- Apply local development migrations with `pnpm run db:migrate:dev` against Neon `dev`.
+- Cloudflare preview deployments do not run migrations; they consume the schema currently present on Neon `dev`.
+- Apply committed migrations in production with `pnpm run db:migrate:deploy`.
 - Validate and regenerate clients with `pnpm run db:check`.
 - Prisma Migrate does not provide automatic down migrations; rollback should use a forward corrective migration or restore from a database backup/branch.
 
@@ -215,8 +221,8 @@ CI/CD should stay simple for solo development:
 - meaningful changes should use short-lived feature or fix branches
 - a long-lived `develop` branch should not be used while the project is solo-developed
 - pull requests can be used as CI checkpoints and compact review surfaces even when working alone
-- deployment environments should represent local, preview, staging, and production concerns instead of permanent git branches
-- pull requests can later create preview deployments and short-lived Neon branches
+- deployment environments should represent local, preview, and production concerns instead of permanent git branches
+- local development and preview deployments intentionally share the long-lived Neon `dev` branch
 - production deploys should run from pushes to `main` through Cloudflare Workers Builds
 - pull-request preview deploys should run through Cloudflare Workers Builds non-production branch builds using `wrangler versions upload`
 - the production Worker is configured for the `futbol.quest` custom domain through `wrangler.jsonc`
@@ -228,9 +234,9 @@ CI/CD validation should use layered GitHub Actions lanes:
 - typecheck should remain separate from linting and tests
 - Storybook build, story-driven interaction/accessibility checks, and browser/component tests should run in CI once the UI validation setup is wired for the next app
 - Cloudflare runtime tests should run through the Cloudflare Vitest/Miniflare path once server/runtime code exists
-- Prisma schema/client validation, migration checks, and database integration tests should run against isolated development or pull-request database environments once persistence exists
+- Prisma schema/client validation, migration checks, and database integration tests should run against non-production database environments once persistence exists
 - Playwright E2E should start as a focused smoke lane rather than a broad slow suite
-- staging and production deployments should be separate workflows from basic pull-request validation
+- production deployments should be separate workflows from basic pull-request validation
 - deployment workflows should run a production dependency security audit for high-or-higher advisories before releasing
 - CI should default to standard Linux runners and avoid expensive runners unless a concrete need appears
 

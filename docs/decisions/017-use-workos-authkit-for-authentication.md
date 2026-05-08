@@ -26,7 +26,7 @@ Auth0 remains a strong fallback if `pickem-engine` later needs a broader custome
 - Treat WorkOS as the identity provider and hosted auth/session layer.
 - Keep product authorization and domain membership in the app database: pools, pool participants, pool roles, picks, scoring, and leaderboards remain `pickem-engine` concepts.
 - Store an app user record linked to the WorkOS user subject rather than making WorkOS the source of truth for pool membership.
-- Configure separate WorkOS environments for local development, staging, and production when backend setup begins.
+- Configure WorkOS for local development, preview, and production when backend setup begins; local and preview may share non-production settings where that keeps the development loop simple.
 - Decide the exact initial login methods during setup, such as Magic Auth, social providers, or both.
 - Keep the private pool join/invite flow open until the app's user-to-participant mapping is designed.
 - If React Router v7, Cloudflare, or edge-runtime compatibility creates a serious blocker, reassess Auth0, Better Auth, or another provider before implementing custom auth.
@@ -34,11 +34,11 @@ Auth0 remains a strong fallback if `pickem-engine` later needs a broader custome
 ## Accounts And Configuration
 
 - Create a WorkOS account.
-- Configure separate local, staging, and production WorkOS environments or applications when backend setup begins.
+- Configure local, preview, and production WorkOS environments or applications when backend setup begins.
 - Capture `WORKOS_CLIENT_ID` from the WorkOS dashboard.
 - Capture `WORKOS_API_KEY` from the WorkOS dashboard and treat it as a secret.
 - Generate `WORKOS_COOKIE_PASSWORD` as a strong 32-character-or-longer session cookie password and treat it as a secret.
-- Configure AuthKit redirect, callback, and logout URLs for local, staging, and production.
+- Configure AuthKit redirect, callback, and logout URLs for local, preview, and production.
 - Store local values in an uncommitted env file.
 - Store deployed runtime secrets in Cloudflare Worker secrets.
 - Store CI/deployment-only WorkOS values in GitHub Environment secrets if workflows need them.
